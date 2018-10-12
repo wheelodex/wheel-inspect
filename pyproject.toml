@@ -1,0 +1,6 @@
+[build-system]
+requires = [
+    "read_version ~= 0.1.0",
+    "setuptools >= 34.4.0",
+    "wheel"
+]

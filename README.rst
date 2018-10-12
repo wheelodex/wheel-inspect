@@ -21,7 +21,7 @@
 | `Issues <https://github.com/jwodder/wheel-inspect/issues>`_
 
 ``wheel-inspect`` examines Python wheel files and outputs various information
-about the contents within as a JSON-serializable object.  It can be invoked in
+about the contents within as JSON-serializable objects.  It can be invoked in
 Python code as::
 
     from wheel_inspect import inspect_wheel

@@ -53,7 +53,7 @@ Example
         "arch": [
             "any"
         ],
-        "buildver": "",
+        "buildver": null,
         "derived": {
             "dependencies": [
                 "distlib",

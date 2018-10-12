@@ -2,7 +2,7 @@
     "filename": "setuptools-36.0.1-py2.py3-none-any.whl",
     "project": "setuptools",
     "version": "36.0.1",
-    "buildver": "",
+    "buildver": null,
     "pyver": ["py2", "py3"],
     "abi": ["none"],
     "arch": ["any"],

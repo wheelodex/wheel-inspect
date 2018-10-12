@@ -1,5 +1,7 @@
 v1.1.0 (in development)
 -----------------------
+- `"buildver"` is now `None`/`null` instead of the empty string when there is
+  no build tag in the wheel's filename
 
 v1.0.0 (2018-10-12)
 -------------------

@@ -2,7 +2,7 @@
     "filename": "qypi-0.4.1-py3-none-any.whl",
     "project": "qypi",
     "version": "0.4.1",
-    "buildver": "",
+    "buildver": null,
     "pyver": ["py3"],
     "abi": ["none"],
     "arch": ["any"],

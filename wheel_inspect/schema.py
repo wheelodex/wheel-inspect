@@ -29,8 +29,8 @@ SCHEMA = {
             "description": "The wheel's project version as extracted from the filename"
         },
         "buildver": {
-            "type": "string",
-            "description": "The wheel's build tag as extracted from the filename"
+            "type": ["string", "null"],
+            "description": "The wheel's build tag as extracted from the filename; `null` if there is no build tag"
         },
         "pyver": {
             "type": "array",

@@ -55,7 +55,7 @@ def inspect_wheel(fname):
         "filename": os.path.basename(fname),
         "project": whl.name,
         "version": whl.version,
-        "buildver": whl.buildver,
+        "buildver": whl.buildver or None,
         "pyver": whl.pyver,
         "abi": whl.abi,
         "arch": whl.arch,

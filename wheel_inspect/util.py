@@ -1,4 +1,7 @@
-from packaging.utils import canonicalize_name as normalize
+import hashlib
+from   packaging.utils import canonicalize_name as normalize
+
+DIGEST_CHUNK_SIZE = 65535
 
 def extract_modules(filelist):
     modules = set()
@@ -42,3 +45,10 @@ def unique_projects(projects):
         if pn not in seen:
             yield p
         seen.add(pn)
+
+def digest_file(fp, algorithms):
+    digests = {alg: getattr(hashlib, alg)() for alg in algorithms}
+    for chunk in iter(lambda: fp.read(DIGEST_CHUNK_SIZE), b''):
+        for d in digests.values():
+            d.update(chunk)
+    return {k: v.hexdigest() for k,v in digests.items()}

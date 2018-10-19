@@ -1,7 +1,5 @@
 from   cgi                 import parse_header
 from   collections         import defaultdict
-import csv
-import hashlib
 import io
 import os.path
 from   zipfile             import ZipFile
@@ -9,19 +7,13 @@ from   distlib.wheel       import Wheel
 from   pkg_resources       import EntryPoint, yield_lines
 from   readme_renderer.rst import render
 from   .metadata           import parse_metadata
-from   .util               import extract_modules, split_keywords, \
-                                    unique_projects
+from   .record             import Record
+from   .util               import digest_file, extract_modules, \
+                                    split_keywords, unique_projects
 from   .wheel_info         import parse_wheel_info
 
-DIGEST_CHUNK_SIZE = 65535
-
 def parse_record(fp):
-    # Defined in PEP 376
-    return [{
-        "path": path,
-        "digests": dict([digests.split('=', 1)]) if digests else {},
-        "size": int(size) if size else None,
-    } for path, digests, size in csv.reader(fp, delimiter=',', quotechar='"')]
+    return Record.load(fp).for_json()
 
 def parse_entry_points(fp):
     return {
@@ -72,15 +64,8 @@ def inspect_wheel(fname):
         about["valid"] = True
 
     about["file"] = {"size": os.path.getsize(fname)}
-    digests = {
-        "md5": hashlib.md5(),
-        "sha256": hashlib.sha256(),
-    }
     with open(fname, 'rb') as fp:
-        for chunk in iter(lambda: fp.read(DIGEST_CHUNK_SIZE), b''):
-            for d in digests.values():
-                d.update(chunk)
-    about["file"]["digests"] = {k: v.hexdigest() for k,v in digests.items()}
+        about["file"]["digests"] = digest_file(fp, ["md5", "sha256"])
 
     about["dist_info"] = {}
     whlzip = ZipFile(fname)
@@ -96,7 +81,9 @@ def inspect_wheel(fname):
     for fname, parser, key in DIST_INFO_FILES:
         if fname in dist_info_contents:
             with whlzip.open(dist_info_name + '/' + fname) as fp:
-                about["dist_info"][key] = parser(io.TextIOWrapper(fp, 'utf-8'))
+                ### TODO: RECORD needs to be opened with `newline=''`; is this
+                ### safe for the other files?
+                about["dist_info"][key] = parser(io.TextIOWrapper(fp, 'utf-8', newline=''))
     if 'zip-safe' in dist_info_contents:
         about["dist_info"]["zip_safe"] = True
     elif 'not-zip-safe' in dist_info_contents:

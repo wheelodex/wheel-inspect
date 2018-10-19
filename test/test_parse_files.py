@@ -3,9 +3,10 @@ import json
 from   operator                 import attrgetter
 from   pathlib                  import Path
 import pytest
-from   wheel_inspect.inspect    import parse_entry_points, parse_record
 from   wheel_inspect.metadata   import parse_metadata
+from   wheel_inspect.record     import Record
 from   wheel_inspect.wheel_info import parse_wheel_info
+from   wheel_inspect.wheelcls   import parse_entry_points
 
 @pytest.mark.parametrize('mdfile', [
     p for p in (Path(__file__).with_name('data') / 'metadata').iterdir()
@@ -38,7 +39,7 @@ def test_parse_wheel_info(wifile):
         assert parse_wheel_info(fp) == expected
 
 def test_parse_record():
-    assert parse_record(StringIO('''\
+    assert Record.load(StringIO('''\
 qypi/__init__.py,sha256=zgE5-Sk8hED4NRmtnPUuvp1FDC4Z6VWCzJOOZwZ2oh8,532
 qypi/__main__.py,sha256=GV5UVn3j5z4x-r7YYEB-quNPCucZYK1JOfWxmbdB0N0,7915
 qypi/api.py,sha256=2c4EwxDhhHEloeOIeN0YgpIxCGpZaTDNJMYtHlVCcl8,3867
@@ -51,7 +52,7 @@ qypi-0.4.1.dist-info/WHEEL,sha256=rNo05PbNqwnXiIHFsYm0m22u4Zm6YJtugFG2THx4w3g,92
 qypi-0.4.1.dist-info/entry_points.txt,sha256=t4_O2VB3V-o52_PLoLLIb8m4SQDmY0HFdEJ9_Q2Odtw,45
 qypi-0.4.1.dist-info/metadata.json,sha256=KI5TdfaYL-TPS1dMTABV6S8BFq9iAJRk3rkTXjOdgII,1297
 qypi-0.4.1.dist-info/top_level.txt,sha256=J2Q5xVa8BtnOTGxjqY2lKQRB22Ydn9JF2PirqDEKE_Y,5
-''')) == [
+''')).for_json() == [
         {
             "path": "qypi/__init__.py",
             "digests": {

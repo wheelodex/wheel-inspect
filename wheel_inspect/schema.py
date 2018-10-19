@@ -54,7 +54,7 @@ SCHEMA = {
 
         "validation_error": {
             "type": "object",
-            "description": "If the wheel is invalid, this field contains information on the Python exception raised by `distlib.wheel.Wheel.verify()`.",
+            "description": "If the wheel is invalid, this field contains information on the `WheelValidationError` raised.",
             "required": ["type", "str"],
             "additionalProperties": False,
             "properties": {

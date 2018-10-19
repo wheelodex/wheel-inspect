@@ -57,7 +57,7 @@ class RecordDigestMismatchError(RecordValidationError):
         #: The file's actual digest, in hex
         self.actual_digest = actual_digest
 
-    def __self__(self):
+    def __str__(self):
         return '{0.algorithm} digest of file {0.path!r} listed as'\
                ' {0.record_digest} in RECORD, actually {0.actual_digest}'\
                .format(self)
@@ -75,6 +75,20 @@ class FileMissingError(RecordValidationError):
 
     def __str__(self):
         return 'File declared in RECORD not found in archive: '+repr(self.path)
+
+
+class ExtraFileError(RecordValidationError):
+    """
+    Raised when a wheel contains a file that is not listed in the
+    :file:`RECORD` (other than :file:`RECORD.jws` and :file:`RECORD.p7s`)
+    """
+
+    def __init__(self, path):
+        #: The path of the extra file
+        self.path = path
+
+    def __str__(self):
+        return 'File not declared in RECORD: {0.path!r}'.format(self)
 
 
 class MalformedRecordError(WheelValidationError):
@@ -210,3 +224,25 @@ class RecordLengthError(MalformedRecordError):
         else:
             return 'RECORD entry for {0.path!r} has {0.length} fields;'\
                    ' expected 3'.format(self)
+
+
+class EmptyEntryError(MalformedRecordError):
+    """
+    Raised when an entry in a wheel's :file:`RECORD` lacks both digest and size
+    and the entry is not for the :file:`RECORD` itself
+    """
+
+    def __init__(self, path):
+        #: The path the entry is for
+        self.path = path
+
+    def __str__(self):
+        return 'RECORD entry for {0.path!r} lacks both digest and size'\
+               .format(self)
+
+
+class MissingRecordError(WheelValidationError):
+    """ Raised when a wheel does not contain a :file:`RECORD` file """
+
+    def __str__(self):
+        return 'No RECORD file in wheel'

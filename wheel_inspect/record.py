@@ -120,4 +120,4 @@ def hex2record_digest(data):
 
 def record_digest2hex(data):
     pad = '=' * (4 - (len(data) & 3))
-    return hexlify(base64.urlsafe_b64decode(data + pad))
+    return hexlify(base64.urlsafe_b64decode(data + pad)).decode('us-ascii')

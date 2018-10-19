@@ -1,6 +1,6 @@
 import pytest
-from   wheel_inspect import InvalidFilenameError, ParsedWheelFilename, \
-                                parse_wheel_filename
+from   wheel_inspect        import ParsedWheelFilename, parse_wheel_filename
+from   wheel_inspect.errors import InvalidFilenameError
 
 @pytest.mark.parametrize('filename,parsed', [
     (

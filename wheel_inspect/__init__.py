@@ -14,10 +14,9 @@ or from the command line with the ``wheel2json`` command.
 Visit <https://github.com/jwodder/wheel-inspect> for more information.
 """
 
-from .errors   import InvalidFilenameError, WheelValidationError
 from .filename import ParsedWheelFilename, parse_wheel_filename
-from .inspect  import inspect_wheel
 from .schema   import SCHEMA
+from .wheelcls import Wheel, inspect_wheel
 
 __version__      = '1.1.0.dev1'
 __author__       = 'John Thorvald Wodder II'
@@ -26,10 +25,9 @@ __license__      = 'MIT'
 __url__          = 'https://github.com/jwodder/wheel-inspect'
 
 __all__ = [
-    'InvalidFilenameError',
     'ParsedWheelFilename',
     'SCHEMA',
-    'WheelValidationError',
+    'Wheel',
     'inspect_wheel',
     'parse_wheel_filename',
 ]

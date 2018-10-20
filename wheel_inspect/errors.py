@@ -130,7 +130,7 @@ class WeakDigestError(MalformedRecordError):
 
     def __str__(self):
         return 'RECORD entry for {0.path!r} uses a weak digest algorithm:'\
-               ' {0.algorithm}'.format(self)
+               ' {0.algorithm!r}'.format(self)
 
 
 class MalformedDigestError(MalformedRecordError):
@@ -226,7 +226,7 @@ class RecordLengthError(MalformedRecordError):
                    ' expected 3'.format(self)
 
 
-class EmptyEntryError(MalformedRecordError):
+class NullEntryError(MalformedRecordError):
     """
     Raised when an entry in a wheel's :file:`RECORD` lacks both digest and size
     and the entry is not for the :file:`RECORD` itself

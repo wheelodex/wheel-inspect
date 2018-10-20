@@ -1,0 +1,4 @@
+{
+    "type": "MalformedSizeError",
+    "str": "RECORD contains invalid size for 'malsize-1.0.0.dist-info/METADATA': '171.0'"
+}

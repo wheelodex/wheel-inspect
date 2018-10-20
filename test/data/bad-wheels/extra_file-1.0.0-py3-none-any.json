@@ -1,0 +1,4 @@
+{
+    "type": "ExtraFileError",
+    "str": "File not declared in RECORD: 'extra.py'"
+}

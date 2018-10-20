@@ -1,0 +1,4 @@
+{
+    "type": "WeakDigestError",
+    "str": "RECORD entry for 'weak_digest-1.0.0.dist-info/METADATA' uses a weak digest algorithm: 'sha1'"
+}

@@ -1,0 +1,4 @@
+{
+    "type": "UnknownDigestError",
+    "str": "RECORD entry for 'unkdigest-1.0.0.dist-info/METADATA' uses an unknown digest algorithm: 'bla360'"
+}

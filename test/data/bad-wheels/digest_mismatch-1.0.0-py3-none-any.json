@@ -1,0 +1,4 @@
+{
+    "type": "RecordDigestMismatchError",
+    "str": "sha256 digest of file 'module.py' listed as 01e38e94fe05eacefb60af3083db07c7331028fdc8b2c93d9d5cbb6769d36742 in RECORD, actually 653925bbc428fc25d9b6a23f6734d37a0fb7012bc8ecaede11f34ba2bbd56499"
+}

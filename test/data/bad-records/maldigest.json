@@ -1,0 +1,4 @@
+{
+    "type": "MalformedDigestError",
+    "str": "RECORD contains invalid sha256 base64 nopad digest for 'module.py': 'AeOOlP4F6s77YK8wg9sHxzMQKP3Issk9nVy7Z2nTZ0I='"
+}

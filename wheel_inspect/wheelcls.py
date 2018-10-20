@@ -69,7 +69,7 @@ class Wheel:
             if entry:
                 entry.verify(self.zipfile)
             elif entry.path != self.dist_info + '/RECORD':
-                raise errors.EmptyEntryError(entry.path)
+                raise errors.NullEntryError(entry.path)
         # Check everything in zipfile appears in RECORD (except signatures):
         for path in self.zipfile.namelist():
             if path not in self.record and path not in (

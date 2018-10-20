@@ -1,0 +1,4 @@
+{
+    "type": "RecordConflictError",
+    "str": "RECORD contains multiple conflicting entries for 'module.py'"
+}

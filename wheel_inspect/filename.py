@@ -9,7 +9,7 @@ PLATFORM_TAG_RGX = r'\w+'
 WHEEL_FILENAME_CRGX = re.compile(
     r'(?P<project>[A-Za-z0-9](?:[A-Za-z0-9._]*[A-Za-z0-9])?)'
     r'-(?P<version>[A-Za-z0-9_.!+]+)'
-    r'(?:-(?P<build>[0-9][^-]*))?'
+    r'(?:-(?P<build>[0-9][\w\d.]*))?'
     r'-(?P<python_tags>{0}(?:\.{0})*)'
     ### XXX: distlib expects only one ABI tag in a filename.  Why?
     r'-(?P<abi_tags>{1}(?:\.{1})*)'

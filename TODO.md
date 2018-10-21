@@ -32,7 +32,5 @@
 - Don't proceed with inspecting wheels that fail validation?
 - Add a dedicated error for `*.dist-info` not matching the project & version in
   the wheel filename?
-- Split `PartialRecordError` into two exceptions, one for a missing digest, one
-  for a missing size?
 - Should `NullEntryError` be a subclass of `MalformedRecordError` even though
   it's not raised by `Record.load()`?

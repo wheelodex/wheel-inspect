@@ -1,4 +1,4 @@
 {
-    "type": "PartialRecordError",
-    "str": "RECORD entry for 'module.py' is only partially filled in"
+    "type": "EmptySizeError",
+    "str": "RECORD entry for 'module.py' has a digest but no size"
 }

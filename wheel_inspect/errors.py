@@ -184,10 +184,10 @@ class RecordConflictError(MalformedRecordError):
                .format(self)
 
 
-class PartialRecordError(MalformedRecordError):
+class EmptyDigestError(MalformedRecordError):
     """
-    Raised when an entry in a wheel's :file:`RECORD` lacks either a digest or
-    a size, but not both
+    Raised when an entry in a wheel's :file:`RECORD` has a size but not a
+    digest
     """
 
     def __init__(self, path):
@@ -195,7 +195,22 @@ class PartialRecordError(MalformedRecordError):
         self.path = path
 
     def __str__(self):
-        return 'RECORD entry for {0.path!r} is only partially filled in'\
+        return 'RECORD entry for {0.path!r} has a size but no digest'\
+               .format(self)
+
+
+class EmptySizeError(MalformedRecordError):
+    """
+    Raised when an entry in a wheel's :file:`RECORD` has a digest but not a
+    size
+    """
+
+    def __init__(self, path):
+        #: The path the entry is for
+        self.path = path
+
+    def __str__(self):
+        return 'RECORD entry for {0.path!r} has a digest but no size'\
                .format(self)
 
 

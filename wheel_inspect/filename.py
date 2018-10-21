@@ -2,9 +2,11 @@ import re
 import attr
 from   .errors import InvalidFilenameError
 
-PYTHON_TAG_RGX   = r'\w+'
-ABI_TAG_RGX      = r'\w+'
-PLATFORM_TAG_RGX = r'\w+'
+# These patterns are interpreted with re.UNICODE in effect, so there's probably
+# some character that matches \d but not \w that needs to be included
+PYTHON_TAG_RGX   = r'[\w\d]+'
+ABI_TAG_RGX      = r'[\w\d]+'
+PLATFORM_TAG_RGX = r'[\w\d]+'
 
 WHEEL_FILENAME_CRGX = re.compile(
     r'(?P<project>[A-Za-z0-9](?:[A-Za-z0-9._]*[A-Za-z0-9])?)'

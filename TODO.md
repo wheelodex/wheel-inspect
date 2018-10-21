@@ -1,4 +1,15 @@
 - Upgrade `SCHEMA` to a more recent JSON Schema draft
+- Improve documentation:
+    - Improve `README`/module docstring
+        - Make "Python wheel files" link somewhere
+    - Mention `SCHEMA`
+    - Add docstring to `inspect_wheel()`
+    - Publicly document `parse_wheel_filename()` and its return value
+- Publicly expose `Record`?
+- Give `Record` a `dump()`/`dumps()` method?
+
+Inspecting Wheels
+-----------------
 - Parse `Description-Content-Type` into a structured `dict`?
 - Should flat modules inside packages be discarded from `.derived.modules`?
 - Divide `.derived.modules` into a list of packages and a list of flat modules
@@ -27,10 +38,21 @@
 - Add a `.derived.type_checked`(?) field for whether `py.typed` is present?
   (See PEP 561)
 - Remove duplicates from `.derived.keywords`?
-- Give `inspect_wheel()` an option for whether to keep long descriptions?
+- Give `inspect_wheel()` and `wheel2json` an option for whether to keep long
+  descriptions
+- Give `inspect_wheel()` and `wheel2json` an option for using PEP 566's schema
+  for METADATA
 - Include `pbr.json` contents?
 - Don't proceed with inspecting wheels that fail validation?
+
+Validating Wheels
+-----------------
 - Add a dedicated error for `*.dist-info` not matching the project & version in
   the wheel filename?
 - Should `NullEntryError` be a subclass of `MalformedRecordError` even though
   it's not raised by `Record.load()`?
+- Implement complete wheel validation logic, including checking METADATA and
+  other `*.dist-info` files
+    - Add an option for whether to bother checking `setuptools` files like
+      `entry_points.txt` that aren't specified by a PEP (default: do check)
+    - Add a command for validating a given wheel

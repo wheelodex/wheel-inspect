@@ -1,0 +1,4 @@
+{
+    "type": "NonNormalizedPathError",
+    "str": "RECORD entry has a non-normalized path: './module.py'"
+}

@@ -256,6 +256,32 @@ class NullEntryError(MalformedRecordError):
                .format(self)
 
 
+class NonNormalizedPathError(MalformedRecordError):
+    """
+    Raised when an entry in a wheel's :file:`RECORD` has a non-normalized path
+    """
+
+    def __init__(self, path):
+        #: The non-normalized path
+        self.path = path
+
+    def __str__(self):
+        return 'RECORD entry has a non-normalized path: {0.path!r}'.format(self)
+
+
+class AbsolutePathError(MalformedRecordError):
+    """
+    Raised when an entry in a wheel's :file:`RECORD` has an absolute path
+    """
+
+    def __init__(self, path):
+        #: The absolute path
+        self.path = path
+
+    def __str__(self):
+        return 'RECORD entry has an absolute path: {0.path!r}'.format(self)
+
+
 class MissingRecordError(WheelValidationError):
     """ Raised when a wheel does not contain a :file:`RECORD` file """
 

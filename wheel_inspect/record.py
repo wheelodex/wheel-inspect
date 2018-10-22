@@ -55,6 +55,10 @@ class RecordEntry:
             )
         if not path:
             raise errors.EmptyPathError()
+        elif '//' in path or '.' in path.split('/') or '..' in path.split('/'):
+            raise errors.NonNormalizedPathError(path)
+        elif path.startswith('/'):
+            raise errors.AbsolutePathError(path)
         if alg_digest:
             digest_algorithm, digest = alg_digest.split('=', 1)
             if digest_algorithm not in hashlib.algorithms_guaranteed:

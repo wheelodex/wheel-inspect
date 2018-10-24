@@ -3,7 +3,7 @@ class WheelValidationError(Exception):
     pass
 
 
-class InvalidFilenameError(WheelValidationError):
+class InvalidFilenameError(WheelValidationError, ValueError):
     """ Raised when an invalid wheel filename is encountered """
 
     def __init__(self, filename):

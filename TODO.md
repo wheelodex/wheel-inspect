@@ -2,11 +2,15 @@
 - Improve documentation:
     - Improve `README`/module docstring
         - Make "Python wheel files" link somewhere
-    - Mention `SCHEMA`
     - Add docstring to `inspect_wheel()`
-    - Publicly document `parse_wheel_filename()` and its return value
+    - Publicly document `Wheel`
 - Publicly expose `Record`?
 - Give `Record` a `dump()`/`dumps()` method?
+- Give `Wheel` `entry_points`, `top_level`, etc. attributes that evaluate to
+  `None` if the respective files aren't present
+- Rename `Wheel.parsed_filename` to `filename`?
+- `ParsedWheelFilename.__str__`: Ensure that all non-alphanumeric/period
+  characters in attributes are converted to underscores before concatenating?
 
 Inspecting Wheels
 -----------------

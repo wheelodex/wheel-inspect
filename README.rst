@@ -276,3 +276,22 @@ Example
         "valid": true,
         "version": "1.0.0.dev1"
     }
+
+
+Utilities
+=========
+
+``wheel_inspect.parse_wheel_filename(filename)``
+   Parse a wheel filename into its components, returning an object with the
+   following attributes:
+
+   - ``project`` — the project distributed by the wheel
+   - ``version`` — the version of the project distributed by the wheel
+   - ``build`` — the wheel's build tag, or `None` if there is none
+   - ``python_tags`` — a `list` of Python implementation tags
+   - ``abi_tags`` — a `list` of ABI tags
+   - ``platform_tags`` — a `list` of platform tags
+
+``wheel_inspect.SCHEMA``
+   A `JSON Schema <http://json-schema.org>`_ for the structure returned by
+   ``inspect_wheel()``

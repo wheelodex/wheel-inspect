@@ -1,6 +1,6 @@
 import json
 import sys
-from   .inspect import inspect_wheel
+from   .wheelcls import inspect_wheel
 
 def main():
     for wheelfile in sys.argv[1:]:

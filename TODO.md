@@ -2,7 +2,6 @@
 - Improve documentation:
     - Improve `README`/module docstring
         - Make "Python wheel files" link somewhere
-    - Add docstring to `inspect_wheel()`
     - Publicly document `Wheel`
 - Publicly expose `Record`?
 - Give `Record` a `dump()`/`dumps()` method?

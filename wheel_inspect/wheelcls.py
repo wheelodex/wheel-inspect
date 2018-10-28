@@ -194,6 +194,10 @@ class Wheel:
 
         return about
 
-def inspect_wheel(fname):
-    with Wheel(fname) as whl:
+def inspect_wheel(path):
+    """
+    Examine the Python wheel at the given path and return various information
+    about the contents within as a JSON-serializable `dict`
+    """
+    with Wheel(path) as whl:
         return whl.inspect()

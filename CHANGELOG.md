@@ -1,3 +1,8 @@
+v1.2.0 (in development)
+-----------------------
+- `.derived.keywords` is now sorted and duplicate-free
+
+
 v1.1.0 (2018-10-28)
 -------------------
 - `"buildver"` is now `None`/`null` instead of the empty string when there is

@@ -505,7 +505,7 @@
         "readme_renders": true,
         "description_in_body": true,
         "description_in_headers": false,
-        "keywords": ["interface", "components", "plugins"],
+        "keywords": ["components", "interface", "plugins"],
         "keyword_separator": ",",
         "dependencies": [
             "Sphinx",

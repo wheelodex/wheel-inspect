@@ -957,7 +957,7 @@
         "description_in_body": true,
         "description_in_headers": false,
         "keywords": [
-            "CPAN", "PyPI", "distutils", "eggs", "package", "management"
+            "CPAN", "PyPI", "distutils", "eggs", "management", "package"
         ],
         "keyword_separator": " ",
         "dependencies": [

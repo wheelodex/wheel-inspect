@@ -183,6 +183,7 @@ class Wheel:
         else:
             about["derived"]["keywords"], about["derived"]["keyword_separator"] \
                 = [], None
+        about["derived"]["keywords"] = sorted(set(about["derived"]["keywords"]))
 
         about["derived"]["dependencies"] = sorted(unique_projects(
             req["name"] for req in md.get("requires_dist", [])

@@ -177,11 +177,11 @@
         "description_in_body": true,
         "description_in_headers": false,
         "keywords": [
-            "pypi",
-            "warehouse",
-            "search",
             "packages",
-            "pip"
+            "pip",
+            "pypi",
+            "search",
+            "warehouse"
         ],
         "keyword_separator": ",",
         "dependencies": [

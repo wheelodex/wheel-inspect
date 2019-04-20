@@ -1,5 +1,5 @@
-v1.2.0 (in development)
------------------------
+v1.2.0 (2019-04-20)
+-------------------
 - `.derived.keywords` is now sorted and duplicate-free
 
 

@@ -1,3 +1,9 @@
+v1.2.1 (2019-04-20)
+-------------------
+- Include `pyproject.toml` in `MANIFEST.in`, thereby making it possible to
+  build from sdist
+
+
 v1.2.0 (2019-04-20)
 -------------------
 - `.derived.keywords` is now sorted and duplicate-free

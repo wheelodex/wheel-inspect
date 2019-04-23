@@ -1,3 +1,8 @@
+v1.3.0 (in development)
+-----------------------
+- Upgraded `wheel_inspect.SCHEMA` from JSON Schema draft 4 to draft 7
+
+
 v1.2.1 (2019-04-20)
 -------------------
 - Include `pyproject.toml` in `MANIFEST.in`, thereby making it possible to

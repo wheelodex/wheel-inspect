@@ -1,4 +1,3 @@
-- Upgrade `SCHEMA` to a more recent JSON Schema draft
 - Improve documentation:
     - Improve `README`/module docstring
         - Make "Python wheel files" link somewhere

@@ -1,6 +1,7 @@
 v1.3.0 (in development)
 -----------------------
 - Upgraded `wheel_inspect.SCHEMA` from JSON Schema draft 4 to draft 7
+- Don't require directory entries in wheels to be listed in `RECORD`
 
 
 v1.2.1 (2019-04-20)

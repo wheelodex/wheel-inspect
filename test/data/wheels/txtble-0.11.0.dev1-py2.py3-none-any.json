@@ -1,0 +1,201 @@
+{
+    "abi": [
+        "none"
+    ],
+    "arch": [
+        "any"
+    ],
+    "buildver": null,
+    "derived": {
+        "dependencies": [
+            "attrs",
+            "six",
+            "wcwidth"
+        ],
+        "description_in_body": true,
+        "description_in_headers": false,
+        "keyword_separator": ",",
+        "keywords": [
+            "box-drawing",
+            "grid",
+            "table"
+        ],
+        "modules": [
+            "txtble",
+            "txtble.border_style",
+            "txtble.classes",
+            "txtble.errors",
+            "txtble.util"
+        ],
+        "readme_renders": true
+    },
+    "dist_info": {
+        "metadata": {
+            "author": "John Thorvald Wodder II",
+            "author_email": "txtble@varonathe.org",
+            "classifier": [
+                "Development Status :: 4 - Beta",
+                "Programming Language :: Python :: 2",
+                "Programming Language :: Python :: 2.7",
+                "Programming Language :: Python :: 3",
+                "Programming Language :: Python :: 3.4",
+                "Programming Language :: Python :: 3.5",
+                "Programming Language :: Python :: 3.6",
+                "Programming Language :: Python :: 3.7",
+                "Programming Language :: Python :: Implementation :: CPython",
+                "Programming Language :: Python :: Implementation :: PyPy",
+                "License :: OSI Approved :: MIT License",
+                "Intended Audience :: Developers",
+                "Topic :: Software Development :: User Interfaces",
+                "Topic :: Text Processing"
+            ],
+            "description": {
+                "length": 28208
+            },
+            "description_content_type": "text/x-rst",
+            "home_page": "https://github.com/jwodder/txtble",
+            "keywords": "box-drawing,grid,table",
+            "license": "MIT",
+            "metadata_version": "2.1",
+            "name": "txtble",
+            "platform": [],
+            "project_url": [
+                {
+                    "label": "Source Code",
+                    "url": "https://github.com/jwodder/txtble"
+                },
+                {
+                    "label": "Bug Tracker",
+                    "url": "https://github.com/jwodder/txtble/issues"
+                },
+                {
+                    "label": "Say Thanks!",
+                    "url": "https://saythanks.io/to/jwodder"
+                }
+            ],
+            "requires_dist": [
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "attrs",
+                    "specifier": "~=18.1",
+                    "url": null
+                },
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "six",
+                    "specifier": "~=1.4",
+                    "url": null
+                },
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "wcwidth",
+                    "specifier": "~=0.1.7",
+                    "url": null
+                }
+            ],
+            "requires_python": ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4",
+            "summary": "Yet another plain-text table typesetter",
+            "version": "0.11.0.dev1"
+        },
+        "record": [
+            {
+                "digests": {
+                    "sha256": "Hg-mQO8STJTSyjYbsFMX_5ucT8e5xX93p7s0FhTkDMg"
+                },
+                "path": "txtble/__init__.py",
+                "size": 1913
+            },
+            {
+                "digests": {
+                    "sha256": "_GBpIK9yT-frO53r-NM_VvHua4tTkVvF5feWlykm7Ys"
+                },
+                "path": "txtble/border_style.py",
+                "size": 1678
+            },
+            {
+                "digests": {
+                    "sha256": "m2HbeoUiTdUIJpueLPyAy-Omf9wYMYcpCIZmIUxxuFM"
+                },
+                "path": "txtble/classes.py",
+                "size": 13573
+            },
+            {
+                "digests": {
+                    "sha256": "glaKN45ICDt4UtcyzXYJGTudhmcwOJIuymv4nXlzKp0"
+                },
+                "path": "txtble/errors.py",
+                "size": 1049
+            },
+            {
+                "digests": {
+                    "sha256": "h5ZiJg80CkGa86W6OfwGqEJNhbpAaZElk2M_PUYl2lw"
+                },
+                "path": "txtble/util.py",
+                "size": 7517
+            },
+            {
+                "digests": {
+                    "sha256": "-X7Ry_-tNPLAGkZasQc2KOBW_Ohnx52rgDZfo8cxw10"
+                },
+                "path": "txtble-0.11.0.dev1.dist-info/LICENSE",
+                "size": 1095
+            },
+            {
+                "digests": {
+                    "sha256": "jNWkEwRdlOzwMhaE4Drummjjbxhkqnmvqe0Y7b-kyQU"
+                },
+                "path": "txtble-0.11.0.dev1.dist-info/METADATA",
+                "size": 30130
+            },
+            {
+                "digests": {
+                    "sha256": "QrCxIurdO0_icqgdsR8nJ8vSjsjC1s_oWmDPOvzyxCw"
+                },
+                "path": "txtble-0.11.0.dev1.dist-info/WHEEL",
+                "size": 110
+            },
+            {
+                "digests": {
+                    "sha256": "sW_YP0Y5Maz7sxHh-LY7QHTuIA3ot-e1HG4av937rKk"
+                },
+                "path": "txtble-0.11.0.dev1.dist-info/top_level.txt",
+                "size": 7
+            },
+            {
+                "digests": {},
+                "path": "txtble-0.11.0.dev1.dist-info/RECORD",
+                "size": null
+            }
+        ],
+        "top_level": [
+            "txtble"
+        ],
+        "wheel": {
+            "generator": "bdist_wheel (0.33.2)",
+            "root_is_purelib": true,
+            "tag": [
+                "py2-none-any",
+                "py3-none-any"
+            ],
+            "wheel_version": "1.0"
+        }
+    },
+    "file": {
+        "digests": {
+            "md5": "d8bc66b692fcce56fc37eb0e8a6e04e4",
+            "sha256": "40bdf941bfdb6fbef00e8984d7b8d7b9ee1f3ec0e4ed23e6e29b0aac67799172"
+        },
+        "size": 18656
+    },
+    "filename": "txtble-0.11.0.dev1-py2.py3-none-any.whl",
+    "project": "txtble",
+    "pyver": [
+        "py2",
+        "py3"
+    ],
+    "valid": true,
+    "version": "0.11.0.dev1"
+}

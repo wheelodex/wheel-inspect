@@ -70,12 +70,13 @@ class Wheel:
                 entry.verify(self.zipfile)
             elif entry.path != self.dist_info + '/RECORD':
                 raise errors.NullEntryError(entry.path)
-        # Check everything in zipfile appears in RECORD (except signatures):
+        # Check everything in zipfile appears in RECORD (except signatures and
+        # directories):
         for path in self.zipfile.namelist():
             if path not in self.record and path not in (
                 self.dist_info + '/RECORD.jws',
                 self.dist_info + '/RECORD.p7s',
-            ):
+            ) and not path.endswith('/'):
                 raise errors.ExtraFileError(path)
 
     @cached_property

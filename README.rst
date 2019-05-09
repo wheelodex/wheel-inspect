@@ -22,6 +22,7 @@
 `GitHub <https://github.com/jwodder/wheel-inspect>`_
 | `PyPI <https://pypi.org/project/wheel-inspect/>`_
 | `Issues <https://github.com/jwodder/wheel-inspect/issues>`_
+| `Changelog <https://github.com/jwodder/wheel-inspect/blob/master/CHANGELOG.md>`_
 
 ``wheel-inspect`` examines Python wheel files and outputs various information
 about the contents within as JSON-serializable objects.  It can be invoked in

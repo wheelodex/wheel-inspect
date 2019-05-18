@@ -1,4 +1,5 @@
 import hashlib
+import re
 from   packaging.utils import canonicalize_name as normalize
 
 DIGEST_CHUNK_SIZE = 65535
@@ -27,8 +28,7 @@ def split_keywords(kwstr):
     # Based on how pydigger.com seems to handle keywords (See
     # <https://pydigger.com/keywords>):
     if ',' in kwstr:
-        return (kwstr.split(','), ',')
-        ### TODO: Strip whitespace?  Discard empty keywords?
+        return (re.split(r'\s*,[\s,]*', kwstr.strip()), ',')
     else:
         return (kwstr.split(), ' ')
 

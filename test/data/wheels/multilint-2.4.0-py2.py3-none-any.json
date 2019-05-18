@@ -1,0 +1,176 @@
+{
+    "abi": [
+        "none"
+    ],
+    "arch": [
+        "any"
+    ],
+    "buildver": null,
+    "derived": {
+        "dependencies": [
+            "six"
+        ],
+        "description_in_body": true,
+        "description_in_headers": false,
+        "keyword_separator": ",",
+        "keywords": [
+            ".",
+            "8",
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "i",
+            "k",
+            "l",
+            "m",
+            "n",
+            "o",
+            "p",
+            "s",
+            "t",
+            "u",
+            "y"
+        ],
+        "modules": [
+            "multilint",
+            "multilint.__main__"
+        ],
+        "readme_renders": true
+    },
+    "dist_info": {
+        "entry_points": {
+            "console_scripts": {
+                "multilint": {
+                    "attr": "main",
+                    "extras": [],
+                    "module": "multilint"
+                }
+            }
+        },
+        "metadata": {
+            "author": "Adam Johnson",
+            "author_email": "me@adamj.eu",
+            "classifier": [
+                "Development Status :: 5 - Production/Stable",
+                "Intended Audience :: Developers",
+                "License :: OSI Approved :: ISC License (ISCL)",
+                "Natural Language :: English",
+                "Programming Language :: Python :: 2",
+                "Programming Language :: Python :: 2.6",
+                "Programming Language :: Python :: 2.7",
+                "Programming Language :: Python :: 3",
+                "Programming Language :: Python :: 3.3",
+                "Programming Language :: Python :: 3.4",
+                "Programming Language :: Python :: 3.5",
+                "Programming Language :: Python :: 3.6"
+            ],
+            "description": {
+                "length": 3925
+            },
+            "home_page": "https://github.com/adamchainz/multilint",
+            "keywords": "l,i,n,t,,, ,f,l,a,k,e,8,,, ,p,e,p,8,,, ,p,y,c,o,d,e,s,t,y,l,e,,, ,c,o,d,e,s,t,y,l,e,,, ,m,c,c,a,b,e,,, ,s,e,t,u,p,.,p,y",
+            "license": "ISC license",
+            "metadata_version": "2.1",
+            "name": "multilint",
+            "platform": [],
+            "requires_dist": [
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "six",
+                    "specifier": "",
+                    "url": null
+                }
+            ],
+            "requires_python": ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*",
+            "summary": "Run multiple python linters easily",
+            "version": "2.4.0"
+        },
+        "record": [
+            {
+                "digests": {
+                    "sha256": "vXX001t3Ez8qS9R-tibVENsfb6-GCjpVN49m0fFbTQY"
+                },
+                "path": "multilint/__init__.py",
+                "size": 5640
+            },
+            {
+                "digests": {
+                    "sha256": "fneZtQtgQIGksjRu7xg714XX9-htwLlj3oG5FYP0wbw"
+                },
+                "path": "multilint/__main__.py",
+                "size": 175
+            },
+            {
+                "digests": {
+                    "sha256": "KzuLHj8fv4vCHFQnDnVtOUs83k5f3yZ7NOZScmB67Dw"
+                },
+                "path": "multilint-2.4.0.dist-info/LICENSE.txt",
+                "size": 744
+            },
+            {
+                "digests": {
+                    "sha256": "6VWNNtq_lext7-sAb8FcM8OipmD7oky1nmF_bqU6V70"
+                },
+                "path": "multilint-2.4.0.dist-info/METADATA",
+                "size": 4962
+            },
+            {
+                "digests": {},
+                "path": "multilint-2.4.0.dist-info/RECORD",
+                "size": null
+            },
+            {
+                "digests": {
+                    "sha256": "gduuPyBvFJQSQ0zdyxF7k0zynDXbIbvg5ZBHoXum5uk"
+                },
+                "path": "multilint-2.4.0.dist-info/WHEEL",
+                "size": 110
+            },
+            {
+                "digests": {
+                    "sha256": "ma9at-jxQF4bujhPUKviviS9egYTbvOgAgbPaP1EDhI"
+                },
+                "path": "multilint-2.4.0.dist-info/entry_points.txt",
+                "size": 46
+            },
+            {
+                "digests": {
+                    "sha256": "hU7-peCk3oiX2f3rKoVryAXjHo5i53YrT4If-Ddy8H0"
+                },
+                "path": "multilint-2.4.0.dist-info/top_level.txt",
+                "size": 10
+            }
+        ],
+        "top_level": [
+            "multilint"
+        ],
+        "wheel": {
+            "generator": "bdist_wheel (0.31.1)",
+            "root_is_purelib": true,
+            "tag": [
+                "py2-none-any",
+                "py3-none-any"
+            ],
+            "wheel_version": "1.0"
+        }
+    },
+    "file": {
+        "digests": {
+            "md5": "07e43f021f0859985ea08e13fe6065bc",
+            "sha256": "f1a36263fcd7a08de8e5828a268e984accd34c7b91e98f4fde85de54e9c30a7e"
+        },
+        "size": 6179
+    },
+    "filename": "multilint-2.4.0-py2.py3-none-any.whl",
+    "project": "multilint",
+    "pyver": [
+        "py2",
+        "py3"
+    ],
+    "valid": true,
+    "version": "2.4.0"
+}

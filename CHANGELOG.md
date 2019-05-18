@@ -1,3 +1,9 @@
+v1.4.0 (in development)
+-----------------------
+- When splitting apart comma-separated keywords, trim whitespace and discard
+  any keywords that are empty or all-whitespace
+
+
 v1.3.0 (2019-05-09)
 -------------------
 - Upgraded `wheel_inspect.SCHEMA` from JSON Schema draft 4 to draft 7

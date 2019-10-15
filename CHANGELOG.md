@@ -2,6 +2,7 @@ v1.4.0 (in development)
 -----------------------
 - When splitting apart comma-separated keywords, trim whitespace and discard
   any keywords that are empty or all-whitespace
+- Support Python 3.8
 
 
 v1.3.0 (2019-05-09)

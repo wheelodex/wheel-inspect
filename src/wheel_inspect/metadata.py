@@ -44,7 +44,7 @@ for field in 'Classifier Obsoletes Obsoletes-Dist Platform Provides'\
 metaparser.add_additional(multiple=True, type=strfield)
 
 def parse_metadata(fp):
-    md = metaparser.parse_file(fp)
+    md = metaparser.parse(fp)
     metadata = md.normalized_dict()
     for k,v in metadata.items():
         if isinstance(v, list):

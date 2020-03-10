@@ -13,7 +13,7 @@ infoparser.add_additional(multiple=True, type=strfield)
 
 def parse_wheel_info(fp):
     """ Parsing :file:`{distribution}-{version}.dist-info/WHEEL` files """
-    wi = infoparser.parse_file(fp)
+    wi = infoparser.parse(fp)
     wheel_info = wi.normalized_dict()
     for k,v in wheel_info.items():
         if isinstance(v, list):

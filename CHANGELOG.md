@@ -1,3 +1,8 @@
+v1.5.0 (in development)
+-----------------------
+- Drop support for Python 3.4
+
+
 v1.4.0 (2020-01-25)
 -------------------
 - When splitting apart comma-separated keywords, trim whitespace and discard

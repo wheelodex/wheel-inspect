@@ -1,4 +1,3 @@
-from   cgi                 import parse_header
 import io
 import os.path
 from   zipfile             import ZipFile
@@ -11,7 +10,8 @@ from   .filename           import parse_wheel_filename
 from   .metadata           import parse_metadata
 from   .record             import Record
 from   .util               import digest_file, extract_modules, \
-                                    split_keywords, unique_projects
+                                    split_content_type, split_keywords, \
+                                    unique_projects
 from   .wheel_info         import parse_wheel_info
 
 def parse_entry_points(fp):
@@ -171,7 +171,7 @@ class Wheel:
         if readme is not None:
             md["description"] = {"length": len(md["description"])}
             dct = md.get("description_content_type")
-            if dct is None or parse_header(dct)[0] == 'text/x-rst':
+            if dct is None or split_content_type(dct)[:2] == ('text', 'x-rst'):
                 about["derived"]["readme_renders"] = render(readme) is not None
             else:
                 about["derived"]["readme_renders"] = True

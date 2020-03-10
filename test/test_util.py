@@ -1,5 +1,6 @@
 import pytest
-from   wheel_inspect.util import extract_modules, split_keywords
+from   wheel_inspect.util import extract_modules, split_content_type, \
+                                    split_keywords
 
 @pytest.mark.parametrize('kwstr,expected', [
     (
@@ -96,5 +97,16 @@ def test_split_keywords(kwstr, expected):
 ])
 def test_extract_modules(filelist, modules):
     assert extract_modules(filelist) == modules
+
+@pytest.mark.parametrize('s,ct', [
+    ('text/plain', ('text', 'plain', {})),
+    ('text/plain; charset=utf-8', ('text', 'plain', {"charset": "utf-8"})),
+    (
+        'text/markdown; charset=utf-8; variant=GFM',
+        ('text', 'markdown', {"charset": "utf-8", "variant": "GFM"}),
+    ),
+])
+def test_split_content_type(s, ct):
+    assert split_content_type(s) == ct
 
 ### TODO: Add more test cases for all functions!

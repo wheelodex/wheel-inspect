@@ -1,3 +1,4 @@
+from   email.message   import EmailMessage
 import hashlib
 import re
 from   packaging.utils import canonicalize_name as normalize
@@ -52,3 +53,9 @@ def digest_file(fp, algorithms):
         for d in digests.values():
             d.update(chunk)
     return {k: v.hexdigest() for k,v in digests.items()}
+
+def split_content_type(s):
+    msg = EmailMessage()
+    msg["Content-Type"] = s
+    ct = msg["Content-Type"]
+    return (ct.maintype, ct.subtype, ct.params)

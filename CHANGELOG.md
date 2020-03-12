@@ -1,6 +1,8 @@
-v1.5.0 (in development)
------------------------
+v1.4.1 (2020-03-12)
+-------------------
 - Drop support for Python 3.4
+- Update `property-manager` dependency, thereby eliminating a
+  DeprecationWarning
 
 
 v1.4.0 (2020-01-25)

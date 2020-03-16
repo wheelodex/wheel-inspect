@@ -1,4 +1,4 @@
-from   headerparser import HeaderParser, BOOL
+from   headerparser import BOOL, HeaderParser
 from   .util        import fieldnorm, strfield
 
 infoparser = HeaderParser(normalizer=fieldnorm)

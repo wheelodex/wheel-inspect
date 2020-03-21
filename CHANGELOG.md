@@ -1,3 +1,8 @@
+v1.5.0 (in development)
+-----------------------
+- **Bugfix**: Now *actually* discard *all* empty keywords
+
+
 v1.4.1 (2020-03-12)
 -------------------
 - Drop support for Python 3.4

@@ -15,6 +15,20 @@ from   wheel_inspect.util import extract_modules, split_content_type, \
         "pypi,pep503,simple repository api,packages,pip",
         (["pypi", "pep503", "simple repository api", "packages", "pip"], ','),
     ),
+    ('', ([], ' ')),
+    (' ', ([], ' ')),
+    (',', ([], ',')),
+    (' , ', ([], ',')),
+    (' , , ', ([], ',')),
+    ('foo', (['foo'], ' ')),
+    ('foo,bar', (['foo', 'bar'], ',')),
+    ('foo, bar', (['foo', 'bar'], ',')),
+    ('foo ,bar', (['foo', 'bar'], ',')),
+    (' foo , bar ', (['foo', 'bar'], ',')),
+    (' foo , , bar ', (['foo', 'bar'], ',')),
+    ('foo,,bar', (['foo', 'bar'], ',')),
+    (',foo', (['foo'], ',')),
+    ('foo,', (['foo'], ',')),
 ])
 def test_split_keywords(kwstr, expected):
     assert split_keywords(kwstr) == expected

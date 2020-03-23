@@ -4,9 +4,9 @@ from   zipfile             import ZipFile
 from   pkg_resources       import EntryPoint, yield_lines
 from   property_manager    import cached_property
 from   readme_renderer.rst import render
+from   wheel_filename      import parse_wheel_filename
 from   .                   import errors
 from   .errors             import WheelValidationError
-from   .filename           import parse_wheel_filename
 from   .metadata           import parse_metadata
 from   .record             import Record
 from   .util               import digest_file, extract_modules, \

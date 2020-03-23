@@ -14,7 +14,6 @@ or from the command line with the ``wheel2json`` command.
 Visit <https://github.com/jwodder/wheel-inspect> for more information.
 """
 
-from .filename import ParsedWheelFilename, parse_wheel_filename
 from .schema   import SCHEMA
 from .wheelcls import Wheel, inspect_wheel
 
@@ -25,9 +24,7 @@ __license__      = 'MIT'
 __url__          = 'https://github.com/jwodder/wheel-inspect'
 
 __all__ = [
-    'ParsedWheelFilename',
     'SCHEMA',
     'Wheel',
     'inspect_wheel',
-    'parse_wheel_filename',
 ]

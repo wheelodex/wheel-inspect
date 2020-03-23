@@ -2,25 +2,11 @@
     - Improve `README`/module docstring
         - Make "Python wheel files" link somewhere
     - Publicly document `Wheel`
-    - Publicly document `ParsedWheelFilename`'s `__str__` and `tag_triples()`
-      methods
 - Publicly expose `Record`?
 - Give `Record` a `dump()`/`dumps()` method?
 - Give `Wheel` `entry_points`, `top_level`, etc. attributes that evaluate to
   `None` if the respective files aren't present
 - Rename `Wheel.parsed_filename` to `filename`?
-- `ParsedWheelFilename.__str__`: Ensure that all non-alphanumeric/period
-  characters in attributes are converted to underscores before concatenating?
-- Give `ParsedWheelFilename` attributes for accessing the leading numeric
-  portion of `build` and the rest of `build`?
-- Problem: PEP 427 says that `!` and `+` aren't allowed in the version
-  component of wheel filenames, but `bdist_wheel` generates such wheels anyway,
-  and the `wheel` devs seem to currently be erring on the side of allowing such
-  characters in wheel filenames
-    - Change `parse_wheel_filename()` to accept any non-hyphen sequence as a
-      filename component, with validation of the components as a separate step
-      (possibly triggerable with a `strict=True` argument to
-      `parse_wheel_filename()`) ?
 
 Inspecting Wheels
 -----------------

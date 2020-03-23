@@ -1,6 +1,8 @@
 v1.5.0 (in development)
 -----------------------
 - **Bugfix**: Now *actually* discard *all* empty keywords
+- **Breaking**: Split off the wheel filename processing code into its own
+  package, [wheel-filename](https://github.com/jwodder/wheel-filename)
 
 
 v1.4.1 (2020-03-12)

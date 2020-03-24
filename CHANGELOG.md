@@ -1,8 +1,11 @@
 v1.5.0 (in development)
 -----------------------
 - **Bugfix**: Now *actually* discard *all* empty keywords
-- **Breaking**: Split off the wheel filename processing code into its own
-  package, [wheel-filename](https://github.com/jwodder/wheel-filename)
+- Split off the wheel filename processing code into its own package,
+  [wheel-filename](https://github.com/jwodder/wheel-filename).  Wheel-Inspect
+  currently re-exports `ParsedWheelFilename` and `parse_wheel_filename()` from
+  this library in order to maintain API compatibility with earlier versions,
+  but this may change in the future.
 
 
 v1.4.1 (2020-03-12)

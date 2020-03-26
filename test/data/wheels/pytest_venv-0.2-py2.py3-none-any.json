@@ -1,0 +1,181 @@
+{
+    "abi": [
+        "none"
+    ],
+    "arch": [
+        "any"
+    ],
+    "buildver": null,
+    "derived": {
+        "dependencies": [
+            "pytest",
+            "pytest-cov",
+            "setuptools",
+            "virtualenv"
+        ],
+        "description_in_body": true,
+        "description_in_headers": false,
+        "keyword_separator": null,
+        "keywords": [],
+        "modules": [
+            "pytest_venv"
+        ],
+        "readme_renders": true
+    },
+    "dist_info": {
+        "entry_points": {
+            "pytest11": {
+                "venv": {
+                    "attr": null,
+                    "extras": [],
+                    "module": "pytest_venv"
+                }
+            }
+        },
+        "metadata": {
+            "author": "Michael Merickel",
+            "author_email": "michael@merickel.org",
+            "classifier": [
+                "Development Status :: 4 - Beta",
+                "Framework :: Pytest",
+                "Intended Audience :: Developers",
+                "License :: OSI Approved :: MIT License",
+                "Natural Language :: English",
+                "Programming Language :: Python :: 2",
+                "Programming Language :: Python :: 2.7",
+                "Programming Language :: Python :: 3",
+                "Programming Language :: Python :: 3.4",
+                "Programming Language :: Python :: 3.5",
+                "Programming Language :: Python :: Implementation :: CPython",
+                "Programming Language :: Python :: Implementation :: PyPy",
+                "Topic :: Software Development :: Testing"
+            ],
+            "description": {
+                "length": 1979
+            },
+            "home_page": "https://github.com/mmerickel/pytest-venv",
+            "license": null,
+            "metadata_version": "2.0",
+            "name": "pytest-venv",
+            "platform": [],
+            "provides_extra": [
+                "testing"
+            ],
+            "requires_dist": [
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "setuptools",
+                    "specifier": "",
+                    "url": null
+                },
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "virtualenv",
+                    "specifier": "",
+                    "url": null
+                },
+                {
+                    "extras": [],
+                    "marker": "extra == \"testing\"",
+                    "name": "pytest",
+                    "specifier": "",
+                    "url": null
+                },
+                {
+                    "extras": [],
+                    "marker": "extra == \"testing\"",
+                    "name": "pytest-cov",
+                    "specifier": "",
+                    "url": null
+                }
+            ],
+            "summary": "py.test fixture for creating a virtual environment",
+            "version": "0.2"
+        },
+        "record": [
+            {
+                "digests": {
+                    "sha256": "xr3dKoOhOcmXSEbQHLQMiy50ZsUyBlJ5qOz5MWBJB2o"
+                },
+                "path": "pytest_venv/__init__.py",
+                "size": 1410
+            },
+            {
+                "digests": {
+                    "sha256": "jS-ZnqAFVWoCTCZ3Tsgxuu3sQxOJMfkmWKkWl4ToYkc"
+                },
+                "path": "pytest_venv-0.2.dist-info/DESCRIPTION.rst",
+                "size": 1979
+            },
+            {
+                "digests": {
+                    "sha256": "4hcJhpLowJVmUNKwF5kv2DFrGve0LzIwXC7pbZIQrVU"
+                },
+                "path": "pytest_venv-0.2.dist-info/METADATA",
+                "size": 3054
+            },
+            {
+                "digests": {},
+                "path": "pytest_venv-0.2.dist-info/RECORD",
+                "size": null
+            },
+            {
+                "digests": {
+                    "sha256": "o2k-Qa-RMNIJmUdIc7KU6VWR_ErNRbWNlxDIpl7lm34"
+                },
+                "path": "pytest_venv-0.2.dist-info/WHEEL",
+                "size": 110
+            },
+            {
+                "digests": {
+                    "sha256": "w6YL2417PtoU0k7lKgSDxeaEoEP0GWVxGF0QoyCbnuc"
+                },
+                "path": "pytest_venv-0.2.dist-info/entry_points.txt",
+                "size": 31
+            },
+            {
+                "digests": {
+                    "sha256": "CjiXgP6NrOsHqxWeb9DAaQozrGpI5wsrl0jUAo3WZqc"
+                },
+                "path": "pytest_venv-0.2.dist-info/metadata.json",
+                "size": 1177
+            },
+            {
+                "digests": {
+                    "sha256": "7YLJCuYF2cCLyZu6-o5HQBDboohlGjsWqg94dAao4FQ"
+                },
+                "path": "pytest_venv-0.2.dist-info/top_level.txt",
+                "size": 12
+            }
+        ],
+        "top_level": [
+            "pytest_venv"
+        ],
+        "wheel": {
+            "generator": "bdist_wheel (0.29.0)",
+            "root_is_purelib": true,
+            "tag": [
+                "py2-none-any",
+                "py3-none-any"
+            ],
+            "wheel_version": "1.0"
+        }
+    },
+    "file": {
+        "digests": {
+            "md5": "0157c8201a91e8ae9e8ddea9503b59b3",
+            "sha256": "ec842cbc60affbea6b1136bf9876ca858d0b77f6c58740e69a6e0ef708f43ea3"
+        },
+        "size": 4908
+    },
+    "filename": "pytest_venv-0.2-py2.py3-none-any.whl",
+    "project": "pytest_venv",
+    "pyver": [
+        "py2",
+        "py3"
+    ],
+    "valid": true,
+    "version": "0.2"
+}

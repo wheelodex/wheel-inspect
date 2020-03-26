@@ -1,0 +1,190 @@
+{
+    "abi": [
+        "none"
+    ],
+    "arch": [
+        "any"
+    ],
+    "buildver": null,
+    "derived": {
+        "dependencies": [
+            "argparse",
+            "pyfiglet"
+        ],
+        "description_in_body": true,
+        "description_in_headers": false,
+        "keyword_separator": null,
+        "keywords": [],
+        "modules": [
+            "gitgud",
+            "gitgud.gitgud"
+        ],
+        "readme_renders": true
+    },
+    "dist_info": {
+        "entry_points": {
+            "console_scripts": {
+                "git-gud": {
+                    "attr": "git.gud",
+                    "extras": [],
+                    "module": "gitgud.gitgud"
+                },
+                "git-job": {
+                    "attr": "git.job",
+                    "extras": [],
+                    "module": "gitgud.gitgud"
+                },
+                "git-money": {
+                    "attr": "git.money",
+                    "extras": [],
+                    "module": "gitgud.gitgud"
+                },
+                "git-rekt": {
+                    "attr": "git.rekt",
+                    "extras": [],
+                    "module": "gitgud.gitgud"
+                },
+                "git-spooked": {
+                    "attr": "git.spooked",
+                    "extras": [],
+                    "module": "gitgud.gitgud"
+                }
+            }
+        },
+        "metadata": {
+            "author": "Kaeptm Blaubaer",
+            "author_email": "kaeptmblaubaer1000@gmail.com",
+            "classifier": [
+                "Development Status :: 5 - Production/Stable",
+                "Environment :: Console",
+                "Intended Audience :: Developers",
+                "License :: Public Domain",
+                "Operating System :: OS Independent",
+                "Programming Language :: Python",
+                "Programming Language :: Python :: 2",
+                "Programming Language :: Python :: 3"
+            ],
+            "description": {
+                "length": 2771
+            },
+            "description_content_type": "text/markdown",
+            "home_page": "https://github.com/kaeptmblaubaer1000/gitgud2",
+            "license": "Public domain",
+            "metadata_version": "2.1",
+            "name": "gitgud2",
+            "platform": [],
+            "provides": [
+                "gitgud"
+            ],
+            "requires_dist": [
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "argparse",
+                    "specifier": "",
+                    "url": null
+                },
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "pyfiglet",
+                    "specifier": "",
+                    "url": null
+                }
+            ],
+            "summary": "Git Gud - a utility for when you are told to 'get good'",
+            "version": "2.1"
+        },
+        "record": [
+            {
+                "digests": {
+                    "sha256": "73nRtOkr5ewBzFsahVwg1YVW8qymUVyrqxsmpCtGGz0"
+                },
+                "path": "gitgud/__init__.py",
+                "size": 38
+            },
+            {
+                "digests": {
+                    "sha256": "04IN05UJ5uQ7Z0VrYXC9y2c9EBdXLcCOqtKZsmCRIwo"
+                },
+                "path": "gitgud/gitgud.py",
+                "size": 2698
+            },
+            {
+                "digests": {
+                    "sha256": "YNLCjRnSvfe7qlmCnnpZUjQmXoERoBzLdNJdbE0tATo"
+                },
+                "path": "gitgud2-2.1.dist-info/LICENSE",
+                "size": 1211
+            },
+            {
+                "digests": {
+                    "sha256": "4rKQddjc1vfwEZ4OqWpejeLe4uhYrdMiTEZZzReM9CU"
+                },
+                "path": "gitgud2-2.1.dist-info/METADATA",
+                "size": 3514
+            },
+            {
+                "digests": {
+                    "sha256": "HX-v9-noUkyUoxyZ1PMSuS7auUxDAR4VBdoYLqD0xws"
+                },
+                "path": "gitgud2-2.1.dist-info/WHEEL",
+                "size": 110
+            },
+            {
+                "digests": {
+                    "sha256": "E4vYMOZwIB4HLCr_mmASXBHQ-KffmdScWZpoTAfHk6A"
+                },
+                "path": "gitgud2-2.1.dist-info/entry_points.txt",
+                "size": 193
+            },
+            {
+                "digests": {
+                    "sha256": "mNjJFzrZxRrcaW33UXeZrX4ZjJThKFAuvmTV4F3WUCg"
+                },
+                "path": "gitgud2-2.1.dist-info/top_level.txt",
+                "size": 7
+            },
+            {
+                "digests": {
+                    "sha256": "AbpHGcgLb-kRsJGnwFEktk7uzpZOCcBY74-YBdrKVGs"
+                },
+                "path": "gitgud2-2.1.dist-info/zip-safe",
+                "size": 1
+            },
+            {
+                "digests": {},
+                "path": "gitgud2-2.1.dist-info/RECORD",
+                "size": null
+            }
+        ],
+        "top_level": [
+            "gitgud"
+        ],
+        "wheel": {
+            "generator": "bdist_wheel (0.33.1)",
+            "root_is_purelib": true,
+            "tag": [
+                "py2-none-any",
+                "py3-none-any"
+            ],
+            "wheel_version": "1.0"
+        },
+        "zip_safe": true
+    },
+    "file": {
+        "digests": {
+            "md5": "e8a776fd026119ce67a285a0f3f39c22",
+            "sha256": "a86e30d3c3f463f6e2221f506a8fe4a2b4c671593029f408d94d7c3271abb9b5"
+        },
+        "size": 4560
+    },
+    "filename": "gitgud2-2.1-py2.py3-none-any.whl",
+    "project": "gitgud2",
+    "pyver": [
+        "py2",
+        "py3"
+    ],
+    "valid": true,
+    "version": "2.1"
+}

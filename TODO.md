@@ -7,6 +7,10 @@
 - Give `Wheel` `entry_points`, `top_level`, etc. attributes that evaluate to
   `None` if the respective files aren't present
 - Rename `Wheel.parsed_filename` to `filename`?
+- Add `--strict` and `inspect_wheel(..., strict: bool)` options for raising
+  errors on wheel validation failures
+- Add an option for disabling hash checking so that `wheelodex` can speed up
+  analysis
 
 Inspecting Wheels
 -----------------

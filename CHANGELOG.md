@@ -8,6 +8,8 @@ v1.5.0 (in development)
   but this may change in the future.
 - Adjusted the schema to indicate that `.dist_info.metadata.description` may be
   `null`
+- Binary extension modules and modules located in `*.data/{purelib,platlib}`
+  are now included in `.derived.modules`
 
 
 v1.4.1 (2020-03-12)

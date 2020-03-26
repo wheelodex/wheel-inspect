@@ -1,17 +1,34 @@
 from   email.message   import EmailMessage
 import hashlib
+from   keyword         import iskeyword
+import re
 from   packaging.utils import canonicalize_name as normalize
 
 DIGEST_CHUNK_SIZE = 65535
+
+DATA_DIR_RGX = re.compile(
+    r'[A-Za-z0-9](?:[A-Za-z0-9._]*[A-Za-z0-9])?-[A-Za-z0-9_.!+]+\.data'
+)
+
+# <https://discuss.python.org/t/identifying-parsing-binary-extension-filenames/>
+MODULE_EXT_RGX = re.compile(
+    r'(?<=.)\.(?:py|pyd|so|[-A-Za-z0-9_]+\.(?:pyd|so))\Z'
+)
 
 def extract_modules(filelist):
     modules = set()
     for fname in filelist:
         parts = fname.split('/')
-        if not parts or not parts[-1].lower().endswith('.py'):
+        if not parts:
             continue
-        parts[-1] = parts[-1][:-3]
-        if not all(p.isidentifier() for p in parts):
+        if len(parts) > 2 and is_data_dir(parts[0]) \
+                and parts[1] in ('purelib', 'platlib'):
+            parts = parts[2:]
+        m = MODULE_EXT_RGX.search(parts[-1])
+        if m is None:
+            continue
+        parts[-1] = parts[-1][:m.start()]
+        if not all(p.isidentifier() and not iskeyword(p) for p in parts):
             continue
         if parts[-1] == '__init__' and len(parts) > 1:
             parts.pop()
@@ -58,3 +75,6 @@ def split_content_type(s):
     msg["Content-Type"] = s
     ct = msg["Content-Type"]
     return (ct.maintype, ct.subtype, ct.params)
+
+def is_data_dir(name):
+    return DATA_DIR_RGX.fullmatch(name) is not None

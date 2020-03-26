@@ -519,6 +519,7 @@
             "zope.interface",
             "zope.interface._compat",
             "zope.interface._flatten",
+            "zope.interface._zope_interface_coptimizations",
             "zope.interface.adapter",
             "zope.interface.advice",
             "zope.interface.common",

@@ -105,12 +105,17 @@ SCHEMA = {
                         "version": {"type": "string"},
                         "summary": {"type": ["null", "string"]},
                         "description": {
-                            "type": "object",
-                            "requires": ["length"],
-                            "additionalProperties": False,
-                            "properties": {
-                                "length": {"type": "integer"}
-                            }
+                            "oneOf": [
+                                {"type": "null"},
+                                {
+                                    "type": "object",
+                                    "requires": ["length"],
+                                    "additionalProperties": False,
+                                    "properties": {
+                                        "length": {"type": "integer"}
+                                    }
+                                }
+                            ]
                         },
                         "requires_dist": {
                             "type": "array",

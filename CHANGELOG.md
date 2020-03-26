@@ -6,6 +6,8 @@ v1.5.0 (in development)
   currently re-exports `ParsedWheelFilename` and `parse_wheel_filename()` from
   this library in order to maintain API compatibility with earlier versions,
   but this may change in the future.
+- Adjusted the schema to indicate that `.dist_info.metadata.description` may be
+  `null`
 
 
 v1.4.1 (2020-03-12)

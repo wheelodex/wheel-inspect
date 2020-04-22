@@ -1,52 +1,13 @@
-SCHEMA = {
+DIST_INFO_SCHEMA = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "required": [
-        "filename",
-        "project",
-        "version",
-        "buildver",
-        "pyver",
-        "abi",
-        "arch",
         "valid",
-        "file",
         "dist_info",
         "derived"
     ],
     "additionalProperties": False,
     "properties": {
-        "filename": {
-            "type": "string",
-            "description": "The filename of the wheel"
-        },
-        "project": {
-            "type": "string",
-            "description": "The name of the wheel's project as extracted from the filename"
-        },
-        "version": {
-            "type": "string",
-            "description": "The wheel's project version as extracted from the filename"
-        },
-        "buildver": {
-            "type": ["string", "null"],
-            "description": "The wheel's build tag as extracted from the filename; `null` if there is no build tag"
-        },
-        "pyver": {
-            "type": "array",
-            "items": {"type": "string"},
-            "description": "A list of Python versions with which the wheel is compatible as extracted from the filename"
-        },
-        "abi": {
-            "type": "array",
-            "items": {"type": "string"},
-            "description": "A list of ABIs with which the wheel is compatible as extracted from the filename"
-        },
-        "arch": {
-            "type": "array",
-            "items": {"type": "string"},
-            "description": "A list of architectures with which the wheel is compatible as extracted from the filename"
-        },
         "valid": {
             "type": "boolean",
             "description": "Whether the wheel is well-formed with an accurate RECORD"
@@ -65,24 +26,6 @@ SCHEMA = {
                 "str": {
                     "type": "string",
                     "description": "The exception's error message"
-                }
-            }
-        },
-
-        "file": {
-            "type": "object",
-            "required": ["size", "digests"],
-            "additionalProperties": False,
-            "properties": {
-                "size": {"type": "integer"},
-                "digests": {
-                    "type": "object",
-                    "required": ["md5", "sha256"],
-                    "additionalProperties": False,
-                    "properties": {
-                        "md5": {"type": "string", "pattern": "^[0-9A-Fa-f]{32}$"},
-                        "sha256": {"type": "string", "pattern": "^[0-9A-Fa-f]{64}$"}
-                    }
                 }
             }
         },
@@ -299,3 +242,69 @@ SCHEMA = {
         }
     }
 }
+
+WHEEL_SCHEMA = DIST_INFO_SCHEMA.copy()
+
+WHEEL_SCHEMA["required"].extend([
+    "filename",
+    "project",
+    "version",
+    "buildver",
+    "pyver",
+    "abi",
+    "arch",
+    "file",
+])
+
+WHEEL_SCHEMA["properties"].update({
+    "filename": {
+        "type": "string",
+        "description": "The filename of the wheel"
+    },
+    "project": {
+        "type": "string",
+        "description": "The name of the wheel's project as extracted from the filename"
+    },
+    "version": {
+        "type": "string",
+        "description": "The wheel's project version as extracted from the filename"
+    },
+    "buildver": {
+        "type": ["string", "null"],
+        "description": "The wheel's build tag as extracted from the filename; `null` if there is no build tag"
+    },
+    "pyver": {
+        "type": "array",
+        "items": {"type": "string"},
+        "description": "A list of Python versions with which the wheel is compatible as extracted from the filename"
+    },
+    "abi": {
+        "type": "array",
+        "items": {"type": "string"},
+        "description": "A list of ABIs with which the wheel is compatible as extracted from the filename"
+    },
+    "arch": {
+        "type": "array",
+        "items": {"type": "string"},
+        "description": "A list of architectures with which the wheel is compatible as extracted from the filename"
+    },
+    "file": {
+        "type": "object",
+        "required": ["size", "digests"],
+        "additionalProperties": False,
+        "properties": {
+            "size": {"type": "integer"},
+            "digests": {
+                "type": "object",
+                "required": ["md5", "sha256"],
+                "additionalProperties": False,
+                "properties": {
+                    "md5": {"type": "string", "pattern": "^[0-9A-Fa-f]{32}$"},
+                    "sha256": {"type": "string", "pattern": "^[0-9A-Fa-f]{64}$"}
+                }
+            }
+        }
+    },
+})
+
+SCHEMA = WHEEL_SCHEMA

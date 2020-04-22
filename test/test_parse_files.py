@@ -2,9 +2,9 @@ import json
 from   operator                 import attrgetter
 from   pathlib                  import Path
 import pytest
+from   wheel_inspect.inspecting import parse_entry_points
 from   wheel_inspect.metadata   import parse_metadata
 from   wheel_inspect.wheel_info import parse_wheel_info
-from   wheel_inspect.wheelcls   import parse_entry_points
 
 @pytest.mark.parametrize('mdfile', [
     p for p in (Path(__file__).with_name('data') / 'metadata').iterdir()

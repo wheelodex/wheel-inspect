@@ -271,8 +271,36 @@ class AbsolutePathError(MalformedRecordError):
         return 'RECORD entry has an absolute path: {0.path!r}'.format(self)
 
 
-class MissingRecordError(WheelValidationError):
-    """ Raised when a wheel does not contain a :file:`RECORD` file """
+class MissingDistInfoFileError(WheelValidationError):
+    """
+    Raised when a given file is not found in the wheel's :file:`*.dist-info`
+    directory
+    """
+
+    def __init__(self, path):
+        #: The path to the file, relative to the :file:`*.dist-info` directory
+        self.path = path
 
     def __str__(self):
-        return 'No RECORD file in wheel'
+        return 'File not found in *.dist-info directory: {0.path!r}'.format(self)
+
+
+class MissingMetadataError(MissingDistInfoFileError):
+    """ Raised when a wheel does not contain a :file:`METADATA` file """
+
+    def __init__(self):
+        super().__init__('METADATA')
+
+
+class MissingRecordError(MissingDistInfoFileError):
+    """ Raised when a wheel does not contain a :file:`RECORD` file """
+
+    def __init__(self):
+        super().__init__('RECORD')
+
+
+class MissingWheelInfoError(MissingDistInfoFileError):
+    """ Raised when a wheel does not contain a :file:`WHEEL` file """
+
+    def __init__(self):
+        super().__init__('WHEEL')

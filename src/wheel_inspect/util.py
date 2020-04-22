@@ -6,6 +6,10 @@ from   packaging.utils import canonicalize_name as normalize
 
 DIGEST_CHUNK_SIZE = 65535
 
+DIST_INFO_DIR_RGX = re.compile(
+    r'[A-Za-z0-9](?:[A-Za-z0-9._]*[A-Za-z0-9])?-[A-Za-z0-9_.!+]+\.dist-info'
+)
+
 DATA_DIR_RGX = re.compile(
     r'[A-Za-z0-9](?:[A-Za-z0-9._]*[A-Za-z0-9])?-[A-Za-z0-9_.!+]+\.data'
 )
@@ -76,5 +80,12 @@ def split_content_type(s):
     ct = msg["Content-Type"]
     return (ct.maintype, ct.subtype, ct.params)
 
+def is_dist_info_dir(name):
+    return DIST_INFO_DIR_RGX.fullmatch(name) is not None
+
 def is_data_dir(name):
     return DATA_DIR_RGX.fullmatch(name) is not None
+
+def is_dist_info_path(path, name):
+    pre, _, post = path.partition('/')
+    return is_dist_info_dir(pre) and post == name

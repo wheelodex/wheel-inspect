@@ -1,4 +1,4 @@
 {
     "type": "MissingRecordError",
-    "str": "No RECORD file in wheel"
+    "str": "File not found in *.dist-info directory: 'RECORD'"
 }

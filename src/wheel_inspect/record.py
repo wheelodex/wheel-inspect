@@ -6,7 +6,6 @@ import hashlib
 import re
 import attr
 from   .           import errors
-from   .util       import digest_file
 
 class Record:
     def __init__(self, files):
@@ -42,6 +41,7 @@ class RecordEntry:
     size             = attr.ib()
 
     def __bool__(self):
+        ### TODO: Delete
         return self.digest is not None
 
     @classmethod
@@ -96,28 +96,6 @@ class RecordEntry:
                         if self.digest is not None else {},
             "size": self.size,
         }
-
-    def verify(self, zipfile):
-        try:
-            info = zipfile.getinfo(self.path)
-        except KeyError:
-            raise errors.FileMissingError(self.path)
-        if self.size is not None and self.size != info.file_size:
-            raise errors.RecordSizeMismatchError(
-                self.path,
-                self.size,
-                info.file_size,
-            )
-        if self.digest is not None:
-            with zipfile.open(info) as fp:
-                digests = digest_file(fp, [self.digest_algorithm])
-                if digests[self.digest_algorithm] != self.digest:
-                    raise errors.RecordDigestMismatchError(
-                        self.path,
-                        self.digest_algorithm,
-                        self.digest,
-                        digests[self.digest_algorithm],
-                    )
 
 
 def hex2record_digest(data):

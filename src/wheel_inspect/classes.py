@@ -32,24 +32,27 @@ class DistInfoProvider(abc.ABC):
 
     def get_metadata(self):
         try:
-            with self.open_dist_info_file('METADATA') as fp:
-                return parse_metadata(io.TextIOWrapper(fp, 'utf-8'))
+            with self.open_dist_info_file('METADATA') as binfp, \
+                    io.TextIOWrapper(binfp, 'utf-8') as txtfp:
+                return parse_metadata(txtfp)
         except errors.MissingDistInfoFileError:
             raise errors.MissingMetadataError()
 
     def get_record(self):
         try:
-            with self.open_dist_info_file('RECORD') as fp:
+            with self.open_dist_info_file('RECORD') as binfp, \
+                    io.TextIOWrapper(binfp, 'utf-8', newline='') as txtfp:
                 # The csv module requires this file to be opened with
                 # `newline=''`
-                return Record.load(io.TextIOWrapper(fp, 'utf-8', newline=''))
+                return Record.load(txtfp)
         except errors.MissingDistInfoFileError:
             raise errors.MissingRecordError()
 
     def get_wheel_info(self):
         try:
-            with self.open_dist_info_file('WHEEL') as fp:
-                return parse_wheel_info(io.TextIOWrapper(fp, 'utf-8'))
+            with self.open_dist_info_file('WHEEL') as binfp, \
+                    io.TextIOWrapper(binfp, 'utf-8') as txtfp:
+                return parse_wheel_info(txtfp)
         except errors.MissingDistInfoFileError:
             raise errors.MissingWheelInfoError()
 

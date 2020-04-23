@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 DIST_INFO_SCHEMA = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
@@ -243,7 +245,7 @@ DIST_INFO_SCHEMA = {
     }
 }
 
-WHEEL_SCHEMA = DIST_INFO_SCHEMA.copy()
+WHEEL_SCHEMA = deepcopy(DIST_INFO_SCHEMA)
 
 WHEEL_SCHEMA["required"].extend([
     "filename",

@@ -32,11 +32,11 @@ EXTRA_DIST_INFO_FILES = [
 def inspect(obj):  # (DistInfoProvider) -> dict
     about = obj.basic_metadata()
     about["dist_info"] = {}
+    about["valid"] = True
 
     try:
         record = obj.get_record()
     except WheelValidationError as e:
-        record = None
         about["valid"] = False
         about["validation_error"] = {
             "type": type(e).__name__,
@@ -53,8 +53,6 @@ def inspect(obj):  # (DistInfoProvider) -> dict
                     "type": type(e).__name__,
                     "str": str(e),
                 }
-            else:
-                about["valid"] = True
 
     try:
         metadata = obj.get_metadata()
@@ -79,8 +77,9 @@ def inspect(obj):  # (DistInfoProvider) -> dict
 
     for fname, parser, key in EXTRA_DIST_INFO_FILES:
         try:
-            with obj.open_dist_info_file(fname) as fp:
-                about["dist_info"][key] = parser(io.TextIOWrapper(fp, 'utf-8'))
+            with obj.open_dist_info_file(fname) as binfp, \
+                    io.TextIOWrapper(binfp, 'utf-8') as txtfp:
+                about["dist_info"][key] = parser(txtfp)
         except MissingDistInfoFileError:
             pass
 

@@ -13,7 +13,7 @@ from   wheel_inspect import DIST_INFO_SCHEMA, WHEEL_SCHEMA, \
 def test_inspect_wheel(whlfile):
     with whlfile.with_suffix('.json').open() as fp:
         expected = json.load(fp)
-    inspection = inspect_wheel(str(whlfile))
+    inspection = inspect_wheel(whlfile)
     assert inspection == expected
     validate(inspection, WHEEL_SCHEMA)
 
@@ -24,6 +24,6 @@ def test_inspect_wheel(whlfile):
 def test_inspect_dist_info_dir(didir):
     with open(str(didir) + '.json') as fp:
         expected = json.load(fp)
-    inspection = inspect_dist_info_dir(str(didir))
+    inspection = inspect_dist_info_dir(didir)
     assert inspection == expected
     validate(inspection, DIST_INFO_SCHEMA)

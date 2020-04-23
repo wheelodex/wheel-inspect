@@ -1,7 +1,6 @@
 import abc
 import io
 import os
-import os.path
 from   pathlib        import Path
 from   zipfile        import ZipFile
 from   wheel_filename import parse_wheel_filename
@@ -140,13 +139,15 @@ class DistInfoDir(DistInfoProvider):
 
 class WheelFile(DistInfoProvider, FileProvider):
     def __init__(self, path):
-        self.path = str(path)  # self.path can be a Path starting in Python 3.6
-        self.parsed_filename = parse_wheel_filename(self.path)
+        self.path = Path(path)
+        # We need to pass `.name` here because wheel_filename can't take Path
+        # objects under Python 3.5:
+        self.parsed_filename = parse_wheel_filename(self.path.name)
         self.dist_info = '{0.project}-{0.version}.dist-info'\
                             .format(self.parsed_filename)
 
     def __enter__(self):
-        self.fp = open(self.path, 'rb')
+        self.fp = self.path.open('rb')
         self.zipfile = ZipFile(self.fp)
         return self
 
@@ -158,7 +159,7 @@ class WheelFile(DistInfoProvider, FileProvider):
     def basic_metadata(self):
         namebits = self.parsed_filename
         about = {
-            "filename": os.path.basename(self.path),
+            "filename": self.path.name,
             "project": namebits.project,
             "version": namebits.version,
             "buildver": namebits.build,
@@ -166,7 +167,7 @@ class WheelFile(DistInfoProvider, FileProvider):
             "abi": namebits.abi_tags,
             "arch": namebits.platform_tags,
             "file": {
-                "size": os.path.getsize(self.path),
+                "size": self.path.stat().st_size,
             },
         }
         self.fp.seek(0)

@@ -112,7 +112,7 @@ qypi-0.4.1.dist-info/top_level.txt,sha256=J2Q5xVa8BtnOTGxjqY2lKQRB22Ydn9JF2PirqD
 def test_parse_bad_records(recfile):
     with recfile.with_suffix('.json').open() as fp:
         expected = json.load(fp)
-    with open(str(recfile), newline='') as fp:
+    with recfile.open(newline='') as fp:
         with pytest.raises(MalformedRecordError) as excinfo:
             Record.load(fp)
         assert type(excinfo.value).__name__ == expected["type"]

@@ -24,9 +24,9 @@
 | `Issues <https://github.com/jwodder/wheel-inspect/issues>`_
 | `Changelog <https://github.com/jwodder/wheel-inspect/blob/master/CHANGELOG.md>`_
 
-``wheel-inspect`` examines Python wheel files and outputs various information
-about the contents within as JSON-serializable objects.  It can be invoked in
-Python code as::
+``wheel-inspect`` examines Python wheel files & ``*.dist-info`` directories and
+outputs various information about their contents as JSON-serializable objects.
+It can be invoked in Python code as::
 
     from wheel_inspect import inspect_wheel
 
@@ -282,17 +282,51 @@ Example
     }
 
 
-Utilities
-=========
+API
+===
 
-``wheel_inspect.SCHEMA``
+``wheel_inspect.DIST_INFO_SCHEMA``
    A `JSON Schema <http://json-schema.org>`_ for the structure returned by
-   ``inspect_wheel()``
+   ``inspect_dist_info_dir()``.  It is the same as ``WHEEL_SCHEMA``, but
+   without the ``"filename"``, ``"project"``, ``"version"``, ``"buildver"``,
+   ``"pyver"``, ``"abi"``, ``"arch"``, and ``"file"`` keys.
+
+``wheel_inspect.WHEEL_SCHEMA``
+   A `JSON Schema <http://json-schema.org>`_ for the structure returned by
+   ``inspect_wheel()``.  This value was previously exported under the name
+   "``SCHEMA``"; the old name continues to be available for backwards
+   compatibility, but it will go away in the future and should not be used in
+   new code.
+
+``wheel_inspect.inspect_dist_info_dir(dirpath)``
+   Treat ``dirpath`` as a ``*.dist-info`` directory and inspect just it & its
+   contents.  The structure of the return value is described by
+   ``DIST_INFO_SCHEMA``.
+
+``wheel_inspect.inspect_wheel(path)``
+   Inspect the wheel file at the given ``path``.  The structure of the return
+   value is described by ``WHEEL_SCHEMA``.
 
 Previous versions of ``wheel-inspect`` provided a ``parse_wheel_filename()``
 function.  As of version 1.5.0, that feature has been split off into its own
 package, `wheel-filename <https://github.com/jwodder/wheel-filename>`_.
 ``wheel-inspect`` continues to re-export this function in order to maintain API
-compatibility with earlier versions, but this may change in the future.  Code
+compatibility with earlier versions, but this will change in the future.  Code
 that imports ``parse_wheel_filename()`` from ``wheel-inspect`` should be
 updated to use ``wheel-filename`` instead.
+
+
+Command
+=======
+
+::
+
+    wheel2json [<path> ...]
+
+``wheel-inspect`` provides a ``wheel2json`` command (also accessible as
+``python -m wheel_inspect``) that can be used to inspect wheels and
+``*.dist-info`` directories from the command line.  Each path passed to the
+command is inspected separately (treated as a ``*.dist-info`` directory if it
+is a directory, treated as a wheel file otherwise), and the resulting data is
+output as a pretty-printed JSON object.  (Note that this results in a stream of
+JSON objects with no separation when multiple paths are given.)

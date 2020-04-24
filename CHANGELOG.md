@@ -1,3 +1,15 @@
+v1.6.0 (in development)
+-----------------------
+- Added an `inspect_dist_info_dir()` function for inspecting bare, unpacked
+  `*.dist-info` directories
+- Added a `DIST_INFO_SCHEMA` schema describing the return value of
+  `inspect_dist_info_dir()`
+- Renamed `SCHEMA` to `WHEEL_SCHEMA`; the value remains available under the
+  old name for backwards compatibility
+- The `wheel2json` command now accepts directory arguments and inspects them
+  with `inspect_dist_info_dir()`
+
+
 v1.5.0 (2020-04-21)
 -------------------
 - **Bugfix**: Now *actually* discard *all* empty keywords

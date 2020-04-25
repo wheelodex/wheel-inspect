@@ -1,0 +1,108 @@
+{
+    "derived": {
+        "dependencies": [
+            "attrs",
+            "six",
+            "wcwidth"
+        ],
+        "description_in_body": true,
+        "description_in_headers": false,
+        "keyword_separator": ",",
+        "keywords": [
+            "box-drawing",
+            "grid",
+            "table"
+        ],
+        "modules": [],
+        "readme_renders": true
+    },
+    "dist_info": {
+        "metadata": {
+            "author": "John Thorvald Wodder II",
+            "author_email": "txtble@varonathe.org",
+            "classifier": [
+                "Development Status :: 4 - Beta",
+                "Programming Language :: Python :: 2",
+                "Programming Language :: Python :: 2.7",
+                "Programming Language :: Python :: 3",
+                "Programming Language :: Python :: 3.4",
+                "Programming Language :: Python :: 3.5",
+                "Programming Language :: Python :: 3.6",
+                "Programming Language :: Python :: 3.7",
+                "Programming Language :: Python :: Implementation :: CPython",
+                "Programming Language :: Python :: Implementation :: PyPy",
+                "License :: OSI Approved :: MIT License",
+                "Intended Audience :: Developers",
+                "Topic :: Software Development :: User Interfaces",
+                "Topic :: Text Processing"
+            ],
+            "description": {
+                "length": 28208
+            },
+            "description_content_type": "text/x-rst",
+            "home_page": "https://github.com/jwodder/txtble",
+            "keywords": "box-drawing,grid,table",
+            "license": "MIT",
+            "metadata_version": "2.1",
+            "name": "txtble",
+            "platform": [],
+            "project_url": [
+                {
+                    "label": "Source Code",
+                    "url": "https://github.com/jwodder/txtble"
+                },
+                {
+                    "label": "Bug Tracker",
+                    "url": "https://github.com/jwodder/txtble/issues"
+                },
+                {
+                    "label": "Say Thanks!",
+                    "url": "https://saythanks.io/to/jwodder"
+                }
+            ],
+            "requires_dist": [
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "attrs",
+                    "specifier": "~=18.1",
+                    "url": null
+                },
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "six",
+                    "specifier": "~=1.4",
+                    "url": null
+                },
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "wcwidth",
+                    "specifier": "~=0.1.7",
+                    "url": null
+                }
+            ],
+            "requires_python": ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4",
+            "summary": "Yet another plain-text table typesetter",
+            "version": "0.11.0.dev1"
+        },
+        "top_level": [
+            "txtble"
+        ],
+        "wheel": {
+            "generator": "bdist_wheel (0.33.2)",
+            "root_is_purelib": true,
+            "tag": [
+                "py2-none-any",
+                "py3-none-any"
+            ],
+            "wheel_version": "1.0"
+        }
+    },
+    "valid": false,
+    "validation_error": {
+        "str": "File not found in *.dist-info directory: 'RECORD'",
+        "type": "MissingRecordError"
+    }
+}

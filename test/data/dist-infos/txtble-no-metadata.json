@@ -1,0 +1,106 @@
+{
+    "derived": {
+        "dependencies": [],
+        "description_in_body": false,
+        "description_in_headers": false,
+        "keyword_separator": null,
+        "keywords": [],
+        "modules": [
+            "txtble",
+            "txtble.border_style",
+            "txtble.classes",
+            "txtble.errors",
+            "txtble.util"
+        ],
+        "readme_renders": null
+    },
+    "dist_info": {
+        "record": [
+            {
+                "digests": {
+                    "sha256": "Hg-mQO8STJTSyjYbsFMX_5ucT8e5xX93p7s0FhTkDMg"
+                },
+                "path": "txtble/__init__.py",
+                "size": 1913
+            },
+            {
+                "digests": {
+                    "sha256": "_GBpIK9yT-frO53r-NM_VvHua4tTkVvF5feWlykm7Ys"
+                },
+                "path": "txtble/border_style.py",
+                "size": 1678
+            },
+            {
+                "digests": {
+                    "sha256": "m2HbeoUiTdUIJpueLPyAy-Omf9wYMYcpCIZmIUxxuFM"
+                },
+                "path": "txtble/classes.py",
+                "size": 13573
+            },
+            {
+                "digests": {
+                    "sha256": "glaKN45ICDt4UtcyzXYJGTudhmcwOJIuymv4nXlzKp0"
+                },
+                "path": "txtble/errors.py",
+                "size": 1049
+            },
+            {
+                "digests": {
+                    "sha256": "h5ZiJg80CkGa86W6OfwGqEJNhbpAaZElk2M_PUYl2lw"
+                },
+                "path": "txtble/util.py",
+                "size": 7517
+            },
+            {
+                "digests": {
+                    "sha256": "-X7Ry_-tNPLAGkZasQc2KOBW_Ohnx52rgDZfo8cxw10"
+                },
+                "path": "txtble-0.11.0.dev1.dist-info/LICENSE",
+                "size": 1095
+            },
+            {
+                "digests": {
+                    "sha256": "jNWkEwRdlOzwMhaE4Drummjjbxhkqnmvqe0Y7b-kyQU"
+                },
+                "path": "txtble-0.11.0.dev1.dist-info/METADATA",
+                "size": 30130
+            },
+            {
+                "digests": {
+                    "sha256": "QrCxIurdO0_icqgdsR8nJ8vSjsjC1s_oWmDPOvzyxCw"
+                },
+                "path": "txtble-0.11.0.dev1.dist-info/WHEEL",
+                "size": 110
+            },
+            {
+                "digests": {
+                    "sha256": "sW_YP0Y5Maz7sxHh-LY7QHTuIA3ot-e1HG4av937rKk"
+                },
+                "path": "txtble-0.11.0.dev1.dist-info/top_level.txt",
+                "size": 7
+            },
+            {
+                "digests": {},
+                "path": "txtble-0.11.0.dev1.dist-info/RECORD",
+                "size": null
+            }
+        ],
+        "top_level": [
+            "txtble"
+        ],
+        "wheel": {
+            "generator": "bdist_wheel (0.33.2)",
+            "root_is_purelib": true,
+            "tag": [
+                "py2-none-any",
+                "py3-none-any"
+            ],
+            "wheel_version": "1.0"
+        }
+    },
+    "valid": false,
+    "validation_error": {
+        "str": "File not found in *.dist-info directory: 'METADATA'",
+        "type": "MissingMetadataError"
+    }
+}

@@ -40,10 +40,6 @@ class RecordEntry:
     digest           = attr.ib()
     size             = attr.ib()
 
-    def __bool__(self):
-        ### TODO: Delete
-        return self.digest is not None
-
     @classmethod
     def from_csv_fields(cls, fields):
         try:

@@ -1,6 +1,5 @@
 import abc
 import io
-import os
 from   pathlib        import Path
 from   zipfile        import ZipFile
 from   wheel_filename import parse_wheel_filename
@@ -13,10 +12,6 @@ from   .wheel_info    import parse_wheel_info
 class DistInfoProvider(abc.ABC):
     @abc.abstractmethod
     def basic_metadata(self):  # -> dict
-        raise NotImplementedError
-
-    @abc.abstractmethod
-    def list_dist_info_files(self):  # -> List[str]
         raise NotImplementedError
 
     @abc.abstractmethod
@@ -119,14 +114,6 @@ class DistInfoDir(DistInfoProvider):
     def basic_metadata(self):
         return {}
 
-    def list_dist_info_files(self):
-        files = []
-        for dirpath, _, filenames in os.walk(str(self.path)):
-            dp = Path(dirpath).relative_to(self.path)
-            for f in filenames:
-                files.append(str(dp / f))
-        return files
-
     def open_dist_info_file(self, name):
         try:
             return (self.path / name).open('rb')
@@ -173,13 +160,6 @@ class WheelFile(DistInfoProvider, FileProvider):
         self.fp.seek(0)
         about["file"]["digests"] = digest_file(self.fp, ["md5", "sha256"])
         return about
-
-    def list_dist_info_files(self):
-        prefix = self.dist_info + '/'
-        return [
-            f[len(prefix):] for f in self.zipfile.namelist()
-                            if f.startswith(prefix) and f != prefix
-        ]
 
     def open_dist_info_file(self, name):
         try:

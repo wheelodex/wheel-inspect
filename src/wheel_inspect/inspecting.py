@@ -135,4 +135,9 @@ def inspect_wheel(path):
         return inspect(wf)
 
 def inspect_dist_info_dir(path):
-    return inspect(DistInfoDir(path))
+    """
+    Examine the ``*.dist-info`` directory at the given path and return various
+    information about the contents within as a JSON-serializable `dict`
+    """
+    with DistInfoDir(path) as did:
+        return inspect(did)

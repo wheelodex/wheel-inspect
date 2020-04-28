@@ -1,0 +1,85 @@
+{
+    "abi": [
+        "none"
+    ],
+    "arch": [
+        "any"
+    ],
+    "buildver": null,
+    "derived": {
+        "dependencies": [],
+        "description_in_body": true,
+        "description_in_headers": false,
+        "keyword_separator": null,
+        "keywords": [],
+        "modules": [
+            "module"
+        ],
+        "readme_renders": null
+    },
+    "dist_info": {
+        "metadata": {
+            "author": "John Thorvald Wodder II",
+            "description": null,
+            "metadata_version": "2.0",
+            "name": "digest-mismatch",
+            "platform": [],
+            "summary": "A wheel with a file whose digest doesn't match that in the RECORD",
+            "version": "1.0.0"
+        },
+        "record": [
+            {
+                "digests": {
+                    "sha256": "PTXEipz_rDvgvvKvRdVjTHZ6-4Ppg50mghcXJTgpWKg"
+                },
+                "path": "digest_mismatch-1.0.0.dist-info/METADATA",
+                "size": 193
+            },
+            {
+                "digests": {
+                    "sha256": "Bh2t56_U9us28Wmb7g9frnrHZ2JxODzoszVmB4JScFU"
+                },
+                "path": "digest_mismatch-1.0.0.dist-info/WHEEL",
+                "size": 79
+            },
+            {
+                "digests": {},
+                "path": "digest_mismatch-1.0.0.dist-info/RECORD",
+                "size": null
+            },
+            {
+                "digests": {
+                    "sha256": "AeOOlP4F6s77YK8wg9sHxzMQKP3Issk9nVy7Z2nTZ0I"
+                },
+                "path": "module.py",
+                "size": 65
+            }
+        ],
+        "wheel": {
+            "generator": "manually",
+            "root_is_purelib": true,
+            "tag": [
+                "py3-none-any"
+            ],
+            "wheel_version": "1.0"
+        }
+    },
+    "file": {
+        "digests": {
+            "md5": "ca80fa9355ee5ade1d589e38c5120a94",
+            "sha256": "92e4e787e216997a40c9432479ae8e3a46e1a5344630303b20bbe5578cf59576"
+        },
+        "size": 1288
+    },
+    "filename": "digest_mismatch-1.0.0-py3-none-any.whl",
+    "project": "digest_mismatch",
+    "pyver": [
+        "py3"
+    ],
+    "valid": false,
+    "validation_error": {
+        "str": "sha256 digest of file 'module.py' listed as 01e38e94fe05eacefb60af3083db07c7331028fdc8b2c93d9d5cbb6769d36742 in RECORD, actually 653925bbc428fc25d9b6a23f6734d37a0fb7012bc8ecaede11f34ba2bbd56499",
+        "type": "RecordDigestMismatchError"
+    },
+    "version": "1.0.0"
+}

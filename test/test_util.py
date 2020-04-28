@@ -198,6 +198,7 @@ def test_split_keywords(kwstr, expected):
 
     (
         [
+            '',
             'foo-1.0.data/platlib/foo/__init__.py',
             'foo-1.0.data/platlib/foo/def.py',
             'foo-1.0.data/platlib/foo/has-hyphen.py',

@@ -12,6 +12,7 @@ qypi/__init__.py,sha256=zgE5-Sk8hED4NRmtnPUuvp1FDC4Z6VWCzJOOZwZ2oh8,532
 qypi/__main__.py,sha256=GV5UVn3j5z4x-r7YYEB-quNPCucZYK1JOfWxmbdB0N0,7915
 qypi/api.py,sha256=2c4EwxDhhHEloeOIeN0YgpIxCGpZaTDNJMYtHlVCcl8,3867
 qypi/util.py,sha256=I2mRemqS5PHe5Iabk-CLrgFB2rznR87dVI3YwvpctSQ,3282
+
 qypi-0.4.1.dist-info/DESCRIPTION.rst,sha256=SbT27FgdGvU8QlauLamstt7g4v7Cr2j6jc4RPr7bKNU,11633
 qypi-0.4.1.dist-info/LICENSE.txt,sha256=SDaeT4Cm3ZeLgPOOL_f9BliMMHH_GVwqJa6czCztoS0,1090
 qypi-0.4.1.dist-info/METADATA,sha256=msK-_0Fe8JHBjBv4HH35wbpUbIlCYv1Vy3X37tIdY5I,12633

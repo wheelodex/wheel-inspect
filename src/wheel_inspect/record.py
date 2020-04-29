@@ -22,6 +22,8 @@ class Record:
         # Format defined in PEP 376
         files = OrderedDict()
         for fields in csv.reader(fp, delimiter=',', quotechar='"'):
+            if not fields:
+                continue
             entry = RecordEntry.from_csv_fields(fields)
             if entry.path in files and files[entry.path] != entry:
                 raise errors.RecordConflictError(entry.path)

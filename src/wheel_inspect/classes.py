@@ -6,7 +6,7 @@ from   wheel_filename import parse_wheel_filename
 from   .              import errors
 from   .metadata      import parse_metadata
 from   .record        import Record
-from   .util          import digest_file, is_dist_info_path
+from   .util          import digest_file
 from   .wheel_info    import parse_wheel_info
 
 class DistInfoProvider(abc.ABC):
@@ -66,39 +66,6 @@ class FileProvider(abc.ABC):
     def get_file_hash(self, name, algorithm):
         # Returns a hex digest
         raise NotImplementedError
-
-    def verify_record(self, record):
-        files = set(self.list_files())
-        # Check everything in RECORD against actual values:
-        for entry in record:
-            if entry.path.endswith('/'):
-                pass
-            elif entry.path not in files:
-                raise errors.FileMissingError(entry.path)
-            elif entry.digest is not None:
-                file_size = self.get_file_size(entry.path)
-                if entry.size != file_size:
-                    raise errors.RecordSizeMismatchError(
-                        entry.path,
-                        entry.size,
-                        file_size,
-                    )
-                digest = self.get_file_hash(entry.path, entry.digest_algorithm)
-                if digest != entry.digest:
-                    raise errors.RecordDigestMismatchError(
-                        entry.path,
-                        entry.digest_algorithm,
-                        entry.digest,
-                        digest,
-                    )
-            elif not is_dist_info_path(entry.path, 'RECORD'):
-                raise errors.NullEntryError(entry.path)
-            files.discard(entry.path)
-        # Check that the only files that aren't in RECORD are signatures:
-        for path in files:
-            if not is_dist_info_path(entry.path, 'RECORD.jws') \
-                    and not is_dist_info_path(entry.path, 'RECORD.p7s'):
-                raise errors.ExtraFileError(path)
 
 
 class DistInfoDir(DistInfoProvider):

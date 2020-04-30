@@ -1,10 +1,11 @@
 import io
 from   pkg_resources       import EntryPoint, yield_lines
 from   readme_renderer.rst import render
+from   .                   import errors
 from   .classes            import DistInfoDir, FileProvider, WheelFile
-from   .errors             import MissingDistInfoFileError, WheelValidationError
-from   .util               import extract_modules, split_content_type, \
-                                    split_keywords, unique_projects
+from   .util               import extract_modules, is_dist_info_path, \
+                                    split_content_type, split_keywords, \
+                                    unique_projects
 
 def parse_entry_points(fp):
     return {
@@ -36,7 +37,7 @@ def inspect(obj):  # (DistInfoProvider) -> dict
 
     try:
         record = obj.get_record()
-    except WheelValidationError as e:
+    except errors.WheelValidationError as e:
         about["valid"] = False
         about["validation_error"] = {
             "type": type(e).__name__,
@@ -46,8 +47,8 @@ def inspect(obj):  # (DistInfoProvider) -> dict
         about["dist_info"]["record"] = record.for_json()
         if isinstance(obj, FileProvider):
             try:
-                obj.verify_record(record)
-            except WheelValidationError as e:
+                verify_record(obj, record)
+            except errors.WheelValidationError as e:
                 about["valid"] = False
                 about["validation_error"] = {
                     "type": type(e).__name__,
@@ -56,7 +57,7 @@ def inspect(obj):  # (DistInfoProvider) -> dict
 
     try:
         metadata = obj.get_metadata()
-    except WheelValidationError as e:
+    except errors.WheelValidationError as e:
         metadata = {}
         about["valid"] = False
         about["validation_error"] = {
@@ -68,7 +69,7 @@ def inspect(obj):  # (DistInfoProvider) -> dict
 
     try:
         about["dist_info"]["wheel"] = obj.get_wheel_info()
-    except WheelValidationError as e:
+    except errors.WheelValidationError as e:
         about["valid"] = False
         about["validation_error"] = {
             "type": type(e).__name__,
@@ -80,7 +81,7 @@ def inspect(obj):  # (DistInfoProvider) -> dict
             with obj.open_dist_info_file(fname) as binfp, \
                     io.TextIOWrapper(binfp, 'utf-8') as txtfp:
                 about["dist_info"][key] = parser(txtfp)
-        except MissingDistInfoFileError:
+        except errors.MissingDistInfoFileError:
             pass
 
     if obj.has_dist_info_file('zip-safe'):
@@ -141,3 +142,36 @@ def inspect_dist_info_dir(path):
     """
     with DistInfoDir(path) as did:
         return inspect(did)
+
+def verify_record(fileprod: FileProvider, record):
+    files = set(fileprod.list_files())
+    # Check everything in RECORD against actual values:
+    for entry in record:
+        if entry.path.endswith('/'):
+            pass
+        elif entry.path not in files:
+            raise errors.FileMissingError(entry.path)
+        elif entry.digest is not None:
+            file_size = fileprod.get_file_size(entry.path)
+            if entry.size != file_size:
+                raise errors.RecordSizeMismatchError(
+                    entry.path,
+                    entry.size,
+                    file_size,
+                )
+            digest = fileprod.get_file_hash(entry.path, entry.digest_algorithm)
+            if digest != entry.digest:
+                raise errors.RecordDigestMismatchError(
+                    entry.path,
+                    entry.digest_algorithm,
+                    entry.digest,
+                    digest,
+                )
+        elif not is_dist_info_path(entry.path, 'RECORD'):
+            raise errors.NullEntryError(entry.path)
+        files.discard(entry.path)
+    # Check that the only files that aren't in RECORD are signatures:
+    for path in files:
+        if not is_dist_info_path(entry.path, 'RECORD.jws') \
+                and not is_dist_info_path(entry.path, 'RECORD.p7s'):
+            raise errors.ExtraFileError(path)

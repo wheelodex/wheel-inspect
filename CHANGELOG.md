@@ -1,5 +1,5 @@
-v1.6.0 (in development)
------------------------
+v1.6.0 (2020-05-01)
+-------------------
 - Added an `inspect_dist_info_dir()` function for inspecting bare, unpacked
   `*.dist-info` directories
 - Added a `DIST_INFO_SCHEMA` schema describing the return value of

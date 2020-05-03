@@ -1,3 +1,9 @@
+v1.7.0 (in development)
+-----------------------
+- When verifying a `RECORD`, directory entries listed therein are now checked
+  for existence.
+
+
 v1.6.0 (2020-05-01)
 -------------------
 - Added an `inspect_dist_info_dir()` function for inspecting bare, unpacked

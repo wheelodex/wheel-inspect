@@ -59,6 +59,11 @@ class FileProvider(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
+    def has_directory(self, path):
+        # `path` will always end with a slash
+        raise NotImplementedError
+
+    @abc.abstractmethod
     def get_file_size(self, name):
         raise NotImplementedError
 
@@ -149,6 +154,9 @@ class WheelFile(DistInfoProvider, FileProvider):
             name for name in self.zipfile.namelist()
                  if not name.endswith('/')
         ]
+
+    def has_directory(self, path):
+        return any(name.startswith(path) for name in self.zipfile.namelist())
 
     def get_file_size(self, name):
         return self.zipfile.getinfo(name).file_size

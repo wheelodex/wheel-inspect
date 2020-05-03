@@ -148,7 +148,8 @@ def verify_record(fileprod: FileProvider, record):
     # Check everything in RECORD against actual values:
     for entry in record:
         if entry.path.endswith('/'):
-            pass
+            if not fileprod.has_directory(entry.path):
+                raise errors.FileMissingError(entry.path)
         elif entry.path not in files:
             raise errors.FileMissingError(entry.path)
         elif entry.digest is not None:

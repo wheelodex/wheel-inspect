@@ -1,0 +1,90 @@
+{
+    "abi": [
+        "none"
+    ],
+    "arch": [
+        "any"
+    ],
+    "buildver": null,
+    "derived": {
+        "dependencies": [],
+        "description_in_body": true,
+        "description_in_headers": false,
+        "keyword_separator": null,
+        "keywords": [],
+        "modules": [
+            "module"
+        ],
+        "readme_renders": null
+    },
+    "dist_info": {
+        "metadata": {
+            "author": "John Thorvald Wodder II",
+            "description": null,
+            "metadata_version": "2.0",
+            "name": "missing-dir-in-record",
+            "platform": [],
+            "summary": "A wheel whose RECORD lists a directory that does not appear in the wheel",
+            "version": "1.0.0"
+        },
+        "record": [
+            {
+                "digests": {
+                    "sha256": "AeOOlP4F6s77YK8wg9sHxzMQKP3Issk9nVy7Z2nTZ0I"
+                },
+                "path": "module.py",
+                "size": 65
+            },
+            {
+                "digests": {
+                    "sha256": "wcRqqTmBncFWrlGfhsCMnq4P3zTcSVqPUdpKK4G3oOk"
+                },
+                "path": "missing_dir_in_record-1.0.0.dist-info/METADATA",
+                "size": 206
+            },
+            {
+                "digests": {
+                    "sha256": "Bh2t56_U9us28Wmb7g9frnrHZ2JxODzoszVmB4JScFU"
+                },
+                "path": "missing_dir_in_record-1.0.0.dist-info/WHEEL",
+                "size": 79
+            },
+            {
+                "digests": {},
+                "path": "missing_dir_in_record-1.0.0.dist-info/RECORD",
+                "size": null
+            },
+            {
+                "digests": {},
+                "path": "not-found/",
+                "size": null
+            }
+        ],
+        "wheel": {
+            "generator": "manually",
+            "root_is_purelib": true,
+            "tag": [
+                "py3-none-any"
+            ],
+            "wheel_version": "1.0"
+        }
+    },
+    "file": {
+        "digests": {
+            "md5": "de02937c567aae5dcde8d88a8c126d81",
+            "sha256": "d489af7673decc8faa03e139592d6b49555fd9f7e82fe827f20a8df052117ec0"
+        },
+        "size": 1342
+    },
+    "filename": "missing_dir_in_record-1.0.0-py3-none-any.whl",
+    "project": "missing_dir_in_record",
+    "pyver": [
+        "py3"
+    ],
+    "valid": false,
+    "validation_error": {
+        "str": "File declared in RECORD not found in archive: 'not-found/'",
+        "type": "FileMissingError"
+    },
+    "version": "1.0.0"
+}

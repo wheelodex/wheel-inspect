@@ -1,0 +1,91 @@
+{
+    "abi": [
+        "none"
+    ],
+    "arch": [
+        "any"
+    ],
+    "buildver": null,
+    "derived": {
+        "dependencies": [],
+        "description_in_body": true,
+        "description_in_headers": false,
+        "keyword_separator": null,
+        "keywords": [],
+        "modules": [
+            "module"
+        ],
+        "readme_renders": null
+    },
+    "dist_info": {
+        "metadata": {
+            "author": "John Thorvald Wodder II",
+            "description": null,
+            "metadata_version": "2.0",
+            "name": "dirs-in-record",
+            "platform": [],
+            "summary": "A wheel whose RECORD includes directory entries",
+            "version": "1.0.0"
+        },
+        "record": [
+            {
+                "digests": {
+                    "sha256": "AeOOlP4F6s77YK8wg9sHxzMQKP3Issk9nVy7Z2nTZ0I"
+                },
+                "path": "module.py",
+                "size": 65
+            },
+            {
+                "digests": {
+                    "sha256": "FntMXE1yJYS_mbaZmlwiIXWfceZUUd8fphyhP6F0Dpg"
+                },
+                "path": "dirs_in_record-1.0.0.dist-info/METADATA",
+                "size": 174
+            },
+            {
+                "digests": {
+                    "sha256": "Bh2t56_U9us28Wmb7g9frnrHZ2JxODzoszVmB4JScFU"
+                },
+                "path": "dirs_in_record-1.0.0.dist-info/WHEEL",
+                "size": 79
+            },
+            {
+                "digests": {},
+                "path": "dirs_in_record-1.0.0.dist-info/RECORD",
+                "size": null
+            },
+            {
+                "digests": {},
+                "path": "dirs_in_record-1.0.0.dist-info/",
+                "size": null
+            },
+            {
+                "digests": {},
+                "path": "empty/",
+                "size": null
+            }
+        ],
+        "wheel": {
+            "generator": "manually",
+            "root_is_purelib": true,
+            "tag": [
+                "py3-none-any"
+            ],
+            "wheel_version": "1.0"
+        }
+    },
+    "file": {
+        "digests": {
+            "md5": "9ec7edf8473aa1240f82d14ad8205297",
+            "sha256": "b554c3135119cf1c0e24f81e50f709add7ce948b3bd9deb8428cbe79447dad84"
+        },
+        "size": 1420
+    },
+    "filename": "dirs_in_record-1.0.0-py3-none-any.whl",
+    "project": "dirs_in_record",
+    "pyver": [
+        "py3"
+    ],
+    "valid": true,
+    "version": "1.0.0"
+}

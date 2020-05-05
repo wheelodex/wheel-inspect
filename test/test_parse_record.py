@@ -4,10 +4,10 @@ from   operator             import attrgetter
 from   pathlib              import Path
 import pytest
 from   wheel_inspect.errors import MalformedRecordError
-from   wheel_inspect.record import Record
+from   wheel_inspect.record import parse_record
 
 def test_parse_record():
-    assert Record.load(StringIO('''\
+    assert parse_record(StringIO('''\
 qypi/__init__.py,sha256=zgE5-Sk8hED4NRmtnPUuvp1FDC4Z6VWCzJOOZwZ2oh8,532
 qypi/__main__.py,sha256=GV5UVn3j5z4x-r7YYEB-quNPCucZYK1JOfWxmbdB0N0,7915
 qypi/api.py,sha256=2c4EwxDhhHEloeOIeN0YgpIxCGpZaTDNJMYtHlVCcl8,3867
@@ -115,6 +115,6 @@ def test_parse_bad_records(recfile):
         expected = json.load(fp)
     with recfile.open(newline='') as fp:
         with pytest.raises(MalformedRecordError) as excinfo:
-            Record.load(fp)
+            parse_record(fp)
         assert type(excinfo.value).__name__ == expected["type"]
         assert str(excinfo.value) == expected["str"]

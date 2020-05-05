@@ -5,7 +5,7 @@ from   zipfile        import ZipFile
 from   wheel_filename import parse_wheel_filename
 from   .              import errors
 from   .metadata      import parse_metadata
-from   .record        import Record
+from   .record        import parse_record
 from   .util          import digest_file
 from   .wheel_info    import parse_wheel_info
 
@@ -38,7 +38,7 @@ class DistInfoProvider(abc.ABC):
                     io.TextIOWrapper(binfp, 'utf-8', newline='') as txtfp:
                 # The csv module requires this file to be opened with
                 # `newline=''`
-                return Record.load(txtfp)
+                return parse_record(txtfp)
         except errors.MissingDistInfoFileError:
             raise errors.MissingRecordError()
 

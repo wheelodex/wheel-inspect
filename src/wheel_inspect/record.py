@@ -7,28 +7,15 @@ import re
 import attr
 from   .           import errors
 
+@attr.s
 class Record:
-    def __init__(self, files):
-        self.files = files
+    files = attr.ib()
 
     def __iter__(self):
         return iter(self.files.values())
 
     def __contains__(self, filename):
         return filename in self.files
-
-    @classmethod
-    def load(cls, fp):
-        # Format defined in PEP 376
-        files = OrderedDict()
-        for fields in csv.reader(fp, delimiter=',', quotechar='"'):
-            if not fields:
-                continue
-            entry = RecordEntry.from_csv_fields(fields)
-            if entry.path in files and files[entry.path] != entry:
-                raise errors.RecordConflictError(entry.path)
-            files[entry.path] = entry
-        return cls(files)
 
     def for_json(self):
         return [e.for_json() for e in self.files.values()]
@@ -95,6 +82,18 @@ class RecordEntry:
             "size": self.size,
         }
 
+
+def parse_record(fp):
+    # Format defined in PEP 376
+    files = OrderedDict()
+    for fields in csv.reader(fp, delimiter=',', quotechar='"'):
+        if not fields:
+            continue
+        entry = RecordEntry.from_csv_fields(fields)
+        if entry.path in files and files[entry.path] != entry:
+            raise errors.RecordConflictError(entry.path)
+        files[entry.path] = entry
+    return Record(files)
 
 def hex2record_digest(data):
     return base64.urlsafe_b64encode(unhexlify(data)).decode('us-ascii')\

@@ -141,9 +141,7 @@ class DistInfoDir(DistInfoProvider):
 class WheelFile(DistInfoProvider, FileProvider):
     def __init__(self, path):
         self.path = Path(path)
-        # We need to pass `.name` here because wheel_filename can't take Path
-        # objects under Python 3.5:
-        self.parsed_filename = parse_wheel_filename(self.path.name)
+        self.parsed_filename = parse_wheel_filename(self.path)
         self.dist_info = '{0.project}-{0.version}.dist-info'\
                             .format(self.parsed_filename)
 

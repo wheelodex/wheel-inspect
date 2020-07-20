@@ -37,7 +37,7 @@ or from the command line with the ``wheel2json`` command.
 
 Installation
 ============
-``wheel-inspect`` requires Python 3.5 or higher.  Just use `pip
+``wheel-inspect`` requires Python 3.6 or higher.  Just use `pip
 <https://pip.pypa.io>`_ for Python 3 (You have pip, right?) to install
 ``wheel-inspect`` and its dependencies::
 

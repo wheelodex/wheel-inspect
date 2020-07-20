@@ -12,7 +12,43 @@ infoparser.add_field('Build')
 infoparser.add_additional(multiple=True, type=strfield)
 
 def parse_wheel_info(fp):
-    """ Parsing :file:`{distribution}-{version}.dist-info/WHEEL` files """
+    """
+    Parse the contents of a text filehandle ``fp`` as a
+    :file:`*.dist-info/WHEEL` file and return a `dict` that maps field names to
+    field name values.  All field names are converted to lowercase and have
+    hyphens changed to underscores.  Field values are strings, except for
+    :mailheader:`Root-Is-Purelib`, whose value is converted to a `bool`, and
+    except for :mailheader:`Tag` and any unknown fields, whose values are lists
+    of strings.  (Known field names are :mailheader:`Wheel-Version`,
+    :mailheader:`Generator`, :mailheader:`Root-Is-Purelib`, :mailheader:`Tag`,
+    and :mailheader:`Build`; all but :mailheader:`Build` are required.)  If the
+    input contains a message body that is not all whitespace, it is stored
+    under the ``"BODY"`` key (which is otherwise absent).
+
+    For example, the following input:
+
+    .. code-block:: email
+
+        Wheel-Version: 1.0
+        Generator: bdist_wheel (0.29.0)
+        Root-Is-Purelib: true
+        Tag: py3-none-any
+        Tag: py2-none-any
+        Unknown-Field: foo
+
+        This is a body.
+
+    would be parsed into the following structure::
+
+        {
+            "wheel_version": "1.0",
+            "generator": "bdist_wheel (0.29.0)",
+            "root_is_purelib": True,
+            "tag": ["py3-none-any", "py2-none-any"],
+            "unknown_field": ["foo"],
+            "BODY": "This is a body.\\n"
+        }
+    """
     wi = infoparser.parse(fp)
     wheel_info = wi.normalized_dict()
     for k,v in wheel_info.items():

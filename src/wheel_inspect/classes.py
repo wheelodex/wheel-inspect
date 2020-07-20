@@ -10,18 +10,34 @@ from   .util          import digest_file
 from   .wheel_info    import parse_wheel_info
 
 class DistInfoProvider(abc.ABC):
+    """
+    An interface for resources that are or contain a :file:`*.dist-info`
+    directory
+    """
+
     @abc.abstractmethod
-    def basic_metadata(self):  # -> dict
+    def basic_metadata(self):
+        """
+        Returns a `dict` of class-specific simple metadata about the resource
+        """
         raise NotImplementedError
 
     @abc.abstractmethod
-    def open_dist_info_file(self, name):
-        # returns a binary IO handle; raises MissingDistInfoFileError if file
-        # does not exist
+    def open_dist_info_file(self, path):
+        """
+        Returns a readable binary IO handle for reading the contents of the
+        file at the given path beneath the :file:`*.dist-info` directory
+        """
+        ### TODO: Specify here that MissingDistInfoFileError is raised if file
+        ### not found?
         raise NotImplementedError
 
     @abc.abstractmethod
-    def has_dist_info_file(self, name):  # -> bool
+    def has_dist_info_file(self, path):
+        """
+        Returns true iff a file exists at the given path beneath the
+        :file:`*.dist-info` directory
+        """
         raise NotImplementedError
 
     def get_metadata(self):
@@ -54,22 +70,46 @@ class DistInfoProvider(abc.ABC):
 class FileProvider(abc.ABC):
     @abc.abstractmethod
     def list_files(self):
-        # Directories are not included
-        # Uses forward slash separators
+        """
+        Returns a list of files in the resource.  Each file is represented as a
+        relative ``/``-separated path as would appear in a :file:`RECORD` file.
+        Directories are not included in the list.
+
+        :rtype: List[str]
+        """
         raise NotImplementedError
 
     @abc.abstractmethod
     def has_directory(self, path):
-        # `path` will always end with a slash
+        """
+        Returns true iff the directory at ``path`` exists in the resource.
+
+        :param str path: a relative ``/``-separated path that ends with a ``/``
+        :rtype: bool
+        """
         raise NotImplementedError
 
     @abc.abstractmethod
-    def get_file_size(self, name):
+    def get_file_size(self, path):
+        """
+        Returns the size of the file at ``path`` in bytes.
+
+        :param str path: a relative ``/``-separated path
+        :rtype: int
+        """
         raise NotImplementedError
 
     @abc.abstractmethod
-    def get_file_hash(self, name, algorithm):
-        # Returns a hex digest
+    def get_file_hash(self, path, algorithm):
+        """
+        Returns a hexdigest of the contents of the file at ``path`` computed
+        using the digest algorithm ``algorithm``.
+
+        :param str path: a relative ``/``-separated path
+        :param str algorithm: the name of the digest algorithm to use, as
+            recognized by `hashlib`
+        :rtype: str
+        """
         raise NotImplementedError
 
 
@@ -86,14 +126,16 @@ class DistInfoDir(DistInfoProvider):
     def basic_metadata(self):
         return {}
 
-    def open_dist_info_file(self, name):
+    def open_dist_info_file(self, path):
+        # returns a binary IO handle; raises MissingDistInfoFileError if file
+        # does not exist
         try:
-            return (self.path / name).open('rb')
+            return (self.path / path).open('rb')
         except FileNotFoundError:
-            raise errors.MissingDistInfoFileError(name)
+            raise errors.MissingDistInfoFileError(path)
 
-    def has_dist_info_file(self, name):
-        return (self.path / name).exists()
+    def has_dist_info_file(self, path):
+        return (self.path / path).exists()
 
 
 class WheelFile(DistInfoProvider, FileProvider):
@@ -133,17 +175,19 @@ class WheelFile(DistInfoProvider, FileProvider):
         about["file"]["digests"] = digest_file(self.fp, ["md5", "sha256"])
         return about
 
-    def open_dist_info_file(self, name):
+    def open_dist_info_file(self, path):
+        # returns a binary IO handle; raises MissingDistInfoFileError if file
+        # does not exist
         try:
-            zi = self.zipfile.getinfo(self.dist_info + '/' + name)
+            zi = self.zipfile.getinfo(self.dist_info + '/' + path)
         except KeyError:
-            raise errors.MissingDistInfoFileError(name)
+            raise errors.MissingDistInfoFileError(path)
         else:
             return self.zipfile.open(zi)
 
-    def has_dist_info_file(self, name):  # -> bool
+    def has_dist_info_file(self, path):  # -> bool
         try:
-            self.zipfile.getinfo(self.dist_info + '/' + name)
+            self.zipfile.getinfo(self.dist_info + '/' + path)
         except KeyError:
             return False
         else:
@@ -158,9 +202,9 @@ class WheelFile(DistInfoProvider, FileProvider):
     def has_directory(self, path):
         return any(name.startswith(path) for name in self.zipfile.namelist())
 
-    def get_file_size(self, name):
-        return self.zipfile.getinfo(name).file_size
+    def get_file_size(self, path):
+        return self.zipfile.getinfo(path).file_size
 
-    def get_file_hash(self, name, algorithm):
-        with self.zipfile.open(name) as fp:
+    def get_file_hash(self, path, algorithm):
+        with self.zipfile.open(path) as fp:
             return digest_file(fp, [algorithm])[algorithm]

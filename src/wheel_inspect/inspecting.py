@@ -8,6 +8,41 @@ from   .util               import extract_modules, is_dist_info_path, \
                                     unique_projects
 
 def parse_entry_points(fp):
+    """
+    Parse the contents of a text filehandle ``fp`` as an
+    :file:`entry_points.txt` file and return a `dict` that maps entry point
+    group names to sub-`dict`s that map entry point names to sub-sub-`dict`s
+    with ``"module"``, ``"attr"``, and ``"extras"`` keys.
+
+    For example, the following input:
+
+    .. code-block:: ini
+
+        [console_scripts]
+        do-thing = pkg.main:__main__
+
+        [plugin.point]
+        plug-thing = pkg.plug [xtra]
+
+    would be parsed into the following structure::
+
+        {
+            "console_scripts": {
+                "do-thing": {
+                    "module": "pkg.main",
+                    "attr": "__main__",
+                    "extras": []
+                }
+            },
+            "plugin.point": {
+                "plug-thing": {
+                    "module": "pkg.plug",
+                    "attr": None,
+                    "extras": ["xtra"]
+                }
+            }
+        }
+    """
     return {
         gr: {
             k: {

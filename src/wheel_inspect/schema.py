@@ -1,5 +1,10 @@
 from copy import deepcopy
 
+#: A `JSON Schema <http://json-schema.org>`_ for the structure returned by
+#: `inspect_dist_info_dir()` and by `inspect()` when called on a `DistInfoDir`.
+#: It is the same as `WHEEL_SCHEMA`, but without the ``"filename"``,
+#: ``"project"``, ``"version"``, ``"buildver"``, ``"pyver"``, ``"abi"``,
+#: ``"arch"``, and ``"file"`` keys.
 DIST_INFO_SCHEMA = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
@@ -245,6 +250,8 @@ DIST_INFO_SCHEMA = {
     }
 }
 
+#: A `JSON Schema <http://json-schema.org>`_ for the structure returned by
+#: `inspect_wheel()` and by `inspect()` when called on a `WheelFile`.
 WHEEL_SCHEMA = deepcopy(DIST_INFO_SCHEMA)
 
 WHEEL_SCHEMA["required"].extend([
@@ -309,4 +316,5 @@ WHEEL_SCHEMA["properties"].update({
     },
 })
 
+#: Alias for `WHEEL_SCHEMA`.  Deprecated; use `WHEEL_SCHEMA` instead.
 SCHEMA = WHEEL_SCHEMA

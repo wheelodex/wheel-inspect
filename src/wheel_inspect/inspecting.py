@@ -1,11 +1,11 @@
 import io
-from   pkg_resources       import EntryPoint, yield_lines
+import entry_points_txt
 from   readme_renderer.rst import render
 from   .                   import errors
 from   .classes            import DistInfoDir, FileProvider, WheelFile
 from   .util               import extract_modules, is_dist_info_path, \
                                     split_content_type, split_keywords, \
-                                    unique_projects
+                                    unique_projects, yield_lines
 
 def parse_entry_points(fp):
     """
@@ -43,14 +43,15 @@ def parse_entry_points(fp):
             }
         }
     """
+    epset = entry_points_txt.load(fp)
     return {
         gr: {
             k: {
-                "module": e.module_name,
-                "attr": '.'.join(e.attrs) if e.attrs else None,
+                "module": e.module,
+                "attr": e.object,
                 "extras": list(e.extras),
             } for k,e in eps.items()
-        } for gr, eps in EntryPoint.parse_map(fp).items()
+        } for gr, eps in epset.items()
     }
 
 def readlines(fp):

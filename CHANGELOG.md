@@ -2,6 +2,7 @@ v1.7.0 (in development)
 -----------------------
 - When verifying a `RECORD`, directory entries listed therein are now checked
   for existence.
+- Remove dependency on `pkg_resources`
 
 
 v1.6.0 (2020-05-01)

@@ -5,6 +5,7 @@ v1.7.0 (in development)
 - Remove dependency on `pkg_resources`
 - Dropped support for Python 3.5
 - Support Python 3.9
+- Drop `read_version` build dependency
 
 
 v1.6.0 (2020-05-01)

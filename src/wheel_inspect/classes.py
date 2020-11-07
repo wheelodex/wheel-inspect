@@ -6,7 +6,7 @@ from   wheel_filename import parse_wheel_filename
 from   .              import errors
 from   .metadata      import parse_metadata
 from   .record        import parse_record
-from   .util          import digest_file
+from   .util          import digest_file, find_dist_info_dir
 from   .wheel_info    import parse_wheel_info
 
 class DistInfoProvider(abc.ABC):
@@ -142,8 +142,9 @@ class WheelFile(DistInfoProvider, FileProvider):
     def __init__(self, path):
         self.path = Path(path)
         self.parsed_filename = parse_wheel_filename(self.path)
-        self.dist_info = '{0.project}-{0.version}.dist-info'\
-                            .format(self.parsed_filename)
+        self.fp = None
+        self.zipfile = None
+        self._dist_info = None
 
     def __enter__(self):
         self.fp = self.path.open('rb')
@@ -153,7 +154,24 @@ class WheelFile(DistInfoProvider, FileProvider):
     def __exit__(self, exc_type, exc_value, traceback):
         self.zipfile.close()
         self.fp.close()
+        self.fp = None
+        self.zipfile = None
         return False
+
+    @property
+    def dist_info(self):
+        if self._dist_info is None:
+            if self.zipfile is None:
+                raise RuntimeError(
+                    "WheelFile.dist_info cannot be determined when WheelFile"
+                    " is not open in context"
+                )
+            self._dist_info = find_dist_info_dir(
+                self.zipfile.namelist(),
+                self.parsed_filename.project,
+                self.parsed_filename.version,
+            )
+        return self._dist_info
 
     def basic_metadata(self):
         namebits = self.parsed_filename

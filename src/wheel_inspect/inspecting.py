@@ -70,6 +70,7 @@ def inspect(obj):  # (DistInfoProvider) -> dict
     about = obj.basic_metadata()
     about["dist_info"] = {}
     about["valid"] = True
+    has_dist_info = True
 
     try:
         record = obj.get_record()
@@ -79,6 +80,7 @@ def inspect(obj):  # (DistInfoProvider) -> dict
             "type": type(e).__name__,
             "str": str(e),
         }
+        has_dist_info = not isinstance(e, errors.DistInfoError)
     else:
         about["dist_info"]["record"] = record.for_json()
         if isinstance(obj, FileProvider):
@@ -91,39 +93,43 @@ def inspect(obj):  # (DistInfoProvider) -> dict
                     "str": str(e),
                 }
 
-    try:
-        metadata = obj.get_metadata()
-    except errors.WheelValidationError as e:
-        metadata = {}
-        about["valid"] = False
-        about["validation_error"] = {
-            "type": type(e).__name__,
-            "str": str(e),
-        }
-    else:
-        about["dist_info"]["metadata"] = metadata
-
-    try:
-        about["dist_info"]["wheel"] = obj.get_wheel_info()
-    except errors.WheelValidationError as e:
-        about["valid"] = False
-        about["validation_error"] = {
-            "type": type(e).__name__,
-            "str": str(e),
-        }
-
-    for fname, parser, key in EXTRA_DIST_INFO_FILES:
+    if has_dist_info:
         try:
-            with obj.open_dist_info_file(fname) as binfp, \
-                    io.TextIOWrapper(binfp, 'utf-8') as txtfp:
-                about["dist_info"][key] = parser(txtfp)
-        except errors.MissingDistInfoFileError:
-            pass
+            metadata = obj.get_metadata()
+        except errors.WheelValidationError as e:
+            metadata = {}
+            about["valid"] = False
+            about["validation_error"] = {
+                "type": type(e).__name__,
+                "str": str(e),
+            }
+        else:
+            about["dist_info"]["metadata"] = metadata
 
-    if obj.has_dist_info_file('zip-safe'):
-        about["dist_info"]["zip_safe"] = True
-    elif obj.has_dist_info_file('not-zip-safe'):
-        about["dist_info"]["zip_safe"] = False
+        try:
+            about["dist_info"]["wheel"] = obj.get_wheel_info()
+        except errors.WheelValidationError as e:
+            about["valid"] = False
+            about["validation_error"] = {
+                "type": type(e).__name__,
+                "str": str(e),
+            }
+
+        for fname, parser, key in EXTRA_DIST_INFO_FILES:
+            try:
+                with obj.open_dist_info_file(fname) as binfp, \
+                        io.TextIOWrapper(binfp, 'utf-8') as txtfp:
+                    about["dist_info"][key] = parser(txtfp)
+            except errors.MissingDistInfoFileError:
+                pass
+
+        if obj.has_dist_info_file('zip-safe'):
+            about["dist_info"]["zip_safe"] = True
+        elif obj.has_dist_info_file('not-zip-safe'):
+            about["dist_info"]["zip_safe"] = False
+
+    else:
+        metadata = {}
 
     about["derived"] = {
         "description_in_body": "BODY" in metadata,

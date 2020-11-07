@@ -6,6 +6,10 @@ v1.7.0 (in development)
 - Dropped support for Python 3.5
 - Support Python 3.9
 - Drop `read_version` build dependency
+- Support wheels whose filenames and `.dist-info` directories use different
+  casings/spellings for the project name and/or version
+- Better validation errors for wheels with missing or improper `.dist_info`
+  directories
 
 
 v1.6.0 (2020-05-01)

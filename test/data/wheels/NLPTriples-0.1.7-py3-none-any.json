@@ -1,0 +1,174 @@
+{
+    "abi": [
+        "none"
+    ],
+    "arch": [
+        "any"
+    ],
+    "buildver": null,
+    "derived": {
+        "dependencies": [
+            "benepar",
+            "cython",
+            "numpy",
+            "spacy",
+            "tensorflow"
+        ],
+        "description_in_body": true,
+        "description_in_headers": false,
+        "keyword_separator": ",",
+        "keywords": [
+            "NLP",
+            "Poetry",
+            "Triples"
+        ],
+        "modules": [
+            "nlptriples",
+            "nlptriples.parse_tree",
+            "nlptriples.setup",
+            "nlptriples.triples"
+        ],
+        "readme_renders": true
+    },
+    "dist_info": {
+        "metadata": {
+            "author": "adityaparkhi",
+            "author_email": "theaditya140@gmail.com",
+            "classifier": [
+                "License :: OSI Approved :: MIT License",
+                "Programming Language :: Python :: 3",
+                "Programming Language :: Python :: 3.6",
+                "Programming Language :: Python :: 3.7",
+                "Programming Language :: Python :: 3.8"
+            ],
+            "description": {
+                "length": 837
+            },
+            "description_content_type": "text/markdown",
+            "keywords": "Poetry,NLP,Triples",
+            "license": "MIT",
+            "metadata_version": "2.1",
+            "name": "nlptriples",
+            "requires_dist": [
+                {
+                    "extras": [
+                        "cpu"
+                    ],
+                    "marker": null,
+                    "name": "benepar",
+                    "specifier": "<0.2.0,>=0.1.2",
+                    "url": null
+                },
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "cython",
+                    "specifier": "<0.30.0,>=0.29.16",
+                    "url": null
+                },
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "numpy",
+                    "specifier": "<2.0.0,>=1.18.2",
+                    "url": null
+                },
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "spacy",
+                    "specifier": "<3.0.0,>=2.2.4",
+                    "url": null
+                },
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "tensorflow",
+                    "specifier": "==1.15.2",
+                    "url": null
+                }
+            ],
+            "requires_python": ">=3.6,<4.0",
+            "summary": "A package to extract Triples in form of [predictate , object , subject]  form text ",
+            "version": "0.1.7"
+        },
+        "record": [
+            {
+                "digests": {
+                    "sha256": "ls1camlIoMxEZz9gSkZ1OJo-MXqHWwKPtdPbZJmwp7E"
+                },
+                "path": "nlptriples/__init__.py",
+                "size": 22
+            },
+            {
+                "digests": {
+                    "sha256": "EVaZLOTa-2K88oXy105KFitx1nrkxW5Kj7bNABp_JH4"
+                },
+                "path": "nlptriples/parse_tree.py",
+                "size": 1344
+            },
+            {
+                "digests": {
+                    "sha256": "vYdNPB1dWAxaP0dZzTxFxYHCaeZ2EICCJWsIY26UpOc"
+                },
+                "path": "nlptriples/setup.py",
+                "size": 58
+            },
+            {
+                "digests": {
+                    "sha256": "dmwUnDeO9z0nuF3oDiFlKXTjj0XlH9gG3cfo0Z-ylrE"
+                },
+                "path": "nlptriples/triples.py",
+                "size": 7765
+            },
+            {
+                "digests": {
+                    "sha256": "VC7YIze9O5Ts59woVlji8eLn1GDvQCbCAXhG66uWFrE"
+                },
+                "path": "nlptriples-0.1.7.dist-info/LICENSE",
+                "size": 1070
+            },
+            {
+                "digests": {
+                    "sha256": "Q99itqWYDhV793oHzqzi24q7L7Kdiz6cb55YDfTXphE"
+                },
+                "path": "nlptriples-0.1.7.dist-info/WHEEL",
+                "size": 84
+            },
+            {
+                "digests": {
+                    "sha256": "dZ2YtcY8Gx3QiUFNjxqfQ4KRJAydb6-vCb2V0QYGe2U"
+                },
+                "path": "nlptriples-0.1.7.dist-info/METADATA",
+                "size": 1603
+            },
+            {
+                "digests": {},
+                "path": "nlptriples-0.1.7.dist-info/RECORD",
+                "size": null
+            }
+        ],
+        "wheel": {
+            "generator": "poetry 1.0.10",
+            "root_is_purelib": true,
+            "tag": [
+                "py3-none-any"
+            ],
+            "wheel_version": "1.0"
+        }
+    },
+    "file": {
+        "digests": {
+            "md5": "0b7ec3e02daa303263e2583e44878d05",
+            "sha256": "cddf7f060fa4ae42c309deacfbb12c02276b23bc4d7fde3d8c800b6029b149d9"
+        },
+        "size": 5212
+    },
+    "filename": "NLPTriples-0.1.7-py3-none-any.whl",
+    "project": "NLPTriples",
+    "pyver": [
+        "py3"
+    ],
+    "valid": true,
+    "version": "0.1.7"
+}

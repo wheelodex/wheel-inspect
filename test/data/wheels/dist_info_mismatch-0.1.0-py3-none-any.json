@@ -1,0 +1,37 @@
+{
+    "abi": [
+        "none"
+    ],
+    "arch": [
+        "any"
+    ],
+    "buildver": null,
+    "derived": {
+        "dependencies": [],
+        "description_in_body": false,
+        "description_in_headers": false,
+        "keyword_separator": null,
+        "keywords": [],
+        "modules": [],
+        "readme_renders": null
+    },
+    "dist_info": {},
+    "file": {
+        "digests": {
+            "md5": "46d520d361f5652c27efd170fc6f3f1e",
+            "sha256": "7b075fbbda5473b4a7f8291d14670cdd1b6922537748d68ae465b712fa783a84"
+        },
+        "size": 1214
+    },
+    "filename": "dist_info_mismatch-0.1.0-py3-none-any.whl",
+    "project": "dist_info_mismatch",
+    "pyver": [
+        "py3"
+    ],
+    "valid": false,
+    "validation_error": {
+        "str": "Project & version of wheel's .dist-info directory do not match wheel name: 'foobar-1.0.0.dist-info'",
+        "type": "DistInfoError"
+    },
+    "version": "0.1.0"
+}

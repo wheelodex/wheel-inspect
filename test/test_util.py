@@ -1,6 +1,8 @@
 import pytest
-from   wheel_inspect.util import extract_modules, split_content_type, \
-                                    split_keywords
+from   wheel_inspect.errors import DistInfoError
+from   wheel_inspect.util   import extract_modules, find_dist_info_dir, \
+                                    is_data_dir, is_dist_info_dir, \
+                                    split_content_type, split_keywords
 
 @pytest.mark.parametrize('kwstr,expected', [
     (
@@ -247,5 +249,138 @@ def test_extract_modules(filelist, modules):
 ])
 def test_split_content_type(s, ct):
     assert split_content_type(s) == ct
+
+@pytest.mark.parametrize('name,expected', [
+    ('somepackage-1.0.0.dist-info', True),
+    ('somepackage.dist-info', False),
+    ('somepackage-1.0.0-1.dist-info', False),
+    ('somepackage-1.0.0.data', False),
+    ('SOME_._PaCkAgE-0.dist-info', True),
+    ('foo-1!2+local.dist-info', True),
+    ('foo-1_2_local.dist-info', True),
+    ('.dist-info', False),
+])
+def test_is_dist_info_dir(name, expected):
+    assert is_dist_info_dir(name) is expected
+
+@pytest.mark.parametrize('name,expected', [
+    ('somepackage-1.0.0.data', True),
+    ('somepackage.data', False),
+    ('somepackage-1.0.0-1.data', False),
+    ('somepackage-1.0.0.dist-info', False),
+    ('SOME_._PaCkAgE-0.data', True),
+    ('foo-1!2+local.data', True),
+    ('foo-1_2_local.data', True),
+    ('.data', False),
+])
+def test_is_data_dir(name, expected):
+    assert is_data_dir(name) is expected
+
+@pytest.mark.parametrize('namelist,project,version,expected', [
+    (
+        [
+            "foo.py",
+            "foo-1.0.dist-info/WHEEL",
+            "foo-1.0.dist-info/RECORD",
+        ],
+        "foo",
+        "1.0",
+        "foo-1.0.dist-info",
+    ),
+    (
+        [
+            "foo.py",
+            "FOO-1.0.0.dist-info/WHEEL",
+            "FOO-1.0.0.dist-info/RECORD",
+        ],
+        "foo",
+        "1.0",
+        "FOO-1.0.0.dist-info"
+    ),
+    (
+        [
+            "foo.py",
+            "foo-1.dist-info/WHEEL",
+            "foo-1.dist-info/RECORD",
+        ],
+        "foo",
+        "1.0",
+        "foo-1.dist-info"
+    ),
+    (
+        [
+            "foo.py",
+            "FOO-1.0_1.dist-info/WHEEL",
+            "FOO-1.0_1.dist-info/RECORD",
+        ],
+        "foo",
+        "1.0.post1",
+        "FOO-1.0_1.dist-info",
+    ),
+])
+def test_find_dist_info_dir(namelist, project, version, expected):
+    assert find_dist_info_dir(namelist, project, version) == expected
+
+@pytest.mark.parametrize('namelist,project,version,msg', [
+    (
+        [
+            "foo.py",
+            "foo-1.0.dist/WHEEL",
+        ],
+        "foo",
+        "1.0",
+        'No .dist-info directory in wheel',
+    ),
+    (
+        [
+            "foo.py",
+            "bar-1.0.dist-info/WHEEL",
+        ],
+        "foo",
+        "1.0",
+        "Project & version of wheel's .dist-info directory do not match wheel"
+        " name: 'bar-1.0.dist-info'"
+    ),
+    (
+        [
+            "foo.py",
+            "foo-2.0.dist-info/WHEEL",
+        ],
+        "foo",
+        "1.0",
+        "Project & version of wheel's .dist-info directory do not match wheel"
+        " name: 'foo-2.0.dist-info'"
+    ),
+    (
+        [
+            "foo.py",
+            "foo-1.0.dist-info/WHEEL",
+            "bar-2.0.dist-info/RECORD",
+        ],
+        "foo",
+        "1.0",
+        'Wheel contains multiple .dist-info directories',
+    ),
+    (
+        [
+            "foo.py",
+            "FOO-1.0.0.dist-info/WHEEL",
+            "foo-1.dist-info/RECORD",
+        ],
+        "foo",
+        "1.0",
+        'Wheel contains multiple .dist-info directories',
+    ),
+    (
+        ["foo.py", ".dist-info/WHEEL"],
+        "foo",
+        "1.0",
+        'No .dist-info directory in wheel',
+    ),
+])
+def test_find_dist_info_dir_error(namelist, project, version, msg):
+    with pytest.raises(DistInfoError) as excinfo:
+        find_dist_info_dir(namelist, project, version)
+    assert str(excinfo.value) == msg
 
 ### TODO: Add more test cases for all functions!

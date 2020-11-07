@@ -2,7 +2,9 @@ from   email.message   import EmailMessage
 import hashlib
 from   keyword         import iskeyword
 import re
-from   packaging.utils import canonicalize_name as normalize
+from   typing          import List, Optional, Tuple
+from   packaging.utils import canonicalize_name, canonicalize_version
+from   .errors         import DistInfoError
 
 DIGEST_CHUNK_SIZE = 65535
 
@@ -62,7 +64,7 @@ def fieldnorm(s):
 def unique_projects(projects):
     seen = set()
     for p in projects:
-        pn = normalize(p)
+        pn = canonicalize_name(p)
         if pn not in seen:
             yield p
         seen.add(pn)
@@ -97,3 +99,40 @@ def yield_lines(fp):
         line = line.strip()
         if line and not line.startswith('#'):
             yield line
+
+def find_dist_info_dir(namelist: List[str], project: str, version: str) \
+        -> Tuple[str, Optional[str]]:
+    """
+    Given a list ``namelist`` of files in a wheel for a project ``project`` and
+    version ``version``, find & return the name of the wheel's ``.dist-info``
+    directory.
+
+    :raises DistInfoError: if there is no unique ``.dist-info`` directory in
+        the input
+    :raises DistInfoError: if the name & version of the ``.dist-info``
+        directory are not normalization-equivalent to ``project`` & ``version``
+    """
+    canon_project = canonicalize_name(project)
+    canon_version = canonicalize_version(version.replace('_', '-'))
+    dist_info_dirs = set()
+    for n in namelist:
+        basename = n.rstrip('/').split('/')[0]
+        if is_dist_info_dir(basename):
+            dist_info_dirs.add(basename)
+    if len(dist_info_dirs) > 1:
+        raise DistInfoError('Wheel contains multiple .dist-info directories')
+    elif len(dist_info_dirs) == 1:
+        dist_info_dir = next(iter(dist_info_dirs))
+        diname, _, diversion = dist_info_dir[:-len(".dist-info")].partition('-')
+        if (
+            canonicalize_name(diname) != canon_project
+            or canonicalize_version(diversion.replace('_', '-'))
+                != canon_version
+        ):
+            raise DistInfoError(
+                f"Project & version of wheel's .dist-info directory do not"
+                f" match wheel name: {dist_info_dir!r}"
+            )
+        return dist_info_dir
+    else:
+        raise DistInfoError('No .dist-info directory in wheel')

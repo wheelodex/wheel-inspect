@@ -271,6 +271,14 @@ class AbsolutePathError(MalformedRecordError):
         return 'RECORD entry has an absolute path: {0.path!r}'.format(self)
 
 
+class DistInfoError(WheelValidationError):
+    """
+    Raised when a wheel's :file:`*.dist-info` directory cannot be found or
+    determined
+    """
+    pass
+
+
 class MissingDistInfoFileError(WheelValidationError):
     """
     Raised when a given file is not found in the wheel's :file:`*.dist-info`

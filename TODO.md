@@ -45,10 +45,6 @@ Inspecting Wheels
 
 Validating Wheels
 -----------------
-- Add a dedicated error for `*.dist-info` not matching the project & version in
-  the wheel filename
-    - Check for this before checking whether various `*.dist-info` entries
-      exist
 - Should `NullEntryError` be a subclass of `MalformedRecordError` even though
   it's not raised by `Record.load()`?
 - Implement complete wheel validation logic, including checking METADATA and

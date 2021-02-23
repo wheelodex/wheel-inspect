@@ -3,16 +3,12 @@ from   operator      import attrgetter
 from   pathlib       import Path
 from   jsonschema    import validate
 import pytest
+from   testing_lib   import filecases
 from   wheel_inspect import DIST_INFO_SCHEMA, WHEEL_SCHEMA, \
                                 inspect_dist_info_dir, inspect_wheel
 
-@pytest.mark.parametrize('whlfile', [
-    p for p in (Path(__file__).with_name('data') / 'wheels').iterdir()
-      if p.suffix == '.whl'
-], ids=attrgetter("name"))
-def test_inspect_wheel(whlfile):
-    with whlfile.with_suffix('.json').open() as fp:
-        expected = json.load(fp)
+@pytest.mark.parametrize('whlfile,expected', filecases('wheels', '*.whl'))
+def test_inspect_wheel(whlfile, expected):
     inspection = inspect_wheel(whlfile)
     assert inspection == expected
     validate(inspection, WHEEL_SCHEMA)

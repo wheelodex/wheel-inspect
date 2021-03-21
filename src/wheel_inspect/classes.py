@@ -20,7 +20,7 @@ class DistInfoProvider(abc.ABC):
         """
         Returns a `dict` of class-specific simple metadata about the resource
         """
-        raise NotImplementedError
+        ...
 
     @abc.abstractmethod
     def open_dist_info_file(self, path):
@@ -30,7 +30,7 @@ class DistInfoProvider(abc.ABC):
         """
         ### TODO: Specify here that MissingDistInfoFileError is raised if file
         ### not found?
-        raise NotImplementedError
+        ...
 
     @abc.abstractmethod
     def has_dist_info_file(self, path):
@@ -38,7 +38,7 @@ class DistInfoProvider(abc.ABC):
         Returns true iff a file exists at the given path beneath the
         :file:`*.dist-info` directory
         """
-        raise NotImplementedError
+        ...
 
     def get_metadata(self):
         try:
@@ -77,7 +77,7 @@ class FileProvider(abc.ABC):
 
         :rtype: List[str]
         """
-        raise NotImplementedError
+        ...
 
     @abc.abstractmethod
     def has_directory(self, path):
@@ -87,7 +87,7 @@ class FileProvider(abc.ABC):
         :param str path: a relative ``/``-separated path that ends with a ``/``
         :rtype: bool
         """
-        raise NotImplementedError
+        ...
 
     @abc.abstractmethod
     def get_file_size(self, path):
@@ -97,7 +97,7 @@ class FileProvider(abc.ABC):
         :param str path: a relative ``/``-separated path
         :rtype: int
         """
-        raise NotImplementedError
+        ...
 
     @abc.abstractmethod
     def get_file_hash(self, path, algorithm):
@@ -110,7 +110,7 @@ class FileProvider(abc.ABC):
             recognized by `hashlib`
         :rtype: str
         """
-        raise NotImplementedError
+        ...
 
 
 class DistInfoDir(DistInfoProvider):
@@ -120,7 +120,7 @@ class DistInfoDir(DistInfoProvider):
     def __enter__(self):
         return self
 
-    def __exit__(self, exc_type, exc_value, traceback):
+    def __exit__(self, _exc_type, _exc_value, _traceback):
         return False
 
     def basic_metadata(self):
@@ -151,7 +151,7 @@ class WheelFile(DistInfoProvider, FileProvider):
         self.zipfile = ZipFile(self.fp)
         return self
 
-    def __exit__(self, exc_type, exc_value, traceback):
+    def __exit__(self, _exc_type, _exc_value, _traceback):
         self.zipfile.close()
         self.fp.close()
         self.fp = None

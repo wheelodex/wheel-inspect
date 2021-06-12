@@ -8,18 +8,13 @@ from copy import deepcopy
 DIST_INFO_SCHEMA = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
-    "required": [
-        "valid",
-        "dist_info",
-        "derived"
-    ],
+    "required": ["valid", "dist_info", "derived"],
     "additionalProperties": False,
     "properties": {
         "valid": {
             "type": "boolean",
-            "description": "Whether the wheel is well-formed with an accurate RECORD"
+            "description": "Whether the wheel is well-formed with an accurate RECORD",
         },
-
         "validation_error": {
             "type": "object",
             "description": "If the wheel is invalid, this field contains information on the `WheelValidationError` raised.",
@@ -28,26 +23,24 @@ DIST_INFO_SCHEMA = {
             "properties": {
                 "type": {
                     "type": "string",
-                    "description": "The name of the type of exception raised"
+                    "description": "The name of the type of exception raised",
                 },
                 "str": {
                     "type": "string",
-                    "description": "The exception's error message"
-                }
-            }
+                    "description": "The exception's error message",
+                },
+            },
         },
-
         "dist_info": {
             "type": "object",
             "description": "JSONifications of files from the wheel's .dist-info directory",
             "additionalProperties": False,
             "properties": {
-
                 "metadata": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "array",
-                        "items": {"type": "string"}
+                        "items": {"type": "string"},
                     },
                     "properties": {
                         "metadata_version": {"type": "string"},
@@ -61,10 +54,8 @@ DIST_INFO_SCHEMA = {
                                     "type": "object",
                                     "requires": ["length"],
                                     "additionalProperties": False,
-                                    "properties": {
-                                        "length": {"type": "integer"}
-                                    }
-                                }
+                                    "properties": {"length": {"type": "integer"}},
+                                },
                             ]
                         },
                         "requires_dist": {
@@ -76,7 +67,7 @@ DIST_INFO_SCHEMA = {
                                     "url",
                                     "extras",
                                     "specifier",
-                                    "marker"
+                                    "marker",
                                 ],
                                 "additionalProperties": False,
                                 "properties": {
@@ -84,12 +75,12 @@ DIST_INFO_SCHEMA = {
                                     "url": {"type": ["null", "string"]},
                                     "extras": {
                                         "type": "array",
-                                        "items": {"type": "string"}
+                                        "items": {"type": "string"},
                                     },
                                     "specifier": {"type": "string"},
-                                    "marker": {"type": ["null", "string"]}
-                                }
-                            }
+                                    "marker": {"type": ["null", "string"]},
+                                },
+                            },
                         },
                         "project_url": {
                             "type": "array",
@@ -99,9 +90,9 @@ DIST_INFO_SCHEMA = {
                                 "additionalProperties": False,
                                 "properties": {
                                     "label": {"type": ["null", "string"]},
-                                    "url": {"type": "string"}
-                                }
-                            }
+                                    "url": {"type": "string"},
+                                },
+                            },
                         },
                         "requires_python": {"type": "string"},
                         "author": {"type": ["null", "string"]},
@@ -112,10 +103,9 @@ DIST_INFO_SCHEMA = {
                         "maintainer": {"type": ["null", "string"]},
                         "maintainer_email": {"type": ["null", "string"]},
                         "keywords": {"type": ["null", "string"]},
-                        "description_content_type": {"type": ["null", "string"]}
-                    }
+                        "description_content_type": {"type": ["null", "string"]},
+                    },
                 },
-
                 "record": {
                     "type": "array",
                     "items": {
@@ -127,42 +117,50 @@ DIST_INFO_SCHEMA = {
                             "digests": {
                                 "type": "object",
                                 "properties": {
-                                    "md5": {"type": "string", "pattern": "^[-_0-9A-Za-z]{22}$"},
-                                    "sha1": {"type": "string", "pattern": "^[-_0-9A-Za-z]{27}$"},
-                                    "sha256": {"type": "string", "pattern": "^[-_0-9A-Za-z]{43}$"},
-                                    "sha512": {"type": "string", "pattern": "^[-_0-9A-Za-z]{86}$"}
-                                }
+                                    "md5": {
+                                        "type": "string",
+                                        "pattern": "^[-_0-9A-Za-z]{22}$",
+                                    },
+                                    "sha1": {
+                                        "type": "string",
+                                        "pattern": "^[-_0-9A-Za-z]{27}$",
+                                    },
+                                    "sha256": {
+                                        "type": "string",
+                                        "pattern": "^[-_0-9A-Za-z]{43}$",
+                                    },
+                                    "sha512": {
+                                        "type": "string",
+                                        "pattern": "^[-_0-9A-Za-z]{86}$",
+                                    },
+                                },
                             },
-                            "size": {"type": ["null", "integer"]}
-                        }
-                    }
+                            "size": {"type": ["null", "integer"]},
+                        },
+                    },
                 },
-
                 "wheel": {
                     "type": "object",
-                    "required": ["wheel_version", "generator", "root_is_purelib", "tag"],
+                    "required": [
+                        "wheel_version",
+                        "generator",
+                        "root_is_purelib",
+                        "tag",
+                    ],
                     "additionalProperties": {
                         "type": "array",
-                        "items": {"type": "string"}
+                        "items": {"type": "string"},
                     },
                     "properties": {
                         "wheel_version": {"type": "string"},
                         "generator": {"type": "string"},
                         "root_is_purelib": {"type": "boolean"},
-                        "tag": {
-                            "type": "array",
-                            "items": {"type": "string"}
-                        },
+                        "tag": {"type": "array", "items": {"type": "string"}},
                         "build": {"type": "string"},
-                        "BODY": {"type": "string"}
-                    }
+                        "BODY": {"type": "string"},
+                    },
                 },
-
-                "dependency_links": {
-                    "type": "array",
-                    "items": {"type": "string"}
-                },
-
+                "dependency_links": {"type": "array", "items": {"type": "string"}},
                 "entry_points": {
                     "type": "object",
                     "additionalProperties": {
@@ -176,27 +174,17 @@ DIST_INFO_SCHEMA = {
                                 "attr": {"type": ["null", "string"]},
                                 "extras": {
                                     "type": "array",
-                                    "items": {"type": "string"}
-                                }
-                            }
-                        }
-                    }
+                                    "items": {"type": "string"},
+                                },
+                            },
+                        },
+                    },
                 },
-
-                "namespace_packages": {
-                    "type": "array",
-                    "items": {"type": "string"}
-                },
-
-                "top_level": {
-                    "type": "array",
-                    "items": {"type": "string"}
-                },
-
-                "zip_safe": {"type": "boolean"}
-            }
+                "namespace_packages": {"type": "array", "items": {"type": "string"}},
+                "top_level": {"type": "array", "items": {"type": "string"}},
+                "zip_safe": {"type": "boolean"},
+            },
         },
-
         "derived": {
             "type": "object",
             "description": "Information derived from `dist_info`",
@@ -207,114 +195,115 @@ DIST_INFO_SCHEMA = {
                 "keywords",
                 "keyword_separator",
                 "dependencies",
-                "modules"
+                "modules",
             ],
             "additionalProperties": False,
             "properties": {
                 "readme_renders": {
                     "type": ["null", "boolean"],
-                    "description": "Whether the description's markup can be rendered successfully on PyPI.  A value of `null` indicates that there is no description."
+                    "description": "Whether the description's markup can be rendered successfully on PyPI.  A value of `null` indicates that there is no description.",
                 },
                 "description_in_body": {
                     "type": "boolean",
-                    "description": "Whether the description is present as the message body in the METADATA file"
+                    "description": "Whether the description is present as the message body in the METADATA file",
                 },
                 "description_in_headers": {
                     "type": "boolean",
-                    "description": "Whether the description is present as a header field in the METADATA file"
+                    "description": "Whether the description is present as a header field in the METADATA file",
                 },
                 "keywords": {
                     "type": "array",
                     "items": {"type": "string"},
                     "uniqueItems": True,
-                    "description": "The wheel's keywords string, split on what appears to be the appropriate separator"
+                    "description": "The wheel's keywords string, split on what appears to be the appropriate separator",
                 },
                 "keyword_separator": {
                     "enum": [" ", ",", None],
-                    "description": "The apparent appropriate separator for the wheel's keywords string.  A value of `null` indicates that the keywords string is undefined."
+                    "description": "The apparent appropriate separator for the wheel's keywords string.  A value of `null` indicates that the keywords string is undefined.",
                 },
                 "dependencies": {
                     "type": "array",
                     "items": {"type": "string"},
                     "uniqueItems": True,
-                    "description": "The names of all of the projects listed in the wheel's Requires-Dist"
+                    "description": "The names of all of the projects listed in the wheel's Requires-Dist",
                 },
                 "modules": {
                     "type": "array",
                     "items": {"type": "string"},
                     "uniqueItems": True,
-                    "description": "A list of Python modules installed by the wheel"
-                }
-            }
-        }
-    }
+                    "description": "A list of Python modules installed by the wheel",
+                },
+            },
+        },
+    },
 }
 
 #: A `JSON Schema <http://json-schema.org>`_ for the structure returned by
 #: `inspect_wheel()` and by `inspect()` when called on a `WheelFile`.
 WHEEL_SCHEMA = deepcopy(DIST_INFO_SCHEMA)
 
-WHEEL_SCHEMA["required"].extend([
-    "filename",
-    "project",
-    "version",
-    "buildver",
-    "pyver",
-    "abi",
-    "arch",
-    "file",
-])
+WHEEL_SCHEMA["required"].extend(
+    [
+        "filename",
+        "project",
+        "version",
+        "buildver",
+        "pyver",
+        "abi",
+        "arch",
+        "file",
+    ]
+)
 
-WHEEL_SCHEMA["properties"].update({
-    "filename": {
-        "type": "string",
-        "description": "The filename of the wheel"
-    },
-    "project": {
-        "type": "string",
-        "description": "The name of the wheel's project as extracted from the filename"
-    },
-    "version": {
-        "type": "string",
-        "description": "The wheel's project version as extracted from the filename"
-    },
-    "buildver": {
-        "type": ["string", "null"],
-        "description": "The wheel's build tag as extracted from the filename; `null` if there is no build tag"
-    },
-    "pyver": {
-        "type": "array",
-        "items": {"type": "string"},
-        "description": "A list of Python versions with which the wheel is compatible as extracted from the filename"
-    },
-    "abi": {
-        "type": "array",
-        "items": {"type": "string"},
-        "description": "A list of ABIs with which the wheel is compatible as extracted from the filename"
-    },
-    "arch": {
-        "type": "array",
-        "items": {"type": "string"},
-        "description": "A list of architectures with which the wheel is compatible as extracted from the filename"
-    },
-    "file": {
-        "type": "object",
-        "required": ["size", "digests"],
-        "additionalProperties": False,
-        "properties": {
-            "size": {"type": "integer"},
-            "digests": {
-                "type": "object",
-                "required": ["md5", "sha256"],
-                "additionalProperties": False,
-                "properties": {
-                    "md5": {"type": "string", "pattern": "^[0-9A-Fa-f]{32}$"},
-                    "sha256": {"type": "string", "pattern": "^[0-9A-Fa-f]{64}$"}
-                }
-            }
-        }
-    },
-})
+WHEEL_SCHEMA["properties"].update(
+    {
+        "filename": {"type": "string", "description": "The filename of the wheel"},
+        "project": {
+            "type": "string",
+            "description": "The name of the wheel's project as extracted from the filename",
+        },
+        "version": {
+            "type": "string",
+            "description": "The wheel's project version as extracted from the filename",
+        },
+        "buildver": {
+            "type": ["string", "null"],
+            "description": "The wheel's build tag as extracted from the filename; `null` if there is no build tag",
+        },
+        "pyver": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "A list of Python versions with which the wheel is compatible as extracted from the filename",
+        },
+        "abi": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "A list of ABIs with which the wheel is compatible as extracted from the filename",
+        },
+        "arch": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "A list of architectures with which the wheel is compatible as extracted from the filename",
+        },
+        "file": {
+            "type": "object",
+            "required": ["size", "digests"],
+            "additionalProperties": False,
+            "properties": {
+                "size": {"type": "integer"},
+                "digests": {
+                    "type": "object",
+                    "required": ["md5", "sha256"],
+                    "additionalProperties": False,
+                    "properties": {
+                        "md5": {"type": "string", "pattern": "^[0-9A-Fa-f]{32}$"},
+                        "sha256": {"type": "string", "pattern": "^[0-9A-Fa-f]{64}$"},
+                    },
+                },
+            },
+        },
+    }
+)
 
 #: Alias for `WHEEL_SCHEMA`.  Deprecated; use `WHEEL_SCHEMA` instead.
 SCHEMA = WHEEL_SCHEMA

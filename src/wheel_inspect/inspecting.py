@@ -1,11 +1,17 @@
 import io
 import entry_points_txt
-from   readme_renderer.rst import render
-from   .                   import errors
-from   .classes            import DistInfoDir, FileProvider, WheelFile
-from   .util               import extract_modules, is_dist_info_path, \
-                                    split_content_type, split_keywords, \
-                                    unique_projects, yield_lines
+from readme_renderer.rst import render
+from . import errors
+from .classes import DistInfoDir, FileProvider, WheelFile
+from .util import (
+    extract_modules,
+    is_dist_info_path,
+    split_content_type,
+    split_keywords,
+    unique_projects,
+    yield_lines,
+)
+
 
 def parse_entry_points(fp):
     """
@@ -50,21 +56,26 @@ def parse_entry_points(fp):
                 "module": e.module,
                 "attr": e.object,
                 "extras": list(e.extras),
-            } for k,e in eps.items()
-        } for gr, eps in epset.items()
+            }
+            for k, e in eps.items()
+        }
+        for gr, eps in epset.items()
     }
+
 
 def readlines(fp):
     return list(yield_lines(fp))
 
+
 EXTRA_DIST_INFO_FILES = [
     # file name, handler function, result dict key
     # <https://setuptools.readthedocs.io/en/latest/formats.html>:
-    ('dependency_links.txt', readlines, 'dependency_links'),
-    ('entry_points.txt', parse_entry_points, 'entry_points'),
-    ('namespace_packages.txt', readlines, 'namespace_packages'),
-    ('top_level.txt', readlines, 'top_level'),
+    ("dependency_links.txt", readlines, "dependency_links"),
+    ("entry_points.txt", parse_entry_points, "entry_points"),
+    ("namespace_packages.txt", readlines, "namespace_packages"),
+    ("top_level.txt", readlines, "top_level"),
 ]
+
 
 def inspect(obj):  # (DistInfoProvider) -> dict
     about = obj.basic_metadata()
@@ -117,15 +128,16 @@ def inspect(obj):  # (DistInfoProvider) -> dict
 
         for fname, parser, key in EXTRA_DIST_INFO_FILES:
             try:
-                with obj.open_dist_info_file(fname) as binfp, \
-                        io.TextIOWrapper(binfp, 'utf-8') as txtfp:
+                with obj.open_dist_info_file(fname) as binfp, io.TextIOWrapper(
+                    binfp, "utf-8"
+                ) as txtfp:
                     about["dist_info"][key] = parser(txtfp)
             except errors.MissingDistInfoFileError:
                 pass
 
-        if obj.has_dist_info_file('zip-safe'):
+        if obj.has_dist_info_file("zip-safe"):
             about["dist_info"]["zip_safe"] = True
-        elif obj.has_dist_info_file('not-zip-safe'):
+        elif obj.has_dist_info_file("not-zip-safe"):
             about["dist_info"]["zip_safe"] = False
 
     else:
@@ -143,7 +155,7 @@ def inspect(obj):  # (DistInfoProvider) -> dict
     if readme is not None:
         metadata["description"] = {"length": len(metadata["description"])}
         dct = metadata.get("description_content_type")
-        if dct is None or split_content_type(dct)[:2] == ('text', 'x-rst'):
+        if dct is None or split_content_type(dct)[:2] == ("text", "x-rst"):
             about["derived"]["readme_renders"] = render(readme) is not None
         else:
             about["derived"]["readme_renders"] = True
@@ -151,20 +163,21 @@ def inspect(obj):  # (DistInfoProvider) -> dict
         about["derived"]["readme_renders"] = None
 
     if metadata.get("keywords") is not None:
-        about["derived"]["keywords"], about["derived"]["keyword_separator"] \
-            = split_keywords(metadata["keywords"])
+        (
+            about["derived"]["keywords"],
+            about["derived"]["keyword_separator"],
+        ) = split_keywords(metadata["keywords"])
     else:
-        about["derived"]["keywords"], about["derived"]["keyword_separator"] \
-            = [], None
+        about["derived"]["keywords"], about["derived"]["keyword_separator"] = [], None
     about["derived"]["keywords"] = sorted(set(about["derived"]["keywords"]))
 
-    about["derived"]["dependencies"] = sorted(unique_projects(
-        req["name"] for req in metadata.get("requires_dist", [])
-    ))
+    about["derived"]["dependencies"] = sorted(
+        unique_projects(req["name"] for req in metadata.get("requires_dist", []))
+    )
 
-    about["derived"]["modules"] = extract_modules([
-        rec["path"] for rec in about["dist_info"].get("record", [])
-    ])
+    about["derived"]["modules"] = extract_modules(
+        [rec["path"] for rec in about["dist_info"].get("record", [])]
+    )
 
     return about
 
@@ -177,6 +190,7 @@ def inspect_wheel(path):
     with WheelFile(path) as wf:
         return inspect(wf)
 
+
 def inspect_dist_info_dir(path):
     """
     Examine the ``*.dist-info`` directory at the given path and return various
@@ -185,11 +199,12 @@ def inspect_dist_info_dir(path):
     with DistInfoDir(path) as did:
         return inspect(did)
 
+
 def verify_record(fileprod: FileProvider, record):
     files = set(fileprod.list_files())
     # Check everything in RECORD against actual values:
     for entry in record:
-        if entry.path.endswith('/'):
+        if entry.path.endswith("/"):
             if not fileprod.has_directory(entry.path):
                 raise errors.FileMissingError(entry.path)
         elif entry.path not in files:
@@ -210,11 +225,12 @@ def verify_record(fileprod: FileProvider, record):
                     entry.digest,
                     digest,
                 )
-        elif not is_dist_info_path(entry.path, 'RECORD'):
+        elif not is_dist_info_path(entry.path, "RECORD"):
             raise errors.NullEntryError(entry.path)
         files.discard(entry.path)
     # Check that the only files that aren't in RECORD are signatures:
     for path in files:
-        if not is_dist_info_path(entry.path, 'RECORD.jws') \
-                and not is_dist_info_path(entry.path, 'RECORD.p7s'):
+        if not is_dist_info_path(entry.path, "RECORD.jws") and not is_dist_info_path(
+            entry.path, "RECORD.p7s"
+        ):
             raise errors.ExtraFileError(path)

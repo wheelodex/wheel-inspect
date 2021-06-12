@@ -1,13 +1,14 @@
 import abc
 import io
-from   pathlib        import Path
-from   zipfile        import ZipFile
-from   wheel_filename import parse_wheel_filename
-from   .              import errors
-from   .metadata      import parse_metadata
-from   .record        import parse_record
-from   .util          import digest_file, find_dist_info_dir
-from   .wheel_info    import parse_wheel_info
+from pathlib import Path
+from zipfile import ZipFile
+from wheel_filename import parse_wheel_filename
+from . import errors
+from .metadata import parse_metadata
+from .record import parse_record
+from .util import digest_file, find_dist_info_dir
+from .wheel_info import parse_wheel_info
+
 
 class DistInfoProvider(abc.ABC):
     """
@@ -42,16 +43,18 @@ class DistInfoProvider(abc.ABC):
 
     def get_metadata(self):
         try:
-            with self.open_dist_info_file('METADATA') as binfp, \
-                    io.TextIOWrapper(binfp, 'utf-8') as txtfp:
+            with self.open_dist_info_file("METADATA") as binfp, io.TextIOWrapper(
+                binfp, "utf-8"
+            ) as txtfp:
                 return parse_metadata(txtfp)
         except errors.MissingDistInfoFileError:
             raise errors.MissingMetadataError()
 
     def get_record(self):
         try:
-            with self.open_dist_info_file('RECORD') as binfp, \
-                    io.TextIOWrapper(binfp, 'utf-8', newline='') as txtfp:
+            with self.open_dist_info_file("RECORD") as binfp, io.TextIOWrapper(
+                binfp, "utf-8", newline=""
+            ) as txtfp:
                 # The csv module requires this file to be opened with
                 # `newline=''`
                 return parse_record(txtfp)
@@ -60,8 +63,9 @@ class DistInfoProvider(abc.ABC):
 
     def get_wheel_info(self):
         try:
-            with self.open_dist_info_file('WHEEL') as binfp, \
-                    io.TextIOWrapper(binfp, 'utf-8') as txtfp:
+            with self.open_dist_info_file("WHEEL") as binfp, io.TextIOWrapper(
+                binfp, "utf-8"
+            ) as txtfp:
                 return parse_wheel_info(txtfp)
         except errors.MissingDistInfoFileError:
             raise errors.MissingWheelInfoError()
@@ -130,7 +134,7 @@ class DistInfoDir(DistInfoProvider):
         # returns a binary IO handle; raises MissingDistInfoFileError if file
         # does not exist
         try:
-            return (self.path / path).open('rb')
+            return (self.path / path).open("rb")
         except FileNotFoundError:
             raise errors.MissingDistInfoFileError(path)
 
@@ -147,7 +151,7 @@ class WheelFile(DistInfoProvider, FileProvider):
         self._dist_info = None
 
     def __enter__(self):
-        self.fp = self.path.open('rb')
+        self.fp = self.path.open("rb")
         self.zipfile = ZipFile(self.fp)
         return self
 
@@ -195,7 +199,7 @@ class WheelFile(DistInfoProvider, FileProvider):
         # returns a binary IO handle; raises MissingDistInfoFileError if file
         # does not exist
         try:
-            zi = self.zipfile.getinfo(self.dist_info + '/' + path)
+            zi = self.zipfile.getinfo(self.dist_info + "/" + path)
         except KeyError:
             raise errors.MissingDistInfoFileError(path)
         else:
@@ -203,17 +207,14 @@ class WheelFile(DistInfoProvider, FileProvider):
 
     def has_dist_info_file(self, path):  # -> bool
         try:
-            self.zipfile.getinfo(self.dist_info + '/' + path)
+            self.zipfile.getinfo(self.dist_info + "/" + path)
         except KeyError:
             return False
         else:
             return True
 
     def list_files(self):
-        return [
-            name for name in self.zipfile.namelist()
-                 if not name.endswith('/')
-        ]
+        return [name for name in self.zipfile.namelist() if not name.endswith("/")]
 
     def has_directory(self, path):
         return any(name.startswith(path) for name in self.zipfile.namelist())

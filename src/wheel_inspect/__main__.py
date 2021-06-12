@@ -1,7 +1,8 @@
 import json
 import os.path
 import sys
-from   .inspecting import inspect_dist_info_dir, inspect_wheel
+from .inspecting import inspect_dist_info_dir, inspect_wheel
+
 
 def main():
     for path in sys.argv[1:]:
@@ -11,5 +12,6 @@ def main():
             about = inspect_wheel(path)
         print(json.dumps(about, sort_keys=True, indent=4))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

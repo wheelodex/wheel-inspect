@@ -1,3 +1,8 @@
+v1.8.0 (in development)
+-----------------------
+- Support Python 3.10
+
+
 v1.7.0 (2020-11-07)
 -------------------
 - When verifying a `RECORD`, directory entries listed therein are now checked

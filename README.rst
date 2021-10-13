@@ -302,14 +302,6 @@ API
    Inspect the wheel file at the given ``path``.  The structure of the return
    value is described by ``WHEEL_SCHEMA``.
 
-Previous versions of ``wheel-inspect`` provided a ``parse_wheel_filename()``
-function.  As of version 1.5.0, that feature has been split off into its own
-package, `wheel-filename <https://github.com/jwodder/wheel-filename>`_.
-``wheel-inspect`` continues to re-export this function in order to maintain API
-compatibility with earlier versions, but this will change in the future.  Code
-that imports ``parse_wheel_filename()`` from ``wheel-inspect`` should be
-updated to use ``wheel-filename`` instead.
-
 
 Command
 =======

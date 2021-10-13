@@ -5,6 +5,8 @@ v2.0.0 (in development)
 - Moved to wheelodex organization
 - Added type annotations
 - Removed the old `SCHEMA` alias for `WHEEL_SCHEMA` (deprecated in v1.6.0)
+- Removed the re-export of `ParsedWheelFilename` and `parse_wheel_filename()`
+  from `wheel-filename` (deprecated in v1.5.0)
 
 
 v1.7.1 (2022-04-08)

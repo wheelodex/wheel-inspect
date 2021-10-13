@@ -33,6 +33,8 @@ jobs:
         include:
           - python-version: '3.7'
             toxenv: lint
+          - python-version: '3.7'
+            toxenv: typing
     steps:
       - name: Check out repository
         uses: actions/checkout@v4

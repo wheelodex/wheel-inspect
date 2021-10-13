@@ -1,6 +1,6 @@
 # cf. PEP 345 and <https://packaging.python.org/specifications/>
 import re
-from typing import Any, Dict, TextIO
+from typing import Any, Dict, TextIO, cast
 from headerparser import HeaderParser
 from packaging.requirements import Requirement
 from .util import fieldnorm, strfield
@@ -59,4 +59,4 @@ def parse_metadata(fp: TextIO) -> Dict[str, Any]:
             metadata[k] = [u for u in v if u is not None]
     if md.body is not None:
         metadata["BODY"] = strfield(md.body)
-    return metadata
+    return cast(Dict[str, Any], metadata)

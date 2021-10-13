@@ -213,6 +213,8 @@ def verify_record(fileprod: FileProvider, record: Record) -> None:
         elif entry.path not in files:
             raise errors.FileMissingError(entry.path)
         elif entry.digest is not None:
+            assert entry.digest_algorithm is not None
+            assert entry.size is not None
             file_size = fileprod.get_file_size(entry.path)
             if entry.size != file_size:
                 raise errors.RecordSizeMismatchError(

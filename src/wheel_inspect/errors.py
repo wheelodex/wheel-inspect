@@ -72,7 +72,7 @@ class FileMissingError(RecordValidationError):
         #: The path of the missing file
         self.path: str = path
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"File declared in RECORD not found in archive: {self.path!r}"
 
 
@@ -86,7 +86,7 @@ class ExtraFileError(RecordValidationError):
         #: The path of the extra file
         self.path: str = path
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"File not declared in RECORD: {self.path!r}"
 
 
@@ -111,7 +111,7 @@ class UnknownDigestError(MalformedRecordError):
         #: The unknown digest algorithm
         self.algorithm: str = algorithm
 
-    def __str__(self):
+    def __str__(self) -> str:
         return (
             f"RECORD entry for {self.path!r} uses an unknown digest algorithm:"
             f" {self.algorithm!r}"
@@ -311,19 +311,19 @@ class MissingDistInfoFileError(WheelValidationError):
 class MissingMetadataError(MissingDistInfoFileError):
     """Raised when a wheel does not contain a :file:`METADATA` file"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__("METADATA")
 
 
 class MissingRecordError(MissingDistInfoFileError):
     """Raised when a wheel does not contain a :file:`RECORD` file"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__("RECORD")
 
 
 class MissingWheelInfoError(MissingDistInfoFileError):
     """Raised when a wheel does not contain a :file:`WHEEL` file"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__("WHEEL")

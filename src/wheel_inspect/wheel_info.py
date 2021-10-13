@@ -1,4 +1,4 @@
-from typing import Dict, List, TextIO, Union
+from typing import Dict, List, TextIO, Union, cast
 from headerparser import BOOL, HeaderParser
 from .util import fieldnorm, strfield
 
@@ -58,4 +58,4 @@ def parse_wheel_info(fp: TextIO) -> Dict[str, Union[str, bool, List[str]]]:
             wheel_info[k] = [u for u in v if u is not None]
     if wi.body is not None and wi.body.strip():
         wheel_info["BODY"] = wi.body
-    return wheel_info
+    return cast(Dict[str, Union[str, bool, List[str]]], wheel_info)

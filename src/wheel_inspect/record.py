@@ -1,7 +1,6 @@
 from __future__ import annotations
 import base64
 from binascii import hexlify, unhexlify
-from collections import OrderedDict
 import csv
 import hashlib
 import re
@@ -47,6 +46,8 @@ class RecordEntry:
             raise errors.NonNormalizedPathError(path)
         elif path.startswith("/"):
             raise errors.AbsolutePathError(path)
+        digest_algorithm: Optional[str]
+        digest: Optional[str]
         if alg_digest:
             digest_algorithm, digest = alg_digest.split("=", 1)
             if digest_algorithm not in hashlib.algorithms_guaranteed:
@@ -59,13 +60,14 @@ class RecordEntry:
             digest = record_digest2hex(digest)
         else:
             digest_algorithm, digest = None, None
+        isize: Optional[int]
         if size:
             try:
-                size = int(size)
+                isize = int(size)
             except ValueError:
                 raise errors.MalformedSizeError(path, size)
         else:
-            size = None
+            isize = None
         if digest is None and size is not None:
             raise errors.EmptyDigestError(path)
         elif digest is not None and size is None:
@@ -74,7 +76,7 @@ class RecordEntry:
             path=path,
             digest_algorithm=digest_algorithm,
             digest=digest,
-            size=size,
+            size=isize,
         )
 
     def for_json(self) -> Dict[str, Any]:
@@ -89,7 +91,7 @@ class RecordEntry:
 
 def parse_record(fp: TextIO) -> Record:
     # Format defined in PEP 376
-    files = OrderedDict()
+    files: Dict[str, RecordEntry] = {}
     for fields in csv.reader(fp, delimiter=",", quotechar='"'):
         if not fields:
             continue

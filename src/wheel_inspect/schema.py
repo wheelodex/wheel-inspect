@@ -1,4 +1,5 @@
 from copy import deepcopy
+from typing import Any, Dict
 
 #: A `JSON Schema <http://json-schema.org>`_ for the structure returned by
 #: `inspect_dist_info_dir()` and by `inspect()` when called on a `DistInfoDir`.
@@ -240,7 +241,7 @@ DIST_INFO_SCHEMA = {
 
 #: A `JSON Schema <http://json-schema.org>`_ for the structure returned by
 #: `inspect_wheel()` and by `inspect()` when called on a `WheelFile`.
-WHEEL_SCHEMA = deepcopy(DIST_INFO_SCHEMA)
+WHEEL_SCHEMA: Dict[str, Any] = deepcopy(DIST_INFO_SCHEMA)
 
 WHEEL_SCHEMA["required"].extend(
     [

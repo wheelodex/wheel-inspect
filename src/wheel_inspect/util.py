@@ -5,7 +5,7 @@ from keyword import iskeyword
 import os
 import re
 from typing import (
-    BinaryIO,
+    IO,
     Dict,
     Iterable,
     Iterator,
@@ -18,7 +18,7 @@ from typing import (
 from packaging.utils import canonicalize_name, canonicalize_version
 from .errors import DistInfoError
 
-AnyPath = Union[bytes, str, os.PathLike[bytes], os.PathLike[str]]
+AnyPath = Union[bytes, str, "os.PathLike[bytes]", "os.PathLike[str]"]
 
 
 DIGEST_CHUNK_SIZE = 65535
@@ -91,7 +91,7 @@ def unique_projects(projects: Iterable[str]) -> Iterator[str]:
         seen.add(pn)
 
 
-def digest_file(fp: BinaryIO, algorithms: Iterable[str]) -> Dict[str, str]:
+def digest_file(fp: IO[bytes], algorithms: Iterable[str]) -> Dict[str, str]:
     digests = {alg: getattr(hashlib, alg)() for alg in algorithms}
     for chunk in iter(lambda: fp.read(DIGEST_CHUNK_SIZE), b""):
         for d in digests.values():

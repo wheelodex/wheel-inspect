@@ -1,8 +1,9 @@
-In Development
---------------
+v2.0.0 (in development)
+-----------------------
 - Dropped support for Python 3.6
 - Support Python 3.11 and 3.12
 - Moved to wheelodex organization
+- Added type annotations
 
 
 v1.7.1 (2022-04-08)

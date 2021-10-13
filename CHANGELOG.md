@@ -7,6 +7,10 @@ v2.0.0 (in development)
 - Removed the old `SCHEMA` alias for `WHEEL_SCHEMA` (deprecated in v1.6.0)
 - Removed the re-export of `ParsedWheelFilename` and `parse_wheel_filename()`
   from `wheel-filename` (deprecated in v1.5.0)
+- Schema changes:
+    - Files in `RECORD` now represent their digest information in a `"digest"`
+      key that is either `null` or a subobject with `"algorithm"` and
+      `"digest"` fields
 
 
 v1.7.1 (2022-04-08)

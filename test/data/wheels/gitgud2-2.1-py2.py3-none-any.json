@@ -97,65 +97,73 @@
         },
         "record": [
             {
-                "digests": {
-                    "sha256": "73nRtOkr5ewBzFsahVwg1YVW8qymUVyrqxsmpCtGGz0"
-                },
                 "path": "gitgud/__init__.py",
-                "size": 38
+                "size": 38,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "73nRtOkr5ewBzFsahVwg1YVW8qymUVyrqxsmpCtGGz0"
+                }
             },
             {
-                "digests": {
-                    "sha256": "04IN05UJ5uQ7Z0VrYXC9y2c9EBdXLcCOqtKZsmCRIwo"
-                },
                 "path": "gitgud/gitgud.py",
-                "size": 2698
+                "size": 2698,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "04IN05UJ5uQ7Z0VrYXC9y2c9EBdXLcCOqtKZsmCRIwo"
+                }
             },
             {
-                "digests": {
-                    "sha256": "YNLCjRnSvfe7qlmCnnpZUjQmXoERoBzLdNJdbE0tATo"
-                },
                 "path": "gitgud2-2.1.dist-info/LICENSE",
-                "size": 1211
+                "size": 1211,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "YNLCjRnSvfe7qlmCnnpZUjQmXoERoBzLdNJdbE0tATo"
+                }
             },
             {
-                "digests": {
-                    "sha256": "4rKQddjc1vfwEZ4OqWpejeLe4uhYrdMiTEZZzReM9CU"
-                },
                 "path": "gitgud2-2.1.dist-info/METADATA",
-                "size": 3514
+                "size": 3514,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "4rKQddjc1vfwEZ4OqWpejeLe4uhYrdMiTEZZzReM9CU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "HX-v9-noUkyUoxyZ1PMSuS7auUxDAR4VBdoYLqD0xws"
-                },
                 "path": "gitgud2-2.1.dist-info/WHEEL",
-                "size": 110
+                "size": 110,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "HX-v9-noUkyUoxyZ1PMSuS7auUxDAR4VBdoYLqD0xws"
+                }
             },
             {
-                "digests": {
-                    "sha256": "E4vYMOZwIB4HLCr_mmASXBHQ-KffmdScWZpoTAfHk6A"
-                },
                 "path": "gitgud2-2.1.dist-info/entry_points.txt",
-                "size": 193
+                "size": 193,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "E4vYMOZwIB4HLCr_mmASXBHQ-KffmdScWZpoTAfHk6A"
+                }
             },
             {
-                "digests": {
-                    "sha256": "mNjJFzrZxRrcaW33UXeZrX4ZjJThKFAuvmTV4F3WUCg"
-                },
                 "path": "gitgud2-2.1.dist-info/top_level.txt",
-                "size": 7
+                "size": 7,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "mNjJFzrZxRrcaW33UXeZrX4ZjJThKFAuvmTV4F3WUCg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "AbpHGcgLb-kRsJGnwFEktk7uzpZOCcBY74-YBdrKVGs"
-                },
                 "path": "gitgud2-2.1.dist-info/zip-safe",
-                "size": 1
+                "size": 1,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "AbpHGcgLb-kRsJGnwFEktk7uzpZOCcBY74-YBdrKVGs"
+                }
             },
             {
-                "digests": {},
                 "path": "gitgud2-2.1.dist-info/RECORD",
-                "size": null
+                "size": null,
+                "digest": null
             }
         ],
         "top_level": [

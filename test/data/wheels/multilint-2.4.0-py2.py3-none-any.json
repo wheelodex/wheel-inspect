@@ -91,58 +91,65 @@
         },
         "record": [
             {
-                "digests": {
-                    "sha256": "vXX001t3Ez8qS9R-tibVENsfb6-GCjpVN49m0fFbTQY"
-                },
                 "path": "multilint/__init__.py",
-                "size": 5640
+                "size": 5640,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "vXX001t3Ez8qS9R-tibVENsfb6-GCjpVN49m0fFbTQY"
+                }
             },
             {
-                "digests": {
-                    "sha256": "fneZtQtgQIGksjRu7xg714XX9-htwLlj3oG5FYP0wbw"
-                },
                 "path": "multilint/__main__.py",
-                "size": 175
+                "size": 175,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "fneZtQtgQIGksjRu7xg714XX9-htwLlj3oG5FYP0wbw"
+                }
             },
             {
-                "digests": {
-                    "sha256": "KzuLHj8fv4vCHFQnDnVtOUs83k5f3yZ7NOZScmB67Dw"
-                },
                 "path": "multilint-2.4.0.dist-info/LICENSE.txt",
-                "size": 744
+                "size": 744,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "KzuLHj8fv4vCHFQnDnVtOUs83k5f3yZ7NOZScmB67Dw"
+                }
             },
             {
-                "digests": {
-                    "sha256": "6VWNNtq_lext7-sAb8FcM8OipmD7oky1nmF_bqU6V70"
-                },
                 "path": "multilint-2.4.0.dist-info/METADATA",
-                "size": 4962
+                "size": 4962,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "6VWNNtq_lext7-sAb8FcM8OipmD7oky1nmF_bqU6V70"
+                }
             },
             {
-                "digests": {},
                 "path": "multilint-2.4.0.dist-info/RECORD",
-                "size": null
+                "size": null,
+                "digest": null
             },
             {
-                "digests": {
-                    "sha256": "gduuPyBvFJQSQ0zdyxF7k0zynDXbIbvg5ZBHoXum5uk"
-                },
                 "path": "multilint-2.4.0.dist-info/WHEEL",
-                "size": 110
+                "size": 110,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "gduuPyBvFJQSQ0zdyxF7k0zynDXbIbvg5ZBHoXum5uk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "ma9at-jxQF4bujhPUKviviS9egYTbvOgAgbPaP1EDhI"
-                },
                 "path": "multilint-2.4.0.dist-info/entry_points.txt",
-                "size": 46
+                "size": 46,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "ma9at-jxQF4bujhPUKviviS9egYTbvOgAgbPaP1EDhI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "hU7-peCk3oiX2f3rKoVryAXjHo5i53YrT4If-Ddy8H0"
-                },
                 "path": "multilint-2.4.0.dist-info/top_level.txt",
-                "size": 10
+                "size": 10,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "hU7-peCk3oiX2f3rKoVryAXjHo5i53YrT4If-Ddy8H0"
+                }
             }
         ],
         "top_level": [

@@ -213,7 +213,6 @@ def verify_record(fileprod: FileProvider, record: Record) -> None:
         elif entry.path not in files:
             raise errors.FileMissingError(entry.path)
         elif entry.digest is not None:
-            assert entry.digest_algorithm is not None
             assert entry.size is not None
             file_size = fileprod.get_file_size(entry.path)
             if entry.size != file_size:
@@ -222,13 +221,14 @@ def verify_record(fileprod: FileProvider, record: Record) -> None:
                     entry.size,
                     file_size,
                 )
-            digest = fileprod.get_file_hash(entry.path, entry.digest_algorithm)
-            if digest != entry.digest:
+            ### TODO: Use Digest.verify() here:
+            digest = fileprod.get_file_hash(entry.path, entry.digest.algorithm)
+            if digest != entry.digest.hex_digest:
                 raise errors.RecordDigestMismatchError(
-                    entry.path,
-                    entry.digest_algorithm,
-                    entry.digest,
-                    digest,
+                    path=entry.path,
+                    algorithm=entry.digest.algorithm,
+                    record_digest=entry.digest.hex_digest,
+                    actual_digest=digest,
                 )
         elif not is_dist_info_path(entry.path, "RECORD"):
             raise errors.NullEntryError(entry.path)

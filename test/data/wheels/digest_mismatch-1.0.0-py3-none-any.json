@@ -29,30 +29,33 @@
         },
         "record": [
             {
-                "digests": {
-                    "sha256": "PTXEipz_rDvgvvKvRdVjTHZ6-4Ppg50mghcXJTgpWKg"
-                },
                 "path": "digest_mismatch-1.0.0.dist-info/METADATA",
-                "size": 193
+                "size": 193,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "PTXEipz_rDvgvvKvRdVjTHZ6-4Ppg50mghcXJTgpWKg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Bh2t56_U9us28Wmb7g9frnrHZ2JxODzoszVmB4JScFU"
-                },
                 "path": "digest_mismatch-1.0.0.dist-info/WHEEL",
-                "size": 79
+                "size": 79,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Bh2t56_U9us28Wmb7g9frnrHZ2JxODzoszVmB4JScFU"
+                }
             },
             {
-                "digests": {},
                 "path": "digest_mismatch-1.0.0.dist-info/RECORD",
-                "size": null
+                "size": null,
+                "digest": null
             },
             {
-                "digests": {
-                    "sha256": "AeOOlP4F6s77YK8wg9sHxzMQKP3Issk9nVy7Z2nTZ0I"
-                },
                 "path": "module.py",
-                "size": 65
+                "size": 65,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "AeOOlP4F6s77YK8wg9sHxzMQKP3Issk9nVy7Z2nTZ0I"
+                }
             }
         ],
         "wheel": {

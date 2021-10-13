@@ -3,12 +3,12 @@ import abc
 import io
 import os
 from pathlib import Path
-from typing import Any, IO, Dict, List, Optional
+from typing import IO, Any, Dict, List, Optional
 from zipfile import ZipFile
 from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from . import errors
 from .metadata import parse_metadata
-from .record import Record, parse_record
+from .record import Record
 from .util import AnyPath, digest_file, find_dist_info_dir
 from .wheel_info import parse_wheel_info
 
@@ -60,7 +60,7 @@ class DistInfoProvider(abc.ABC):
             ) as txtfp:
                 # The csv module requires this file to be opened with
                 # `newline=''`
-                return parse_record(txtfp)
+                return Record.load(txtfp)
         except errors.MissingDistInfoFileError:
             raise errors.MissingRecordError()
 

@@ -111,28 +111,19 @@ DIST_INFO_SCHEMA = {
                     "type": "array",
                     "items": {
                         "type": "object",
-                        "required": ["path", "digests", "size"],
+                        "required": ["path", "digest", "size"],
                         "additionalProperties": False,
                         "properties": {
                             "path": {"type": "string"},
-                            "digests": {
-                                "type": "object",
+                            "digest": {
+                                "type": ["null", "object"],
+                                "additionalProperties": False,
+                                "required": ["algorithm", "digest"],
                                 "properties": {
-                                    "md5": {
+                                    "algorithm": {"type": "string"},
+                                    "digest": {
                                         "type": "string",
-                                        "pattern": "^[-_0-9A-Za-z]{22}$",
-                                    },
-                                    "sha1": {
-                                        "type": "string",
-                                        "pattern": "^[-_0-9A-Za-z]{27}$",
-                                    },
-                                    "sha256": {
-                                        "type": "string",
-                                        "pattern": "^[-_0-9A-Za-z]{43}$",
-                                    },
-                                    "sha512": {
-                                        "type": "string",
-                                        "pattern": "^[-_0-9A-Za-z]{86}$",
+                                        "pattern": "^[-_0-9A-Za-z]+$",
                                     },
                                 },
                             },

@@ -29,40 +29,43 @@
         },
         "record": [
             {
-                "digests": {
-                    "sha256": "AeOOlP4F6s77YK8wg9sHxzMQKP3Issk9nVy7Z2nTZ0I"
-                },
                 "path": "module.py",
-                "size": 65
+                "size": 65,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "AeOOlP4F6s77YK8wg9sHxzMQKP3Issk9nVy7Z2nTZ0I"
+                }
             },
             {
-                "digests": {
-                    "sha256": "FntMXE1yJYS_mbaZmlwiIXWfceZUUd8fphyhP6F0Dpg"
-                },
                 "path": "dirs_in_record-1.0.0.dist-info/METADATA",
-                "size": 174
+                "size": 174,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "FntMXE1yJYS_mbaZmlwiIXWfceZUUd8fphyhP6F0Dpg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Bh2t56_U9us28Wmb7g9frnrHZ2JxODzoszVmB4JScFU"
-                },
                 "path": "dirs_in_record-1.0.0.dist-info/WHEEL",
-                "size": 79
+                "size": 79,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Bh2t56_U9us28Wmb7g9frnrHZ2JxODzoszVmB4JScFU"
+                }
             },
             {
-                "digests": {},
                 "path": "dirs_in_record-1.0.0.dist-info/RECORD",
-                "size": null
+                "size": null,
+                "digest": null
             },
             {
-                "digests": {},
                 "path": "dirs_in_record-1.0.0.dist-info/",
-                "size": null
+                "size": null,
+                "digest": null
             },
             {
-                "digests": {},
                 "path": "empty/",
-                "size": null
+                "size": null,
+                "digest": null
             }
         ],
         "wheel": {

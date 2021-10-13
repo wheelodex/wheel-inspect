@@ -96,58 +96,65 @@
         },
         "record": [
             {
-                "digests": {
-                    "sha256": "xr3dKoOhOcmXSEbQHLQMiy50ZsUyBlJ5qOz5MWBJB2o"
-                },
                 "path": "pytest_venv/__init__.py",
-                "size": 1410
+                "size": 1410,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "xr3dKoOhOcmXSEbQHLQMiy50ZsUyBlJ5qOz5MWBJB2o"
+                }
             },
             {
-                "digests": {
-                    "sha256": "jS-ZnqAFVWoCTCZ3Tsgxuu3sQxOJMfkmWKkWl4ToYkc"
-                },
                 "path": "pytest_venv-0.2.dist-info/DESCRIPTION.rst",
-                "size": 1979
+                "size": 1979,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "jS-ZnqAFVWoCTCZ3Tsgxuu3sQxOJMfkmWKkWl4ToYkc"
+                }
             },
             {
-                "digests": {
-                    "sha256": "4hcJhpLowJVmUNKwF5kv2DFrGve0LzIwXC7pbZIQrVU"
-                },
                 "path": "pytest_venv-0.2.dist-info/METADATA",
-                "size": 3054
+                "size": 3054,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "4hcJhpLowJVmUNKwF5kv2DFrGve0LzIwXC7pbZIQrVU"
+                }
             },
             {
-                "digests": {},
                 "path": "pytest_venv-0.2.dist-info/RECORD",
-                "size": null
+                "size": null,
+                "digest": null
             },
             {
-                "digests": {
-                    "sha256": "o2k-Qa-RMNIJmUdIc7KU6VWR_ErNRbWNlxDIpl7lm34"
-                },
                 "path": "pytest_venv-0.2.dist-info/WHEEL",
-                "size": 110
+                "size": 110,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "o2k-Qa-RMNIJmUdIc7KU6VWR_ErNRbWNlxDIpl7lm34"
+                }
             },
             {
-                "digests": {
-                    "sha256": "w6YL2417PtoU0k7lKgSDxeaEoEP0GWVxGF0QoyCbnuc"
-                },
                 "path": "pytest_venv-0.2.dist-info/entry_points.txt",
-                "size": 31
+                "size": 31,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "w6YL2417PtoU0k7lKgSDxeaEoEP0GWVxGF0QoyCbnuc"
+                }
             },
             {
-                "digests": {
-                    "sha256": "CjiXgP6NrOsHqxWeb9DAaQozrGpI5wsrl0jUAo3WZqc"
-                },
                 "path": "pytest_venv-0.2.dist-info/metadata.json",
-                "size": 1177
+                "size": 1177,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "CjiXgP6NrOsHqxWeb9DAaQozrGpI5wsrl0jUAo3WZqc"
+                }
             },
             {
-                "digests": {
-                    "sha256": "7YLJCuYF2cCLyZu6-o5HQBDboohlGjsWqg94dAao4FQ"
-                },
                 "path": "pytest_venv-0.2.dist-info/top_level.txt",
-                "size": 12
+                "size": 12,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "7YLJCuYF2cCLyZu6-o5HQBDboohlGjsWqg94dAao4FQ"
+                }
             }
         ],
         "top_level": [

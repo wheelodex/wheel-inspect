@@ -334,1689 +334,1929 @@
         },
         "record": [
             {
-                "digests": {
-                    "sha256": "FRvN8l0RlbFrMllipwqpB5FMIgFtjE7sUyp7B0IIk_4"
-                },
                 "path": "appr/__init__.py",
-                "size": 165
+                "size": 165,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "FRvN8l0RlbFrMllipwqpB5FMIgFtjE7sUyp7B0IIk_4"
+                }
             },
             {
-                "digests": {
-                    "sha256": "ZECQ3D8AOCGTt9BjaKKa6iu_PCY9jS05AapIGBYWhxU"
-                },
                 "path": "appr/auth.py",
-                "size": 3128
+                "size": 3128,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "ZECQ3D8AOCGTt9BjaKKa6iu_PCY9jS05AapIGBYWhxU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "r2Txx-J7Kc_04F70Xehey1bYPTHvj90QAjoBxJOYXVU"
-                },
                 "path": "appr/client.py",
-                "size": 8666
+                "size": 8666,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "r2Txx-J7Kc_04F70Xehey1bYPTHvj90QAjoBxJOYXVU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "dkw26jHaf78uJeZsVaZ5Oa8Rm4x2DPfUxermU4jSbUI"
-                },
                 "path": "appr/config.py",
-                "size": 1636
+                "size": 1636,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "dkw26jHaf78uJeZsVaZ5Oa8Rm4x2DPfUxermU4jSbUI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "YBXH-tI4foqT1LWhui5c0xvucQCBDHf9s-by0qupwWU"
-                },
                 "path": "appr/discovery.py",
-                "size": 2037
+                "size": 2037,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "YBXH-tI4foqT1LWhui5c0xvucQCBDHf9s-by0qupwWU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "lAK8DMKi6-PnljeGklRc1JVyFut93k8u9wpaPx4tC0A"
-                },
                 "path": "appr/display.py",
-                "size": 1611
+                "size": 1611,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "lAK8DMKi6-PnljeGklRc1JVyFut93k8u9wpaPx4tC0A"
+                }
             },
             {
-                "digests": {
-                    "sha256": "567PvW2kdD8SSs1VvuEdyVBz5p_RJT2vOoocxpcBoLk"
-                },
                 "path": "appr/exception.py",
-                "size": 2930
+                "size": 2930,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "567PvW2kdD8SSs1VvuEdyVBz5p_RJT2vOoocxpcBoLk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "h7Gvomc-xMDoNKnERq644gIxTbk1pp34qsM8pHEZOEM"
-                },
                 "path": "appr/pack.py",
-                "size": 4293
+                "size": 4293,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "h7Gvomc-xMDoNKnERq644gIxTbk1pp34qsM8pHEZOEM"
+                }
             },
             {
-                "digests": {
-                    "sha256": "fwzckS0AMBarSNr4MswqnTRuCtWNLMn3QjZ0nPyaOe4"
-                },
                 "path": "appr/packager.py",
-                "size": 2558
+                "size": 2558,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "fwzckS0AMBarSNr4MswqnTRuCtWNLMn3QjZ0nPyaOe4"
+                }
             },
             {
-                "digests": {
-                    "sha256": "UlgORGSmXoZbv60LBneffBSdMtHfE1ZrFuW8uw6ePyU"
-                },
                 "path": "appr/render_jsonnet.py",
-                "size": 4262
+                "size": 4262,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "UlgORGSmXoZbv60LBneffBSdMtHfE1ZrFuW8uw6ePyU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "z5lItR1vkZCyTMoat7XESIKBc4--EPsXLSN2Q9btgDc"
-                },
                 "path": "appr/semver.py",
-                "size": 721
+                "size": 721,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "z5lItR1vkZCyTMoat7XESIKBc4--EPsXLSN2Q9btgDc"
+                }
             },
             {
-                "digests": {
-                    "sha256": "gWCKaxv6ID173QGfmejmX0exSUxn5ntT6ci9Ecf4b7I"
-                },
                 "path": "appr/template_filters.py",
-                "size": 6642
+                "size": 6642,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "gWCKaxv6ID173QGfmejmX0exSUxn5ntT6ci9Ecf4b7I"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Tk4WgkJAUrQBa4DWtQrXrXtfl4fjp_ce3AwGlj6-Kjs"
-                },
                 "path": "appr/utils.py",
-                "size": 7294
+                "size": 7294,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Tk4WgkJAUrQBa4DWtQrXrXtfl4fjp_ce3AwGlj6-Kjs"
+                }
             },
             {
-                "digests": {
-                    "sha256": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                },
                 "path": "appr/api/__init__.py",
-                "size": 0
+                "size": 0,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "CLyOFbOGf2hRnPF_jRHSo6W-8p0BP2IOIWE_eszS6yg"
-                },
                 "path": "appr/api/app.py",
-                "size": 1307
+                "size": 1307,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "CLyOFbOGf2hRnPF_jRHSo6W-8p0BP2IOIWE_eszS6yg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "6_Nm67M0IcWr55P1O6vMEbAsH6SV_dSl9r1l-98u9yU"
-                },
                 "path": "appr/api/builder.py",
-                "size": 2522
+                "size": 2522,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "6_Nm67M0IcWr55P1O6vMEbAsH6SV_dSl9r1l-98u9yU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "msEmlWavb-qzdORAETmEan4FCz5_KoOMCNUaxyiFl80"
-                },
                 "path": "appr/api/config.py",
-                "size": 545
+                "size": 545,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "msEmlWavb-qzdORAETmEan4FCz5_KoOMCNUaxyiFl80"
+                }
             },
             {
-                "digests": {
-                    "sha256": "njiXJegPd1JTi8NJ9ctXrcCPqANnMDcinVgKhDPeij0"
-                },
                 "path": "appr/api/deployment.py",
-                "size": 1879
+                "size": 1879,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "njiXJegPd1JTi8NJ9ctXrcCPqANnMDcinVgKhDPeij0"
+                }
             },
             {
-                "digests": {
-                    "sha256": "hymzeOTdsjpawhRqXBc1A4CtocZzsyTA-oZHxylhq7w"
-                },
                 "path": "appr/api/gevent_app.py",
-                "size": 628
+                "size": 628,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "hymzeOTdsjpawhRqXBc1A4CtocZzsyTA-oZHxylhq7w"
+                }
             },
             {
-                "digests": {
-                    "sha256": "cLfJkxELpXRX2vn3BzaY_j4OlQvEdjnDBZoba9ezBXI"
-                },
                 "path": "appr/api/gunicorn_app.py",
-                "size": 937
+                "size": 937,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "cLfJkxELpXRX2vn3BzaY_j4OlQvEdjnDBZoba9ezBXI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "YQ0LVwsSlP1ODfMpjtJE3pkaR7cUz3B6WR_2eRM6VLk"
-                },
                 "path": "appr/api/info.py",
-                "size": 1751
+                "size": 1751,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "YQ0LVwsSlP1ODfMpjtJE3pkaR7cUz3B6WR_2eRM6VLk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "0QX_oxVnobvV8wcx7UgNA-AUc0c5SOukPIV9e206GNU"
-                },
                 "path": "appr/api/registry.py",
-                "size": 9277
+                "size": 9277,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "0QX_oxVnobvV8wcx7UgNA-AUc0c5SOukPIV9e206GNU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "aZsq5pO5M7GTbT48X-ETsHWXj95PdewhrBI7f3nPfYw"
-                },
                 "path": "appr/api/wsgi.py",
-                "size": 122
+                "size": 122,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "aZsq5pO5M7GTbT48X-ETsHWXj95PdewhrBI7f3nPfYw"
+                }
             },
             {
-                "digests": {
-                    "sha256": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                },
                 "path": "appr/api/impl/__init__.py",
-                "size": 0
+                "size": 0,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "0k1bk9-eKIyNpn0sQX1fUA_whSZW6a4zdWu-WpQ0i3U"
-                },
                 "path": "appr/api/impl/builder.py",
-                "size": 3687
+                "size": 3687,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "0k1bk9-eKIyNpn0sQX1fUA_whSZW6a4zdWu-WpQ0i3U"
+                }
             },
             {
-                "digests": {
-                    "sha256": "jrnsCnTreoPHMW0hfqRtWtTL83QPKWf7rE8jHNfNINg"
-                },
                 "path": "appr/api/impl/registry.py",
-                "size": 13391
+                "size": 13391,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "jrnsCnTreoPHMW0hfqRtWtTL83QPKWf7rE8jHNfNINg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                },
                 "path": "appr/commands/__init__.py",
-                "size": 0
+                "size": 0,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "CZzgFlZ5RUlgfSl5DHSKE0wG5_5PcjXdTTLCDepPahA"
-                },
                 "path": "appr/commands/channel.py",
-                "size": 2579
+                "size": 2579,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "CZzgFlZ5RUlgfSl5DHSKE0wG5_5PcjXdTTLCDepPahA"
+                }
             },
             {
-                "digests": {
-                    "sha256": "zv3OZg6yLDryH7iOj1RL7QQuR3ROQBWnd186HwGAQCw"
-                },
                 "path": "appr/commands/cli.py",
-                "size": 2478
+                "size": 2478,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "zv3OZg6yLDryH7iOj1RL7QQuR3ROQBWnd186HwGAQCw"
+                }
             },
             {
-                "digests": {
-                    "sha256": "6ChsNTg6pcabzpJw9-7nj4dXgDOl0tkDH-d9YKenYHc"
-                },
                 "path": "appr/commands/command_base.py",
-                "size": 8196
+                "size": 8196,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "6ChsNTg6pcabzpJw9-7nj4dXgDOl0tkDH-d9YKenYHc"
+                }
             },
             {
-                "digests": {
-                    "sha256": "rHo0R2VCcwZ3zbFX3yueQvf9UsIgmUZpdzc0aDqfxdY"
-                },
                 "path": "appr/commands/config.py",
-                "size": 1082
+                "size": 1082,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "rHo0R2VCcwZ3zbFX3yueQvf9UsIgmUZpdzc0aDqfxdY"
+                }
             },
             {
-                "digests": {
-                    "sha256": "rFE7NVKTBvvK0CM-EIcSQ-lZxlOKC28H2VUZcrXzXug"
-                },
                 "path": "appr/commands/delete_package.py",
-                "size": 1432
+                "size": 1432,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "rFE7NVKTBvvK0CM-EIcSQ-lZxlOKC28H2VUZcrXzXug"
+                }
             },
             {
-                "digests": {
-                    "sha256": "cjk7ir-kKHfTYVnUt1VxrIQ4pmb3LDpoHe6hUhbOO50"
-                },
                 "path": "appr/commands/deploy.py",
-                "size": 2784
+                "size": 2784,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "cjk7ir-kKHfTYVnUt1VxrIQ4pmb3LDpoHe6hUhbOO50"
+                }
             },
             {
-                "digests": {
-                    "sha256": "v6evIttXVop_pwbn2yBhvRL6MgkOmQLdeo55pnNnZt8"
-                },
                 "path": "appr/commands/generate.py",
-                "size": 676
+                "size": 676,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "v6evIttXVop_pwbn2yBhvRL6MgkOmQLdeo55pnNnZt8"
+                }
             },
             {
-                "digests": {
-                    "sha256": "60We8IbFg9P1Lp5qN5q02heiFDXOqljP3RdApB3MSZc"
-                },
                 "path": "appr/commands/helm.py",
-                "size": 4398
+                "size": 4398,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "60We8IbFg9P1Lp5qN5q02heiFDXOqljP3RdApB3MSZc"
+                }
             },
             {
-                "digests": {
-                    "sha256": "CMwoH0qGc7R10CHnH4oiScXaXl2jUgEqBSnQHbeDGyc"
-                },
                 "path": "appr/commands/inspect.py",
-                "size": 2043
+                "size": 2043,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "CMwoH0qGc7R10CHnH4oiScXaXl2jUgEqBSnQHbeDGyc"
+                }
             },
             {
-                "digests": {
-                    "sha256": "P96U451peUWqnbE0EPQ1cCh98B1ChHXASH-ajol6GsM"
-                },
                 "path": "appr/commands/jsonnet.py",
-                "size": 1855
+                "size": 1855,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "P96U451peUWqnbE0EPQ1cCh98B1ChHXASH-ajol6GsM"
+                }
             },
             {
-                "digests": {
-                    "sha256": "YgyQ7sex4NKl4knIbnq68Hqg6tDULk6ylf1R2Z6rAwk"
-                },
                 "path": "appr/commands/list_package.py",
-                "size": 1923
+                "size": 1923,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "YgyQ7sex4NKl4knIbnq68Hqg6tDULk6ylf1R2Z6rAwk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "6UxA-bCv7rFXwDNKhaxeE5xaLa_llhlTj2Qg3fykLF8"
-                },
                 "path": "appr/commands/login.py",
-                "size": 2963
+                "size": 2963,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "6UxA-bCv7rFXwDNKhaxeE5xaLa_llhlTj2Qg3fykLF8"
+                }
             },
             {
-                "digests": {
-                    "sha256": "5fXUqKBmm94cBxAbAMKLcsV95_j6xdQGMyQlOpSPjOc"
-                },
                 "path": "appr/commands/logout.py",
-                "size": 1567
+                "size": 1567,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "5fXUqKBmm94cBxAbAMKLcsV95_j6xdQGMyQlOpSPjOc"
+                }
             },
             {
-                "digests": {
-                    "sha256": "_3gVJOk4avy864fnU2ZsgAh7Uw11O2NY6BMZUKr4yOY"
-                },
                 "path": "appr/commands/plugins.py",
-                "size": 3024
+                "size": 3024,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "_3gVJOk4avy864fnU2ZsgAh7Uw11O2NY6BMZUKr4yOY"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Qr5XfcZEvuitdeqO26idH7l3zWOhvmxOn_qTZj-apMk"
-                },
                 "path": "appr/commands/pull.py",
-                "size": 2329
+                "size": 2329,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Qr5XfcZEvuitdeqO26idH7l3zWOhvmxOn_qTZj-apMk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "NdYKUBqjPzOpBCRWHtOgd23yr9fcv-rv7alA3Dj3qYs"
-                },
                 "path": "appr/commands/push.py",
-                "size": 5965
+                "size": 5965,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "NdYKUBqjPzOpBCRWHtOgd23yr9fcv-rv7alA3Dj3qYs"
+                }
             },
             {
-                "digests": {
-                    "sha256": "l_Idg7V_Olhk7Z_MxhGCcNSkQZ1dMDsw-xjtAqrrkng"
-                },
                 "path": "appr/commands/remove.py",
-                "size": 342
+                "size": 342,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "l_Idg7V_Olhk7Z_MxhGCcNSkQZ1dMDsw-xjtAqrrkng"
+                }
             },
             {
-                "digests": {
-                    "sha256": "gP3Ri86amEJgYQTC_dMOV4xY0TLyArnBYb7n76OVKYo"
-                },
                 "path": "appr/commands/runserver.py",
-                "size": 1097
+                "size": 1097,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "gP3Ri86amEJgYQTC_dMOV4xY0TLyArnBYb7n76OVKYo"
+                }
             },
             {
-                "digests": {
-                    "sha256": "qlS9XvxWzpCFbsm_J_yGIsrxIthjyKOnJDqvI71ZQT0"
-                },
                 "path": "appr/commands/show.py",
-                "size": 1696
+                "size": 1696,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "qlS9XvxWzpCFbsm_J_yGIsrxIthjyKOnJDqvI71ZQT0"
+                }
             },
             {
-                "digests": {
-                    "sha256": "21OVHRDOj1EJiA99eEzR_YuwNNd7IuA-nZDp0HMiLfo"
-                },
                 "path": "appr/commands/version.py",
-                "size": 1555
+                "size": 1555,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "21OVHRDOj1EJiA99eEzR_YuwNNd7IuA-nZDp0HMiLfo"
+                }
             },
             {
-                "digests": {
-                    "sha256": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                },
                 "path": "appr/formats/__init__.py",
-                "size": 0
+                "size": 0,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "kT0Kpy-HqgqxSf_ajdWWy5HXqADI4DSr6lXD-zx9U2w"
-                },
                 "path": "appr/formats/base.py",
-                "size": 2847
+                "size": 2847,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "kT0Kpy-HqgqxSf_ajdWWy5HXqADI4DSr6lXD-zx9U2w"
+                }
             },
             {
-                "digests": {
-                    "sha256": "HTA0gn3zETsCQT1ZNQleWHS9N5f7qbFnwhgxeh6Ts14"
-                },
                 "path": "appr/formats/convert.py",
-                "size": 598
+                "size": 598,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "HTA0gn3zETsCQT1ZNQleWHS9N5f7qbFnwhgxeh6Ts14"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Tcam2t3qDB-ILEqrTNQBXR1ZUVQVqRS6kWdlQpur8go"
-                },
                 "path": "appr/formats/utils.py",
-                "size": 982
+                "size": 982,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Tcam2t3qDB-ILEqrTNQBXR1ZUVQVqRS6kWdlQpur8go"
+                }
             },
             {
-                "digests": {
-                    "sha256": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                },
                 "path": "appr/formats/appr/__init__.py",
-                "size": 0
+                "size": 0,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "gsDGd1qbq51CcdUJcgJzxbm9TUyUbnvCBRINDRhS-ng"
-                },
                 "path": "appr/formats/appr/appr_package.py",
-                "size": 6616
+                "size": 6616,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "gsDGd1qbq51CcdUJcgJzxbm9TUyUbnvCBRINDRhS-ng"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Z4_RP1EThJCHEvHeuKuEjcVDI0fYvI2Woma9JDZ5JCE"
-                },
                 "path": "appr/formats/appr/kpm.py",
-                "size": 329
+                "size": 329,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Z4_RP1EThJCHEvHeuKuEjcVDI0fYvI2Woma9JDZ5JCE"
+                }
             },
             {
-                "digests": {
-                    "sha256": "GJ2i4JgkX1T_ujtW6Buz8ypf6321pqHBuNkomaTVgxs"
-                },
                 "path": "appr/formats/appr/kub.py",
-                "size": 7520
+                "size": 7520,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "GJ2i4JgkX1T_ujtW6Buz8ypf6321pqHBuNkomaTVgxs"
+                }
             },
             {
-                "digests": {
-                    "sha256": "e8z0I_dzfFqQuK_hydGwb7kKwDnAXxtfRDY4fqI3u40"
-                },
                 "path": "appr/formats/appr/kub_base.py",
-                "size": 5923
+                "size": 5923,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "e8z0I_dzfFqQuK_hydGwb7kKwDnAXxtfRDY4fqI3u40"
+                }
             },
             {
-                "digests": {
-                    "sha256": "ydPT0cFk6DiHp6dc6XxdkWrgqieNCVQcMe1pJpZwokc"
-                },
                 "path": "appr/formats/appr/kubplain.py",
-                "size": 507
+                "size": 507,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "ydPT0cFk6DiHp6dc6XxdkWrgqieNCVQcMe1pJpZwokc"
+                }
             },
             {
-                "digests": {
-                    "sha256": "rq5W9oiXQN3toUs_VwJcxnpzVAtxZsgTaXbmORpVuSw"
-                },
                 "path": "appr/formats/appr/manifest.py",
-                "size": 1539
+                "size": 1539,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "rq5W9oiXQN3toUs_VwJcxnpzVAtxZsgTaXbmORpVuSw"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Ow67d0JYxQHLjg-j0ezOJXDn92HSHheEcFXNjIWidCo"
-                },
                 "path": "appr/formats/appr/manifest_jsonnet.py",
-                "size": 2349
+                "size": 2349,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Ow67d0JYxQHLjg-j0ezOJXDn92HSHheEcFXNjIWidCo"
+                }
             },
             {
-                "digests": {
-                    "sha256": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                },
                 "path": "appr/formats/helm/__init__.py",
-                "size": 0
+                "size": 0,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Tlr2bIvI-YIp9yRilCwX31WEYZ1Vee-Rnfm4bMjY1sg"
-                },
                 "path": "appr/formats/helm/chart.py",
-                "size": 784
+                "size": 784,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Tlr2bIvI-YIp9yRilCwX31WEYZ1Vee-Rnfm4bMjY1sg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "NS2RHVg8O2DF5u2XI9_jwFg4T4idDKxgWsDTn6Ydd3M"
-                },
                 "path": "appr/formats/helm/manifest_chart.py",
-                "size": 1855
+                "size": 1855,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "NS2RHVg8O2DF5u2XI9_jwFg4T4idDKxgWsDTn6Ydd3M"
+                }
             },
             {
-                "digests": {
-                    "sha256": "zMynKC6MObcC8uxkvQxyS0ZkYBxvszrXGds8FMZq_AY"
-                },
                 "path": "appr/jsonnet/manifest.jsonnet.j2",
-                "size": 704
+                "size": 704,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "zMynKC6MObcC8uxkvQxyS0ZkYBxvszrXGds8FMZq_AY"
+                }
             },
             {
-                "digests": {
-                    "sha256": "OyxE1Gk5uO72JVO49fOX37NlGWywxoIWWcQ9nz8N1-U"
-                },
                 "path": "appr/jsonnet/lib/appr-native-ext.libsonnet",
-                "size": 2656
+                "size": 2656,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "OyxE1Gk5uO72JVO49fOX37NlGWywxoIWWcQ9nz8N1-U"
+                }
             },
             {
-                "digests": {
-                    "sha256": "oCqRUPv29rvhFM5pHEurnMU8-Qz5LDjxjkb8Xk5wn8o"
-                },
                 "path": "appr/jsonnet/lib/appr-utils.libsonnet",
-                "size": 1701
+                "size": 1701,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "oCqRUPv29rvhFM5pHEurnMU8-Qz5LDjxjkb8Xk5wn8o"
+                }
             },
             {
-                "digests": {
-                    "sha256": "S8nukJKc5taPRZhxFXoU8ZdoD6wtKpBjC0ss7PmtPdU"
-                },
                 "path": "appr/jsonnet/lib/appr.libsonnet",
-                "size": 5594
+                "size": 5594,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "S8nukJKc5taPRZhxFXoU8ZdoD6wtKpBjC0ss7PmtPdU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "5MUL4PvDOORrbFznslaK7R3qx4Dv3zAfW0qjD2NnkWs"
-                },
                 "path": "appr/jsonnet/lib/kpm-utils.libjsonnet",
-                "size": 30
+                "size": 30,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "5MUL4PvDOORrbFznslaK7R3qx4Dv3zAfW0qjD2NnkWs"
+                }
             },
             {
-                "digests": {
-                    "sha256": "PvfP4jzIMwFT1i59sh34aeyxA5Hm90JVuBL4w4iHiik"
-                },
                 "path": "appr/jsonnet/lib/kpm.libjsonnet",
-                "size": 24
+                "size": 24,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "PvfP4jzIMwFT1i59sh34aeyxA5Hm90JVuBL4w4iHiik"
+                }
             },
             {
-                "digests": {
-                    "sha256": "_LqdPGOjFFZcOUEj-1jBMCoTlyQHtyNFH7I0f3Ago2E"
-                },
                 "path": "appr/models/__init__.py",
-                "size": 826
+                "size": 826,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "_LqdPGOjFFZcOUEj-1jBMCoTlyQHtyNFH7I0f3Ago2E"
+                }
             },
             {
-                "digests": {
-                    "sha256": "gB5rC4qXM__--NbirPDV58ZwUJ9HQKhDDuYvw21Qxgk"
-                },
                 "path": "appr/models/blob_base.py",
-                "size": 1029
+                "size": 1029,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "gB5rC4qXM__--NbirPDV58ZwUJ9HQKhDDuYvw21Qxgk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "m4WjpAGD3egVkyKgDSqywo-q7yqSRBSa9W665QtakjA"
-                },
                 "path": "appr/models/channel_base.py",
-                "size": 2317
+                "size": 2317,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "m4WjpAGD3egVkyKgDSqywo-q7yqSRBSa9W665QtakjA"
+                }
             },
             {
-                "digests": {
-                    "sha256": "OsClgPFQWp3jtoAALQfAp1aGOKcBUOQfWdbt0VXKwQA"
-                },
                 "path": "appr/models/db_base.py",
-                "size": 2810
+                "size": 2810,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "OsClgPFQWp3jtoAALQfAp1aGOKcBUOQfWdbt0VXKwQA"
+                }
             },
             {
-                "digests": {
-                    "sha256": "1lcCMKqETgUr9UIYKXmJy22ay9M_cYRM9QmshQgU7rE"
-                },
                 "path": "appr/models/package_base.py",
-                "size": 8827
+                "size": 8827,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "1lcCMKqETgUr9UIYKXmJy22ay9M_cYRM9QmshQgU7rE"
+                }
             },
             {
-                "digests": {
-                    "sha256": "uBR0vMgKjNjTau8FuBvTpS5Z_G_qKr55j-BZ4Ug0wiM"
-                },
                 "path": "appr/models/kv/__init__.py",
-                "size": 74
+                "size": 74,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "uBR0vMgKjNjTau8FuBvTpS5Z_G_qKr55j-BZ4Ug0wiM"
+                }
             },
             {
-                "digests": {
-                    "sha256": "NQksyDymoS8a55eNfUN8CpbckpiOJdusWDtKn6GeQts"
-                },
                 "path": "appr/models/kv/blob_kv_base.py",
-                "size": 676
+                "size": 676,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "NQksyDymoS8a55eNfUN8CpbckpiOJdusWDtKn6GeQts"
+                }
             },
             {
-                "digests": {
-                    "sha256": "VRjbjAAkY4jx6DPlLJxDuX_8xZWoRIbk42xLi7Y5TbY"
-                },
                 "path": "appr/models/kv/channel_kv_base.py",
-                "size": 1530
+                "size": 1530,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "VRjbjAAkY4jx6DPlLJxDuX_8xZWoRIbk42xLi7Y5TbY"
+                }
             },
             {
-                "digests": {
-                    "sha256": "N8QXU81IRh4X6ffV4RZiHAjzBKpf2O6c7SuUjOBlXCM"
-                },
                 "path": "appr/models/kv/models_index_base.py",
-                "size": 13077
+                "size": 13077,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "N8QXU81IRh4X6ffV4RZiHAjzBKpf2O6c7SuUjOBlXCM"
+                }
             },
             {
-                "digests": {
-                    "sha256": "YXjOsf_CtkDgxeq1lNaUBQVzg0W0MKnomvB3w0hZvrA"
-                },
                 "path": "appr/models/kv/package_kv_base.py",
-                "size": 3858
+                "size": 3858,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "YXjOsf_CtkDgxeq1lNaUBQVzg0W0MKnomvB3w0hZvrA"
+                }
             },
             {
-                "digests": {
-                    "sha256": "X2Cq7XHPWuOfib3F8JW4svgP8OjsgNaAD95qjrIU0Vc"
-                },
                 "path": "appr/models/kv/etcd/__init__.py",
-                "size": 173
+                "size": 173,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "X2Cq7XHPWuOfib3F8JW4svgP8OjsgNaAD95qjrIU0Vc"
+                }
             },
             {
-                "digests": {
-                    "sha256": "7ZpVdy63Kb2M-L_pGuIv-UgLoh8n0Dx5Gha4tIot9j0"
-                },
                 "path": "appr/models/kv/etcd/blob.py",
-                "size": 238
+                "size": 238,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "7ZpVdy63Kb2M-L_pGuIv-UgLoh8n0Dx5Gha4tIot9j0"
+                }
             },
             {
-                "digests": {
-                    "sha256": "SqsHOS9qvRH_ZQwiesGYszIPyckKV_kO-TkiKiS4rpk"
-                },
                 "path": "appr/models/kv/etcd/channel.py",
-                "size": 250
+                "size": 250,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "SqsHOS9qvRH_ZQwiesGYszIPyckKV_kO-TkiKiS4rpk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "2AunLqUYA-lpd6eYmnURf4uA0SnCXf7k6C05P_FKRJ4"
-                },
                 "path": "appr/models/kv/etcd/db.py",
-                "size": 864
+                "size": 864,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "2AunLqUYA-lpd6eYmnURf4uA0SnCXf7k6C05P_FKRJ4"
+                }
             },
             {
-                "digests": {
-                    "sha256": "N-izlwaXnGWkRwclyUS4lokdlMjYfmCpyyMnk7PUf2k"
-                },
                 "path": "appr/models/kv/etcd/models_index.py",
-                "size": 1775
+                "size": 1775,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "N-izlwaXnGWkRwclyUS4lokdlMjYfmCpyyMnk7PUf2k"
+                }
             },
             {
-                "digests": {
-                    "sha256": "sVksGgJXHnk8puatLAZILsTtU9rL4eCKijpZv_S7M94"
-                },
                 "path": "appr/models/kv/etcd/package.py",
-                "size": 250
+                "size": 250,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "sVksGgJXHnk8puatLAZILsTtU9rL4eCKijpZv_S7M94"
+                }
             },
             {
-                "digests": {
-                    "sha256": "MQZ7bWeuPqn9uuhDziUtTMKg5L8OYfWJv8oBst06JG4"
-                },
                 "path": "appr/models/kv/filesystem/__init__.py",
-                "size": 1654
+                "size": 1654,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "MQZ7bWeuPqn9uuhDziUtTMKg5L8OYfWJv8oBst06JG4"
+                }
             },
             {
-                "digests": {
-                    "sha256": "hdFa1gtbP4dWxshkLxbN0Abqn99-YbFwpMzjDD91-p4"
-                },
                 "path": "appr/models/kv/filesystem/blob.py",
-                "size": 256
+                "size": 256,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "hdFa1gtbP4dWxshkLxbN0Abqn99-YbFwpMzjDD91-p4"
+                }
             },
             {
-                "digests": {
-                    "sha256": "K2HZYzuaDxJJN6yLqMkv00MdeF6TjZ81lTZEtFsh-Fg"
-                },
                 "path": "appr/models/kv/filesystem/channel.py",
-                "size": 268
+                "size": 268,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "K2HZYzuaDxJJN6yLqMkv00MdeF6TjZ81lTZEtFsh-Fg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "naPIhgTuCga8Z_3SiWBIsTnw9PCUBomayz0l_I2me1g"
-                },
                 "path": "appr/models/kv/filesystem/db.py",
-                "size": 802
+                "size": 802,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "naPIhgTuCga8Z_3SiWBIsTnw9PCUBomayz0l_I2me1g"
+                }
             },
             {
-                "digests": {
-                    "sha256": "ECz6kRtUApY4J7hdLNqFjGYbvJis9e6MjJVsuABajIg"
-                },
                 "path": "appr/models/kv/filesystem/models_index.py",
-                "size": 1633
+                "size": 1633,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "ECz6kRtUApY4J7hdLNqFjGYbvJis9e6MjJVsuABajIg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Om_KzNkEKg4dqjglWabvLHOjZIrCBZ35rF5aO6QlMns"
-                },
                 "path": "appr/models/kv/filesystem/package.py",
-                "size": 268
+                "size": 268,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Om_KzNkEKg4dqjglWabvLHOjZIrCBZ35rF5aO6QlMns"
+                }
             },
             {
-                "digests": {
-                    "sha256": "7J49K5StZNBM69w7nu8Yf4YoAS8-sQ5113wbKKp5JOU"
-                },
                 "path": "appr/models/kv/redis/__init__.py",
-                "size": 170
+                "size": 170,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "7J49K5StZNBM69w7nu8Yf4YoAS8-sQ5113wbKKp5JOU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "UnvmR2jZ7HvS9-QYfz02p8NTezHB8ZZbxEYvp5-hfCE"
-                },
                 "path": "appr/models/kv/redis/blob.py",
-                "size": 241
+                "size": 241,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "UnvmR2jZ7HvS9-QYfz02p8NTezHB8ZZbxEYvp5-hfCE"
+                }
             },
             {
-                "digests": {
-                    "sha256": "CKpbCvmdYN69nHQGMRzCQot8_hom_WjyCtegcjcI3lk"
-                },
                 "path": "appr/models/kv/redis/channel.py",
-                "size": 253
+                "size": 253,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "CKpbCvmdYN69nHQGMRzCQot8_hom_WjyCtegcjcI3lk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "aLgr1qjr6MKTTEg7avbZZphFgt7T-HinFnFQNBRMxCU"
-                },
                 "path": "appr/models/kv/redis/db.py",
-                "size": 750
+                "size": 750,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "aLgr1qjr6MKTTEg7avbZZphFgt7T-HinFnFQNBRMxCU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "GUgxD0weoaqUF_moyNohtbycC_XgTwQIAcvYHYiCp5M"
-                },
                 "path": "appr/models/kv/redis/models_index.py",
-                "size": 1638
+                "size": 1638,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "GUgxD0weoaqUF_moyNohtbycC_XgTwQIAcvYHYiCp5M"
+                }
             },
             {
-                "digests": {
-                    "sha256": "9PYVcnfXNMmPzh1HdUo0ZKjtkvo-Dv5ejk9JnVbEDio"
-                },
                 "path": "appr/models/kv/redis/package.py",
-                "size": 253
+                "size": 253,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "9PYVcnfXNMmPzh1HdUo0ZKjtkvo-Dv5ejk9JnVbEDio"
+                }
             },
             {
-                "digests": {
-                    "sha256": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                },
                 "path": "appr/platforms/__init__.py",
-                "size": 0
+                "size": 0,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "r4djnPLEvUmXTUMoSmDcos1G9NW9vJlAQaEQDFWTd0g"
-                },
                 "path": "appr/platforms/dockercompose.py",
-                "size": 892
+                "size": 892,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "r4djnPLEvUmXTUMoSmDcos1G9NW9vJlAQaEQDFWTd0g"
+                }
             },
             {
-                "digests": {
-                    "sha256": "zm2DQIQTYIwZC2avW60onWuiR9iZ8UXGqdd282QDhUI"
-                },
                 "path": "appr/platforms/helm.py",
-                "size": 116
+                "size": 116,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "zm2DQIQTYIwZC2avW60onWuiR9iZ8UXGqdd282QDhUI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "nEKTwnm3a1CxCRPlCNBxPpMjXmEYk2oWzromGe9mhGI"
-                },
                 "path": "appr/platforms/kubernetes.py",
-                "size": 8429
+                "size": 8429,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "nEKTwnm3a1CxCRPlCNBxPpMjXmEYk2oWzromGe9mhGI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                },
                 "path": "appr/plugins/__init__.py",
-                "size": 0
+                "size": 0,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "y-EcQvNXwLvqnLDgjtWRiFs5SSvnI3Hy8d8zFQOC538"
-                },
                 "path": "appr/plugins/helm.py",
-                "size": 3493
+                "size": 3493,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "y-EcQvNXwLvqnLDgjtWRiFs5SSvnI3Hy8d8zFQOC538"
+                }
             },
             {
-                "digests": {
-                    "sha256": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                },
                 "path": "appr/tests/__init__.py",
-                "size": 0
+                "size": 0,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "AnKySDJsTAhh1Lm3WnKea7xqJ0kido-VvcwdEWJe0SE"
-                },
                 "path": "appr/tests/conftest.py",
-                "size": 5851
+                "size": 5851,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "AnKySDJsTAhh1Lm3WnKea7xqJ0kido-VvcwdEWJe0SE"
+                }
             },
             {
-                "digests": {
-                    "sha256": "-Xg-BtKwjUZd0qXQ5qRGv5x4fxkfdECTeF1MvCeeGdA"
-                },
                 "path": "appr/tests/test_apiserver.py",
-                "size": 18275
+                "size": 18275,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "-Xg-BtKwjUZd0qXQ5qRGv5x4fxkfdECTeF1MvCeeGdA"
+                }
             },
             {
-                "digests": {
-                    "sha256": "6Pg_D6woaXU1XzgbhvifxGmKSfp7B7b6tZF_OlqXNYk"
-                },
                 "path": "appr/tests/test_models.py",
-                "size": 13801
+                "size": 13801,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "6Pg_D6woaXU1XzgbhvifxGmKSfp7B7b6tZF_OlqXNYk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "WekfovkQ9Ll3-G-RbEg1uwb-bPCj8FVcy7X3ngWvBIk"
-                },
                 "path": "appr/tests/data/backup1.json",
-                "size": 6392
+                "size": 6392,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "WekfovkQ9Ll3-G-RbEg1uwb-bPCj8FVcy7X3ngWvBIk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "7W_o__1Sp70xw-iR3bAc4e-_i3SOVJn6YLj2Weoftps"
-                },
                 "path": "appr/tests/data/backup2.json",
-                "size": 4515
+                "size": 4515,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "7W_o__1Sp70xw-iR3bAc4e-_i3SOVJn6YLj2Weoftps"
+                }
             },
             {
-                "digests": {
-                    "sha256": "NBC-CzhhAxXBtOiRX5n7vvdorIMNAbbGzmHK58xQ41w"
-                },
                 "path": "appr/tests/data/kube-ui.tar.gz",
-                "size": 765
+                "size": 765,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "NBC-CzhhAxXBtOiRX5n7vvdorIMNAbbGzmHK58xQ41w"
+                }
             },
             {
-                "digests": {
-                    "sha256": "pOooKwJkQ_GglMTs5KYZdaq2678hHJaGpE_x6YNRI4A"
-                },
                 "path": "appr/tests/data/kube-ui_release.json",
-                "size": 3132
+                "size": 3132,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "pOooKwJkQ_GglMTs5KYZdaq2678hHJaGpE_x6YNRI4A"
+                }
             },
             {
-                "digests": {
-                    "sha256": "NhUCM3zitrXxofEKSsFwJy1yD6qd6gBtS3TWpompTy0"
-                },
                 "path": "appr/tests/data/manifest.yaml",
-                "size": 15
+                "size": 15,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "NhUCM3zitrXxofEKSsFwJy1yD6qd6gBtS3TWpompTy0"
+                }
             },
             {
-                "digests": {
-                    "sha256": "ubb_LHcmvEpU7rDVY0xkx6GlGGI84XVcc3fghrpuOhs"
-                },
                 "path": "appr/tests/data/thirdparty.yaml",
-                "size": 225
+                "size": 225,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "ubb_LHcmvEpU7rDVY0xkx6GlGGI84XVcc3fghrpuOhs"
+                }
             },
             {
-                "digests": {
-                    "sha256": "9b2AZsH8uA_cp3Ag_knc58XQlx11tAHi5aygip2aY28"
-                },
                 "path": "appr/tests/data/bad_manifest/manifest.yaml",
-                "size": 46
+                "size": 46,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "9b2AZsH8uA_cp3Ag_knc58XQlx11tAHi5aygip2aY28"
+                }
             },
             {
-                "digests": {
-                    "sha256": "f4CsBe9c_PjhB5g3C_hWIwmffeJ8cSQaXCQ5vaiXD9M"
-                },
                 "path": "appr/tests/data/docker-compose/manifest.jsonnet",
-                "size": 929
+                "size": 929,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "f4CsBe9c_PjhB5g3C_hWIwmffeJ8cSQaXCQ5vaiXD9M"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Q1cy0kfbuA8vlb9t2b8oFikcoRYLmEKfvDmJrx9DD1g"
-                },
                 "path": "appr/tests/data/docker-compose/templates/compose-wordpress.yaml",
-                "size": 585
+                "size": 585,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Q1cy0kfbuA8vlb9t2b8oFikcoRYLmEKfvDmJrx9DD1g"
+                }
             },
             {
-                "digests": {
-                    "sha256": "WNtbfOKIN5EkiVtrmDHW-1PjLZ2538xcXjitw6BbwRE"
-                },
                 "path": "appr/tests/data/htmlcov/appr___init___py.html",
-                "size": 3357
+                "size": 3357,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "WNtbfOKIN5EkiVtrmDHW-1PjLZ2538xcXjitw6BbwRE"
+                }
             },
             {
-                "digests": {
-                    "sha256": "PXN_15jtyu230yC-k72PEK_eio18ubleCSKNh48u0Hs"
-                },
                 "path": "appr/tests/data/htmlcov/appr_api___init___py.html",
-                "size": 2500
+                "size": 2500,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "PXN_15jtyu230yC-k72PEK_eio18ubleCSKNh48u0Hs"
+                }
             },
             {
-                "digests": {
-                    "sha256": "wWH3T5dN9LCdlXIJc7jZhL_KBoe9G2Z536BkzdLqX4w"
-                },
                 "path": "appr/tests/data/htmlcov/appr_api_app_py.html",
-                "size": 15569
+                "size": 15569,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "wWH3T5dN9LCdlXIJc7jZhL_KBoe9G2Z536BkzdLqX4w"
+                }
             },
             {
-                "digests": {
-                    "sha256": "EGZUQ__VM4Ai2EogvBbEHwJ4yFFwD7R0j31DEW5xG14"
-                },
                 "path": "appr/tests/data/htmlcov/appr_api_builder_py.html",
-                "size": 21621
+                "size": 21621,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "EGZUQ__VM4Ai2EogvBbEHwJ4yFFwD7R0j31DEW5xG14"
+                }
             },
             {
-                "digests": {
-                    "sha256": "ybd20pIHCmFnsTpOKG3adQOU7pDcHiaIB07U5BAnFsE"
-                },
                 "path": "appr/tests/data/htmlcov/appr_api_config_py.html",
-                "size": 7310
+                "size": 7310,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "ybd20pIHCmFnsTpOKG3adQOU7pDcHiaIB07U5BAnFsE"
+                }
             },
             {
-                "digests": {
-                    "sha256": "hFn0-D7jJH5cNQgmSav7xrHpaHbfGJO9BIdy2UfaO-I"
-                },
                 "path": "appr/tests/data/htmlcov/appr_api_deployment_py.html",
-                "size": 19080
+                "size": 19080,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "hFn0-D7jJH5cNQgmSav7xrHpaHbfGJO9BIdy2UfaO-I"
+                }
             },
             {
-                "digests": {
-                    "sha256": "WfaAygbiI_-BqNLLpwHqQxYAm5WG9Z-Dnz-0AWmPurc"
-                },
                 "path": "appr/tests/data/htmlcov/appr_api_gevent_app_py.html",
-                "size": 8383
+                "size": 8383,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "WfaAygbiI_-BqNLLpwHqQxYAm5WG9Z-Dnz-0AWmPurc"
+                }
             },
             {
-                "digests": {
-                    "sha256": "C0sIJk_opzOBDwpv8YPTkm9TbzHMvgCUDtMU9E36wRY"
-                },
                 "path": "appr/tests/data/htmlcov/appr_api_gunicorn_app_py.html",
-                "size": 11154
+                "size": 11154,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "C0sIJk_opzOBDwpv8YPTkm9TbzHMvgCUDtMU9E36wRY"
+                }
             },
             {
-                "digests": {
-                    "sha256": "E6Rx82rKh3PE7WuptGuwtq5_3-DuQC5NMRrXXO4oAsU"
-                },
                 "path": "appr/tests/data/htmlcov/appr_api_impl___init___py.html",
-                "size": 2510
+                "size": 2510,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "E6Rx82rKh3PE7WuptGuwtq5_3-DuQC5NMRrXXO4oAsU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "5VQkoN7sWz8mY9OcOvtI5dqwXNtXVzwZGV0Awr2MoyU"
-                },
                 "path": "appr/tests/data/htmlcov/appr_api_impl_builder_py.html",
-                "size": 23042
+                "size": 23042,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "5VQkoN7sWz8mY9OcOvtI5dqwXNtXVzwZGV0Awr2MoyU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Uba3chWMwFlVCfEz1MKxiQQe-K7tYDj9xqzEd9HSqlU"
-                },
                 "path": "appr/tests/data/htmlcov/appr_api_impl_registry_py.html",
-                "size": 83137
+                "size": 83137,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Uba3chWMwFlVCfEz1MKxiQQe-K7tYDj9xqzEd9HSqlU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "UyZlR20dfp6i1yhIMjD1A3gxRLSrguAlQ_r1YUkJIdI"
-                },
                 "path": "appr/tests/data/htmlcov/appr_api_info_py.html",
-                "size": 19266
+                "size": 19266,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "UyZlR20dfp6i1yhIMjD1A3gxRLSrguAlQ_r1YUkJIdI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "WDa7L9whwiSpS2zVI1szqMP3IC7XWovNza-pjS-h5y4"
-                },
                 "path": "appr/tests/data/htmlcov/appr_api_registry_py.html",
-                "size": 75678
+                "size": 75678,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "WDa7L9whwiSpS2zVI1szqMP3IC7XWovNza-pjS-h5y4"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Se7m589qTc3cw1fxnKNp-pg_QXCnflEtgm4WrSulcdQ"
-                },
                 "path": "appr/tests/data/htmlcov/appr_api_wsgi_py.html",
-                "size": 3687
+                "size": 3687,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Se7m589qTc3cw1fxnKNp-pg_QXCnflEtgm4WrSulcdQ"
+                }
             },
             {
-                "digests": {
-                    "sha256": "X_Sh7i8S9fcZ5hSqpFgHROK1iLRp9-xJeTm6QwxbO1A"
-                },
                 "path": "appr/tests/data/htmlcov/appr_auth_py.html",
-                "size": 34500
+                "size": 34500,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "X_Sh7i8S9fcZ5hSqpFgHROK1iLRp9-xJeTm6QwxbO1A"
+                }
             },
             {
-                "digests": {
-                    "sha256": "lS5WTwW1vrDS6r7Q2XpIoLo9O8fr_QAfebWabF9YO2k"
-                },
                 "path": "appr/tests/data/htmlcov/appr_client_py.html",
-                "size": 78828
+                "size": 78828,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "lS5WTwW1vrDS6r7Q2XpIoLo9O8fr_QAfebWabF9YO2k"
+                }
             },
             {
-                "digests": {
-                    "sha256": "yIOsRCqiY0BVBd0z_ORdVl-SAWvGI1F4t7HP_ufKhUg"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands___init___py.html",
-                "size": 2510
+                "size": 2510,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "yIOsRCqiY0BVBd0z_ORdVl-SAWvGI1F4t7HP_ufKhUg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "H28LOnG2wSdwTjthE7QYncNPPEXTOuayhuKkHjFlFNU"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_channel_py.html",
-                "size": 22848
+                "size": 22848,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "H28LOnG2wSdwTjthE7QYncNPPEXTOuayhuKkHjFlFNU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "N-nyGaywpkVruPwEu2JoRJKkthazn81BbBYFgSDuD3s"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_cli_py.html",
-                "size": 25361
+                "size": 25361,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "N-nyGaywpkVruPwEu2JoRJKkthazn81BbBYFgSDuD3s"
+                }
             },
             {
-                "digests": {
-                    "sha256": "MYz_o8wR1zvupCfKUGreSxH-hiM-5yS3bFXdXH7FvQg"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_command_base_py.html",
-                "size": 73627
+                "size": 73627,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "MYz_o8wR1zvupCfKUGreSxH-hiM-5yS3bFXdXH7FvQg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "l1LREjme7_4iU1QIHoXvHKCys3zIh3m-j2DIusRDFsE"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_config_py.html",
-                "size": 13485
+                "size": 13485,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "l1LREjme7_4iU1QIHoXvHKCys3zIh3m-j2DIusRDFsE"
+                }
             },
             {
-                "digests": {
-                    "sha256": "9B6-B0nGESML5IVSTtJHlTMyWNU0Bf1HRrqGGx8yYnc"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_delete_package_py.html",
-                "size": 14230
+                "size": 14230,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "9B6-B0nGESML5IVSTtJHlTMyWNU0Bf1HRrqGGx8yYnc"
+                }
             },
             {
-                "digests": {
-                    "sha256": "BFvJYQ8-c6u2H_DRQL-Mlumt2s5fx9p1OZ1_CIINqlA"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_deploy_py.html",
-                "size": 24197
+                "size": 24197,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "BFvJYQ8-c6u2H_DRQL-Mlumt2s5fx9p1OZ1_CIINqlA"
+                }
             },
             {
-                "digests": {
-                    "sha256": "cQcU--0D8ssoT_1D9pB9M4Dq_3qd944iVbtYqvjjHhs"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_generate_py.html",
-                "size": 9594
+                "size": 9594,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "cQcU--0D8ssoT_1D9pB9M4Dq_3qd944iVbtYqvjjHhs"
+                }
             },
             {
-                "digests": {
-                    "sha256": "RJ2uvIC_Hqt-UA2ii3ybrcvisUtxOhyYGefM7Z_NT58"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_helm_py.html",
-                "size": 37023
+                "size": 37023,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "RJ2uvIC_Hqt-UA2ii3ybrcvisUtxOhyYGefM7Z_NT58"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Hjm4zS8rfg-lLvIks7bpQiUn8PMxYa7OiOnemm2DY_I"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_inspect_py.html",
-                "size": 19584
+                "size": 19584,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Hjm4zS8rfg-lLvIks7bpQiUn8PMxYa7OiOnemm2DY_I"
+                }
             },
             {
-                "digests": {
-                    "sha256": "uEx75Ng-GbKVeTcwFrAfRj0IN3pyTlbE9dISwG7rwKk"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_jsonnet_py.html",
-                "size": 18395
+                "size": 18395,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "uEx75Ng-GbKVeTcwFrAfRj0IN3pyTlbE9dISwG7rwKk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Y1ex-5gduIsKQsAMhlPubRWCj7mi2BA0alXXQ1RbACc"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_list_package_py.html",
-                "size": 18744
+                "size": 18744,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Y1ex-5gduIsKQsAMhlPubRWCj7mi2BA0alXXQ1RbACc"
+                }
             },
             {
-                "digests": {
-                    "sha256": "doYPyhP2DlpPux-W_PlI9n18xc2HPbpsRueKsNtdw5k"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_login_py.html",
-                "size": 27181
+                "size": 27181,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "doYPyhP2DlpPux-W_PlI9n18xc2HPbpsRueKsNtdw5k"
+                }
             },
             {
-                "digests": {
-                    "sha256": "DHNhA-XF_q9a933k1lne4wqO2LcsZhzaEcsPF87j7Fc"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_logout_py.html",
-                "size": 15429
+                "size": 15429,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "DHNhA-XF_q9a933k1lne4wqO2LcsZhzaEcsPF87j7Fc"
+                }
             },
             {
-                "digests": {
-                    "sha256": "PSRQhRQyDyCPHIhYg8d-qfwq82o-jCwzBlveGvrq-Cs"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_plugins_py.html",
-                "size": 28121
+                "size": 28121,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "PSRQhRQyDyCPHIhYg8d-qfwq82o-jCwzBlveGvrq-Cs"
+                }
             },
             {
-                "digests": {
-                    "sha256": "1JVm_2AJt7Cp3urEVhw4eWPwkNh-Vk3iMtJSDu5Lx9o"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_pull_py.html",
-                "size": 21967
+                "size": 21967,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "1JVm_2AJt7Cp3urEVhw4eWPwkNh-Vk3iMtJSDu5Lx9o"
+                }
             },
             {
-                "digests": {
-                    "sha256": "12sZKiWhdrbO3ojI47jCgRP6b1F9tT0_DGMPQ8TP_BI"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_push_py.html",
-                "size": 52838
+                "size": 52838,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "12sZKiWhdrbO3ojI47jCgRP6b1F9tT0_DGMPQ8TP_BI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "GhO1Fd1PqF-jWrHs41LuwBUxvs7jZQGSq8YrRj9IUyQ"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_remove_py.html",
-                "size": 5634
+                "size": 5634,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "GhO1Fd1PqF-jWrHs41LuwBUxvs7jZQGSq8YrRj9IUyQ"
+                }
             },
             {
-                "digests": {
-                    "sha256": "VIA32GVMCd8_Iz5EWOtBuT_E8vR_xvZUmMulNp1_MsU"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_runserver_py.html",
-                "size": 12135
+                "size": 12135,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "VIA32GVMCd8_Iz5EWOtBuT_E8vR_xvZUmMulNp1_MsU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "5w28h2RDu0NO9xevtUJO7uCziMf3ULc6E5LonBtMXOw"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_show_py.html",
-                "size": 16203
+                "size": 16203,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "5w28h2RDu0NO9xevtUJO7uCziMf3ULc6E5LonBtMXOw"
+                }
             },
             {
-                "digests": {
-                    "sha256": "b37v-b5UR2Cn00_C3pkcWUyk6JTxriwicI6i-lv_d84"
-                },
                 "path": "appr/tests/data/htmlcov/appr_commands_version_py.html",
-                "size": 16263
+                "size": 16263,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "b37v-b5UR2Cn00_C3pkcWUyk6JTxriwicI6i-lv_d84"
+                }
             },
             {
-                "digests": {
-                    "sha256": "hnWWDYrgvSP6sQK3Ouw5rGvr7T6sGMh1vVnk_dsZqeE"
-                },
                 "path": "appr/tests/data/htmlcov/appr_config_py.html",
-                "size": 18137
+                "size": 18137,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "hnWWDYrgvSP6sQK3Ouw5rGvr7T6sGMh1vVnk_dsZqeE"
+                }
             },
             {
-                "digests": {
-                    "sha256": "1UqQIV-YG_fGzZkWMzJbcVVCYJ4rlkgIHrYk_4quwjQ"
-                },
                 "path": "appr/tests/data/htmlcov/appr_discovery_py.html",
-                "size": 22673
+                "size": 22673,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "1UqQIV-YG_fGzZkWMzJbcVVCYJ4rlkgIHrYk_4quwjQ"
+                }
             },
             {
-                "digests": {
-                    "sha256": "AOrTEc-llb4UCtR_LDmgXR19zILPwjJCRdJ4bEi23Zk"
-                },
                 "path": "appr/tests/data/htmlcov/appr_display_py.html",
-                "size": 18228
+                "size": 18228,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "AOrTEc-llb4UCtR_LDmgXR19zILPwjJCRdJ4bEi23Zk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "QfjAz_-hRjUKsCuP5qhcT_HnI7cO5xNyq7Pul4mepYI"
-                },
                 "path": "appr/tests/data/htmlcov/appr_exception_py.html",
-                "size": 29403
+                "size": 29403,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "QfjAz_-hRjUKsCuP5qhcT_HnI7cO5xNyq7Pul4mepYI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "lX3fddXjX470GKMkSEBuv6jQHT5ZgpdfClnseOUZ5sw"
-                },
                 "path": "appr/tests/data/htmlcov/appr_formats___init___py.html",
-                "size": 2508
+                "size": 2508,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "lX3fddXjX470GKMkSEBuv6jQHT5ZgpdfClnseOUZ5sw"
+                }
             },
             {
-                "digests": {
-                    "sha256": "f5RlD83tCdvmn1NvD-XmksQN4oUskvLyAOT8Z7INyA8"
-                },
                 "path": "appr/tests/data/htmlcov/appr_formats_appr___init___py.html",
-                "size": 2518
+                "size": 2518,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "f5RlD83tCdvmn1NvD-XmksQN4oUskvLyAOT8Z7INyA8"
+                }
             },
             {
-                "digests": {
-                    "sha256": "OpUbLGAjL9CdcOA_iHF99fd3kMbS4sVTvoO_daRZX7M"
-                },
                 "path": "appr/tests/data/htmlcov/appr_formats_appr_kpm_py.html",
-                "size": 5687
+                "size": 5687,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "OpUbLGAjL9CdcOA_iHF99fd3kMbS4sVTvoO_daRZX7M"
+                }
             },
             {
-                "digests": {
-                    "sha256": "FayMZonY1TqaH9ZqEr9HxGGczy71U04LC4Co3C-FJok"
-                },
                 "path": "appr/tests/data/htmlcov/appr_formats_appr_kub_base_py.html",
-                "size": 57468
+                "size": 57468,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "FayMZonY1TqaH9ZqEr9HxGGczy71U04LC4Co3C-FJok"
+                }
             },
             {
-                "digests": {
-                    "sha256": "BfP4aYXql85fiswxjdj8G7uDGzlB2IAOH9B-6jg23ok"
-                },
                 "path": "appr/tests/data/htmlcov/appr_formats_appr_kub_py.html",
-                "size": 65814
+                "size": 65814,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "BfP4aYXql85fiswxjdj8G7uDGzlB2IAOH9B-6jg23ok"
+                }
             },
             {
-                "digests": {
-                    "sha256": "BV6Fmzg9Q5IaxxIhpSkyDVuMPLMT-ekIe8iZj3pCUJo"
-                },
                 "path": "appr/tests/data/htmlcov/appr_formats_appr_kubplain_py.html",
-                "size": 10563
+                "size": 10563,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "BV6Fmzg9Q5IaxxIhpSkyDVuMPLMT-ekIe8iZj3pCUJo"
+                }
             },
             {
-                "digests": {
-                    "sha256": "aSXEX17QqMKuEo4SrTI1y3CoA_vYyhZe0a08DVapx6U"
-                },
                 "path": "appr/tests/data/htmlcov/appr_formats_appr_manifest_jsonnet_py.html",
-                "size": 23383
+                "size": 23383,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "aSXEX17QqMKuEo4SrTI1y3CoA_vYyhZe0a08DVapx6U"
+                }
             },
             {
-                "digests": {
-                    "sha256": "2MEoRWssvKZ1_qcM5R3Mw_iY0Pte6adXbWiAxreRSEg"
-                },
                 "path": "appr/tests/data/htmlcov/appr_formats_appr_manifest_py.html",
-                "size": 19244
+                "size": 19244,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "2MEoRWssvKZ1_qcM5R3Mw_iY0Pte6adXbWiAxreRSEg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "OT6xcYAmRujCc36ub7Y1Q0L0UUuxrgmUvaDQH0wm5s8"
-                },
                 "path": "appr/tests/data/htmlcov/appr_formats_base_py.html",
-                "size": 29607
+                "size": 29607,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "OT6xcYAmRujCc36ub7Y1Q0L0UUuxrgmUvaDQH0wm5s8"
+                }
             },
             {
-                "digests": {
-                    "sha256": "IdElka5XvFhzKxXAV2GcZnnUpbl2L6eo9GUSmPSazWw"
-                },
                 "path": "appr/tests/data/htmlcov/appr_formats_helm___init___py.html",
-                "size": 2518
+                "size": 2518,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "IdElka5XvFhzKxXAV2GcZnnUpbl2L6eo9GUSmPSazWw"
+                }
             },
             {
-                "digests": {
-                    "sha256": "0u5DN2hy6Vihib2d_4zpla8mXIwK9tvPrBMGulZPH3Y"
-                },
                 "path": "appr/tests/data/htmlcov/appr_formats_helm_chart_py.html",
-                "size": 24469
+                "size": 24469,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "0u5DN2hy6Vihib2d_4zpla8mXIwK9tvPrBMGulZPH3Y"
+                }
             },
             {
-                "digests": {
-                    "sha256": "f5izjxnf-64xlWbSm4fzL6RM76rdpWVZkSoEq-V88kM"
-                },
                 "path": "appr/tests/data/htmlcov/appr_formats_helm_manifest_chart_py.html",
-                "size": 22352
+                "size": 22352,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "f5izjxnf-64xlWbSm4fzL6RM76rdpWVZkSoEq-V88kM"
+                }
             },
             {
-                "digests": {
-                    "sha256": "pJcNiHQljwuKneKHG9BgKIbKawPCWZL-1qo3Hme0rU0"
-                },
                 "path": "appr/tests/data/htmlcov/appr_formats_utils_py.html",
-                "size": 12037
+                "size": 12037,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "pJcNiHQljwuKneKHG9BgKIbKawPCWZL-1qo3Hme0rU0"
+                }
             },
             {
-                "digests": {
-                    "sha256": "7V6ZDcEX21v5SiCT0kBVBfKc47bW4VoWfph9ZwBdSbc"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models___init___py.html",
-                "size": 11046
+                "size": 11046,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "7V6ZDcEX21v5SiCT0kBVBfKc47bW4VoWfph9ZwBdSbc"
+                }
             },
             {
-                "digests": {
-                    "sha256": "eUIGS3oLu2pJu7ONePoCu0T5rWuPgz-RPWDy15kWJBg"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_blob_base_py.html",
-                "size": 13050
+                "size": 13050,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "eUIGS3oLu2pJu7ONePoCu0T5rWuPgz-RPWDy15kWJBg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "rmiSqxu9NVYJCs_o8wqBCVByXZSnR2dlftKBDngKK8A"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_channel_base_py.html",
-                "size": 22685
+                "size": 22685,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "rmiSqxu9NVYJCs_o8wqBCVByXZSnR2dlftKBDngKK8A"
+                }
             },
             {
-                "digests": {
-                    "sha256": "FUh7242IQCXPy7ewL-m497jU2BM9TkvXN0WOuvvrCW4"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_db_base_py.html",
-                "size": 23944
+                "size": 23944,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "FUh7242IQCXPy7ewL-m497jU2BM9TkvXN0WOuvvrCW4"
+                }
             },
             {
-                "digests": {
-                    "sha256": "SvtzFlRVEHZcP44gaHrsJ_YWe_UhtNNMobeFXXOMKWo"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv___init___py.html",
-                "size": 3254
+                "size": 3254,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "SvtzFlRVEHZcP44gaHrsJ_YWe_UhtNNMobeFXXOMKWo"
+                }
             },
             {
-                "digests": {
-                    "sha256": "oC0U1kLetYqepyXb1_c_7vCvA_pkn4NWhpLL1x8zI5o"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_blob_kv_base_py.html",
-                "size": 8999
+                "size": 8999,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "oC0U1kLetYqepyXb1_c_7vCvA_pkn4NWhpLL1x8zI5o"
+                }
             },
             {
-                "digests": {
-                    "sha256": "kHKYdsHbh0fDLhi3fHoKkmUtF6Kxzjd6jLR72hMuBso"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_channel_kv_base_py.html",
-                "size": 17329
+                "size": 17329,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "kHKYdsHbh0fDLhi3fHoKkmUtF6Kxzjd6jLR72hMuBso"
+                }
             },
             {
-                "digests": {
-                    "sha256": "I-FT8xqaga--YEgs0ZkJ3ROyffpUrxTioZkJnXhoZ0w"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_etcd___init___py.html",
-                "size": 4834
+                "size": 4834,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "I-FT8xqaga--YEgs0ZkJ3ROyffpUrxTioZkJnXhoZ0w"
+                }
             },
             {
-                "digests": {
-                    "sha256": "LjY4NNa8xZWD3gPdhLWYjOespwqh326LE4XPe46Om0E"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_etcd_blob_py.html",
-                "size": 4700
+                "size": 4700,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "LjY4NNa8xZWD3gPdhLWYjOespwqh326LE4XPe46Om0E"
+                }
             },
             {
-                "digests": {
-                    "sha256": "XSZTCor6HZqNN5U0WlQw1HeGnZlc12kGwTzP7vc8aWg"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_etcd_channel_py.html",
-                "size": 4718
+                "size": 4718,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "XSZTCor6HZqNN5U0WlQw1HeGnZlc12kGwTzP7vc8aWg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "2IgrtRuk0NS43ApzBTxZDfqXvypp32ELT83fcUnMoME"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_etcd_db_py.html",
-                "size": 11286
+                "size": 11286,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "2IgrtRuk0NS43ApzBTxZDfqXvypp32ELT83fcUnMoME"
+                }
             },
             {
-                "digests": {
-                    "sha256": "tB8PNIhw6IDpaIqpsECnf_aQA3brgkaPduRDhhnP4a8"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_etcd_models_index_py.html",
-                "size": 18344
+                "size": 18344,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "tB8PNIhw6IDpaIqpsECnf_aQA3brgkaPduRDhhnP4a8"
+                }
             },
             {
-                "digests": {
-                    "sha256": "c6auRrEi6kfwfCuVJpH_g7AzZHGdEHU_WRAO7R0wZMo"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_etcd_package_py.html",
-                "size": 4718
+                "size": 4718,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "c6auRrEi6kfwfCuVJpH_g7AzZHGdEHU_WRAO7R0wZMo"
+                }
             },
             {
-                "digests": {
-                    "sha256": "9W1BBwDkGhCXBNY0bsqZM9b28TqDqFPqAiGL_sZGFS0"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_filesystem___init___py.html",
-                "size": 20982
+                "size": 20982,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "9W1BBwDkGhCXBNY0bsqZM9b28TqDqFPqAiGL_sZGFS0"
+                }
             },
             {
-                "digests": {
-                    "sha256": "SLFgPAq0C_iZr5d0273JTQfFJ-U9-m0Aff4Iy-8_k_Y"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_filesystem_blob_py.html",
-                "size": 4730
+                "size": 4730,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "SLFgPAq0C_iZr5d0273JTQfFJ-U9-m0Aff4Iy-8_k_Y"
+                }
             },
             {
-                "digests": {
-                    "sha256": "yrWaahDyfzhUaCcfSOYJ4d8a9B_-XxLtOIs5Go0SA7A"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_filesystem_channel_py.html",
-                "size": 4748
+                "size": 4748,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "yrWaahDyfzhUaCcfSOYJ4d8a9B_-XxLtOIs5Go0SA7A"
+                }
             },
             {
-                "digests": {
-                    "sha256": "E9wk53umIOPUj2uddumIyt8IEsH4i4QqFP_WtZEUVMA"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_filesystem_db_py.html",
-                "size": 10286
+                "size": 10286,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "E9wk53umIOPUj2uddumIyt8IEsH4i4QqFP_WtZEUVMA"
+                }
             },
             {
-                "digests": {
-                    "sha256": "y0XcQycbIs95guISKBhB9h4lBo4vFe6vC2qTCc__ySY"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_filesystem_models_index_py.html",
-                "size": 16549
+                "size": 16549,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "y0XcQycbIs95guISKBhB9h4lBo4vFe6vC2qTCc__ySY"
+                }
             },
             {
-                "digests": {
-                    "sha256": "5XJGwMkw868WOXadJvmRywzr5lV32wQn_TLmYdDBfkU"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_filesystem_package_py.html",
-                "size": 4748
+                "size": 4748,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "5XJGwMkw868WOXadJvmRywzr5lV32wQn_TLmYdDBfkU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "SVl2tiseM5kuHTyWDsbktOk7Wa2Akm6x0wTzeLhvPSk"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_models_index_base_py.html",
-                "size": 114008
+                "size": 114008,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "SVl2tiseM5kuHTyWDsbktOk7Wa2Akm6x0wTzeLhvPSk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "iw91SLZoEzyYHY5gbLyXrguvrFZ1ffdVLvcHhG_JROI"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_package_kv_base_py.html",
-                "size": 34801
+                "size": 34801,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "iw91SLZoEzyYHY5gbLyXrguvrFZ1ffdVLvcHhG_JROI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "x9TkALh1jJU0-d8ZolNg7G96OWysXE6FrBE_utFdMUw"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_redis___init___py.html",
-                "size": 4358
+                "size": 4358,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "x9TkALh1jJU0-d8ZolNg7G96OWysXE6FrBE_utFdMUw"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Ra3AmXAkfEJ06DeoIyaacv69uGyJppkSRtwWOSAd6d4"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_redis_blob_py.html",
-                "size": 4705
+                "size": 4705,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Ra3AmXAkfEJ06DeoIyaacv69uGyJppkSRtwWOSAd6d4"
+                }
             },
             {
-                "digests": {
-                    "sha256": "eZtD1YEpy3vqraga7D1SgbeLlWq3GbLFG7biu-Tna2o"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_redis_channel_py.html",
-                "size": 4723
+                "size": 4723,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "eZtD1YEpy3vqraga7D1SgbeLlWq3GbLFG7biu-Tna2o"
+                }
             },
             {
-                "digests": {
-                    "sha256": "vPvTzbCVBEpS3c0E8f1EaXRQ8AjAJ_7UvSJOafNUzwk"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_redis_db_py.html",
-                "size": 9903
+                "size": 9903,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "vPvTzbCVBEpS3c0E8f1EaXRQ8AjAJ_7UvSJOafNUzwk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "4ClsCQHWAx0Cc-B9FZXM48JEXcn3NiamXFQq2g8doDI"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_redis_models_index_py.html",
-                "size": 16814
+                "size": 16814,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "4ClsCQHWAx0Cc-B9FZXM48JEXcn3NiamXFQq2g8doDI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Ab5Rp_jXTVICT14Eoh1wB14XX6uQLg-4HOh0cQVe090"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_kv_redis_package_py.html",
-                "size": 4723
+                "size": 4723,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Ab5Rp_jXTVICT14Eoh1wB14XX6uQLg-4HOh0cQVe090"
+                }
             },
             {
-                "digests": {
-                    "sha256": "xjzwoOiOwfl_7p6ZKS5oDtscUWsgm6ts1RFNIVa45Tw"
-                },
                 "path": "appr/tests/data/htmlcov/appr_models_package_base_py.html",
-                "size": 78802
+                "size": 78802,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "xjzwoOiOwfl_7p6ZKS5oDtscUWsgm6ts1RFNIVa45Tw"
+                }
             },
             {
-                "digests": {
-                    "sha256": "GdrqGqBWYmPon9xGdWFm-meqhi_DxImJDNdh2kbFz8M"
-                },
                 "path": "appr/tests/data/htmlcov/appr_pack_py.html",
-                "size": 46854
+                "size": 46854,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "GdrqGqBWYmPon9xGdWFm-meqhi_DxImJDNdh2kbFz8M"
+                }
             },
             {
-                "digests": {
-                    "sha256": "fw8YH82pGy82R3p7cIpND2WOdS-OyzCbP02HQk0nYFg"
-                },
                 "path": "appr/tests/data/htmlcov/appr_platforms___init___py.html",
-                "size": 2512
+                "size": 2512,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "fw8YH82pGy82R3p7cIpND2WOdS-OyzCbP02HQk0nYFg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "0eLrV17-kPmVpHeSZv5v9hTMeT00FA5g3K7YKUkHSJg"
-                },
                 "path": "appr/tests/data/htmlcov/appr_platforms_dockercompose_py.html",
-                "size": 11752
+                "size": 11752,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "0eLrV17-kPmVpHeSZv5v9hTMeT00FA5g3K7YKUkHSJg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "ieMKkhncyApEZz4q4c07BNGjb9USffMOLu0H3CfHJiY"
-                },
                 "path": "appr/tests/data/htmlcov/appr_platforms_helm_py.html",
-                "size": 6910
+                "size": 6910,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "ieMKkhncyApEZz4q4c07BNGjb9USffMOLu0H3CfHJiY"
+                }
             },
             {
-                "digests": {
-                    "sha256": "7oFxSpYZd933s5JgYJPIJSLGjE_54so28ahtOwsuOno"
-                },
                 "path": "appr/tests/data/htmlcov/appr_platforms_kubernetes_py.html",
-                "size": 73171
+                "size": 73171,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "7oFxSpYZd933s5JgYJPIJSLGjE_54so28ahtOwsuOno"
+                }
             },
             {
-                "digests": {
-                    "sha256": "KT2aKcQs5Of_62n274pTjlFzt_pekkJ7ywPReKz8_iI"
-                },
                 "path": "appr/tests/data/htmlcov/appr_plugins___init___py.html",
-                "size": 2508
+                "size": 2508,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "KT2aKcQs5Of_62n274pTjlFzt_pekkJ7ywPReKz8_iI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "pMT9lprTD1mvtV11o7BRDi9NemxBRI-MxgPOLi4apvQ"
-                },
                 "path": "appr/tests/data/htmlcov/appr_plugins_helm_py.html",
-                "size": 29585
+                "size": 29585,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "pMT9lprTD1mvtV11o7BRDi9NemxBRI-MxgPOLi4apvQ"
+                }
             },
             {
-                "digests": {
-                    "sha256": "3PrIiD7y0Rgr3IwxNrIhSIBXkdIP91vWSSLJNaCgoKg"
-                },
                 "path": "appr/tests/data/htmlcov/appr_render_jsonnet_py.html",
-                "size": 38087
+                "size": 38087,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "3PrIiD7y0Rgr3IwxNrIhSIBXkdIP91vWSSLJNaCgoKg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "EnZAINqvxVRYJUQtnTHrSP86-LNB01V3W3sznJ9wMbY"
-                },
                 "path": "appr/tests/data/htmlcov/appr_semver_py.html",
-                "size": 10201
+                "size": 10201,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "EnZAINqvxVRYJUQtnTHrSP86-LNB01V3W3sznJ9wMbY"
+                }
             },
             {
-                "digests": {
-                    "sha256": "yKMA2lS_TfOhO7IE_vzGpGS1xZBWNAm5sZL2jlcDa-k"
-                },
                 "path": "appr/tests/data/htmlcov/appr_template_filters_py.html",
-                "size": 65604
+                "size": 65604,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "yKMA2lS_TfOhO7IE_vzGpGS1xZBWNAm5sZL2jlcDa-k"
+                }
             },
             {
-                "digests": {
-                    "sha256": "cpXbSpGI_L0cFL-BV8Y9LwMXNqTojgxt6wM9jBl_dio"
-                },
                 "path": "appr/tests/data/htmlcov/appr_tests___init___py.html",
-                "size": 2504
+                "size": 2504,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "cpXbSpGI_L0cFL-BV8Y9LwMXNqTojgxt6wM9jBl_dio"
+                }
             },
             {
-                "digests": {
-                    "sha256": "cSD6Cd-GM8BlOFJ8HYCxbi8z0WEYoKr-AlLigSCzkhM"
-                },
                 "path": "appr/tests/data/htmlcov/appr_tests_conftest_py.html",
-                "size": 55804
+                "size": 55804,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "cSD6Cd-GM8BlOFJ8HYCxbi8z0WEYoKr-AlLigSCzkhM"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Xb6bezlOspAkwi8xWpS23oK2GoQxig1MlPDRzd0vKmU"
-                },
                 "path": "appr/tests/data/htmlcov/appr_tests_test_apiserver_py.html",
-                "size": 163767
+                "size": 163767,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Xb6bezlOspAkwi8xWpS23oK2GoQxig1MlPDRzd0vKmU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "vDK4TKEf3qfQHJfeUYWiHVyLW5mcJlLpywl_mGWfcSE"
-                },
                 "path": "appr/tests/data/htmlcov/appr_tests_test_models_py.html",
-                "size": 113637
+                "size": 113637,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "vDK4TKEf3qfQHJfeUYWiHVyLW5mcJlLpywl_mGWfcSE"
+                }
             },
             {
-                "digests": {
-                    "sha256": "AACn4G4wbpLOTKS9nVuCP7VfQL6L2BDQT-Nl2zXd4FI"
-                },
                 "path": "appr/tests/data/htmlcov/appr_utils_py.html",
-                "size": 70081
+                "size": 70081,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "AACn4G4wbpLOTKS9nVuCP7VfQL6L2BDQT-Nl2zXd4FI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "m60KpPDw7SSBYP04pyRZv0MkTbSEadEQAcsOb5M79fI"
-                },
                 "path": "appr/tests/data/htmlcov/coverage_html.js",
-                "size": 18458
+                "size": 18458,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "m60KpPDw7SSBYP04pyRZv0MkTbSEadEQAcsOb5M79fI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "vi4ZrbMvLihnGAnZq0jhbciyZAEmyL-L8y6cNnv-Vws"
-                },
                 "path": "appr/tests/data/htmlcov/index.html",
-                "size": 35279
+                "size": 35279,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "vi4ZrbMvLihnGAnZq0jhbciyZAEmyL-L8y6cNnv-Vws"
+                }
             },
             {
-                "digests": {
-                    "sha256": "wXepUsOX1VYr5AyWGbIoAqlrvjQz9unPbtEyM7wFBnw"
-                },
                 "path": "appr/tests/data/htmlcov/jquery.ba-throttle-debounce.min.js",
-                "size": 731
+                "size": 731,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "wXepUsOX1VYr5AyWGbIoAqlrvjQz9unPbtEyM7wFBnw"
+                }
             },
             {
-                "digests": {
-                    "sha256": "VVqbRGJlCvARPGMJXcSiRRIJwkpged3wG5fQ47gi42U"
-                },
                 "path": "appr/tests/data/htmlcov/jquery.hotkeys.js",
-                "size": 3065
+                "size": 3065,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "VVqbRGJlCvARPGMJXcSiRRIJwkpged3wG5fQ47gi42U"
+                }
             },
             {
-                "digests": {
-                    "sha256": "WEyXE6yTYNzAYfzViwksNu7AJAY5zZBI9q6-J9pF1Zw"
-                },
                 "path": "appr/tests/data/htmlcov/jquery.isonscreen.js",
-                "size": 1502
+                "size": 1502,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "WEyXE6yTYNzAYfzViwksNu7AJAY5zZBI9q6-J9pF1Zw"
+                }
             },
             {
-                "digests": {
-                    "sha256": "mx_4Ep0PLjLSjGct9X4Wo5K_saaN36epmnUlj-cuxGk"
-                },
                 "path": "appr/tests/data/htmlcov/jquery.min.js",
-                "size": 136008
+                "size": 136008,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "mx_4Ep0PLjLSjGct9X4Wo5K_saaN36epmnUlj-cuxGk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "t4ifnz2eByQEUafncoSdJUwD2jUt68VY8CzNjAywo08"
-                },
                 "path": "appr/tests/data/htmlcov/jquery.tablesorter.min.js",
-                "size": 12795
+                "size": 12795,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "t4ifnz2eByQEUafncoSdJUwD2jUt68VY8CzNjAywo08"
+                }
             },
             {
-                "digests": {
-                    "sha256": "FNDmw-Lx9aptnMr-XiZ4gh2EGPs17nft-QKmXgilIe0"
-                },
                 "path": "appr/tests/data/htmlcov/keybd_closed.png",
-                "size": 112
+                "size": 112,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "FNDmw-Lx9aptnMr-XiZ4gh2EGPs17nft-QKmXgilIe0"
+                }
             },
             {
-                "digests": {
-                    "sha256": "FNDmw-Lx9aptnMr-XiZ4gh2EGPs17nft-QKmXgilIe0"
-                },
                 "path": "appr/tests/data/htmlcov/keybd_open.png",
-                "size": 112
+                "size": 112,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "FNDmw-Lx9aptnMr-XiZ4gh2EGPs17nft-QKmXgilIe0"
+                }
             },
             {
-                "digests": {
-                    "sha256": "vvJB3qkM6OFk9Vu326xUIQiYpZIHBna-GqrZ3c0SMIU"
-                },
                 "path": "appr/tests/data/htmlcov/status.json",
-                "size": 19818
+                "size": 19818,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "vvJB3qkM6OFk9Vu326xUIQiYpZIHBna-GqrZ3c0SMIU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "jATM7TxH5GdBaBsWKWb66IWtV8ZKoD-75Uwp4mEdPZQ"
-                },
                 "path": "appr/tests/data/htmlcov/style.css",
-                "size": 6757
+                "size": 6757,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "jATM7TxH5GdBaBsWKWb66IWtV8ZKoD-75Uwp4mEdPZQ"
+                }
             },
             {
-                "digests": {
-                    "sha256": "j-vhdVlTsItvGQrxcOuvC39MqtG4B0cM7B6CMT15hMA"
-                },
                 "path": "appr/tests/data/kube-ui/README.md",
-                "size": 52
+                "size": 52,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "j-vhdVlTsItvGQrxcOuvC39MqtG4B0cM7B6CMT15hMA"
+                }
             },
             {
-                "digests": {
-                    "sha256": "VDCM6_3Zl-JZRleqMzvKkV8mky25eO8uxukYwZ2fy4M"
-                },
                 "path": "appr/tests/data/kube-ui/file_to_ignore.yaml",
-                "size": 11
+                "size": 11,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "VDCM6_3Zl-JZRleqMzvKkV8mky25eO8uxukYwZ2fy4M"
+                }
             },
             {
-                "digests": {
-                    "sha256": "fEFcDXB6wD0jALH0XIKPxt5X9IsxjviCXTl9ZExa-Gw"
-                },
                 "path": "appr/tests/data/kube-ui/manifest.yaml",
-                "size": 368
+                "size": 368,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "fEFcDXB6wD0jALH0XIKPxt5X9IsxjviCXTl9ZExa-Gw"
+                }
             },
             {
-                "digests": {
-                    "sha256": "VDCM6_3Zl-JZRleqMzvKkV8mky25eO8uxukYwZ2fy4M"
-                },
                 "path": "appr/tests/data/kube-ui/templates/another_file_to_ignore.cfg",
-                "size": 11
+                "size": 11,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "VDCM6_3Zl-JZRleqMzvKkV8mky25eO8uxukYwZ2fy4M"
+                }
             },
             {
-                "digests": {
-                    "sha256": "2KjcirdBrgrWFHxkb00axLg3_-Y2qNkxX2WmPuitMcI"
-                },
                 "path": "appr/tests/data/kube-ui/templates/kube-ui-rc.yaml",
-                "size": 796
+                "size": 796,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "2KjcirdBrgrWFHxkb00axLg3_-Y2qNkxX2WmPuitMcI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "dnSMLeKizPutWvK1v-mzTAgF9ZF4zrC0YWUvMqaUoeI"
-                },
                 "path": "appr/tests/data/kube-ui/templates/kube-ui-svc.yaml",
-                "size": 337
+                "size": 337,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "dnSMLeKizPutWvK1v-mzTAgF9ZF4zrC0YWUvMqaUoeI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Vl5cBQ-XzGN8yTRsLRIAudLtCe0JsGlC0iQ4lK50BR4"
-                },
                 "path": "appr/tests/data/responses/kube-ui-replicationcontroller.json",
-                "size": 2999
+                "size": 2999,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Vl5cBQ-XzGN8yTRsLRIAudLtCe0JsGlC0iQ4lK50BR4"
+                }
             },
             {
-                "digests": {
-                    "sha256": "6Ec8VEP8D0OmV3VJmFvi_7v2g6SCRRx6BU0PgUo5Lbo"
-                },
                 "path": "appr/tests/data/responses/kube-ui-service.json",
-                "size": 1289
+                "size": 1289,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "6Ec8VEP8D0OmV3VJmFvi_7v2g6SCRRx6BU0PgUo5Lbo"
+                }
             },
             {
-                "digests": {
-                    "sha256": "Ij8Ccit-45O20f81ZlsWA7DO8M2fk3PQhvmzWgiITPk"
-                },
                 "path": "appr/tests/data/responses/testns-namespace.json",
-                "size": 426
+                "size": 426,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "Ij8Ccit-45O20f81ZlsWA7DO8M2fk3PQhvmzWgiITPk"
+                }
             },
             {
-                "digests": {
-                    "sha256": "wAWsmgUYY94wZAabWxMyYgir7JksODu2TYGFL36VatU"
-                },
                 "path": "appr-0.7.4.data/scripts/appr",
-                "size": 82
+                "size": 82,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "wAWsmgUYY94wZAabWxMyYgir7JksODu2TYGFL36VatU"
+                }
             },
             {
-                "digests": {
-                    "sha256": "I3r4vyV0m3_yhtWIsZOFv7ygQLnVcHjj0JALhVXiJyI"
-                },
                 "path": "appr-0.7.4.data/scripts/apprc",
-                "size": 173
+                "size": 173,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "I3r4vyV0m3_yhtWIsZOFv7ygQLnVcHjj0JALhVXiJyI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "yARAOah8NI63hgjtfilcjX6yE9Wj41dwxezXJT34RIA"
-                },
                 "path": "appr-0.7.4.dist-info/DESCRIPTION.rst",
-                "size": 6440
+                "size": 6440,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "yARAOah8NI63hgjtfilcjX6yE9Wj41dwxezXJT34RIA"
+                }
             },
             {
-                "digests": {
-                    "sha256": "3u63wzpSADtMGIA1Jmg-ZixvX1lryHQQqw4b3lOspig"
-                },
                 "path": "appr-0.7.4.dist-info/METADATA",
-                "size": 7573
+                "size": 7573,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "3u63wzpSADtMGIA1Jmg-ZixvX1lryHQQqw4b3lOspig"
+                }
             },
             {
-                "digests": {},
                 "path": "appr-0.7.4.dist-info/RECORD",
-                "size": null
+                "size": null,
+                "digest": null
             },
             {
-                "digests": {
-                    "sha256": "o2k-Qa-RMNIJmUdIc7KU6VWR_ErNRbWNlxDIpl7lm34"
-                },
                 "path": "appr-0.7.4.dist-info/WHEEL",
-                "size": 110
+                "size": 110,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "o2k-Qa-RMNIJmUdIc7KU6VWR_ErNRbWNlxDIpl7lm34"
+                }
             },
             {
-                "digests": {
-                    "sha256": "_8-ghxBdXW0058nqGoWqL8Szgj9VbnWLBR-QaCyXJyo"
-                },
                 "path": "appr-0.7.4.dist-info/dependency_links.txt",
-                "size": 65
+                "size": 65,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "_8-ghxBdXW0058nqGoWqL8Szgj9VbnWLBR-QaCyXJyo"
+                }
             },
             {
-                "digests": {
-                    "sha256": "w9ed4qEAoLy1G8__IXG0DcdsJNEMzpErqldB5ydxeuo"
-                },
                 "path": "appr-0.7.4.dist-info/metadata.json",
-                "size": 1300
+                "size": 1300,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "w9ed4qEAoLy1G8__IXG0DcdsJNEMzpErqldB5ydxeuo"
+                }
             },
             {
-                "digests": {
-                    "sha256": "UXsoTtp10sp1SKtU12WFRD4K66a0AYnt0j1ZcNOFWf8"
-                },
                 "path": "appr-0.7.4.dist-info/top_level.txt",
-                "size": 5
+                "size": 5,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "UXsoTtp10sp1SKtU12WFRD4K66a0AYnt0j1ZcNOFWf8"
+                }
             }
         ],
         "top_level": [

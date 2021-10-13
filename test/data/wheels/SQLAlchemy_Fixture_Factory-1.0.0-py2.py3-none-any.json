@@ -92,65 +92,73 @@
         },
         "record": [
             {
-                "digests": {
-                    "sha256": "vhxN0eB1vqH7YLnOgLWSPp7BksWVZ2PdadfhSp74jrI"
-                },
                 "path": "sqlalchemy_fixture_factory/sqla_fix_fact.py",
-                "size": 8224
+                "size": 8224,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "vhxN0eB1vqH7YLnOgLWSPp7BksWVZ2PdadfhSp74jrI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "ETReBCTBbbsnVZndmDNSDIf_-h0Mv10txFFxOXaAzBo"
-                },
                 "path": "sqlalchemy_fixture_factory/__init__.py",
-                "size": 221
+                "size": 221,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "ETReBCTBbbsnVZndmDNSDIf_-h0Mv10txFFxOXaAzBo"
+                }
             },
             {
-                "digests": {
-                    "sha256": "5m32fxa0zRIpzn6YPWAfXgV9uoMeHSHMx0mLVh9UctE"
-                },
                 "path": "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/LICENSE.txt",
-                "size": 1090
+                "size": 1090,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "5m32fxa0zRIpzn6YPWAfXgV9uoMeHSHMx0mLVh9UctE"
+                }
             },
             {
-                "digests": {
-                    "sha256": "AvR0WeTpDaxT645bl5FQxUK6NPsTls2ttpcGJg3j1Xg"
-                },
                 "path": "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/WHEEL",
-                "size": 110
+                "size": 110,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "AvR0WeTpDaxT645bl5FQxUK6NPsTls2ttpcGJg3j1Xg"
+                }
             },
             {
-                "digests": {
-                    "sha256": "AyLM5PEg1arQ1mz_gPzvImgdCwAu03mlKjHU9qak36o"
-                },
                 "path": "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/metadata.json",
-                "size": 1491
+                "size": 1491,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "AyLM5PEg1arQ1mz_gPzvImgdCwAu03mlKjHU9qak36o"
+                }
             },
             {
-                "digests": {
-                    "sha256": "uMxBkqKIlQOiIwpFpcicus__pGdtqxCySOetAHqHQdI"
-                },
                 "path": "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/METADATA",
-                "size": 7237
+                "size": 7237,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "uMxBkqKIlQOiIwpFpcicus__pGdtqxCySOetAHqHQdI"
+                }
             },
             {
-                "digests": {
-                    "sha256": "5TwQSffhComguHANYknzEhnPaiRSYSuMRhnZu7pmz8E"
-                },
                 "path": "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/top_level.txt",
-                "size": 27
+                "size": 27,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "5TwQSffhComguHANYknzEhnPaiRSYSuMRhnZu7pmz8E"
+                }
             },
             {
-                "digests": {
-                    "sha256": "7WB8cCUM6EJl4aiAcNSUqi9St8y6aqfxdF0frLqhxuw"
-                },
                 "path": "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/DESCRIPTION.rst",
-                "size": 6082
+                "size": 6082,
+                "digest": {
+                    "algorithm": "sha256",
+                    "digest": "7WB8cCUM6EJl4aiAcNSUqi9St8y6aqfxdF0frLqhxuw"
+                }
             },
             {
-                "digests": {},
                 "path": "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/RECORD",
-                "size": null
+                "size": null,
+                "digest": null
             }
         ],
         "top_level": [

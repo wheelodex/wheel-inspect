@@ -1,11 +1,12 @@
 # cf. PEP 345 and <https://packaging.python.org/specifications/>
 import re
+from typing import Any, Dict, TextIO
 from headerparser import HeaderParser
 from packaging.requirements import Requirement
 from .util import fieldnorm, strfield
 
 
-def requirement(s):
+def requirement(s: str) -> Dict[str, Any]:
     req = Requirement(s)
     return {
         "name": req.name,
@@ -16,7 +17,7 @@ def requirement(s):
     }
 
 
-def project_url(s):
+def project_url(s: str) -> Dict[str, Any]:
     try:
         label, url = re.split(r"\s*,\s*", s, maxsplit=1)
     except ValueError:
@@ -50,7 +51,7 @@ for field in (
 metaparser.add_additional(multiple=True, type=strfield)
 
 
-def parse_metadata(fp):
+def parse_metadata(fp: TextIO) -> Dict[str, Any]:
     md = metaparser.parse(fp)
     metadata = md.normalized_dict()
     for k, v in metadata.items():

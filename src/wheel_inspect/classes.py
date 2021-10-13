@@ -1,12 +1,15 @@
+from __future__ import annotations
 import abc
 import io
+import os
 from pathlib import Path
+from typing import Any, BinaryIO, Dict, List, Optional
 from zipfile import ZipFile
-from wheel_filename import parse_wheel_filename
+from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from . import errors
 from .metadata import parse_metadata
-from .record import parse_record
-from .util import digest_file, find_dist_info_dir
+from .record import Record, parse_record
+from .util import AnyPath, digest_file, find_dist_info_dir
 from .wheel_info import parse_wheel_info
 
 
@@ -17,14 +20,14 @@ class DistInfoProvider(abc.ABC):
     """
 
     @abc.abstractmethod
-    def basic_metadata(self):
+    def basic_metadata(self) -> Dict[str, Any]:
         """
         Returns a `dict` of class-specific simple metadata about the resource
         """
         ...
 
     @abc.abstractmethod
-    def open_dist_info_file(self, path):
+    def open_dist_info_file(self, path: str) -> BinaryIO:
         """
         Returns a readable binary IO handle for reading the contents of the
         file at the given path beneath the :file:`*.dist-info` directory
@@ -34,14 +37,14 @@ class DistInfoProvider(abc.ABC):
         ...
 
     @abc.abstractmethod
-    def has_dist_info_file(self, path):
+    def has_dist_info_file(self, path: str) -> bool:
         """
         Returns true iff a file exists at the given path beneath the
         :file:`*.dist-info` directory
         """
         ...
 
-    def get_metadata(self):
+    def get_metadata(self) -> Dict[str, Any]:
         try:
             with self.open_dist_info_file("METADATA") as binfp, io.TextIOWrapper(
                 binfp, "utf-8"
@@ -50,7 +53,7 @@ class DistInfoProvider(abc.ABC):
         except errors.MissingDistInfoFileError:
             raise errors.MissingMetadataError()
 
-    def get_record(self):
+    def get_record(self) -> Record:
         try:
             with self.open_dist_info_file("RECORD") as binfp, io.TextIOWrapper(
                 binfp, "utf-8", newline=""
@@ -61,7 +64,7 @@ class DistInfoProvider(abc.ABC):
         except errors.MissingDistInfoFileError:
             raise errors.MissingRecordError()
 
-    def get_wheel_info(self):
+    def get_wheel_info(self) -> Dict[str, Any]:
         try:
             with self.open_dist_info_file("WHEEL") as binfp, io.TextIOWrapper(
                 binfp, "utf-8"
@@ -73,7 +76,7 @@ class DistInfoProvider(abc.ABC):
 
 class FileProvider(abc.ABC):
     @abc.abstractmethod
-    def list_files(self):
+    def list_files(self) -> List[str]:
         """
         Returns a list of files in the resource.  Each file is represented as a
         relative ``/``-separated path as would appear in a :file:`RECORD` file.
@@ -84,7 +87,7 @@ class FileProvider(abc.ABC):
         ...
 
     @abc.abstractmethod
-    def has_directory(self, path):
+    def has_directory(self, path: str) -> bool:
         """
         Returns true iff the directory at ``path`` exists in the resource.
 
@@ -94,7 +97,7 @@ class FileProvider(abc.ABC):
         ...
 
     @abc.abstractmethod
-    def get_file_size(self, path):
+    def get_file_size(self, path: str) -> bool:
         """
         Returns the size of the file at ``path`` in bytes.
 
@@ -104,7 +107,7 @@ class FileProvider(abc.ABC):
         ...
 
     @abc.abstractmethod
-    def get_file_hash(self, path, algorithm):
+    def get_file_hash(self, path: str, algorithm: str) -> str:
         """
         Returns a hexdigest of the contents of the file at ``path`` computed
         using the digest algorithm ``algorithm``.
@@ -118,19 +121,19 @@ class FileProvider(abc.ABC):
 
 
 class DistInfoDir(DistInfoProvider):
-    def __init__(self, path):
-        self.path = Path(path)
+    def __init__(self, path: AnyPath) -> None:
+        self.path: Path = Path(os.fsdecode(path))
 
-    def __enter__(self):
+    def __enter__(self) -> DistInfoDir:
         return self
 
-    def __exit__(self, _exc_type, _exc_value, _traceback):
+    def __exit__(self, *_exc: Any) -> bool:
         return False
 
-    def basic_metadata(self):
+    def basic_metadata(self) -> Dict[str, Any]:
         return {}
 
-    def open_dist_info_file(self, path):
+    def open_dist_info_file(self, path: str) -> BinaryIO:
         # returns a binary IO handle; raises MissingDistInfoFileError if file
         # does not exist
         try:
@@ -138,17 +141,17 @@ class DistInfoDir(DistInfoProvider):
         except FileNotFoundError:
             raise errors.MissingDistInfoFileError(path)
 
-    def has_dist_info_file(self, path):
+    def has_dist_info_file(self, path: str) -> bool:
         return (self.path / path).exists()
 
 
 class WheelFile(DistInfoProvider, FileProvider):
-    def __init__(self, path):
-        self.path = Path(path)
-        self.parsed_filename = parse_wheel_filename(self.path)
-        self.fp = None
-        self.zipfile = None
-        self._dist_info = None
+    def __init__(self, path: AnyPath):
+        self.path: Path = Path(os.fsdecode(path))
+        self.parsed_filename: ParsedWheelFilename = parse_wheel_filename(self.path)
+        self.fp: Optional[BinaryIO] = None
+        self.zipfile: Optional[ZipFile] = None
+        self._dist_info: Optional[str] = None
 
     def __enter__(self):
         self.fp = self.path.open("rb")
@@ -156,6 +159,8 @@ class WheelFile(DistInfoProvider, FileProvider):
         return self
 
     def __exit__(self, _exc_type, _exc_value, _traceback):
+        assert self.zipfile is not None
+        assert self.fp is not None
         self.zipfile.close()
         self.fp.close()
         self.fp = None
@@ -163,7 +168,7 @@ class WheelFile(DistInfoProvider, FileProvider):
         return False
 
     @property
-    def dist_info(self):
+    def dist_info(self) -> str:
         if self._dist_info is None:
             if self.zipfile is None:
                 raise RuntimeError(
@@ -177,7 +182,7 @@ class WheelFile(DistInfoProvider, FileProvider):
             )
         return self._dist_info
 
-    def basic_metadata(self):
+    def basic_metadata(self) -> Dict[str, Any]:
         namebits = self.parsed_filename
         about = {
             "filename": self.path.name,
@@ -195,7 +200,7 @@ class WheelFile(DistInfoProvider, FileProvider):
         about["file"]["digests"] = digest_file(self.fp, ["md5", "sha256"])
         return about
 
-    def open_dist_info_file(self, path):
+    def open_dist_info_file(self, path: str) -> BinaryIO:
         # returns a binary IO handle; raises MissingDistInfoFileError if file
         # does not exist
         try:
@@ -205,7 +210,7 @@ class WheelFile(DistInfoProvider, FileProvider):
         else:
             return self.zipfile.open(zi)
 
-    def has_dist_info_file(self, path):  # -> bool
+    def has_dist_info_file(self, path: str) -> bool:
         try:
             self.zipfile.getinfo(self.dist_info + "/" + path)
         except KeyError:
@@ -213,15 +218,19 @@ class WheelFile(DistInfoProvider, FileProvider):
         else:
             return True
 
-    def list_files(self):
+    def list_files(self) -> List[str]:
         return [name for name in self.zipfile.namelist() if not name.endswith("/")]
 
-    def has_directory(self, path):
+    def has_directory(self, path: str) -> bool:
+        if not path.endswith("/"):
+            path += "/"
+        if path == "/":
+            return True
         return any(name.startswith(path) for name in self.zipfile.namelist())
 
-    def get_file_size(self, path):
+    def get_file_size(self, path: str) -> int:
         return self.zipfile.getinfo(path).file_size
 
-    def get_file_hash(self, path, algorithm):
+    def get_file_hash(self, path: str, algorithm: str) -> str:
         with self.zipfile.open(path) as fp:
             return digest_file(fp, [algorithm])[algorithm]

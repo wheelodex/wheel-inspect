@@ -4,7 +4,7 @@ import sys
 from .inspecting import inspect_dist_info_dir, inspect_wheel
 
 
-def main():
+def main() -> None:
     for path in sys.argv[1:]:
         if os.path.isdir(path):
             about = inspect_dist_info_dir(path)

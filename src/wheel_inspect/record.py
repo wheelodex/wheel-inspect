@@ -1,37 +1,39 @@
+from __future__ import annotations
 import base64
 from binascii import hexlify, unhexlify
 from collections import OrderedDict
 import csv
 import hashlib
 import re
+from typing import Any, Dict, Iterator, List, Optional, TextIO
 import attr
 from . import errors
 
 
-@attr.s
+@attr.s(auto_attribs=True)
 class Record:
-    files = attr.ib()
+    files: Dict[str, RecordEntry] = attr.ib(factory=dict)
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[RecordEntry]:
         return iter(self.files.values())
 
-    def __contains__(self, filename):
+    def __contains__(self, filename: str) -> bool:
         return filename in self.files
 
-    def for_json(self):
+    def for_json(self) -> List[Dict[str, Any]]:
         return [e.for_json() for e in self.files.values()]
 
 
-@attr.s
+@attr.s(auto_attribs=True)
 class RecordEntry:
-    path = attr.ib()
-    digest_algorithm = attr.ib()
+    path: str
+    digest_algorithm: Optional[str]
     #: The digest in hex format
-    digest = attr.ib()
-    size = attr.ib()
+    digest: Optional[str]
+    size: Optional[int]
 
     @classmethod
-    def from_csv_fields(cls, fields):
+    def from_csv_fields(cls, fields: List[str]) -> RecordEntry:
         try:
             path, alg_digest, size = fields
         except ValueError:
@@ -75,7 +77,7 @@ class RecordEntry:
             size=size,
         )
 
-    def for_json(self):
+    def for_json(self) -> Dict[str, Any]:
         return {
             "path": self.path,
             "digests": {self.digest_algorithm: hex2record_digest(self.digest)}
@@ -85,7 +87,7 @@ class RecordEntry:
         }
 
 
-def parse_record(fp):
+def parse_record(fp: TextIO) -> Record:
     # Format defined in PEP 376
     files = OrderedDict()
     for fields in csv.reader(fp, delimiter=",", quotechar='"'):
@@ -98,10 +100,10 @@ def parse_record(fp):
     return Record(files)
 
 
-def hex2record_digest(data):
+def hex2record_digest(data: str) -> str:
     return base64.urlsafe_b64encode(unhexlify(data)).decode("us-ascii").rstrip("=")
 
 
-def record_digest2hex(data):
+def record_digest2hex(data: str) -> str:
     pad = "=" * (4 - (len(data) & 3))
     return hexlify(base64.urlsafe_b64decode(data + pad)).decode("us-ascii")

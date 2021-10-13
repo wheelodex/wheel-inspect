@@ -1,3 +1,4 @@
+from typing import Dict, List, TextIO, Union
 from headerparser import BOOL, HeaderParser
 from .util import fieldnorm, strfield
 
@@ -12,7 +13,7 @@ infoparser.add_field("Build")
 infoparser.add_additional(multiple=True, type=strfield)
 
 
-def parse_wheel_info(fp):
+def parse_wheel_info(fp: TextIO) -> Dict[str, Union[str, bool, List[str]]]:
     """
     Parse the contents of a text filehandle ``fp`` as a
     :file:`*.dist-info/WHEEL` file and return a `dict` that maps field names to

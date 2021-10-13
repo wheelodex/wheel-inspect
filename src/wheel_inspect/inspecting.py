@@ -1,9 +1,12 @@
 import io
+from typing import Any, Callable, Dict, List, TextIO, Tuple
 import entry_points_txt
 from readme_renderer.rst import render
 from . import errors
-from .classes import DistInfoDir, FileProvider, WheelFile
+from .classes import DistInfoDir, DistInfoProvider, FileProvider, WheelFile
+from .record import Record
 from .util import (
+    AnyPath,
     extract_modules,
     is_dist_info_path,
     split_content_type,
@@ -13,7 +16,7 @@ from .util import (
 )
 
 
-def parse_entry_points(fp):
+def parse_entry_points(fp: TextIO) -> Dict[str, Any]:
     """
     Parse the contents of a text filehandle ``fp`` as an
     :file:`entry_points.txt` file and return a `dict` that maps entry point
@@ -63,11 +66,11 @@ def parse_entry_points(fp):
     }
 
 
-def readlines(fp):
+def readlines(fp: TextIO) -> List[str]:
     return list(yield_lines(fp))
 
 
-EXTRA_DIST_INFO_FILES = [
+EXTRA_DIST_INFO_FILES: List[Tuple[str, Callable[[TextIO], Any], str]] = [
     # file name, handler function, result dict key
     # <https://setuptools.readthedocs.io/en/latest/formats.html>:
     ("dependency_links.txt", readlines, "dependency_links"),
@@ -77,7 +80,7 @@ EXTRA_DIST_INFO_FILES = [
 ]
 
 
-def inspect(obj):  # (DistInfoProvider) -> dict
+def inspect(obj: DistInfoProvider) -> Dict[str, Any]:
     about = obj.basic_metadata()
     about["dist_info"] = {}
     about["valid"] = True
@@ -182,7 +185,7 @@ def inspect(obj):  # (DistInfoProvider) -> dict
     return about
 
 
-def inspect_wheel(path):
+def inspect_wheel(path: AnyPath) -> Dict[str, Any]:
     """
     Examine the Python wheel at the given path and return various information
     about the contents within as a JSON-serializable `dict`
@@ -191,7 +194,7 @@ def inspect_wheel(path):
         return inspect(wf)
 
 
-def inspect_dist_info_dir(path):
+def inspect_dist_info_dir(path: AnyPath) -> Dict[str, Any]:
     """
     Examine the ``*.dist-info`` directory at the given path and return various
     information about the contents within as a JSON-serializable `dict`
@@ -200,7 +203,7 @@ def inspect_dist_info_dir(path):
         return inspect(did)
 
 
-def verify_record(fileprod: FileProvider, record):
+def verify_record(fileprod: FileProvider, record: Record) -> None:
     files = set(fileprod.list_files())
     # Check everything in RECORD against actual values:
     for entry in record:

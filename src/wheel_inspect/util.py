@@ -1,10 +1,25 @@
+from __future__ import annotations
 from email.message import EmailMessage
 import hashlib
 from keyword import iskeyword
+import os
 import re
-from typing import List, Optional, Tuple
+from typing import (
+    BinaryIO,
+    Dict,
+    Iterable,
+    Iterator,
+    List,
+    Optional,
+    TextIO,
+    Tuple,
+    Union,
+)
 from packaging.utils import canonicalize_name, canonicalize_version
 from .errors import DistInfoError
+
+AnyPath = Union[bytes, str, os.PathLike[bytes], os.PathLike[str]]
+
 
 DIGEST_CHUNK_SIZE = 65535
 
@@ -20,7 +35,7 @@ DATA_DIR_RGX = re.compile(
 MODULE_EXT_RGX = re.compile(r"(?<=.)\.(?:py|pyd|so|[-A-Za-z0-9_]+\.(?:pyd|so))\Z")
 
 
-def extract_modules(filelist):
+def extract_modules(filelist: Iterable[str]) -> List[str]:
     modules = set()
     for fname in filelist:
         parts = fname.split("/")
@@ -44,7 +59,7 @@ def extract_modules(filelist):
     return sorted(modules)
 
 
-def split_keywords(kwstr):
+def split_keywords(kwstr: str) -> Tuple[List[str], str]:
     # cf. `format_tags()` in Warehouse <https://git.io/fA1AT>, which seems to
     # be the part of PyPI responsible for splitting keywords up for display
 
@@ -59,15 +74,15 @@ def split_keywords(kwstr):
         return (kwstr.split(), " ")
 
 
-def strfield(s):
+def strfield(s: str) -> Optional[str]:
     return None if s is None or s.strip() in ("", "UNKNOWN") else s
 
 
-def fieldnorm(s):
+def fieldnorm(s: str) -> str:
     return s.lower().replace("-", "_")
 
 
-def unique_projects(projects):
+def unique_projects(projects: Iterable[str]) -> Iterator[str]:
     seen = set()
     for p in projects:
         pn = canonicalize_name(p)
@@ -76,7 +91,7 @@ def unique_projects(projects):
         seen.add(pn)
 
 
-def digest_file(fp, algorithms):
+def digest_file(fp: BinaryIO, algorithms: Iterable[str]) -> Dict[str, str]:
     digests = {alg: getattr(hashlib, alg)() for alg in algorithms}
     for chunk in iter(lambda: fp.read(DIGEST_CHUNK_SIZE), b""):
         for d in digests.values():
@@ -84,27 +99,27 @@ def digest_file(fp, algorithms):
     return {k: v.hexdigest() for k, v in digests.items()}
 
 
-def split_content_type(s):
+def split_content_type(s: str) -> Tuple[str, str, Dict[str, str]]:
     msg = EmailMessage()
     msg["Content-Type"] = s
     ct = msg["Content-Type"]
-    return (ct.maintype, ct.subtype, ct.params)
+    return (ct.maintype, ct.subtype, dict(ct.params))
 
 
-def is_dist_info_dir(name):
+def is_dist_info_dir(name: str) -> bool:
     return DIST_INFO_DIR_RGX.fullmatch(name) is not None
 
 
-def is_data_dir(name):
+def is_data_dir(name: str) -> bool:
     return DATA_DIR_RGX.fullmatch(name) is not None
 
 
-def is_dist_info_path(path, name):
+def is_dist_info_path(path: str, name: str) -> bool:
     pre, _, post = path.partition("/")
     return is_dist_info_dir(pre) and post == name
 
 
-def yield_lines(fp):
+def yield_lines(fp: TextIO) -> Iterator[str]:
     # Like pkg_resources.yield_lines(fp), but without the dependency on
     # pkg_resources
     for line in fp:
@@ -113,9 +128,7 @@ def yield_lines(fp):
             yield line
 
 
-def find_dist_info_dir(
-    namelist: List[str], project: str, version: str
-) -> Tuple[str, Optional[str]]:
+def find_dist_info_dir(namelist: List[str], project: str, version: str) -> str:
     """
     Given a list ``namelist`` of files in a wheel for a project ``project`` and
     version ``version``, find & return the name of the wheel's ``.dist-info``

@@ -68,9 +68,9 @@ class RecordEntry:
                 raise errors.MalformedSizeError(path, size)
         else:
             isize = None
-        if digest is None and size is not None:
+        if digest is None and isize is not None:
             raise errors.EmptyDigestError(path)
-        elif digest is not None and size is None:
+        elif digest is not None and isize is None:
             raise errors.EmptySizeError(path)
         return cls(
             path=path,

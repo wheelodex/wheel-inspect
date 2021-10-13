@@ -291,10 +291,7 @@ API
 
 ``wheel_inspect.WHEEL_SCHEMA``
    A `JSON Schema <http://json-schema.org>`_ for the structure returned by
-   ``inspect_wheel()``.  This value was previously exported under the name
-   "``SCHEMA``"; the old name continues to be available for backwards
-   compatibility, but it will go away in the future and should not be used in
-   new code.
+   ``inspect_wheel()``.
 
 ``wheel_inspect.inspect_dist_info_dir(dirpath)``
    Treat ``dirpath`` as a ``*.dist-info`` directory and inspect just it & its

@@ -16,7 +16,7 @@ Visit <https://github.com/wheelodex/wheel-inspect> for more information.
 
 from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from .inspecting import inspect_dist_info_dir, inspect_wheel
-from .schema import DIST_INFO_SCHEMA, SCHEMA, WHEEL_SCHEMA
+from .schema import DIST_INFO_SCHEMA, WHEEL_SCHEMA
 
 __version__ = "1.7.1"
 __author__ = "John Thorvald Wodder II"
@@ -27,7 +27,6 @@ __url__ = "https://github.com/wheelodex/wheel-inspect"
 __all__ = [
     "DIST_INFO_SCHEMA",
     "ParsedWheelFilename",
-    "SCHEMA",
     "WHEEL_SCHEMA",
     "inspect_dist_info_dir",
     "inspect_wheel",

@@ -4,6 +4,7 @@ v2.0.0 (in development)
 - Support Python 3.11 and 3.12
 - Moved to wheelodex organization
 - Added type annotations
+- Removed the old `SCHEMA` alias for `WHEEL_SCHEMA` (deprecated in v1.6.0)
 
 
 v1.7.1 (2022-04-08)

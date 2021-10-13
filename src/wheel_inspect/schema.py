@@ -305,6 +305,3 @@ WHEEL_SCHEMA["properties"].update(
         },
     }
 )
-
-#: Alias for `WHEEL_SCHEMA`.  Deprecated; use `WHEEL_SCHEMA` instead.
-SCHEMA = WHEEL_SCHEMA

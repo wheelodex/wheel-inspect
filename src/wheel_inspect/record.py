@@ -26,6 +26,11 @@ class Record:
             entries[entry.path] = entry
         return cls(entries)
 
+    def dump(self, fp: TextIO) -> None:
+        out = csv.writer(fp, delimiter=",", quotechar='"')
+        for entry in self:
+            out.writerow(entry.to_csv_fields())
+
     def __iter__(self) -> Iterator[RecordEntry]:
         return iter(self.entries.values())
 
@@ -80,8 +85,6 @@ class RecordEntry:
         elif digest is not None and isize is None:
             raise errors.EmptySizeError(path)
         return cls(path=path, digest=digest, size=isize)
-
-    ### TODO: __str__ (requires CSV-quoting the path)
 
     def to_csv_fields(self) -> List[str]:
         return [

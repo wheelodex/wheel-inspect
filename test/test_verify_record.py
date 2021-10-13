@@ -1,3 +1,5 @@
+from pathlib import Path
+from typing import Any
 import pytest
 from testing_lib import filecases
 from wheel_inspect.classes import WheelFile
@@ -6,7 +8,7 @@ from wheel_inspect.inspecting import verify_record
 
 
 @pytest.mark.parametrize("whlfile,expected", filecases("bad-wheels", "*.whl"))
-def test_verify_bad_wheels(whlfile, expected):
+def test_verify_bad_wheels(whlfile: Path, expected: Any) -> None:
     with WheelFile(whlfile) as whl:
         with pytest.raises(WheelValidationError) as excinfo:
             verify_record(whl, whl.get_record())

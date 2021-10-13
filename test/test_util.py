@@ -1,3 +1,4 @@
+from typing import Dict, List, Tuple
 import pytest
 from wheel_inspect.errors import DistInfoError
 from wheel_inspect.util import (
@@ -41,7 +42,7 @@ from wheel_inspect.util import (
         ("foo,", (["foo"], ",")),
     ],
 )
-def test_split_keywords(kwstr, expected):
+def test_split_keywords(kwstr: str, expected: Tuple[List[str], str]) -> None:
     assert split_keywords(kwstr) == expected
 
 
@@ -241,7 +242,7 @@ def test_split_keywords(kwstr, expected):
         ),
     ],
 )
-def test_extract_modules(filelist, modules):
+def test_extract_modules(filelist: List[str], modules: List[str]) -> None:
     assert extract_modules(filelist) == modules
 
 
@@ -256,7 +257,7 @@ def test_extract_modules(filelist, modules):
         ),
     ],
 )
-def test_split_content_type(s, ct):
+def test_split_content_type(s: str, ct: Tuple[str, str, Dict[str, str]]) -> None:
     assert split_content_type(s) == ct
 
 
@@ -273,7 +274,7 @@ def test_split_content_type(s, ct):
         (".dist-info", False),
     ],
 )
-def test_is_dist_info_dir(name, expected):
+def test_is_dist_info_dir(name: str, expected: bool) -> None:
     assert is_dist_info_dir(name) is expected
 
 
@@ -290,7 +291,7 @@ def test_is_dist_info_dir(name, expected):
         (".data", False),
     ],
 )
-def test_is_data_dir(name, expected):
+def test_is_data_dir(name: str, expected: bool) -> None:
     assert is_data_dir(name) is expected
 
 
@@ -339,7 +340,9 @@ def test_is_data_dir(name, expected):
         ),
     ],
 )
-def test_find_dist_info_dir(namelist, project, version, expected):
+def test_find_dist_info_dir(
+    namelist: List[str], project: str, version: str, expected: str
+) -> None:
     assert find_dist_info_dir(namelist, project, version) == expected
 
 
@@ -403,7 +406,9 @@ def test_find_dist_info_dir(namelist, project, version, expected):
         ),
     ],
 )
-def test_find_dist_info_dir_error(namelist, project, version, msg):
+def test_find_dist_info_dir_error(
+    namelist: List[str], project: str, version: str, msg: str
+) -> None:
     with pytest.raises(DistInfoError) as excinfo:
         find_dist_info_dir(namelist, project, version)
     assert str(excinfo.value) == msg

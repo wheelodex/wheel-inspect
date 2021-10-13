@@ -7,7 +7,7 @@ from wheel_inspect.errors import MalformedRecordError
 from wheel_inspect.record import parse_record
 
 
-def test_parse_record():
+def test_parse_record() -> None:
     assert parse_record(
         StringIO(
             """\
@@ -91,7 +91,7 @@ qypi-0.4.1.dist-info/top_level.txt,sha256=J2Q5xVa8BtnOTGxjqY2lKQRB22Ydn9JF2PirqD
     (Path(__file__).with_name("data") / "bad-records").glob("*.csv"),
     ids=attrgetter("name"),
 )
-def test_parse_bad_records(recfile):
+def test_parse_bad_records(recfile: Path) -> None:
     with recfile.with_suffix(".json").open() as fp:
         expected = json.load(fp)
     with recfile.open(newline="") as fp:

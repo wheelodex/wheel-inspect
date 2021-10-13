@@ -1,4 +1,5 @@
 from typing import Optional
+import attr
 
 
 class WheelValidationError(Exception):
@@ -16,19 +17,19 @@ class RecordValidationError(WheelValidationError):
     pass
 
 
+@attr.s(auto_attribs=True)
 class RecordSizeMismatchError(RecordValidationError):
     """
     Raised when the size of a file as declared in a wheel's :file:`RECORD` does
     not match the file's actual size
     """
 
-    def __init__(self, path: str, record_size: int, actual_size: int) -> None:
-        #: The path of the mismatched file
-        self.path: str = path
-        #: The size of the file as declared in the :file:`RECORD`
-        self.record_size: int = record_size
-        #: The file's actual size
-        self.actual_size: int = actual_size
+    #: The path of the mismatched file
+    path: str
+    #: The size of the file as declared in the :file:`RECORD`
+    record_size: int
+    #: The file's actual size
+    actual_size: int
 
     def __str__(self) -> str:
         return (
@@ -37,23 +38,21 @@ class RecordSizeMismatchError(RecordValidationError):
         )
 
 
+@attr.s(auto_attribs=True)
 class RecordDigestMismatchError(RecordValidationError):
     """
     Raised when a file's digest as declared in a wheel's :file:`RECORD` does
     not match the file's actual digest
     """
 
-    def __init__(
-        self, path: str, algorithm: str, record_digest: str, actual_digest: str
-    ) -> None:
-        #: The path of the mismatched file
-        self.path: str = path
-        #: The name of the digest algorithm
-        self.algorithm: str = algorithm
-        #: The file's digest as declared in the :file:`RECORD`, in hex
-        self.record_digest: str = record_digest
-        #: The file's actual digest, in hex
-        self.actual_digest: str = actual_digest
+    #: The path of the mismatched file
+    path: str
+    #: The name of the digest algorithm
+    algorithm: str
+    #: The file's digest as declared in the :file:`RECORD`, in hex
+    record_digest: str
+    #: The file's actual digest, in hex
+    actual_digest: str
 
     def __str__(self) -> str:
         return (
@@ -62,29 +61,29 @@ class RecordDigestMismatchError(RecordValidationError):
         )
 
 
+@attr.s(auto_attribs=True)
 class FileMissingError(RecordValidationError):
     """
     Raised when a file listed in a wheel's :file:`RECORD` is not found in the
     wheel
     """
 
-    def __init__(self, path: str) -> None:
-        #: The path of the missing file
-        self.path: str = path
+    #: The path of the missing file
+    path: str
 
     def __str__(self) -> str:
         return f"File declared in RECORD not found in archive: {self.path!r}"
 
 
+@attr.s(auto_attribs=True)
 class ExtraFileError(RecordValidationError):
     """
     Raised when a wheel contains a file that is not listed in the
     :file:`RECORD` (other than :file:`RECORD.jws` and :file:`RECORD.p7s`)
     """
 
-    def __init__(self, path: str) -> None:
-        #: The path of the extra file
-        self.path: str = path
+    #: The path of the extra file
+    path: str
 
     def __str__(self) -> str:
         return f"File not declared in RECORD: {self.path!r}"
@@ -99,17 +98,17 @@ class MalformedRecordError(WheelValidationError):
     pass
 
 
+@attr.s(auto_attribs=True)
 class UnknownDigestError(MalformedRecordError):
     """
     Raised when an entry in a wheel's :file:`RECORD` uses a digest not listed
     in `hashlib.algorithms_guaranteed`
     """
 
-    def __init__(self, path: str, algorithm: str) -> None:
-        #: The path the entry is for
-        self.path: str = path
-        #: The unknown digest algorithm
-        self.algorithm: str = algorithm
+    #: The path the entry is for
+    path: str
+    #: The unknown digest algorithm
+    algorithm: str
 
     def __str__(self) -> str:
         return (
@@ -118,17 +117,17 @@ class UnknownDigestError(MalformedRecordError):
         )
 
 
+@attr.s(auto_attribs=True)
 class WeakDigestError(MalformedRecordError):
     """
     Raised when an entry in a wheel's :file:`RECORD` uses a digest weaker than
     sha256
     """
 
-    def __init__(self, path: str, algorithm: str) -> None:
-        #: The path the entry is for
-        self.path: str = path
-        #: The weak digest algorithm
-        self.algorithm: str = algorithm
+    #: The path the entry is for
+    path: str
+    #: The weak digest algorithm
+    algorithm: str
 
     def __str__(self) -> str:
         return (
@@ -137,19 +136,19 @@ class WeakDigestError(MalformedRecordError):
         )
 
 
+@attr.s(auto_attribs=True)
 class MalformedDigestError(MalformedRecordError):
     """
     Raised when an entry in a wheel's :file:`RECORD` contains a malformed or
     invalid digest
     """
 
-    def __init__(self, path: str, algorithm: str, digest: str) -> None:
-        #: The path the entry is for
-        self.path: str = path
-        #: The digest's declared algorithm
-        self.algorithm: str = algorithm
-        #: The malformed digest
-        self.digest: str = digest
+    #: The path the entry is for
+    path: str
+    #: The digest's declared algorithm
+    algorithm: str
+    #: The malformed digest
+    digest: str
 
     def __str__(self) -> str:
         return (
@@ -158,59 +157,59 @@ class MalformedDigestError(MalformedRecordError):
         )
 
 
+@attr.s(auto_attribs=True)
 class MalformedSizeError(MalformedRecordError):
     """
     Raised when an entry in a wheel's :file:`RECORD` contains a malformed or
     invalid file size
     """
 
-    def __init__(self, path: str, size: str) -> None:
-        #: The path the entry is for
-        self.path: str = path
-        #: The size (as a string)
-        self.size: str = size
+    #: The path the entry is for
+    path: str
+    #: The size (as a string)
+    size: str
 
     def __str__(self) -> str:
         return f"RECORD contains invalid size for {self.path!r}: {self.size!r}"
 
 
+@attr.s(auto_attribs=True)
 class RecordConflictError(MalformedRecordError):
     """
     Raised when a wheel's :file:`RECORD` contains two or more conflicting
     entries for the same path
     """
 
-    def __init__(self, path: str) -> None:
-        #: The path with conflicting entries
-        self.path: str = path
+    #: The path with conflicting entries
+    path: str
 
     def __str__(self) -> str:
         return f"RECORD contains multiple conflicting entries for {self.path!r}"
 
 
+@attr.s(auto_attribs=True)
 class EmptyDigestError(MalformedRecordError):
     """
     Raised when an entry in a wheel's :file:`RECORD` has a size but not a
     digest
     """
 
-    def __init__(self, path: str) -> None:
-        #: The path the entry is for
-        self.path: str = path
+    #: The path the entry is for
+    path: str
 
     def __str__(self) -> str:
         return f"RECORD entry for {self.path!r} has a size but no digest"
 
 
+@attr.s(auto_attribs=True)
 class EmptySizeError(MalformedRecordError):
     """
     Raised when an entry in a wheel's :file:`RECORD` has a digest but not a
     size
     """
 
-    def __init__(self, path: str) -> None:
-        #: The path the entry is for
-        self.path: str = path
+    #: The path the entry is for
+    path: str
 
     def __str__(self) -> str:
         return f"RECORD entry for {self.path!r} has a digest but no size"
@@ -223,17 +222,17 @@ class EmptyPathError(MalformedRecordError):
         return "RECORD entry has an empty path"
 
 
+@attr.s(auto_attribs=True)
 class RecordLengthError(MalformedRecordError):
     """
     Raised when an entry in a wheel's :file:`RECORD` has the wrong number of
     fields
     """
 
-    def __init__(self, path: Optional[str], length: int) -> None:
-        #: The path the entry is for (if nonempty)
-        self.path: Optional[str] = path
-        #: The number of fields in the entry
-        self.length: int = length
+    #: The path the entry is for (if nonempty)
+    path: Optional[str]
+    #: The number of fields in the entry
+    length: int
 
     def __str__(self) -> str:
         if self.path is None:
@@ -245,41 +244,41 @@ class RecordLengthError(MalformedRecordError):
             )
 
 
+@attr.s(auto_attribs=True)
 class NullEntryError(MalformedRecordError):
     """
     Raised when an entry in a wheel's :file:`RECORD` lacks both digest and size
     and the entry is not for the :file:`RECORD` itself
     """
 
-    def __init__(self, path: str) -> None:
-        #: The path the entry is for
-        self.path: str = path
+    #: The path the entry is for
+    path: str
 
     def __str__(self) -> str:
         return f"RECORD entry for {self.path!r} lacks both digest and size"
 
 
+@attr.s(auto_attribs=True)
 class NonNormalizedPathError(MalformedRecordError):
     """
     Raised when an entry in a wheel's :file:`RECORD` has a non-normalized path
     """
 
-    def __init__(self, path: str) -> None:
-        #: The non-normalized path
-        self.path: str = path
+    #: The non-normalized path
+    path: str
 
     def __str__(self) -> str:
         return f"RECORD entry has a non-normalized path: {self.path!r}"
 
 
+@attr.s(auto_attribs=True)
 class AbsolutePathError(MalformedRecordError):
     """
     Raised when an entry in a wheel's :file:`RECORD` has an absolute path
     """
 
-    def __init__(self, path: str) -> None:
-        #: The absolute path
-        self.path: str = path
+    #: The absolute path
+    path: str
 
     def __str__(self) -> str:
         return f"RECORD entry has an absolute path: {self.path!r}"
@@ -294,15 +293,15 @@ class DistInfoError(WheelValidationError):
     pass
 
 
+@attr.s(auto_attribs=True)
 class MissingDistInfoFileError(WheelValidationError):
     """
     Raised when a given file is not found in the wheel's :file:`*.dist-info`
     directory
     """
 
-    def __init__(self, path: str) -> None:
-        #: The path to the file, relative to the :file:`*.dist-info` directory
-        self.path: str = path
+    #: The path to the file, relative to the :file:`*.dist-info` directory
+    path: str
 
     def __str__(self) -> str:
         return f"File not found in *.dist-info directory: {self.path!r}"

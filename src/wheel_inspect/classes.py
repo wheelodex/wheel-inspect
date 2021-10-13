@@ -3,7 +3,7 @@ import abc
 import io
 import os
 from pathlib import Path
-from typing import IO, Any, Dict, List, Optional
+from typing import IO, Any, Dict, List, Optional, TypeVar
 from zipfile import ZipFile
 from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from . import errors
@@ -12,12 +12,20 @@ from .record import Record
 from .util import AnyPath, digest_file, find_dist_info_dir
 from .wheel_info import parse_wheel_info
 
+T = TypeVar("T", bound="DistInfoProvider")
+
 
 class DistInfoProvider(abc.ABC):
     """
     An interface for resources that are or contain a :file:`*.dist-info`
     directory
     """
+
+    def __enter__(self: T) -> T:
+        return self
+
+    def __exit__(self, *_exc: Any) -> Optional[bool]:
+        pass
 
     @abc.abstractmethod
     def basic_metadata(self) -> Dict[str, Any]:
@@ -124,12 +132,6 @@ class DistInfoDir(DistInfoProvider):
     def __init__(self, path: AnyPath) -> None:
         self.path: Path = Path(os.fsdecode(path))
 
-    def __enter__(self) -> DistInfoDir:
-        return self
-
-    def __exit__(self, *_exc: Any) -> None:
-        pass
-
     def basic_metadata(self) -> Dict[str, Any]:
         return {}
 
@@ -148,23 +150,30 @@ class DistInfoDir(DistInfoProvider):
 class WheelFile(DistInfoProvider, FileProvider):
     def __init__(self, path: AnyPath):
         self.path: Path = Path(os.fsdecode(path))
-        self.parsed_filename: ParsedWheelFilename = parse_wheel_filename(self.path)
-        self.fp: Optional[IO[bytes]] = None
-        self.zipfile: Optional[ZipFile] = None
+        self.filename: ParsedWheelFilename = parse_wheel_filename(self.path)
+        self.fp: IO[bytes] = self.path.open("rb")
+        self.zipfile: ZipFile = ZipFile(self.fp)
         self._dist_info: Optional[str] = None
 
+    @classmethod
+    def from_zipfile_path(cls, path: AnyPath) -> WheelFile:
+        # Recommend the use of this method in case __init__'s signature changes
+        # later
+        return cls(path)
+
     def __enter__(self) -> WheelFile:
-        self.fp = self.path.open("rb")
-        self.zipfile = ZipFile(self.fp)
         return self
 
     def __exit__(self, *_exc: Any) -> None:
-        assert self.zipfile is not None
-        assert self.fp is not None
+        self.close()
+
+    def close(self) -> None:
         self.zipfile.close()
         self.fp.close()
-        self.fp = None
-        self.zipfile = None
+
+    @property
+    def closed(self) -> bool:
+        return self.fp.closed
 
     @property
     def dist_info(self) -> str:
@@ -176,14 +185,13 @@ class WheelFile(DistInfoProvider, FileProvider):
                 )
             self._dist_info = find_dist_info_dir(
                 self.zipfile.namelist(),
-                self.parsed_filename.project,
-                self.parsed_filename.version,
+                self.filename.project,
+                self.filename.version,
             )
         return self._dist_info
 
     def basic_metadata(self) -> Dict[str, Any]:
-        assert self.fp is not None
-        namebits = self.parsed_filename
+        namebits = self.filename
         about: Dict[str, Any] = {
             "filename": self.path.name,
             "project": namebits.project,
@@ -203,7 +211,6 @@ class WheelFile(DistInfoProvider, FileProvider):
     def open_dist_info_file(self, path: str) -> IO[bytes]:
         # returns a binary IO handle; raises MissingDistInfoFileError if file
         # does not exist
-        assert self.zipfile is not None
         try:
             zi = self.zipfile.getinfo(self.dist_info + "/" + path)
         except KeyError:
@@ -212,7 +219,6 @@ class WheelFile(DistInfoProvider, FileProvider):
             return self.zipfile.open(zi)
 
     def has_dist_info_file(self, path: str) -> bool:
-        assert self.zipfile is not None
         try:
             self.zipfile.getinfo(self.dist_info + "/" + path)
         except KeyError:
@@ -221,11 +227,9 @@ class WheelFile(DistInfoProvider, FileProvider):
             return True
 
     def list_files(self) -> List[str]:
-        assert self.zipfile is not None
         return [name for name in self.zipfile.namelist() if not name.endswith("/")]
 
     def has_directory(self, path: str) -> bool:
-        assert self.zipfile is not None
         if not path.endswith("/"):
             path += "/"
         if path == "/":
@@ -233,10 +237,8 @@ class WheelFile(DistInfoProvider, FileProvider):
         return any(name.startswith(path) for name in self.zipfile.namelist())
 
     def get_file_size(self, path: str) -> int:
-        assert self.zipfile is not None
         return self.zipfile.getinfo(path).file_size
 
     def get_file_hash(self, path: str, algorithm: str) -> str:
-        assert self.zipfile is not None
         with self.zipfile.open(path) as fp:
             return digest_file(fp, [algorithm])[algorithm]

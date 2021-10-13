@@ -3,10 +3,10 @@ import abc
 import io
 import os
 from pathlib import Path
-from typing import IO, Any, Dict, List, Optional, TypeVar
+from typing import IO, Any, Dict, List, Optional, TextIO, TypeVar, overload
 from zipfile import ZipFile
 from wheel_filename import ParsedWheelFilename, parse_wheel_filename
-from . import errors
+from . import errors as exc
 from .metadata import parse_metadata
 from .record import Record
 from .util import AnyPath, digest_file, find_dist_info_dir
@@ -34,14 +34,42 @@ class DistInfoProvider(abc.ABC):
         """
         ...
 
+    @overload
+    def open_dist_info_file(
+        self,
+        path: str,
+        encoding: None = None,
+        errors: None = None,
+        newline: None = None,
+    ) -> IO[bytes]:
+        ...
+
+    @overload
+    def open_dist_info_file(
+        self,
+        path: str,
+        encoding: str,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> TextIO:
+        ...
+
     @abc.abstractmethod
-    def open_dist_info_file(self, path: str) -> IO[bytes]:
+    def open_dist_info_file(
+        self,
+        path: str,
+        encoding: Optional[str] = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> IO:
         """
-        Returns a readable binary IO handle for reading the contents of the
-        file at the given path beneath the :file:`*.dist-info` directory
+        Returns a readable IO handle for reading the contents of the file at
+        the given path beneath the :file:`*.dist-info` directory.  If
+        ``encoding`` is `None`, the handle is a binary handle; otherwise, it is
+        a text handle decoded using the given encoding.
+
+        :raises MissingDistInfoFileError: if the given file does not exist
         """
-        ### TODO: Specify here that MissingDistInfoFileError is raised if file
-        ### not found?
         ...
 
     @abc.abstractmethod
@@ -54,32 +82,26 @@ class DistInfoProvider(abc.ABC):
 
     def get_metadata(self) -> Dict[str, Any]:
         try:
-            with self.open_dist_info_file("METADATA") as binfp, io.TextIOWrapper(
-                binfp, "utf-8"
-            ) as txtfp:
-                return parse_metadata(txtfp)
-        except errors.MissingDistInfoFileError:
-            raise errors.MissingMetadataError()
+            with self.open_dist_info_file("METADATA", encoding="utf-8") as fp:
+                return parse_metadata(fp)
+        except exc.MissingDistInfoFileError:
+            raise exc.MissingMetadataError()
 
     def get_record(self) -> Record:
         try:
-            with self.open_dist_info_file("RECORD") as binfp, io.TextIOWrapper(
-                binfp, "utf-8", newline=""
-            ) as txtfp:
+            with self.open_dist_info_file("RECORD", encoding="utf-8", newline="") as fp:
                 # The csv module requires this file to be opened with
                 # `newline=''`
-                return Record.load(txtfp)
-        except errors.MissingDistInfoFileError:
-            raise errors.MissingRecordError()
+                return Record.load(fp)
+        except exc.MissingDistInfoFileError:
+            raise exc.MissingRecordError()
 
     def get_wheel_info(self) -> Dict[str, Any]:
         try:
-            with self.open_dist_info_file("WHEEL") as binfp, io.TextIOWrapper(
-                binfp, "utf-8"
-            ) as txtfp:
-                return parse_wheel_info(txtfp)
-        except errors.MissingDistInfoFileError:
-            raise errors.MissingWheelInfoError()
+            with self.open_dist_info_file("WHEEL", encoding="utf-8") as fp:
+                return parse_wheel_info(fp)
+        except exc.MissingDistInfoFileError:
+            raise exc.MissingWheelInfoError()
 
 
 class FileProvider(abc.ABC):
@@ -135,13 +157,42 @@ class DistInfoDir(DistInfoProvider):
     def basic_metadata(self) -> Dict[str, Any]:
         return {}
 
-    def open_dist_info_file(self, path: str) -> IO[bytes]:
-        # returns a binary IO handle; raises MissingDistInfoFileError if file
-        # does not exist
+    @overload
+    def open_dist_info_file(
+        self,
+        path: str,
+        encoding: None = None,
+        errors: None = None,
+        newline: None = None,
+    ) -> IO[bytes]:
+        ...
+
+    @overload
+    def open_dist_info_file(
+        self,
+        path: str,
+        encoding: str,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> TextIO:
+        ...
+
+    def open_dist_info_file(
+        self,
+        path: str,
+        encoding: Optional[str] = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> IO:
         try:
-            return (self.path / path).open("rb")
+            if encoding is None:
+                return (self.path / path).open("rb")
+            else:
+                return (self.path / path).open(
+                    "r", encoding=encoding, errors=errors, newline=newline
+                )
         except FileNotFoundError:
-            raise errors.MissingDistInfoFileError(path)
+            raise exc.MissingDistInfoFileError(path)
 
     def has_dist_info_file(self, path: str) -> bool:
         return (self.path / path).exists()
@@ -208,15 +259,44 @@ class WheelFile(DistInfoProvider, FileProvider):
         about["file"]["digests"] = digest_file(self.fp, ["md5", "sha256"])
         return about
 
-    def open_dist_info_file(self, path: str) -> IO[bytes]:
-        # returns a binary IO handle; raises MissingDistInfoFileError if file
-        # does not exist
+    @overload
+    def open_dist_info_file(
+        self,
+        path: str,
+        encoding: None = None,
+        errors: None = None,
+        newline: None = None,
+    ) -> IO[bytes]:
+        ...
+
+    @overload
+    def open_dist_info_file(
+        self,
+        path: str,
+        encoding: str,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> TextIO:
+        ...
+
+    def open_dist_info_file(
+        self,
+        path: str,
+        encoding: Optional[str] = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> IO:
         try:
             zi = self.zipfile.getinfo(self.dist_info + "/" + path)
         except KeyError:
-            raise errors.MissingDistInfoFileError(path)
+            raise exc.MissingDistInfoFileError(path)
+        fp = self.zipfile.open(zi)
+        if encoding is not None:
+            return io.TextIOWrapper(
+                fp, encoding=encoding, errors=errors, newline=newline
+            )
         else:
-            return self.zipfile.open(zi)
+            return fp
 
     def has_dist_info_file(self, path: str) -> bool:
         try:

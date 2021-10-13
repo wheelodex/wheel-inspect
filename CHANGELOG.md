@@ -11,6 +11,7 @@ v2.0.0 (in development)
     - Files in `RECORD` now represent their digest information in a `"digest"`
       key that is either `null` or a subobject with `"algorithm"` and
       `"digest"` fields
+- `RECORD` entries with negative sizes are now detected & errorred on earlier
 
 
 v1.7.1 (2022-04-08)

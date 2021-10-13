@@ -71,6 +71,8 @@ class RecordEntry:
                 isize = int(size)
             except ValueError:
                 raise errors.MalformedSizeError(path, size)
+            if isize < 0:
+                raise errors.MalformedSizeError(path, size)
         else:
             isize = None
         if digest is None and isize is not None:

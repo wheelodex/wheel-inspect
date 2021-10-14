@@ -47,8 +47,8 @@ class DistInfoProvider(abc.ABC):
         self,
         path: str,
         encoding: None = None,
-        errors: None = None,
-        newline: None = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
     ) -> IO[bytes]:
         ...
 
@@ -151,6 +151,44 @@ class FileProvider(abc.ABC):
         """
         ...
 
+    @overload
+    def open(
+        self,
+        path: str,
+        encoding: None = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> IO[bytes]:
+        ...
+
+    @overload
+    def open(
+        self,
+        path: str,
+        encoding: str,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> TextIO:
+        ...
+
+    @abc.abstractmethod
+    def open(
+        self,
+        path: str,
+        encoding: Optional[str] = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> IO:
+        """
+        Returns a readable IO handle for reading the contents of the file at
+        the given path.  If ``encoding`` is `None`, the handle is a binary
+        handle; otherwise, it is a text handle decoded using the given
+        encoding.
+
+        :raises MissingFileError: if the given file does not exist
+        """
+        ...
+
 
 class DistInfoDir(DistInfoProvider):
     def __init__(self, path: AnyPath) -> None:
@@ -164,8 +202,8 @@ class DistInfoDir(DistInfoProvider):
         self,
         path: str,
         encoding: None = None,
-        errors: None = None,
-        newline: None = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
     ) -> IO[bytes]:
         ...
 
@@ -255,8 +293,8 @@ class WheelFile(DistInfoProvider, FileProvider):
         self,
         path: str,
         encoding: None = None,
-        errors: None = None,
-        newline: None = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
     ) -> IO[bytes]:
         ...
 
@@ -278,16 +316,14 @@ class WheelFile(DistInfoProvider, FileProvider):
         newline: Optional[str] = None,
     ) -> IO:
         try:
-            zi = self.zipfile.getinfo(self.dist_info + "/" + path)
-        except KeyError:
-            raise exc.MissingDistInfoFileError(path)
-        fp = self.zipfile.open(zi)
-        if encoding is not None:
-            return io.TextIOWrapper(
-                fp, encoding=encoding, errors=errors, newline=newline
+            return self.open(
+                self.dist_info + "/" + path,
+                encoding=encoding,
+                errors=errors,
+                newline=newline,
             )
-        else:
-            return fp
+        except exc.MissingFileError:
+            raise exc.MissingDistInfoFileError(path)
 
     def has_dist_info_file(self, path: str) -> bool:
         try:
@@ -313,10 +349,49 @@ class WheelFile(DistInfoProvider, FileProvider):
     def get_file_hash(self, path: str, algorithm: str) -> str:
         if algorithm == "size":
             raise ValueError("Invalid file hash algorithm: 'size'")
-        with self.zipfile.open(path) as fp:
+        with self.open(path) as fp:
             digest = digest_file(fp, [algorithm])[algorithm]
         assert isinstance(digest, str)
         return digest
+
+    @overload
+    def open(
+        self,
+        path: str,
+        encoding: None = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> IO[bytes]:
+        ...
+
+    @overload
+    def open(
+        self,
+        path: str,
+        encoding: str,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> TextIO:
+        ...
+
+    def open(
+        self,
+        path: str,
+        encoding: Optional[str] = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> IO:
+        try:
+            zi = self.zipfile.getinfo(path)
+        except KeyError:
+            raise exc.MissingFileError(path)
+        fp = self.zipfile.open(zi)
+        if encoding is not None:
+            return io.TextIOWrapper(
+                fp, encoding=encoding, errors=errors, newline=newline
+            )
+        else:
+            return fp
 
     # TODO: Make this a method of a joint subclass of DistInfoProvider and
     # FileProvider?
@@ -330,7 +405,7 @@ class WheelFile(DistInfoProvider, FileProvider):
             elif path not in files:
                 raise exc.FileMissingError(path)
             elif data is not None:
-                with self.zipfile.open(path) as fp:
+                with self.open(path) as fp:
                     data.verify(fp, path)
             elif not is_dist_info_path(path, "RECORD"):
                 raise exc.NullEntryError(path)

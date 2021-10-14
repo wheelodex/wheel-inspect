@@ -305,3 +305,14 @@ class MissingDistInfoFileError(WheelValidationError):
 
     def __str__(self) -> str:
         return f"File not found in *.dist-info directory: {self.path!r}"
+
+
+@attr.define
+class MissingFileError(WheelValidationError):
+    """Raised when a given file is not found in the wheel"""
+
+    #: The path to the file
+    path: str
+
+    def __str__(self) -> str:
+        return f"File not found in wheel: {self.path!r}"

@@ -148,6 +148,6 @@
     "valid": false,
     "validation_error": {
         "str": "File not found in *.dist-info directory: 'WHEEL'",
-        "type": "MissingWheelInfoError"
+        "type": "MissingDistInfoFileError"
     }
 }

@@ -103,6 +103,6 @@
     "valid": false,
     "validation_error": {
         "str": "File not found in *.dist-info directory: 'RECORD'",
-        "type": "MissingRecordError"
+        "type": "MissingDistInfoFileError"
     }
 }

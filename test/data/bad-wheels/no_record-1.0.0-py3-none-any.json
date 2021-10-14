@@ -1,4 +1,4 @@
 {
-    "type": "MissingRecordError",
+    "type": "MissingDistInfoFileError",
     "str": "File not found in *.dist-info directory: 'RECORD'"
 }

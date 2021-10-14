@@ -90,29 +90,20 @@ class DistInfoProvider(abc.ABC):
 
     @cached_property
     def metadata(self) -> Dict[str, Any]:
-        try:
-            with self.open_dist_info_file("METADATA", encoding="utf-8") as fp:
-                return parse_metadata(fp)
-        except exc.MissingDistInfoFileError:
-            raise exc.MissingMetadataError()
+        with self.open_dist_info_file("METADATA", encoding="utf-8") as fp:
+            return parse_metadata(fp)
 
     @cached_property
     def record(self) -> RecordType:
-        try:
-            with self.open_dist_info_file("RECORD", encoding="utf-8", newline="") as fp:
-                # The csv module requires this file to be opened with
-                # `newline=''`
-                return load_record(fp)
-        except exc.MissingDistInfoFileError:
-            raise exc.MissingRecordError()
+        with self.open_dist_info_file("RECORD", encoding="utf-8", newline="") as fp:
+            # The csv module requires this file to be opened with
+            # `newline=''`
+            return load_record(fp)
 
     @cached_property
     def wheel_info(self) -> Dict[str, Any]:
-        try:
-            with self.open_dist_info_file("WHEEL", encoding="utf-8") as fp:
-                return parse_wheel_info(fp)
-        except exc.MissingDistInfoFileError:
-            raise exc.MissingWheelInfoError()
+        with self.open_dist_info_file("WHEEL", encoding="utf-8") as fp:
+            return parse_wheel_info(fp)
 
 
 class FileProvider(abc.ABC):

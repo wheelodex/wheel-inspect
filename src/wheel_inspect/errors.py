@@ -305,24 +305,3 @@ class MissingDistInfoFileError(WheelValidationError):
 
     def __str__(self) -> str:
         return f"File not found in *.dist-info directory: {self.path!r}"
-
-
-class MissingMetadataError(MissingDistInfoFileError):
-    """Raised when a wheel does not contain a :file:`METADATA` file"""
-
-    def __init__(self) -> None:
-        super().__init__("METADATA")
-
-
-class MissingRecordError(MissingDistInfoFileError):
-    """Raised when a wheel does not contain a :file:`RECORD` file"""
-
-    def __init__(self) -> None:
-        super().__init__("RECORD")
-
-
-class MissingWheelInfoError(MissingDistInfoFileError):
-    """Raised when a wheel does not contain a :file:`WHEEL` file"""
-
-    def __init__(self) -> None:
-        super().__init__("WHEEL")

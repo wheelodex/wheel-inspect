@@ -65,7 +65,7 @@ def jsonify_entry_points(epset: EntryPointSet) -> Dict[str, Any]:
 EXTRA_DIST_INFO_FILES = ["dependency_links", "namespace_packages", "top_level"]
 
 
-def inspect(obj: DistInfoProvider) -> Dict[str, Any]:
+def inspect(obj: DistInfoProvider, verify_files: bool = True) -> Dict[str, Any]:
     about = obj.basic_metadata()
     about["dist_info"] = {}
     about["valid"] = True
@@ -84,7 +84,7 @@ def inspect(obj: DistInfoProvider) -> Dict[str, Any]:
         about["dist_info"]["record"] = {
             k: v.for_json() if v is not None else None for k, v in record.items()
         }
-        if isinstance(obj, WheelFile):
+        if isinstance(obj, WheelFile) and verify_files:
             try:
                 obj.verify_record()
             except errors.WheelValidationError as e:
@@ -173,13 +173,17 @@ def inspect(obj: DistInfoProvider) -> Dict[str, Any]:
     return about
 
 
-def inspect_wheel(path: AnyPath) -> Dict[str, Any]:
+def inspect_wheel(path: AnyPath, verify_files: bool = True) -> Dict[str, Any]:
     """
     Examine the Python wheel at the given path and return various information
     about the contents within as a JSON-serializable `dict`
+
+    :param bool verify_files: If true, the files within the wheel will have
+        their digests calculated in order to verify the digests & sizes listed
+        in the wheel's :file:`RECORD`
     """
     with WheelFile.from_path(path) as wf:
-        return inspect(wf)
+        return inspect(wf, verify_files=verify_files)
 
 
 def inspect_dist_info_dir(path: AnyPath) -> Dict[str, Any]:

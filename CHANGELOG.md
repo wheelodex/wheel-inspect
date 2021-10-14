@@ -16,6 +16,10 @@ v2.0.0 (in development)
     - The `.file` property in wheel inspection results (containing the file's
       size and digest) has been removed
 - `RECORD` entries with negative sizes are now detected & errored on earlier
+- Gave `inspect_wheel()` a `verify_files` option for controlling verification
+  of files' digests
+- Gave the CLI command a `--verify-files`/`--no-verify-files` option for
+  controlling verification of files' digests
 
 
 v1.7.1 (2022-04-08)

@@ -3,12 +3,10 @@ from typing import Any, Callable, Dict, List, TextIO, Tuple
 import entry_points_txt
 from readme_renderer.rst import render
 from . import errors
-from .classes import DistInfoDir, DistInfoProvider, FileProvider, WheelFile
-from .record import Record
+from .classes import DistInfoDir, DistInfoProvider, WheelFile
 from .util import (
     AnyPath,
     extract_modules,
-    is_dist_info_path,
     split_content_type,
     split_keywords,
     unique_projects,
@@ -96,10 +94,12 @@ def inspect(obj: DistInfoProvider) -> Dict[str, Any]:
         }
         has_dist_info = not isinstance(e, errors.DistInfoError)
     else:
-        about["dist_info"]["record"] = record.for_json()
-        if isinstance(obj, FileProvider):
+        about["dist_info"]["record"] = {
+            k: v.for_json() if v is not None else None for k, v in record.items()
+        }
+        if isinstance(obj, WheelFile):
             try:
-                verify_record(obj, record)
+                obj.verify_record()
             except errors.WheelValidationError as e:
                 about["valid"] = False
                 about["validation_error"] = {
@@ -179,7 +179,7 @@ def inspect(obj: DistInfoProvider) -> Dict[str, Any]:
     )
 
     about["derived"]["modules"] = extract_modules(
-        [rec["path"] for rec in about["dist_info"].get("record", [])]
+        about["dist_info"].get("record", {}).keys()
     )
 
     return about
@@ -201,41 +201,3 @@ def inspect_dist_info_dir(path: AnyPath) -> Dict[str, Any]:
     """
     with DistInfoDir(path) as did:
         return inspect(did)
-
-
-def verify_record(fileprod: FileProvider, record: Record) -> None:
-    files = set(fileprod.list_files())
-    # Check everything in RECORD against actual values:
-    for entry in record:
-        if entry.path.endswith("/"):
-            if not fileprod.has_directory(entry.path):
-                raise errors.FileMissingError(entry.path)
-        elif entry.path not in files:
-            raise errors.FileMissingError(entry.path)
-        elif entry.digest is not None:
-            assert entry.size is not None
-            file_size = fileprod.get_file_size(entry.path)
-            if entry.size != file_size:
-                raise errors.RecordSizeMismatchError(
-                    entry.path,
-                    entry.size,
-                    file_size,
-                )
-            ### TODO: Use Digest.verify() here:
-            digest = fileprod.get_file_hash(entry.path, entry.digest.algorithm)
-            if digest != entry.digest.hex_digest:
-                raise errors.RecordDigestMismatchError(
-                    path=entry.path,
-                    algorithm=entry.digest.algorithm,
-                    record_digest=entry.digest.hex_digest,
-                    actual_digest=digest,
-                )
-        elif not is_dist_info_path(entry.path, "RECORD"):
-            raise errors.NullEntryError(entry.path)
-        files.discard(entry.path)
-    # Check that the only files that aren't in RECORD are signatures:
-    for path in files:
-        if not is_dist_info_path(entry.path, "RECORD.jws") and not is_dist_info_path(
-            entry.path, "RECORD.p7s"
-        ):
-            raise errors.ExtraFileError(path)

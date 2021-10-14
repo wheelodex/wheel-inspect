@@ -3,55 +3,20 @@ import base64
 import csv
 import hashlib
 import re
-from typing import Any, BinaryIO, Dict, Iterator, List, Optional, TextIO
+from typing import IO, Dict, List, Optional, TextIO, Tuple
 import attr
 from . import errors
 from .util import digest_file
 
 
 @attr.s(auto_attribs=True)
-class Record:
-    entries: Dict[str, RecordEntry] = attr.Factory(dict)
+class FileData:
+    algorithm: str
+    digest: str  # In the pseudo-base64 format
+    size: int
 
     @classmethod
-    def load(cls, fp: TextIO) -> Record:
-        # Format defined in PEP 376
-        entries: Dict[str, RecordEntry] = {}
-        for fields in csv.reader(fp, delimiter=",", quotechar='"'):
-            if not fields:
-                continue
-            entry = RecordEntry.from_csv_fields(fields)
-            if entry.path in entries and entries[entry.path] != entry:
-                raise errors.RecordConflictError(entry.path)
-            entries[entry.path] = entry
-        return cls(entries)
-
-    def dump(self, fp: TextIO) -> None:
-        out = csv.writer(fp, delimiter=",", quotechar='"')
-        for entry in self:
-            out.writerow(entry.to_csv_fields())
-
-    def __iter__(self) -> Iterator[RecordEntry]:
-        return iter(self.entries.values())
-
-    def __contains__(self, filename: str) -> bool:
-        return filename in self.entries
-
-    def __getitem__(self, filename: str) -> RecordEntry:
-        return self.entries[filename]
-
-    def for_json(self) -> List[dict]:
-        return [e.for_json() for e in self]
-
-
-@attr.s(auto_attribs=True)
-class RecordEntry:
-    path: str
-    digest: Optional[Digest]
-    size: Optional[int]
-
-    @classmethod
-    def from_csv_fields(cls, fields: List[str]) -> RecordEntry:
+    def from_csv_fields(cls, fields: List[str]) -> Tuple[str, Optional[FileData]]:
         try:
             path, alg_digest, size = fields
         except ValueError:
@@ -65,10 +30,12 @@ class RecordEntry:
             raise errors.NonNormalizedPathError(path)
         elif path.startswith("/"):
             raise errors.AbsolutePathError(path)
-        digest: Optional[Digest]
+        algorithm: Optional[str]
+        digest: Optional[str]
         if alg_digest:
-            digest = Digest.parse(alg_digest, path)
+            algorithm, digest = parse_digest(alg_digest, path)
         else:
+            algorithm = None
             digest = None
         isize: Optional[int]
         if size:
@@ -84,47 +51,14 @@ class RecordEntry:
             raise errors.EmptyDigestError(path)
         elif digest is not None and isize is None:
             raise errors.EmptySizeError(path)
-        return cls(path=path, digest=digest, size=isize)
-
-    def to_csv_fields(self) -> List[str]:
-        return [
-            self.path,
-            str(self.digest) if self.digest is not None else "",
-            str(self.size) if self.size is not None else "",
-        ]
-
-    def for_json(self) -> Dict[str, Any]:
-        return {
-            "path": self.path,
-            "digest": self.digest.for_json() if self.digest is not None else None,
-            "size": self.size,
-        }
-
-
-@attr.s(auto_attribs=True)
-class Digest:
-    algorithm: str
-    digest: str  # In the pseudo-base64 format
-
-    @classmethod
-    def parse(cls, s: str, path: str) -> Digest:
-        ### TODO: Set the exceptions' `path`s to None when raising and have
-        ### them filled in by the caller
-        ### TODO: Raise a custom exception if the below line fails:
-        algorithm, digest = s.split("=", 1)
-        algorithm = algorithm.lower()
-        if algorithm not in hashlib.algorithms_guaranteed:
-            raise errors.UnknownDigestError(path, algorithm)
-        elif algorithm in ("md5", "sha1"):
-            raise errors.WeakDigestError(path, algorithm)
-        sz = (getattr(hashlib, algorithm)().digest_size * 8 + 5) // 6
-        if not re.fullmatch(r"[-_0-9A-Za-z]{%d}" % (sz,), digest):
-            raise errors.MalformedDigestError(path, algorithm, digest)
-        try:
-            urlsafe_b64decode_nopad(digest)
-        except ValueError:
-            raise errors.MalformedDigestError(path, algorithm, digest)
-        return cls(algorithm=algorithm, digest=digest)
+        if digest is None:
+            assert algorithm is None
+            assert isize is None
+            return (path, None)
+        else:
+            assert algorithm is not None
+            assert isize is not None
+            return (path, cls(algorithm, digest, isize))
 
     @property
     def b64_digest(self) -> str:
@@ -139,19 +73,62 @@ class Digest:
     def bytes_digest(self) -> bytes:
         return urlsafe_b64decode_nopad(self.digest)
 
-    def verify(self, fp: BinaryIO) -> None:
-        digest = digest_file(fp, [self.algorithm])[self.algorithm]
-        if self.hex_digest != digest:
+    def verify(self, fp: IO[bytes], path: str) -> None:
+        digested = digest_file(fp, [self.algorithm, "size"])
+        actual_digest = digested[self.algorithm]
+        actual_size = digested["size"]
+        assert isinstance(actual_digest, str)
+        assert isinstance(actual_size, int)
+        if self.hex_digest != actual_digest:
             raise errors.RecordDigestMismatchError(
-                ### TODO: Set `path` to None and then have caller fill in
-                path="(unknown)",
+                path=path,
                 algorithm=self.algorithm,
                 record_digest=self.hex_digest,
-                actual_digest=digest,
+                actual_digest=actual_digest,
+            )
+        if self.size != actual_size:
+            raise errors.RecordSizeMismatchError(
+                path=path,
+                record_size=self.size,
+                actual_size=actual_size,
             )
 
     def for_json(self) -> dict:
         return attr.asdict(self)
+
+
+def parse_digest(s: str, path: str) -> Tuple[str, str]:
+    ### TODO: Raise a custom exception if the below line fails:
+    algorithm, digest = s.split("=", 1)
+    algorithm = algorithm.lower()
+    if algorithm not in hashlib.algorithms_guaranteed:
+        raise errors.UnknownDigestError(path, algorithm)
+    elif algorithm in ("md5", "sha1"):
+        raise errors.WeakDigestError(path, algorithm)
+    sz = (getattr(hashlib, algorithm)().digest_size * 8 + 5) // 6
+    if not re.fullmatch(r"[-_0-9A-Za-z]{%d}" % (sz,), digest):
+        raise errors.MalformedDigestError(path, algorithm, digest)
+    try:
+        urlsafe_b64decode_nopad(digest)
+    except ValueError:
+        raise errors.MalformedDigestError(path, algorithm, digest)
+    return (algorithm, digest)
+
+
+RecordType = Dict[str, Optional[FileData]]
+
+
+def load_record(fp: TextIO) -> RecordType:
+    # Format defined in PEP 376
+    entries: RecordType = {}
+    for fields in csv.reader(fp, delimiter=",", quotechar='"'):
+        if not fields:
+            continue
+        path, data = FileData.from_csv_fields(fields)
+        if path in entries and entries[path] != data:
+            raise errors.RecordConflictError(path)
+        entries[path] = data
+    return entries
 
 
 def urlsafe_b64encode_nopad(data: bytes) -> str:

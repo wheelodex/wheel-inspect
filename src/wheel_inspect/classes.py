@@ -10,8 +10,8 @@ import attr
 from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from . import errors as exc
 from .metadata import parse_metadata
-from .record import Record
-from .util import AnyPath, digest_file, find_dist_info_dir
+from .record import RecordType, load_record
+from .util import AnyPath, digest_file, find_dist_info_dir, is_dist_info_path
 from .wheel_info import parse_wheel_info
 
 if sys.version_info[:2] >= (3, 8):
@@ -97,12 +97,12 @@ class DistInfoProvider(abc.ABC):
             raise exc.MissingMetadataError()
 
     @cached_property
-    def record(self) -> Record:
+    def record(self) -> RecordType:
         try:
             with self.open_dist_info_file("RECORD", encoding="utf-8", newline="") as fp:
                 # The csv module requires this file to be opened with
                 # `newline=''`
-                return Record.load(fp)
+                return load_record(fp)
         except exc.MissingDistInfoFileError:
             raise exc.MissingRecordError()
 
@@ -320,5 +320,33 @@ class WheelFile(DistInfoProvider, FileProvider):
         return self.zipfile.getinfo(path).file_size
 
     def get_file_hash(self, path: str, algorithm: str) -> str:
+        if algorithm == "size":
+            raise ValueError("Invalid file hash algorithm: 'size'")
         with self.zipfile.open(path) as fp:
-            return digest_file(fp, [algorithm])[algorithm]
+            digest = digest_file(fp, [algorithm])[algorithm]
+        assert isinstance(digest, str)
+        return digest
+
+    # TODO: Make this a method of a joint subclass of DistInfoProvider and
+    # FileProvider?
+    def verify_record(self) -> None:
+        files = set(self.list_files())
+        # Check everything in RECORD against actual values:
+        for path, data in self.record.items():
+            if path.endswith("/"):
+                if not self.has_directory(path):
+                    raise exc.FileMissingError(path)
+            elif path not in files:
+                raise exc.FileMissingError(path)
+            elif data is not None:
+                with self.zipfile.open(path) as fp:
+                    data.verify(fp, path)
+            elif not is_dist_info_path(path, "RECORD"):
+                raise exc.NullEntryError(path)
+            files.discard(path)
+        # Check that the only files that aren't in RECORD are signatures:
+        for path in files:
+            if not is_dist_info_path(path, "RECORD.jws") and not is_dist_info_path(
+                path, "RECORD.p7s"
+            ):
+                raise exc.ExtraFileError(path)

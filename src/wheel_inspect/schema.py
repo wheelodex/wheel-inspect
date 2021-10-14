@@ -108,26 +108,21 @@ DIST_INFO_SCHEMA = {
                     },
                 },
                 "record": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "required": ["path", "digest", "size"],
-                        "additionalProperties": False,
-                        "properties": {
-                            "path": {"type": "string"},
-                            "digest": {
-                                "type": ["null", "object"],
-                                "additionalProperties": False,
-                                "required": ["algorithm", "digest"],
-                                "properties": {
-                                    "algorithm": {"type": "string"},
-                                    "digest": {
-                                        "type": "string",
-                                        "pattern": "^[-_0-9A-Za-z]+$",
-                                    },
+                    "type": "object",
+                    "additionalProperties": False,
+                    "patternProperties": {
+                        "^([^\0/]+)(/[^\0/]+)*/?$": {
+                            "type": ["null", "object"],
+                            "additionalProperties": False,
+                            "required": ["algorithm", "digest", "size"],
+                            "properties": {
+                                "algorithm": {"type": "string"},
+                                "digest": {
+                                    "type": "string",
+                                    "pattern": "^[-_0-9A-Za-z]+$",
                                 },
+                                "size": {"type": "integer", "minimum": 0},
                             },
-                            "size": {"type": ["null", "integer"]},
                         },
                     },
                 },

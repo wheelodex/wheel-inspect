@@ -89,69 +89,44 @@
             "summary": "Run multiple python linters easily",
             "version": "2.4.0"
         },
-        "record": [
-            {
-                "path": "multilint/__init__.py",
-                "size": 5640,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "vXX001t3Ez8qS9R-tibVENsfb6-GCjpVN49m0fFbTQY"
-                }
+        "record": {
+            "multilint/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "vXX001t3Ez8qS9R-tibVENsfb6-GCjpVN49m0fFbTQY",
+                "size": 5640
             },
-            {
-                "path": "multilint/__main__.py",
-                "size": 175,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "fneZtQtgQIGksjRu7xg714XX9-htwLlj3oG5FYP0wbw"
-                }
+            "multilint/__main__.py": {
+                "algorithm": "sha256",
+                "digest": "fneZtQtgQIGksjRu7xg714XX9-htwLlj3oG5FYP0wbw",
+                "size": 175
             },
-            {
-                "path": "multilint-2.4.0.dist-info/LICENSE.txt",
-                "size": 744,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "KzuLHj8fv4vCHFQnDnVtOUs83k5f3yZ7NOZScmB67Dw"
-                }
+            "multilint-2.4.0.dist-info/LICENSE.txt": {
+                "algorithm": "sha256",
+                "digest": "KzuLHj8fv4vCHFQnDnVtOUs83k5f3yZ7NOZScmB67Dw",
+                "size": 744
             },
-            {
-                "path": "multilint-2.4.0.dist-info/METADATA",
-                "size": 4962,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "6VWNNtq_lext7-sAb8FcM8OipmD7oky1nmF_bqU6V70"
-                }
+            "multilint-2.4.0.dist-info/METADATA": {
+                "algorithm": "sha256",
+                "digest": "6VWNNtq_lext7-sAb8FcM8OipmD7oky1nmF_bqU6V70",
+                "size": 4962
             },
-            {
-                "path": "multilint-2.4.0.dist-info/RECORD",
-                "size": null,
-                "digest": null
+            "multilint-2.4.0.dist-info/RECORD": null,
+            "multilint-2.4.0.dist-info/WHEEL": {
+                "algorithm": "sha256",
+                "digest": "gduuPyBvFJQSQ0zdyxF7k0zynDXbIbvg5ZBHoXum5uk",
+                "size": 110
             },
-            {
-                "path": "multilint-2.4.0.dist-info/WHEEL",
-                "size": 110,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "gduuPyBvFJQSQ0zdyxF7k0zynDXbIbvg5ZBHoXum5uk"
-                }
+            "multilint-2.4.0.dist-info/entry_points.txt": {
+                "algorithm": "sha256",
+                "digest": "ma9at-jxQF4bujhPUKviviS9egYTbvOgAgbPaP1EDhI",
+                "size": 46
             },
-            {
-                "path": "multilint-2.4.0.dist-info/entry_points.txt",
-                "size": 46,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "ma9at-jxQF4bujhPUKviviS9egYTbvOgAgbPaP1EDhI"
-                }
-            },
-            {
-                "path": "multilint-2.4.0.dist-info/top_level.txt",
-                "size": 10,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "hU7-peCk3oiX2f3rKoVryAXjHo5i53YrT4If-Ddy8H0"
-                }
+            "multilint-2.4.0.dist-info/top_level.txt": {
+                "algorithm": "sha256",
+                "digest": "hU7-peCk3oiX2f3rKoVryAXjHo5i53YrT4If-Ddy8H0",
+                "size": 10
             }
-        ],
+        },
         "top_level": [
             "multilint"
         ],

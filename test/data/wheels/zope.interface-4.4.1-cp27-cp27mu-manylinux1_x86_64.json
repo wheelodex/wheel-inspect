@@ -117,445 +117,279 @@
         "top_level": [
             "zope"
         ],
-        "record": [
-            {
-                "path": "zope.interface-4.4.1-py2.7-nspkg.pth",
-                "size": 529,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "SWEVH-jEWsKYrL0qoC6GBJaStx_iKxGoAY9PQycFVC4"
-                }
+        "record": {
+            "zope.interface-4.4.1-py2.7-nspkg.pth": {
+                "algorithm": "sha256",
+                "digest": "SWEVH-jEWsKYrL0qoC6GBJaStx_iKxGoAY9PQycFVC4",
+                "size": 529
             },
-            {
-                "path": "zope/interface/adapter.py",
-                "size": 23459,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "pQSgb2eRwu5kDp1Ywg27ghZJzD4AxuzqcDi5yXTD41g"
-                }
+            "zope/interface/adapter.py": {
+                "algorithm": "sha256",
+                "digest": "pQSgb2eRwu5kDp1Ywg27ghZJzD4AxuzqcDi5yXTD41g",
+                "size": 23459
             },
-            {
-                "path": "zope/interface/interfaces.py",
-                "size": 43206,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "4-evlkPl8JdTbQLEc7B-uBFG2X-aqD6qBttCX2dIA4w"
-                }
+            "zope/interface/interfaces.py": {
+                "algorithm": "sha256",
+                "digest": "4-evlkPl8JdTbQLEc7B-uBFG2X-aqD6qBttCX2dIA4w",
+                "size": 43206
             },
-            {
-                "path": "zope/interface/ro.py",
-                "size": 2004,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "3q13hi_8DmoDQE2niTO98JAdQY-AoPJVUL0xOkXxiks"
-                }
+            "zope/interface/ro.py": {
+                "algorithm": "sha256",
+                "digest": "3q13hi_8DmoDQE2niTO98JAdQY-AoPJVUL0xOkXxiks",
+                "size": 2004
             },
-            {
-                "path": "zope/interface/__init__.py",
-                "size": 3410,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "WIF_7Tk86k_oSedWHFpSdr7wOXz7ASakjRIiV18Ond4"
-                }
+            "zope/interface/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "WIF_7Tk86k_oSedWHFpSdr7wOXz7ASakjRIiV18Ond4",
+                "size": 3410
             },
-            {
-                "path": "zope/interface/verify.py",
-                "size": 4727,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "P5xXd2-a4gKdvpSmUeILjq--jxljw_TCcd361zesIOE"
-                }
+            "zope/interface/verify.py": {
+                "algorithm": "sha256",
+                "digest": "P5xXd2-a4gKdvpSmUeILjq--jxljw_TCcd361zesIOE",
+                "size": 4727
             },
-            {
-                "path": "zope/interface/document.py",
-                "size": 3988,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "daHxeO731FsSv3m69-s7rpAJyQg41zO_s3LLa9Ka8fw"
-                }
+            "zope/interface/document.py": {
+                "algorithm": "sha256",
+                "digest": "daHxeO731FsSv3m69-s7rpAJyQg41zO_s3LLa9Ka8fw",
+                "size": 3988
             },
-            {
-                "path": "zope/interface/_zope_interface_coptimizations.c",
-                "size": 45874,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "mTft9254P7aGZQBoh0Hn7x3WAZxkpGtlhYkkJAbgjqY"
-                }
+            "zope/interface/_zope_interface_coptimizations.c": {
+                "algorithm": "sha256",
+                "digest": "mTft9254P7aGZQBoh0Hn7x3WAZxkpGtlhYkkJAbgjqY",
+                "size": 45874
             },
-            {
-                "path": "zope/interface/declarations.py",
-                "size": 31472,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "jTj-L_oD_IGWPDGieozxyYJqSx320yIu45pPkeoldkI"
-                }
+            "zope/interface/declarations.py": {
+                "algorithm": "sha256",
+                "digest": "jTj-L_oD_IGWPDGieozxyYJqSx320yIu45pPkeoldkI",
+                "size": 31472
             },
-            {
-                "path": "zope/interface/_zope_interface_coptimizations.so",
-                "size": 131316,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "VZ8ojSBO6DMTujVVi4AbDXhc-YFUzpZEZ7tBusS3kFw"
-                }
+            "zope/interface/_zope_interface_coptimizations.so": {
+                "algorithm": "sha256",
+                "digest": "VZ8ojSBO6DMTujVVi4AbDXhc-YFUzpZEZ7tBusS3kFw",
+                "size": 131316
             },
-            {
-                "path": "zope/interface/_compat.py",
-                "size": 1768,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "AWoAovNhb1m8Ad-xmChiVGvvnx_-dkPuNDPaPE1lu4I"
-                }
+            "zope/interface/_compat.py": {
+                "algorithm": "sha256",
+                "digest": "AWoAovNhb1m8Ad-xmChiVGvvnx_-dkPuNDPaPE1lu4I",
+                "size": 1768
             },
-            {
-                "path": "zope/interface/registry.py",
-                "size": 22528,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "MORhlL6UZuv5gj03eQmeRoxcgIgmmLBQVEuwxIMcKc4"
-                }
+            "zope/interface/registry.py": {
+                "algorithm": "sha256",
+                "digest": "MORhlL6UZuv5gj03eQmeRoxcgIgmmLBQVEuwxIMcKc4",
+                "size": 22528
             },
-            {
-                "path": "zope/interface/advice.py",
-                "size": 7546,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "NlSZIzvCqih3UOwtr9CxO3fCtGTr9Ye2ItJUI9U0xxA"
-                }
+            "zope/interface/advice.py": {
+                "algorithm": "sha256",
+                "digest": "NlSZIzvCqih3UOwtr9CxO3fCtGTr9Ye2ItJUI9U0xxA",
+                "size": 7546
             },
-            {
-                "path": "zope/interface/exceptions.py",
-                "size": 1999,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "qnTdeG4-o7IJ7Ln2JlQzDP5Ws4oTW59UrFl1f0zm4-4"
-                }
+            "zope/interface/exceptions.py": {
+                "algorithm": "sha256",
+                "digest": "qnTdeG4-o7IJ7Ln2JlQzDP5Ws4oTW59UrFl1f0zm4-4",
+                "size": 1999
             },
-            {
-                "path": "zope/interface/interface.py",
-                "size": 20445,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "9UyR73IwbTXCNLtxGJ8wunVcrBJPAeduJMwfQJ87s5E"
-                }
+            "zope/interface/interface.py": {
+                "algorithm": "sha256",
+                "digest": "9UyR73IwbTXCNLtxGJ8wunVcrBJPAeduJMwfQJ87s5E",
+                "size": 20445
             },
-            {
-                "path": "zope/interface/_flatten.py",
-                "size": 1056,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "nY3YJjWfeslmcWfjfxVYkoZb2lFrVGbw30xF_sAyQ60"
-                }
+            "zope/interface/_flatten.py": {
+                "algorithm": "sha256",
+                "digest": "nY3YJjWfeslmcWfjfxVYkoZb2lFrVGbw30xF_sAyQ60",
+                "size": 1056
             },
-            {
-                "path": "zope/interface/tests/test_registry.py",
-                "size": 102141,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "mgboeFV6N1Ur0AE1cWjI5FAR0pnaCSDJCGk3ftok7XQ"
-                }
+            "zope/interface/tests/test_registry.py": {
+                "algorithm": "sha256",
+                "digest": "mgboeFV6N1Ur0AE1cWjI5FAR0pnaCSDJCGk3ftok7XQ",
+                "size": 102141
             },
-            {
-                "path": "zope/interface/tests/advisory_testing.py",
-                "size": 1260,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Cxi_DY5-TaSl45c_kDfWDSl-1dr5T4dyt_hlwiU7j50"
-                }
+            "zope/interface/tests/advisory_testing.py": {
+                "algorithm": "sha256",
+                "digest": "Cxi_DY5-TaSl45c_kDfWDSl-1dr5T4dyt_hlwiU7j50",
+                "size": 1260
             },
-            {
-                "path": "zope/interface/tests/test_exceptions.py",
-                "size": 2722,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "6C2OJyU-7H8qmMFD-SrTHZKm0zjtjGk1u0jBgaz8UBM"
-                }
+            "zope/interface/tests/test_exceptions.py": {
+                "algorithm": "sha256",
+                "digest": "6C2OJyU-7H8qmMFD-SrTHZKm0zjtjGk1u0jBgaz8UBM",
+                "size": 2722
             },
-            {
-                "path": "zope/interface/tests/test_declarations.py",
-                "size": 62282,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "WVr7TFIX5S0VNYcOuUa9OqvH3bql2KwnvDBTHvBc2Go"
-                }
+            "zope/interface/tests/test_declarations.py": {
+                "algorithm": "sha256",
+                "digest": "WVr7TFIX5S0VNYcOuUa9OqvH3bql2KwnvDBTHvBc2Go",
+                "size": 62282
             },
-            {
-                "path": "zope/interface/tests/__init__.py",
-                "size": 481,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "e1gyFuSUbax5xBlvwDHcW2hpqQBLY3Sek1dS6tTvMvY"
-                }
+            "zope/interface/tests/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "e1gyFuSUbax5xBlvwDHcW2hpqQBLY3Sek1dS6tTvMvY",
+                "size": 481
             },
-            {
-                "path": "zope/interface/tests/test_element.py",
-                "size": 1320,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "0qIFEhqBwL30YEMN3Rg_mKTthWTLYGmyoxGY47baf2U"
-                }
+            "zope/interface/tests/test_element.py": {
+                "algorithm": "sha256",
+                "digest": "0qIFEhqBwL30YEMN3Rg_mKTthWTLYGmyoxGY47baf2U",
+                "size": 1320
             },
-            {
-                "path": "zope/interface/tests/test_sorting.py",
-                "size": 1612,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "155_Xglm2NqBs5qNGk8yTc4cTjSjrVaWZCfC0WfD-OE"
-                }
+            "zope/interface/tests/test_sorting.py": {
+                "algorithm": "sha256",
+                "digest": "155_Xglm2NqBs5qNGk8yTc4cTjSjrVaWZCfC0WfD-OE",
+                "size": 1612
             },
-            {
-                "path": "zope/interface/tests/dummy.py",
-                "size": 888,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "36ZinMSJP8ffJbvDSnZHlpolWNQteszmcHE8VC-mGlM"
-                }
+            "zope/interface/tests/dummy.py": {
+                "algorithm": "sha256",
+                "digest": "36ZinMSJP8ffJbvDSnZHlpolWNQteszmcHE8VC-mGlM",
+                "size": 888
             },
-            {
-                "path": "zope/interface/tests/test_odd_declarations.py",
-                "size": 6911,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "co0nfvMl5EdoRJ4B5S1imLaHrrXpIzvD3RSaX0wYrq0"
-                }
+            "zope/interface/tests/test_odd_declarations.py": {
+                "algorithm": "sha256",
+                "digest": "co0nfvMl5EdoRJ4B5S1imLaHrrXpIzvD3RSaX0wYrq0",
+                "size": 6911
             },
-            {
-                "path": "zope/interface/tests/test_verify.py",
-                "size": 15683,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "bwcaVqov9KHcxbtN3WyhAlsf-qowyEOnR4nqXjdI0oE"
-                }
+            "zope/interface/tests/test_verify.py": {
+                "algorithm": "sha256",
+                "digest": "bwcaVqov9KHcxbtN3WyhAlsf-qowyEOnR4nqXjdI0oE",
+                "size": 15683
             },
-            {
-                "path": "zope/interface/tests/m2.py",
-                "size": 689,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "_9den9kj183wNEjKYA0GcfRd3YtCEbVVU_NVsqaikvU"
-                }
+            "zope/interface/tests/m2.py": {
+                "algorithm": "sha256",
+                "digest": "_9den9kj183wNEjKYA0GcfRd3YtCEbVVU_NVsqaikvU",
+                "size": 689
             },
-            {
-                "path": "zope/interface/tests/test_interface.py",
-                "size": 73945,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "fxP2ATX0N5e61ZHOMlYPjp0HE71EkyENyHDsmyh4CSU"
-                }
+            "zope/interface/tests/test_interface.py": {
+                "algorithm": "sha256",
+                "digest": "fxP2ATX0N5e61ZHOMlYPjp0HE71EkyENyHDsmyh4CSU",
+                "size": 73945
             },
-            {
-                "path": "zope/interface/tests/test_advice.py",
-                "size": 11490,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "m37rhEEzH5Zjq2XSQXOaw5JydX9JKJ7bO4lpXn01Tog"
-                }
+            "zope/interface/tests/test_advice.py": {
+                "algorithm": "sha256",
+                "digest": "m37rhEEzH5Zjq2XSQXOaw5JydX9JKJ7bO4lpXn01Tog",
+                "size": 11490
             },
-            {
-                "path": "zope/interface/tests/idummy.py",
-                "size": 889,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Hc-iM7RwEzcVp7znPx7yMmFwERQXhBGeRQsmKIPfkns"
-                }
+            "zope/interface/tests/idummy.py": {
+                "algorithm": "sha256",
+                "digest": "Hc-iM7RwEzcVp7znPx7yMmFwERQXhBGeRQsmKIPfkns",
+                "size": 889
             },
-            {
-                "path": "zope/interface/tests/test_document.py",
-                "size": 16853,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "5gMZzDHSvrDzWDG2PeqJjAG_KFwBN6pkPL7ujWW_r70"
-                }
+            "zope/interface/tests/test_document.py": {
+                "algorithm": "sha256",
+                "digest": "5gMZzDHSvrDzWDG2PeqJjAG_KFwBN6pkPL7ujWW_r70",
+                "size": 16853
             },
-            {
-                "path": "zope/interface/tests/m1.py",
-                "size": 812,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "uEUxuYj_3ZVSF2yeNnHbcFX0Kyj_FFzUAM5O-gbcsMs"
-                }
+            "zope/interface/tests/m1.py": {
+                "algorithm": "sha256",
+                "digest": "uEUxuYj_3ZVSF2yeNnHbcFX0Kyj_FFzUAM5O-gbcsMs",
+                "size": 812
             },
-            {
-                "path": "zope/interface/tests/ifoo_other.py",
-                "size": 851,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "bSMQlaJIhNGGmJigJYaSFOLEcO57pM6T6s_BaU4elaw"
-                }
+            "zope/interface/tests/ifoo_other.py": {
+                "algorithm": "sha256",
+                "digest": "bSMQlaJIhNGGmJigJYaSFOLEcO57pM6T6s_BaU4elaw",
+                "size": 851
             },
-            {
-                "path": "zope/interface/tests/test_ro.py",
-                "size": 3305,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "iuLgFtRsjV94mhX_-dnVyE4nzwtHyT61o7rQ9cpNiM0"
-                }
+            "zope/interface/tests/test_ro.py": {
+                "algorithm": "sha256",
+                "digest": "iuLgFtRsjV94mhX_-dnVyE4nzwtHyT61o7rQ9cpNiM0",
+                "size": 3305
             },
-            {
-                "path": "zope/interface/tests/test_adapter.py",
-                "size": 55710,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "RiWil5IHlTzkun_G9FYEtWkVi3aweMApKHYvSb5vOwY"
-                }
+            "zope/interface/tests/test_adapter.py": {
+                "algorithm": "sha256",
+                "digest": "RiWil5IHlTzkun_G9FYEtWkVi3aweMApKHYvSb5vOwY",
+                "size": 55710
             },
-            {
-                "path": "zope/interface/tests/ifoo.py",
-                "size": 851,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "bSMQlaJIhNGGmJigJYaSFOLEcO57pM6T6s_BaU4elaw"
-                }
+            "zope/interface/tests/ifoo.py": {
+                "algorithm": "sha256",
+                "digest": "bSMQlaJIhNGGmJigJYaSFOLEcO57pM6T6s_BaU4elaw",
+                "size": 851
             },
-            {
-                "path": "zope/interface/tests/test_interfaces.py",
-                "size": 3568,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "WD-3DyTa6meTbs_Nqb3XFOskFvRVCrP5MHrcfP1TsXY"
-                }
+            "zope/interface/tests/test_interfaces.py": {
+                "algorithm": "sha256",
+                "digest": "WD-3DyTa6meTbs_Nqb3XFOskFvRVCrP5MHrcfP1TsXY",
+                "size": 3568
             },
-            {
-                "path": "zope/interface/tests/odd.py",
-                "size": 3079,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "U9m7sQj5Gw0Nnfznjb-LFDexEbPssNbAgKPipLfE7RU"
-                }
+            "zope/interface/tests/odd.py": {
+                "algorithm": "sha256",
+                "digest": "U9m7sQj5Gw0Nnfznjb-LFDexEbPssNbAgKPipLfE7RU",
+                "size": 3079
             },
-            {
-                "path": "zope/interface/common/interfaces.py",
-                "size": 4255,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "iXaseEJ6BvXUUCJiUv-zYvKrhSb7lbma0OhytOT5A7s"
-                }
+            "zope/interface/common/interfaces.py": {
+                "algorithm": "sha256",
+                "digest": "iXaseEJ6BvXUUCJiUv-zYvKrhSb7lbma0OhytOT5A7s",
+                "size": 4255
             },
-            {
-                "path": "zope/interface/common/__init__.py",
-                "size": 61,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "690b_c98_VbdhbkaIIiCjDZc8aFNpJYPu9eSy_5lq-w"
-                }
+            "zope/interface/common/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "690b_c98_VbdhbkaIIiCjDZc8aFNpJYPu9eSy_5lq-w",
+                "size": 61
             },
-            {
-                "path": "zope/interface/common/sequence.py",
-                "size": 4669,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "8Gg-jQ5gWGW1KOI_Uz5b-lO_m8_FUvCKPEq2Klyfc8w"
-                }
+            "zope/interface/common/sequence.py": {
+                "algorithm": "sha256",
+                "digest": "8Gg-jQ5gWGW1KOI_Uz5b-lO_m8_FUvCKPEq2Klyfc8w",
+                "size": 4669
             },
-            {
-                "path": "zope/interface/common/mapping.py",
-                "size": 3457,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "vxcoQfH8E4RdWFwkgWTUB_q9eVOPibOdO1Xqw7_HSa4"
-                }
+            "zope/interface/common/mapping.py": {
+                "algorithm": "sha256",
+                "digest": "vxcoQfH8E4RdWFwkgWTUB_q9eVOPibOdO1Xqw7_HSa4",
+                "size": 3457
             },
-            {
-                "path": "zope/interface/common/idatetime.py",
-                "size": 20055,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "q0geWUCo3K_Xn3MqYd8Wk3hw7kIleKwmY1rzdEYHYmg"
-                }
+            "zope/interface/common/idatetime.py": {
+                "algorithm": "sha256",
+                "digest": "q0geWUCo3K_Xn3MqYd8Wk3hw7kIleKwmY1rzdEYHYmg",
+                "size": 20055
             },
-            {
-                "path": "zope/interface/common/tests/__init__.py",
-                "size": 61,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "690b_c98_VbdhbkaIIiCjDZc8aFNpJYPu9eSy_5lq-w"
-                }
+            "zope/interface/common/tests/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "690b_c98_VbdhbkaIIiCjDZc8aFNpJYPu9eSy_5lq-w",
+                "size": 61
             },
-            {
-                "path": "zope/interface/common/tests/basemapping.py",
-                "size": 3914,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "3Tw8raoHaGOsJJo3aqPOrrZu5z5pGEGbZcq1TQbUcbM"
-                }
+            "zope/interface/common/tests/basemapping.py": {
+                "algorithm": "sha256",
+                "digest": "3Tw8raoHaGOsJJo3aqPOrrZu5z5pGEGbZcq1TQbUcbM",
+                "size": 3914
             },
-            {
-                "path": "zope/interface/common/tests/test_import_interfaces.py",
-                "size": 928,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "LKQe9YMRA7gnarMFg-n0ZyQSfjfW5bv-mAqsAWGH4KU"
-                }
+            "zope/interface/common/tests/test_import_interfaces.py": {
+                "algorithm": "sha256",
+                "digest": "LKQe9YMRA7gnarMFg-n0ZyQSfjfW5bv-mAqsAWGH4KU",
+                "size": 928
             },
-            {
-                "path": "zope/interface/common/tests/test_idatetime.py",
-                "size": 1775,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "MM8WkRsWcHwN8PDap9-ngydee9G3esVEBIWQRZSZfqk"
-                }
+            "zope/interface/common/tests/test_idatetime.py": {
+                "algorithm": "sha256",
+                "digest": "MM8WkRsWcHwN8PDap9-ngydee9G3esVEBIWQRZSZfqk",
+                "size": 1775
             },
-            {
-                "path": "zope.interface-4.4.1.dist-info/WHEEL",
-                "size": 110,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "K393SHwcz7KWfaAX1vI5Mn-fHxOX6ngCsqegCXacWE8"
-                }
+            "zope.interface-4.4.1.dist-info/WHEEL": {
+                "algorithm": "sha256",
+                "digest": "K393SHwcz7KWfaAX1vI5Mn-fHxOX6ngCsqegCXacWE8",
+                "size": 110
             },
-            {
-                "path": "zope.interface-4.4.1.dist-info/namespace_packages.txt",
-                "size": 5,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "QpUHvpO4wIuZDeEgKY8qZCtD-tAukB0fn_f6utzlb98"
-                }
+            "zope.interface-4.4.1.dist-info/namespace_packages.txt": {
+                "algorithm": "sha256",
+                "digest": "QpUHvpO4wIuZDeEgKY8qZCtD-tAukB0fn_f6utzlb98",
+                "size": 5
             },
-            {
-                "path": "zope.interface-4.4.1.dist-info/DESCRIPTION.rst",
-                "size": 15194,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Os8DUemnsU4SC7AyjssKDZjFxsagQQAGya0UzLqTNmM"
-                }
+            "zope.interface-4.4.1.dist-info/DESCRIPTION.rst": {
+                "algorithm": "sha256",
+                "digest": "Os8DUemnsU4SC7AyjssKDZjFxsagQQAGya0UzLqTNmM",
+                "size": 15194
             },
-            {
-                "path": "zope.interface-4.4.1.dist-info/LICENSE.txt",
-                "size": 2070,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "PmcdsR32h1FswdtbPWXkqjg-rKPCDOo_r1Og9zNdCjw"
-                }
+            "zope.interface-4.4.1.dist-info/LICENSE.txt": {
+                "algorithm": "sha256",
+                "digest": "PmcdsR32h1FswdtbPWXkqjg-rKPCDOo_r1Og9zNdCjw",
+                "size": 2070
             },
-            {
-                "path": "zope.interface-4.4.1.dist-info/METADATA",
-                "size": 16695,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "vY1lWSHbsy1NprHJl9iNU6wvPe3Dml4SRXwe771Jtis"
-                }
+            "zope.interface-4.4.1.dist-info/METADATA": {
+                "algorithm": "sha256",
+                "digest": "vY1lWSHbsy1NprHJl9iNU6wvPe3Dml4SRXwe771Jtis",
+                "size": 16695
             },
-            {
-                "path": "zope.interface-4.4.1.dist-info/RECORD",
-                "size": null,
-                "digest": null
+            "zope.interface-4.4.1.dist-info/RECORD": null,
+            "zope.interface-4.4.1.dist-info/top_level.txt": {
+                "algorithm": "sha256",
+                "digest": "QpUHvpO4wIuZDeEgKY8qZCtD-tAukB0fn_f6utzlb98",
+                "size": 5
             },
-            {
-                "path": "zope.interface-4.4.1.dist-info/top_level.txt",
-                "size": 5,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "QpUHvpO4wIuZDeEgKY8qZCtD-tAukB0fn_f6utzlb98"
-                }
-            },
-            {
-                "path": "zope.interface-4.4.1.dist-info/metadata.json",
-                "size": 1562,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "PdltVi5qeBdE91VidySWJ3Kcf0I_CW9brfBnGT3elxo"
-                }
+            "zope.interface-4.4.1.dist-info/metadata.json": {
+                "algorithm": "sha256",
+                "digest": "PdltVi5qeBdE91VidySWJ3Kcf0I_CW9brfBnGT3elxo",
+                "size": 1562
             }
-        ]
+        }
     },
     "derived": {
         "readme_renders": true,

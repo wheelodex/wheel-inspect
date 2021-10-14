@@ -95,77 +95,49 @@
             "summary": "Git Gud - a utility for when you are told to 'get good'",
             "version": "2.1"
         },
-        "record": [
-            {
-                "path": "gitgud/__init__.py",
-                "size": 38,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "73nRtOkr5ewBzFsahVwg1YVW8qymUVyrqxsmpCtGGz0"
-                }
+        "record": {
+            "gitgud/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "73nRtOkr5ewBzFsahVwg1YVW8qymUVyrqxsmpCtGGz0",
+                "size": 38
             },
-            {
-                "path": "gitgud/gitgud.py",
-                "size": 2698,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "04IN05UJ5uQ7Z0VrYXC9y2c9EBdXLcCOqtKZsmCRIwo"
-                }
+            "gitgud/gitgud.py": {
+                "algorithm": "sha256",
+                "digest": "04IN05UJ5uQ7Z0VrYXC9y2c9EBdXLcCOqtKZsmCRIwo",
+                "size": 2698
             },
-            {
-                "path": "gitgud2-2.1.dist-info/LICENSE",
-                "size": 1211,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "YNLCjRnSvfe7qlmCnnpZUjQmXoERoBzLdNJdbE0tATo"
-                }
+            "gitgud2-2.1.dist-info/LICENSE": {
+                "algorithm": "sha256",
+                "digest": "YNLCjRnSvfe7qlmCnnpZUjQmXoERoBzLdNJdbE0tATo",
+                "size": 1211
             },
-            {
-                "path": "gitgud2-2.1.dist-info/METADATA",
-                "size": 3514,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "4rKQddjc1vfwEZ4OqWpejeLe4uhYrdMiTEZZzReM9CU"
-                }
+            "gitgud2-2.1.dist-info/METADATA": {
+                "algorithm": "sha256",
+                "digest": "4rKQddjc1vfwEZ4OqWpejeLe4uhYrdMiTEZZzReM9CU",
+                "size": 3514
             },
-            {
-                "path": "gitgud2-2.1.dist-info/WHEEL",
-                "size": 110,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "HX-v9-noUkyUoxyZ1PMSuS7auUxDAR4VBdoYLqD0xws"
-                }
+            "gitgud2-2.1.dist-info/WHEEL": {
+                "algorithm": "sha256",
+                "digest": "HX-v9-noUkyUoxyZ1PMSuS7auUxDAR4VBdoYLqD0xws",
+                "size": 110
             },
-            {
-                "path": "gitgud2-2.1.dist-info/entry_points.txt",
-                "size": 193,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "E4vYMOZwIB4HLCr_mmASXBHQ-KffmdScWZpoTAfHk6A"
-                }
+            "gitgud2-2.1.dist-info/entry_points.txt": {
+                "algorithm": "sha256",
+                "digest": "E4vYMOZwIB4HLCr_mmASXBHQ-KffmdScWZpoTAfHk6A",
+                "size": 193
             },
-            {
-                "path": "gitgud2-2.1.dist-info/top_level.txt",
-                "size": 7,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "mNjJFzrZxRrcaW33UXeZrX4ZjJThKFAuvmTV4F3WUCg"
-                }
+            "gitgud2-2.1.dist-info/top_level.txt": {
+                "algorithm": "sha256",
+                "digest": "mNjJFzrZxRrcaW33UXeZrX4ZjJThKFAuvmTV4F3WUCg",
+                "size": 7
             },
-            {
-                "path": "gitgud2-2.1.dist-info/zip-safe",
-                "size": 1,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "AbpHGcgLb-kRsJGnwFEktk7uzpZOCcBY74-YBdrKVGs"
-                }
+            "gitgud2-2.1.dist-info/zip-safe": {
+                "algorithm": "sha256",
+                "digest": "AbpHGcgLb-kRsJGnwFEktk7uzpZOCcBY74-YBdrKVGs",
+                "size": 1
             },
-            {
-                "path": "gitgud2-2.1.dist-info/RECORD",
-                "size": null,
-                "digest": null
-            }
-        ],
+            "gitgud2-2.1.dist-info/RECORD": null
+        },
         "top_level": [
             "gitgud"
         ],

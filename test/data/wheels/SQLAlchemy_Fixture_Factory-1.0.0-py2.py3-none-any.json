@@ -90,77 +90,49 @@
             "summary": "Test Fixture Factory for SQLAlchemy. Inspired by Ruby's factory_girl",
             "version": "1.0.0"
         },
-        "record": [
-            {
-                "path": "sqlalchemy_fixture_factory/sqla_fix_fact.py",
-                "size": 8224,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "vhxN0eB1vqH7YLnOgLWSPp7BksWVZ2PdadfhSp74jrI"
-                }
+        "record": {
+            "sqlalchemy_fixture_factory/sqla_fix_fact.py": {
+                "algorithm": "sha256",
+                "digest": "vhxN0eB1vqH7YLnOgLWSPp7BksWVZ2PdadfhSp74jrI",
+                "size": 8224
             },
-            {
-                "path": "sqlalchemy_fixture_factory/__init__.py",
-                "size": 221,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "ETReBCTBbbsnVZndmDNSDIf_-h0Mv10txFFxOXaAzBo"
-                }
+            "sqlalchemy_fixture_factory/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "ETReBCTBbbsnVZndmDNSDIf_-h0Mv10txFFxOXaAzBo",
+                "size": 221
             },
-            {
-                "path": "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/LICENSE.txt",
-                "size": 1090,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "5m32fxa0zRIpzn6YPWAfXgV9uoMeHSHMx0mLVh9UctE"
-                }
+            "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/LICENSE.txt": {
+                "algorithm": "sha256",
+                "digest": "5m32fxa0zRIpzn6YPWAfXgV9uoMeHSHMx0mLVh9UctE",
+                "size": 1090
             },
-            {
-                "path": "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/WHEEL",
-                "size": 110,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "AvR0WeTpDaxT645bl5FQxUK6NPsTls2ttpcGJg3j1Xg"
-                }
+            "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/WHEEL": {
+                "algorithm": "sha256",
+                "digest": "AvR0WeTpDaxT645bl5FQxUK6NPsTls2ttpcGJg3j1Xg",
+                "size": 110
             },
-            {
-                "path": "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/metadata.json",
-                "size": 1491,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "AyLM5PEg1arQ1mz_gPzvImgdCwAu03mlKjHU9qak36o"
-                }
+            "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/metadata.json": {
+                "algorithm": "sha256",
+                "digest": "AyLM5PEg1arQ1mz_gPzvImgdCwAu03mlKjHU9qak36o",
+                "size": 1491
             },
-            {
-                "path": "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/METADATA",
-                "size": 7237,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "uMxBkqKIlQOiIwpFpcicus__pGdtqxCySOetAHqHQdI"
-                }
+            "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/METADATA": {
+                "algorithm": "sha256",
+                "digest": "uMxBkqKIlQOiIwpFpcicus__pGdtqxCySOetAHqHQdI",
+                "size": 7237
             },
-            {
-                "path": "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/top_level.txt",
-                "size": 27,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "5TwQSffhComguHANYknzEhnPaiRSYSuMRhnZu7pmz8E"
-                }
+            "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/top_level.txt": {
+                "algorithm": "sha256",
+                "digest": "5TwQSffhComguHANYknzEhnPaiRSYSuMRhnZu7pmz8E",
+                "size": 27
             },
-            {
-                "path": "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/DESCRIPTION.rst",
-                "size": 6082,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "7WB8cCUM6EJl4aiAcNSUqi9St8y6aqfxdF0frLqhxuw"
-                }
+            "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/DESCRIPTION.rst": {
+                "algorithm": "sha256",
+                "digest": "7WB8cCUM6EJl4aiAcNSUqi9St8y6aqfxdF0frLqhxuw",
+                "size": 6082
             },
-            {
-                "path": "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/RECORD",
-                "size": null,
-                "digest": null
-            }
-        ],
+            "SQLAlchemy_Fixture_Factory-1.0.0.dist-info/RECORD": null
+        },
         "top_level": [
             "sqlalchemy_fixture_factory"
         ],

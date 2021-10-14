@@ -10,12 +10,12 @@ v2.0.0 (in development)
 - Digest algorithm names in `RECORD` files are now converted to lowercase
   during parsing
 - Schema changes:
-    - Files in `RECORD` now represent their digest information in a `"digest"`
-      key that is either `null` or a subobject with `"algorithm"` and
-      `"digest"` fields
+    - `RECORD`s are now represented by an object that maps each file path to
+      either `null` or a subobject with "algorithm", "digest", and "size"
+      properties
     - The `.file` property in wheel inspection results (containing the file's
       size and digest) has been removed
-- `RECORD` entries with negative sizes are now detected & errorred on earlier
+- `RECORD` entries with negative sizes are now detected & errored on earlier
 
 
 v1.7.1 (2022-04-08)

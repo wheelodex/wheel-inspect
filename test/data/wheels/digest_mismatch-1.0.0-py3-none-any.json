@@ -27,37 +27,24 @@
             "summary": "A wheel with a file whose digest doesn't match that in the RECORD",
             "version": "1.0.0"
         },
-        "record": [
-            {
-                "path": "digest_mismatch-1.0.0.dist-info/METADATA",
-                "size": 193,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "PTXEipz_rDvgvvKvRdVjTHZ6-4Ppg50mghcXJTgpWKg"
-                }
+        "record": {
+            "digest_mismatch-1.0.0.dist-info/METADATA": {
+                "algorithm": "sha256",
+                "digest": "PTXEipz_rDvgvvKvRdVjTHZ6-4Ppg50mghcXJTgpWKg",
+                "size": 193
             },
-            {
-                "path": "digest_mismatch-1.0.0.dist-info/WHEEL",
-                "size": 79,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Bh2t56_U9us28Wmb7g9frnrHZ2JxODzoszVmB4JScFU"
-                }
+            "digest_mismatch-1.0.0.dist-info/WHEEL": {
+                "algorithm": "sha256",
+                "digest": "Bh2t56_U9us28Wmb7g9frnrHZ2JxODzoszVmB4JScFU",
+                "size": 79
             },
-            {
-                "path": "digest_mismatch-1.0.0.dist-info/RECORD",
-                "size": null,
-                "digest": null
-            },
-            {
-                "path": "module.py",
-                "size": 65,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "AeOOlP4F6s77YK8wg9sHxzMQKP3Issk9nVy7Z2nTZ0I"
-                }
+            "digest_mismatch-1.0.0.dist-info/RECORD": null,
+            "module.py": {
+                "algorithm": "sha256",
+                "digest": "AeOOlP4F6s77YK8wg9sHxzMQKP3Issk9nVy7Z2nTZ0I",
+                "size": 65
             }
-        ],
+        },
         "wheel": {
             "generator": "manually",
             "root_is_purelib": true,

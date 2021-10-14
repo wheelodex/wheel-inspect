@@ -76,85 +76,54 @@
             "summary": "Module to manipulate Finder tags on OS X",
             "version": "0.1.3"
         },
-        "record": [
-            {
-                "path": "osx_tags/__init__.py",
-                "size": 3175,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "uUtAwN8Zwamt1NiO9Nom7GG72XvaMeFRTGj6mjTBVNE"
-                }
+        "record": {
+            "osx_tags/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "uUtAwN8Zwamt1NiO9Nom7GG72XvaMeFRTGj6mjTBVNE",
+                "size": 3175
             },
-            {
-                "path": "osx_tags/cmd.py",
-                "size": 3429,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "_HmZbyQAFgrkMhr2XDAaJynTb8gVlVB-YK_PvJQtb0s"
-                }
+            "osx_tags/cmd.py": {
+                "algorithm": "sha256",
+                "digest": "_HmZbyQAFgrkMhr2XDAaJynTb8gVlVB-YK_PvJQtb0s",
+                "size": 3429
             },
-            {
-                "path": "osx_tags-0.1.3.dist-info/DESCRIPTION.rst",
-                "size": 10,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "OCTuuN6LcWulhHS3d5rfjdsQtW22n7HENFRh6jC6ego"
-                }
+            "osx_tags-0.1.3.dist-info/DESCRIPTION.rst": {
+                "algorithm": "sha256",
+                "digest": "OCTuuN6LcWulhHS3d5rfjdsQtW22n7HENFRh6jC6ego",
+                "size": 10
             },
-            {
-                "path": "osx_tags-0.1.3.dist-info/METADATA",
-                "size": 429,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "C2R-7S0Gn2JQ8Ac0xSHkjVqaopPMbh6lneHzV2fnRXk"
-                }
+            "osx_tags-0.1.3.dist-info/METADATA": {
+                "algorithm": "sha256",
+                "digest": "C2R-7S0Gn2JQ8Ac0xSHkjVqaopPMbh6lneHzV2fnRXk",
+                "size": 429
             },
-            {
-                "path": "osx_tags-0.1.3.dist-info/RECORD",
-                "size": null,
-                "digest": null
+            "osx_tags-0.1.3.dist-info/RECORD": null,
+            "osx_tags-0.1.3.dist-info/WHEEL": {
+                "algorithm": "sha256",
+                "digest": "8Lm45v9gcYRm70DrgFGVe4WsUtUMi1_0Tso1hqPGMjA",
+                "size": 92
             },
-            {
-                "path": "osx_tags-0.1.3.dist-info/WHEEL",
-                "size": 92,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "8Lm45v9gcYRm70DrgFGVe4WsUtUMi1_0Tso1hqPGMjA"
-                }
+            "osx_tags-0.1.3.dist-info/entry_points.txt": {
+                "algorithm": "sha256",
+                "digest": "HfsNlKN1te6M1iVm9u6Wr13oPVNihrdXZNfAWoVFjXc",
+                "size": 59
             },
-            {
-                "path": "osx_tags-0.1.3.dist-info/entry_points.txt",
-                "size": 59,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "HfsNlKN1te6M1iVm9u6Wr13oPVNihrdXZNfAWoVFjXc"
-                }
+            "osx_tags-0.1.3.dist-info/metadata.json": {
+                "algorithm": "sha256",
+                "digest": "9UocTzSLX4t9_itN4T8RBaE40IJmcKzcLOK4Tom8qN8",
+                "size": 712
             },
-            {
-                "path": "osx_tags-0.1.3.dist-info/metadata.json",
-                "size": 712,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "9UocTzSLX4t9_itN4T8RBaE40IJmcKzcLOK4Tom8qN8"
-                }
+            "osx_tags-0.1.3.dist-info/top_level.txt": {
+                "algorithm": "sha256",
+                "digest": "1ReXT7Nwc_W0F6aaik65J6hDcqSdTg8-eUeI6RTacOo",
+                "size": 9
             },
-            {
-                "path": "osx_tags-0.1.3.dist-info/top_level.txt",
-                "size": 9,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "1ReXT7Nwc_W0F6aaik65J6hDcqSdTg8-eUeI6RTacOo"
-                }
-            },
-            {
-                "path": "osx_tags-0.1.3.dist-info/zip-safe",
-                "size": 1,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "AbpHGcgLb-kRsJGnwFEktk7uzpZOCcBY74-YBdrKVGs"
-                }
+            "osx_tags-0.1.3.dist-info/zip-safe": {
+                "algorithm": "sha256",
+                "digest": "AbpHGcgLb-kRsJGnwFEktk7uzpZOCcBY74-YBdrKVGs",
+                "size": 1
             }
-        ],
+        },
         "top_level": [
             "osx_tags"
         ],

@@ -27,47 +27,26 @@
             "summary": "A wheel whose RECORD includes directory entries",
             "version": "1.0.0"
         },
-        "record": [
-            {
-                "path": "module.py",
-                "size": 65,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "AeOOlP4F6s77YK8wg9sHxzMQKP3Issk9nVy7Z2nTZ0I"
-                }
+        "record": {
+            "module.py": {
+                "algorithm": "sha256",
+                "digest": "AeOOlP4F6s77YK8wg9sHxzMQKP3Issk9nVy7Z2nTZ0I",
+                "size": 65
             },
-            {
-                "path": "dirs_in_record-1.0.0.dist-info/METADATA",
-                "size": 174,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "FntMXE1yJYS_mbaZmlwiIXWfceZUUd8fphyhP6F0Dpg"
-                }
+            "dirs_in_record-1.0.0.dist-info/METADATA": {
+                "algorithm": "sha256",
+                "digest": "FntMXE1yJYS_mbaZmlwiIXWfceZUUd8fphyhP6F0Dpg",
+                "size": 174
             },
-            {
-                "path": "dirs_in_record-1.0.0.dist-info/WHEEL",
-                "size": 79,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Bh2t56_U9us28Wmb7g9frnrHZ2JxODzoszVmB4JScFU"
-                }
+            "dirs_in_record-1.0.0.dist-info/WHEEL": {
+                "algorithm": "sha256",
+                "digest": "Bh2t56_U9us28Wmb7g9frnrHZ2JxODzoszVmB4JScFU",
+                "size": 79
             },
-            {
-                "path": "dirs_in_record-1.0.0.dist-info/RECORD",
-                "size": null,
-                "digest": null
-            },
-            {
-                "path": "dirs_in_record-1.0.0.dist-info/",
-                "size": null,
-                "digest": null
-            },
-            {
-                "path": "empty/",
-                "size": null,
-                "digest": null
-            }
-        ],
+            "dirs_in_record-1.0.0.dist-info/RECORD": null,
+            "dirs_in_record-1.0.0.dist-info/": null,
+            "empty/": null
+        },
         "wheel": {
             "generator": "manually",
             "root_is_purelib": true,

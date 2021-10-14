@@ -332,1933 +332,1209 @@
             "summary": "cloud-native app registry server",
             "version": "0.7.4"
         },
-        "record": [
-            {
-                "path": "appr/__init__.py",
-                "size": 165,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "FRvN8l0RlbFrMllipwqpB5FMIgFtjE7sUyp7B0IIk_4"
-                }
-            },
-            {
-                "path": "appr/auth.py",
-                "size": 3128,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "ZECQ3D8AOCGTt9BjaKKa6iu_PCY9jS05AapIGBYWhxU"
-                }
-            },
-            {
-                "path": "appr/client.py",
-                "size": 8666,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "r2Txx-J7Kc_04F70Xehey1bYPTHvj90QAjoBxJOYXVU"
-                }
-            },
-            {
-                "path": "appr/config.py",
-                "size": 1636,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "dkw26jHaf78uJeZsVaZ5Oa8Rm4x2DPfUxermU4jSbUI"
-                }
-            },
-            {
-                "path": "appr/discovery.py",
-                "size": 2037,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "YBXH-tI4foqT1LWhui5c0xvucQCBDHf9s-by0qupwWU"
-                }
-            },
-            {
-                "path": "appr/display.py",
-                "size": 1611,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "lAK8DMKi6-PnljeGklRc1JVyFut93k8u9wpaPx4tC0A"
-                }
-            },
-            {
-                "path": "appr/exception.py",
-                "size": 2930,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "567PvW2kdD8SSs1VvuEdyVBz5p_RJT2vOoocxpcBoLk"
-                }
-            },
-            {
-                "path": "appr/pack.py",
-                "size": 4293,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "h7Gvomc-xMDoNKnERq644gIxTbk1pp34qsM8pHEZOEM"
-                }
-            },
-            {
-                "path": "appr/packager.py",
-                "size": 2558,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "fwzckS0AMBarSNr4MswqnTRuCtWNLMn3QjZ0nPyaOe4"
-                }
-            },
-            {
-                "path": "appr/render_jsonnet.py",
-                "size": 4262,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "UlgORGSmXoZbv60LBneffBSdMtHfE1ZrFuW8uw6ePyU"
-                }
-            },
-            {
-                "path": "appr/semver.py",
-                "size": 721,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "z5lItR1vkZCyTMoat7XESIKBc4--EPsXLSN2Q9btgDc"
-                }
-            },
-            {
-                "path": "appr/template_filters.py",
-                "size": 6642,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "gWCKaxv6ID173QGfmejmX0exSUxn5ntT6ci9Ecf4b7I"
-                }
-            },
-            {
-                "path": "appr/utils.py",
-                "size": 7294,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Tk4WgkJAUrQBa4DWtQrXrXtfl4fjp_ce3AwGlj6-Kjs"
-                }
-            },
-            {
-                "path": "appr/api/__init__.py",
-                "size": 0,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                }
-            },
-            {
-                "path": "appr/api/app.py",
-                "size": 1307,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "CLyOFbOGf2hRnPF_jRHSo6W-8p0BP2IOIWE_eszS6yg"
-                }
-            },
-            {
-                "path": "appr/api/builder.py",
-                "size": 2522,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "6_Nm67M0IcWr55P1O6vMEbAsH6SV_dSl9r1l-98u9yU"
-                }
-            },
-            {
-                "path": "appr/api/config.py",
-                "size": 545,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "msEmlWavb-qzdORAETmEan4FCz5_KoOMCNUaxyiFl80"
-                }
-            },
-            {
-                "path": "appr/api/deployment.py",
-                "size": 1879,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "njiXJegPd1JTi8NJ9ctXrcCPqANnMDcinVgKhDPeij0"
-                }
-            },
-            {
-                "path": "appr/api/gevent_app.py",
-                "size": 628,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "hymzeOTdsjpawhRqXBc1A4CtocZzsyTA-oZHxylhq7w"
-                }
-            },
-            {
-                "path": "appr/api/gunicorn_app.py",
-                "size": 937,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "cLfJkxELpXRX2vn3BzaY_j4OlQvEdjnDBZoba9ezBXI"
-                }
-            },
-            {
-                "path": "appr/api/info.py",
-                "size": 1751,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "YQ0LVwsSlP1ODfMpjtJE3pkaR7cUz3B6WR_2eRM6VLk"
-                }
-            },
-            {
-                "path": "appr/api/registry.py",
-                "size": 9277,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "0QX_oxVnobvV8wcx7UgNA-AUc0c5SOukPIV9e206GNU"
-                }
-            },
-            {
-                "path": "appr/api/wsgi.py",
-                "size": 122,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "aZsq5pO5M7GTbT48X-ETsHWXj95PdewhrBI7f3nPfYw"
-                }
-            },
-            {
-                "path": "appr/api/impl/__init__.py",
-                "size": 0,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                }
-            },
-            {
-                "path": "appr/api/impl/builder.py",
-                "size": 3687,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "0k1bk9-eKIyNpn0sQX1fUA_whSZW6a4zdWu-WpQ0i3U"
-                }
-            },
-            {
-                "path": "appr/api/impl/registry.py",
-                "size": 13391,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "jrnsCnTreoPHMW0hfqRtWtTL83QPKWf7rE8jHNfNINg"
-                }
-            },
-            {
-                "path": "appr/commands/__init__.py",
-                "size": 0,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                }
-            },
-            {
-                "path": "appr/commands/channel.py",
-                "size": 2579,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "CZzgFlZ5RUlgfSl5DHSKE0wG5_5PcjXdTTLCDepPahA"
-                }
-            },
-            {
-                "path": "appr/commands/cli.py",
-                "size": 2478,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "zv3OZg6yLDryH7iOj1RL7QQuR3ROQBWnd186HwGAQCw"
-                }
-            },
-            {
-                "path": "appr/commands/command_base.py",
-                "size": 8196,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "6ChsNTg6pcabzpJw9-7nj4dXgDOl0tkDH-d9YKenYHc"
-                }
-            },
-            {
-                "path": "appr/commands/config.py",
-                "size": 1082,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "rHo0R2VCcwZ3zbFX3yueQvf9UsIgmUZpdzc0aDqfxdY"
-                }
-            },
-            {
-                "path": "appr/commands/delete_package.py",
-                "size": 1432,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "rFE7NVKTBvvK0CM-EIcSQ-lZxlOKC28H2VUZcrXzXug"
-                }
-            },
-            {
-                "path": "appr/commands/deploy.py",
-                "size": 2784,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "cjk7ir-kKHfTYVnUt1VxrIQ4pmb3LDpoHe6hUhbOO50"
-                }
-            },
-            {
-                "path": "appr/commands/generate.py",
-                "size": 676,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "v6evIttXVop_pwbn2yBhvRL6MgkOmQLdeo55pnNnZt8"
-                }
-            },
-            {
-                "path": "appr/commands/helm.py",
-                "size": 4398,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "60We8IbFg9P1Lp5qN5q02heiFDXOqljP3RdApB3MSZc"
-                }
-            },
-            {
-                "path": "appr/commands/inspect.py",
-                "size": 2043,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "CMwoH0qGc7R10CHnH4oiScXaXl2jUgEqBSnQHbeDGyc"
-                }
-            },
-            {
-                "path": "appr/commands/jsonnet.py",
-                "size": 1855,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "P96U451peUWqnbE0EPQ1cCh98B1ChHXASH-ajol6GsM"
-                }
-            },
-            {
-                "path": "appr/commands/list_package.py",
-                "size": 1923,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "YgyQ7sex4NKl4knIbnq68Hqg6tDULk6ylf1R2Z6rAwk"
-                }
-            },
-            {
-                "path": "appr/commands/login.py",
-                "size": 2963,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "6UxA-bCv7rFXwDNKhaxeE5xaLa_llhlTj2Qg3fykLF8"
-                }
-            },
-            {
-                "path": "appr/commands/logout.py",
-                "size": 1567,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "5fXUqKBmm94cBxAbAMKLcsV95_j6xdQGMyQlOpSPjOc"
-                }
-            },
-            {
-                "path": "appr/commands/plugins.py",
-                "size": 3024,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "_3gVJOk4avy864fnU2ZsgAh7Uw11O2NY6BMZUKr4yOY"
-                }
-            },
-            {
-                "path": "appr/commands/pull.py",
-                "size": 2329,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Qr5XfcZEvuitdeqO26idH7l3zWOhvmxOn_qTZj-apMk"
-                }
-            },
-            {
-                "path": "appr/commands/push.py",
-                "size": 5965,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "NdYKUBqjPzOpBCRWHtOgd23yr9fcv-rv7alA3Dj3qYs"
-                }
-            },
-            {
-                "path": "appr/commands/remove.py",
-                "size": 342,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "l_Idg7V_Olhk7Z_MxhGCcNSkQZ1dMDsw-xjtAqrrkng"
-                }
-            },
-            {
-                "path": "appr/commands/runserver.py",
-                "size": 1097,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "gP3Ri86amEJgYQTC_dMOV4xY0TLyArnBYb7n76OVKYo"
-                }
-            },
-            {
-                "path": "appr/commands/show.py",
-                "size": 1696,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "qlS9XvxWzpCFbsm_J_yGIsrxIthjyKOnJDqvI71ZQT0"
-                }
-            },
-            {
-                "path": "appr/commands/version.py",
-                "size": 1555,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "21OVHRDOj1EJiA99eEzR_YuwNNd7IuA-nZDp0HMiLfo"
-                }
-            },
-            {
-                "path": "appr/formats/__init__.py",
-                "size": 0,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                }
-            },
-            {
-                "path": "appr/formats/base.py",
-                "size": 2847,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "kT0Kpy-HqgqxSf_ajdWWy5HXqADI4DSr6lXD-zx9U2w"
-                }
-            },
-            {
-                "path": "appr/formats/convert.py",
-                "size": 598,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "HTA0gn3zETsCQT1ZNQleWHS9N5f7qbFnwhgxeh6Ts14"
-                }
-            },
-            {
-                "path": "appr/formats/utils.py",
-                "size": 982,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Tcam2t3qDB-ILEqrTNQBXR1ZUVQVqRS6kWdlQpur8go"
-                }
-            },
-            {
-                "path": "appr/formats/appr/__init__.py",
-                "size": 0,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                }
-            },
-            {
-                "path": "appr/formats/appr/appr_package.py",
-                "size": 6616,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "gsDGd1qbq51CcdUJcgJzxbm9TUyUbnvCBRINDRhS-ng"
-                }
-            },
-            {
-                "path": "appr/formats/appr/kpm.py",
-                "size": 329,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Z4_RP1EThJCHEvHeuKuEjcVDI0fYvI2Woma9JDZ5JCE"
-                }
-            },
-            {
-                "path": "appr/formats/appr/kub.py",
-                "size": 7520,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "GJ2i4JgkX1T_ujtW6Buz8ypf6321pqHBuNkomaTVgxs"
-                }
-            },
-            {
-                "path": "appr/formats/appr/kub_base.py",
-                "size": 5923,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "e8z0I_dzfFqQuK_hydGwb7kKwDnAXxtfRDY4fqI3u40"
-                }
-            },
-            {
-                "path": "appr/formats/appr/kubplain.py",
-                "size": 507,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "ydPT0cFk6DiHp6dc6XxdkWrgqieNCVQcMe1pJpZwokc"
-                }
-            },
-            {
-                "path": "appr/formats/appr/manifest.py",
-                "size": 1539,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "rq5W9oiXQN3toUs_VwJcxnpzVAtxZsgTaXbmORpVuSw"
-                }
-            },
-            {
-                "path": "appr/formats/appr/manifest_jsonnet.py",
-                "size": 2349,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Ow67d0JYxQHLjg-j0ezOJXDn92HSHheEcFXNjIWidCo"
-                }
-            },
-            {
-                "path": "appr/formats/helm/__init__.py",
-                "size": 0,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                }
-            },
-            {
-                "path": "appr/formats/helm/chart.py",
-                "size": 784,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Tlr2bIvI-YIp9yRilCwX31WEYZ1Vee-Rnfm4bMjY1sg"
-                }
-            },
-            {
-                "path": "appr/formats/helm/manifest_chart.py",
-                "size": 1855,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "NS2RHVg8O2DF5u2XI9_jwFg4T4idDKxgWsDTn6Ydd3M"
-                }
-            },
-            {
-                "path": "appr/jsonnet/manifest.jsonnet.j2",
-                "size": 704,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "zMynKC6MObcC8uxkvQxyS0ZkYBxvszrXGds8FMZq_AY"
-                }
-            },
-            {
-                "path": "appr/jsonnet/lib/appr-native-ext.libsonnet",
-                "size": 2656,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "OyxE1Gk5uO72JVO49fOX37NlGWywxoIWWcQ9nz8N1-U"
-                }
-            },
-            {
-                "path": "appr/jsonnet/lib/appr-utils.libsonnet",
-                "size": 1701,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "oCqRUPv29rvhFM5pHEurnMU8-Qz5LDjxjkb8Xk5wn8o"
-                }
-            },
-            {
-                "path": "appr/jsonnet/lib/appr.libsonnet",
-                "size": 5594,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "S8nukJKc5taPRZhxFXoU8ZdoD6wtKpBjC0ss7PmtPdU"
-                }
-            },
-            {
-                "path": "appr/jsonnet/lib/kpm-utils.libjsonnet",
-                "size": 30,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "5MUL4PvDOORrbFznslaK7R3qx4Dv3zAfW0qjD2NnkWs"
-                }
-            },
-            {
-                "path": "appr/jsonnet/lib/kpm.libjsonnet",
-                "size": 24,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "PvfP4jzIMwFT1i59sh34aeyxA5Hm90JVuBL4w4iHiik"
-                }
-            },
-            {
-                "path": "appr/models/__init__.py",
-                "size": 826,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "_LqdPGOjFFZcOUEj-1jBMCoTlyQHtyNFH7I0f3Ago2E"
-                }
-            },
-            {
-                "path": "appr/models/blob_base.py",
-                "size": 1029,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "gB5rC4qXM__--NbirPDV58ZwUJ9HQKhDDuYvw21Qxgk"
-                }
-            },
-            {
-                "path": "appr/models/channel_base.py",
-                "size": 2317,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "m4WjpAGD3egVkyKgDSqywo-q7yqSRBSa9W665QtakjA"
-                }
-            },
-            {
-                "path": "appr/models/db_base.py",
-                "size": 2810,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "OsClgPFQWp3jtoAALQfAp1aGOKcBUOQfWdbt0VXKwQA"
-                }
-            },
-            {
-                "path": "appr/models/package_base.py",
-                "size": 8827,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "1lcCMKqETgUr9UIYKXmJy22ay9M_cYRM9QmshQgU7rE"
-                }
-            },
-            {
-                "path": "appr/models/kv/__init__.py",
-                "size": 74,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "uBR0vMgKjNjTau8FuBvTpS5Z_G_qKr55j-BZ4Ug0wiM"
-                }
-            },
-            {
-                "path": "appr/models/kv/blob_kv_base.py",
-                "size": 676,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "NQksyDymoS8a55eNfUN8CpbckpiOJdusWDtKn6GeQts"
-                }
-            },
-            {
-                "path": "appr/models/kv/channel_kv_base.py",
-                "size": 1530,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "VRjbjAAkY4jx6DPlLJxDuX_8xZWoRIbk42xLi7Y5TbY"
-                }
-            },
-            {
-                "path": "appr/models/kv/models_index_base.py",
-                "size": 13077,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "N8QXU81IRh4X6ffV4RZiHAjzBKpf2O6c7SuUjOBlXCM"
-                }
-            },
-            {
-                "path": "appr/models/kv/package_kv_base.py",
-                "size": 3858,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "YXjOsf_CtkDgxeq1lNaUBQVzg0W0MKnomvB3w0hZvrA"
-                }
-            },
-            {
-                "path": "appr/models/kv/etcd/__init__.py",
-                "size": 173,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "X2Cq7XHPWuOfib3F8JW4svgP8OjsgNaAD95qjrIU0Vc"
-                }
-            },
-            {
-                "path": "appr/models/kv/etcd/blob.py",
-                "size": 238,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "7ZpVdy63Kb2M-L_pGuIv-UgLoh8n0Dx5Gha4tIot9j0"
-                }
-            },
-            {
-                "path": "appr/models/kv/etcd/channel.py",
-                "size": 250,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "SqsHOS9qvRH_ZQwiesGYszIPyckKV_kO-TkiKiS4rpk"
-                }
-            },
-            {
-                "path": "appr/models/kv/etcd/db.py",
-                "size": 864,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "2AunLqUYA-lpd6eYmnURf4uA0SnCXf7k6C05P_FKRJ4"
-                }
-            },
-            {
-                "path": "appr/models/kv/etcd/models_index.py",
-                "size": 1775,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "N-izlwaXnGWkRwclyUS4lokdlMjYfmCpyyMnk7PUf2k"
-                }
-            },
-            {
-                "path": "appr/models/kv/etcd/package.py",
-                "size": 250,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "sVksGgJXHnk8puatLAZILsTtU9rL4eCKijpZv_S7M94"
-                }
-            },
-            {
-                "path": "appr/models/kv/filesystem/__init__.py",
-                "size": 1654,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "MQZ7bWeuPqn9uuhDziUtTMKg5L8OYfWJv8oBst06JG4"
-                }
-            },
-            {
-                "path": "appr/models/kv/filesystem/blob.py",
-                "size": 256,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "hdFa1gtbP4dWxshkLxbN0Abqn99-YbFwpMzjDD91-p4"
-                }
-            },
-            {
-                "path": "appr/models/kv/filesystem/channel.py",
-                "size": 268,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "K2HZYzuaDxJJN6yLqMkv00MdeF6TjZ81lTZEtFsh-Fg"
-                }
-            },
-            {
-                "path": "appr/models/kv/filesystem/db.py",
-                "size": 802,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "naPIhgTuCga8Z_3SiWBIsTnw9PCUBomayz0l_I2me1g"
-                }
-            },
-            {
-                "path": "appr/models/kv/filesystem/models_index.py",
-                "size": 1633,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "ECz6kRtUApY4J7hdLNqFjGYbvJis9e6MjJVsuABajIg"
-                }
-            },
-            {
-                "path": "appr/models/kv/filesystem/package.py",
-                "size": 268,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Om_KzNkEKg4dqjglWabvLHOjZIrCBZ35rF5aO6QlMns"
-                }
-            },
-            {
-                "path": "appr/models/kv/redis/__init__.py",
-                "size": 170,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "7J49K5StZNBM69w7nu8Yf4YoAS8-sQ5113wbKKp5JOU"
-                }
-            },
-            {
-                "path": "appr/models/kv/redis/blob.py",
-                "size": 241,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "UnvmR2jZ7HvS9-QYfz02p8NTezHB8ZZbxEYvp5-hfCE"
-                }
-            },
-            {
-                "path": "appr/models/kv/redis/channel.py",
-                "size": 253,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "CKpbCvmdYN69nHQGMRzCQot8_hom_WjyCtegcjcI3lk"
-                }
-            },
-            {
-                "path": "appr/models/kv/redis/db.py",
-                "size": 750,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "aLgr1qjr6MKTTEg7avbZZphFgt7T-HinFnFQNBRMxCU"
-                }
-            },
-            {
-                "path": "appr/models/kv/redis/models_index.py",
-                "size": 1638,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "GUgxD0weoaqUF_moyNohtbycC_XgTwQIAcvYHYiCp5M"
-                }
-            },
-            {
-                "path": "appr/models/kv/redis/package.py",
-                "size": 253,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "9PYVcnfXNMmPzh1HdUo0ZKjtkvo-Dv5ejk9JnVbEDio"
-                }
-            },
-            {
-                "path": "appr/platforms/__init__.py",
-                "size": 0,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                }
-            },
-            {
-                "path": "appr/platforms/dockercompose.py",
-                "size": 892,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "r4djnPLEvUmXTUMoSmDcos1G9NW9vJlAQaEQDFWTd0g"
-                }
-            },
-            {
-                "path": "appr/platforms/helm.py",
-                "size": 116,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "zm2DQIQTYIwZC2avW60onWuiR9iZ8UXGqdd282QDhUI"
-                }
-            },
-            {
-                "path": "appr/platforms/kubernetes.py",
-                "size": 8429,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "nEKTwnm3a1CxCRPlCNBxPpMjXmEYk2oWzromGe9mhGI"
-                }
-            },
-            {
-                "path": "appr/plugins/__init__.py",
-                "size": 0,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                }
-            },
-            {
-                "path": "appr/plugins/helm.py",
-                "size": 3493,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "y-EcQvNXwLvqnLDgjtWRiFs5SSvnI3Hy8d8zFQOC538"
-                }
-            },
-            {
-                "path": "appr/tests/__init__.py",
-                "size": 0,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
-                }
-            },
-            {
-                "path": "appr/tests/conftest.py",
-                "size": 5851,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "AnKySDJsTAhh1Lm3WnKea7xqJ0kido-VvcwdEWJe0SE"
-                }
-            },
-            {
-                "path": "appr/tests/test_apiserver.py",
-                "size": 18275,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "-Xg-BtKwjUZd0qXQ5qRGv5x4fxkfdECTeF1MvCeeGdA"
-                }
-            },
-            {
-                "path": "appr/tests/test_models.py",
-                "size": 13801,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "6Pg_D6woaXU1XzgbhvifxGmKSfp7B7b6tZF_OlqXNYk"
-                }
-            },
-            {
-                "path": "appr/tests/data/backup1.json",
-                "size": 6392,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "WekfovkQ9Ll3-G-RbEg1uwb-bPCj8FVcy7X3ngWvBIk"
-                }
-            },
-            {
-                "path": "appr/tests/data/backup2.json",
-                "size": 4515,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "7W_o__1Sp70xw-iR3bAc4e-_i3SOVJn6YLj2Weoftps"
-                }
-            },
-            {
-                "path": "appr/tests/data/kube-ui.tar.gz",
-                "size": 765,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "NBC-CzhhAxXBtOiRX5n7vvdorIMNAbbGzmHK58xQ41w"
-                }
-            },
-            {
-                "path": "appr/tests/data/kube-ui_release.json",
-                "size": 3132,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "pOooKwJkQ_GglMTs5KYZdaq2678hHJaGpE_x6YNRI4A"
-                }
-            },
-            {
-                "path": "appr/tests/data/manifest.yaml",
-                "size": 15,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "NhUCM3zitrXxofEKSsFwJy1yD6qd6gBtS3TWpompTy0"
-                }
-            },
-            {
-                "path": "appr/tests/data/thirdparty.yaml",
-                "size": 225,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "ubb_LHcmvEpU7rDVY0xkx6GlGGI84XVcc3fghrpuOhs"
-                }
-            },
-            {
-                "path": "appr/tests/data/bad_manifest/manifest.yaml",
-                "size": 46,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "9b2AZsH8uA_cp3Ag_knc58XQlx11tAHi5aygip2aY28"
-                }
-            },
-            {
-                "path": "appr/tests/data/docker-compose/manifest.jsonnet",
-                "size": 929,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "f4CsBe9c_PjhB5g3C_hWIwmffeJ8cSQaXCQ5vaiXD9M"
-                }
-            },
-            {
-                "path": "appr/tests/data/docker-compose/templates/compose-wordpress.yaml",
-                "size": 585,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Q1cy0kfbuA8vlb9t2b8oFikcoRYLmEKfvDmJrx9DD1g"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr___init___py.html",
-                "size": 3357,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "WNtbfOKIN5EkiVtrmDHW-1PjLZ2538xcXjitw6BbwRE"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_api___init___py.html",
-                "size": 2500,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "PXN_15jtyu230yC-k72PEK_eio18ubleCSKNh48u0Hs"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_api_app_py.html",
-                "size": 15569,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "wWH3T5dN9LCdlXIJc7jZhL_KBoe9G2Z536BkzdLqX4w"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_api_builder_py.html",
-                "size": 21621,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "EGZUQ__VM4Ai2EogvBbEHwJ4yFFwD7R0j31DEW5xG14"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_api_config_py.html",
-                "size": 7310,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "ybd20pIHCmFnsTpOKG3adQOU7pDcHiaIB07U5BAnFsE"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_api_deployment_py.html",
-                "size": 19080,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "hFn0-D7jJH5cNQgmSav7xrHpaHbfGJO9BIdy2UfaO-I"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_api_gevent_app_py.html",
-                "size": 8383,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "WfaAygbiI_-BqNLLpwHqQxYAm5WG9Z-Dnz-0AWmPurc"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_api_gunicorn_app_py.html",
-                "size": 11154,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "C0sIJk_opzOBDwpv8YPTkm9TbzHMvgCUDtMU9E36wRY"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_api_impl___init___py.html",
-                "size": 2510,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "E6Rx82rKh3PE7WuptGuwtq5_3-DuQC5NMRrXXO4oAsU"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_api_impl_builder_py.html",
-                "size": 23042,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "5VQkoN7sWz8mY9OcOvtI5dqwXNtXVzwZGV0Awr2MoyU"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_api_impl_registry_py.html",
-                "size": 83137,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Uba3chWMwFlVCfEz1MKxiQQe-K7tYDj9xqzEd9HSqlU"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_api_info_py.html",
-                "size": 19266,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "UyZlR20dfp6i1yhIMjD1A3gxRLSrguAlQ_r1YUkJIdI"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_api_registry_py.html",
-                "size": 75678,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "WDa7L9whwiSpS2zVI1szqMP3IC7XWovNza-pjS-h5y4"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_api_wsgi_py.html",
-                "size": 3687,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Se7m589qTc3cw1fxnKNp-pg_QXCnflEtgm4WrSulcdQ"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_auth_py.html",
-                "size": 34500,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "X_Sh7i8S9fcZ5hSqpFgHROK1iLRp9-xJeTm6QwxbO1A"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_client_py.html",
-                "size": 78828,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "lS5WTwW1vrDS6r7Q2XpIoLo9O8fr_QAfebWabF9YO2k"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands___init___py.html",
-                "size": 2510,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "yIOsRCqiY0BVBd0z_ORdVl-SAWvGI1F4t7HP_ufKhUg"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_channel_py.html",
-                "size": 22848,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "H28LOnG2wSdwTjthE7QYncNPPEXTOuayhuKkHjFlFNU"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_cli_py.html",
-                "size": 25361,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "N-nyGaywpkVruPwEu2JoRJKkthazn81BbBYFgSDuD3s"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_command_base_py.html",
-                "size": 73627,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "MYz_o8wR1zvupCfKUGreSxH-hiM-5yS3bFXdXH7FvQg"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_config_py.html",
-                "size": 13485,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "l1LREjme7_4iU1QIHoXvHKCys3zIh3m-j2DIusRDFsE"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_delete_package_py.html",
-                "size": 14230,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "9B6-B0nGESML5IVSTtJHlTMyWNU0Bf1HRrqGGx8yYnc"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_deploy_py.html",
-                "size": 24197,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "BFvJYQ8-c6u2H_DRQL-Mlumt2s5fx9p1OZ1_CIINqlA"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_generate_py.html",
-                "size": 9594,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "cQcU--0D8ssoT_1D9pB9M4Dq_3qd944iVbtYqvjjHhs"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_helm_py.html",
-                "size": 37023,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "RJ2uvIC_Hqt-UA2ii3ybrcvisUtxOhyYGefM7Z_NT58"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_inspect_py.html",
-                "size": 19584,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Hjm4zS8rfg-lLvIks7bpQiUn8PMxYa7OiOnemm2DY_I"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_jsonnet_py.html",
-                "size": 18395,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "uEx75Ng-GbKVeTcwFrAfRj0IN3pyTlbE9dISwG7rwKk"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_list_package_py.html",
-                "size": 18744,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Y1ex-5gduIsKQsAMhlPubRWCj7mi2BA0alXXQ1RbACc"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_login_py.html",
-                "size": 27181,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "doYPyhP2DlpPux-W_PlI9n18xc2HPbpsRueKsNtdw5k"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_logout_py.html",
-                "size": 15429,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "DHNhA-XF_q9a933k1lne4wqO2LcsZhzaEcsPF87j7Fc"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_plugins_py.html",
-                "size": 28121,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "PSRQhRQyDyCPHIhYg8d-qfwq82o-jCwzBlveGvrq-Cs"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_pull_py.html",
-                "size": 21967,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "1JVm_2AJt7Cp3urEVhw4eWPwkNh-Vk3iMtJSDu5Lx9o"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_push_py.html",
-                "size": 52838,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "12sZKiWhdrbO3ojI47jCgRP6b1F9tT0_DGMPQ8TP_BI"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_remove_py.html",
-                "size": 5634,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "GhO1Fd1PqF-jWrHs41LuwBUxvs7jZQGSq8YrRj9IUyQ"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_runserver_py.html",
-                "size": 12135,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "VIA32GVMCd8_Iz5EWOtBuT_E8vR_xvZUmMulNp1_MsU"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_show_py.html",
-                "size": 16203,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "5w28h2RDu0NO9xevtUJO7uCziMf3ULc6E5LonBtMXOw"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_commands_version_py.html",
-                "size": 16263,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "b37v-b5UR2Cn00_C3pkcWUyk6JTxriwicI6i-lv_d84"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_config_py.html",
-                "size": 18137,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "hnWWDYrgvSP6sQK3Ouw5rGvr7T6sGMh1vVnk_dsZqeE"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_discovery_py.html",
-                "size": 22673,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "1UqQIV-YG_fGzZkWMzJbcVVCYJ4rlkgIHrYk_4quwjQ"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_display_py.html",
-                "size": 18228,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "AOrTEc-llb4UCtR_LDmgXR19zILPwjJCRdJ4bEi23Zk"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_exception_py.html",
-                "size": 29403,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "QfjAz_-hRjUKsCuP5qhcT_HnI7cO5xNyq7Pul4mepYI"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_formats___init___py.html",
-                "size": 2508,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "lX3fddXjX470GKMkSEBuv6jQHT5ZgpdfClnseOUZ5sw"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_formats_appr___init___py.html",
-                "size": 2518,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "f5RlD83tCdvmn1NvD-XmksQN4oUskvLyAOT8Z7INyA8"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_formats_appr_kpm_py.html",
-                "size": 5687,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "OpUbLGAjL9CdcOA_iHF99fd3kMbS4sVTvoO_daRZX7M"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_formats_appr_kub_base_py.html",
-                "size": 57468,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "FayMZonY1TqaH9ZqEr9HxGGczy71U04LC4Co3C-FJok"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_formats_appr_kub_py.html",
-                "size": 65814,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "BfP4aYXql85fiswxjdj8G7uDGzlB2IAOH9B-6jg23ok"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_formats_appr_kubplain_py.html",
-                "size": 10563,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "BV6Fmzg9Q5IaxxIhpSkyDVuMPLMT-ekIe8iZj3pCUJo"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_formats_appr_manifest_jsonnet_py.html",
-                "size": 23383,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "aSXEX17QqMKuEo4SrTI1y3CoA_vYyhZe0a08DVapx6U"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_formats_appr_manifest_py.html",
-                "size": 19244,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "2MEoRWssvKZ1_qcM5R3Mw_iY0Pte6adXbWiAxreRSEg"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_formats_base_py.html",
-                "size": 29607,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "OT6xcYAmRujCc36ub7Y1Q0L0UUuxrgmUvaDQH0wm5s8"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_formats_helm___init___py.html",
-                "size": 2518,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "IdElka5XvFhzKxXAV2GcZnnUpbl2L6eo9GUSmPSazWw"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_formats_helm_chart_py.html",
-                "size": 24469,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "0u5DN2hy6Vihib2d_4zpla8mXIwK9tvPrBMGulZPH3Y"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_formats_helm_manifest_chart_py.html",
-                "size": 22352,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "f5izjxnf-64xlWbSm4fzL6RM76rdpWVZkSoEq-V88kM"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_formats_utils_py.html",
-                "size": 12037,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "pJcNiHQljwuKneKHG9BgKIbKawPCWZL-1qo3Hme0rU0"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models___init___py.html",
-                "size": 11046,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "7V6ZDcEX21v5SiCT0kBVBfKc47bW4VoWfph9ZwBdSbc"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_blob_base_py.html",
-                "size": 13050,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "eUIGS3oLu2pJu7ONePoCu0T5rWuPgz-RPWDy15kWJBg"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_channel_base_py.html",
-                "size": 22685,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "rmiSqxu9NVYJCs_o8wqBCVByXZSnR2dlftKBDngKK8A"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_db_base_py.html",
-                "size": 23944,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "FUh7242IQCXPy7ewL-m497jU2BM9TkvXN0WOuvvrCW4"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv___init___py.html",
-                "size": 3254,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "SvtzFlRVEHZcP44gaHrsJ_YWe_UhtNNMobeFXXOMKWo"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_blob_kv_base_py.html",
-                "size": 8999,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "oC0U1kLetYqepyXb1_c_7vCvA_pkn4NWhpLL1x8zI5o"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_channel_kv_base_py.html",
-                "size": 17329,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "kHKYdsHbh0fDLhi3fHoKkmUtF6Kxzjd6jLR72hMuBso"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_etcd___init___py.html",
-                "size": 4834,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "I-FT8xqaga--YEgs0ZkJ3ROyffpUrxTioZkJnXhoZ0w"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_etcd_blob_py.html",
-                "size": 4700,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "LjY4NNa8xZWD3gPdhLWYjOespwqh326LE4XPe46Om0E"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_etcd_channel_py.html",
-                "size": 4718,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "XSZTCor6HZqNN5U0WlQw1HeGnZlc12kGwTzP7vc8aWg"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_etcd_db_py.html",
-                "size": 11286,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "2IgrtRuk0NS43ApzBTxZDfqXvypp32ELT83fcUnMoME"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_etcd_models_index_py.html",
-                "size": 18344,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "tB8PNIhw6IDpaIqpsECnf_aQA3brgkaPduRDhhnP4a8"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_etcd_package_py.html",
-                "size": 4718,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "c6auRrEi6kfwfCuVJpH_g7AzZHGdEHU_WRAO7R0wZMo"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_filesystem___init___py.html",
-                "size": 20982,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "9W1BBwDkGhCXBNY0bsqZM9b28TqDqFPqAiGL_sZGFS0"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_filesystem_blob_py.html",
-                "size": 4730,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "SLFgPAq0C_iZr5d0273JTQfFJ-U9-m0Aff4Iy-8_k_Y"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_filesystem_channel_py.html",
-                "size": 4748,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "yrWaahDyfzhUaCcfSOYJ4d8a9B_-XxLtOIs5Go0SA7A"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_filesystem_db_py.html",
-                "size": 10286,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "E9wk53umIOPUj2uddumIyt8IEsH4i4QqFP_WtZEUVMA"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_filesystem_models_index_py.html",
-                "size": 16549,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "y0XcQycbIs95guISKBhB9h4lBo4vFe6vC2qTCc__ySY"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_filesystem_package_py.html",
-                "size": 4748,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "5XJGwMkw868WOXadJvmRywzr5lV32wQn_TLmYdDBfkU"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_models_index_base_py.html",
-                "size": 114008,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "SVl2tiseM5kuHTyWDsbktOk7Wa2Akm6x0wTzeLhvPSk"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_package_kv_base_py.html",
-                "size": 34801,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "iw91SLZoEzyYHY5gbLyXrguvrFZ1ffdVLvcHhG_JROI"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_redis___init___py.html",
-                "size": 4358,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "x9TkALh1jJU0-d8ZolNg7G96OWysXE6FrBE_utFdMUw"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_redis_blob_py.html",
-                "size": 4705,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Ra3AmXAkfEJ06DeoIyaacv69uGyJppkSRtwWOSAd6d4"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_redis_channel_py.html",
-                "size": 4723,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "eZtD1YEpy3vqraga7D1SgbeLlWq3GbLFG7biu-Tna2o"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_redis_db_py.html",
-                "size": 9903,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "vPvTzbCVBEpS3c0E8f1EaXRQ8AjAJ_7UvSJOafNUzwk"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_redis_models_index_py.html",
-                "size": 16814,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "4ClsCQHWAx0Cc-B9FZXM48JEXcn3NiamXFQq2g8doDI"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_kv_redis_package_py.html",
-                "size": 4723,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Ab5Rp_jXTVICT14Eoh1wB14XX6uQLg-4HOh0cQVe090"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_models_package_base_py.html",
-                "size": 78802,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "xjzwoOiOwfl_7p6ZKS5oDtscUWsgm6ts1RFNIVa45Tw"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_pack_py.html",
-                "size": 46854,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "GdrqGqBWYmPon9xGdWFm-meqhi_DxImJDNdh2kbFz8M"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_platforms___init___py.html",
-                "size": 2512,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "fw8YH82pGy82R3p7cIpND2WOdS-OyzCbP02HQk0nYFg"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_platforms_dockercompose_py.html",
-                "size": 11752,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "0eLrV17-kPmVpHeSZv5v9hTMeT00FA5g3K7YKUkHSJg"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_platforms_helm_py.html",
-                "size": 6910,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "ieMKkhncyApEZz4q4c07BNGjb9USffMOLu0H3CfHJiY"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_platforms_kubernetes_py.html",
-                "size": 73171,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "7oFxSpYZd933s5JgYJPIJSLGjE_54so28ahtOwsuOno"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_plugins___init___py.html",
-                "size": 2508,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "KT2aKcQs5Of_62n274pTjlFzt_pekkJ7ywPReKz8_iI"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_plugins_helm_py.html",
-                "size": 29585,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "pMT9lprTD1mvtV11o7BRDi9NemxBRI-MxgPOLi4apvQ"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_render_jsonnet_py.html",
-                "size": 38087,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "3PrIiD7y0Rgr3IwxNrIhSIBXkdIP91vWSSLJNaCgoKg"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_semver_py.html",
-                "size": 10201,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "EnZAINqvxVRYJUQtnTHrSP86-LNB01V3W3sznJ9wMbY"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_template_filters_py.html",
-                "size": 65604,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "yKMA2lS_TfOhO7IE_vzGpGS1xZBWNAm5sZL2jlcDa-k"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_tests___init___py.html",
-                "size": 2504,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "cpXbSpGI_L0cFL-BV8Y9LwMXNqTojgxt6wM9jBl_dio"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_tests_conftest_py.html",
-                "size": 55804,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "cSD6Cd-GM8BlOFJ8HYCxbi8z0WEYoKr-AlLigSCzkhM"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_tests_test_apiserver_py.html",
-                "size": 163767,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Xb6bezlOspAkwi8xWpS23oK2GoQxig1MlPDRzd0vKmU"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_tests_test_models_py.html",
-                "size": 113637,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "vDK4TKEf3qfQHJfeUYWiHVyLW5mcJlLpywl_mGWfcSE"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/appr_utils_py.html",
-                "size": 70081,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "AACn4G4wbpLOTKS9nVuCP7VfQL6L2BDQT-Nl2zXd4FI"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/coverage_html.js",
-                "size": 18458,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "m60KpPDw7SSBYP04pyRZv0MkTbSEadEQAcsOb5M79fI"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/index.html",
-                "size": 35279,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "vi4ZrbMvLihnGAnZq0jhbciyZAEmyL-L8y6cNnv-Vws"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/jquery.ba-throttle-debounce.min.js",
-                "size": 731,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "wXepUsOX1VYr5AyWGbIoAqlrvjQz9unPbtEyM7wFBnw"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/jquery.hotkeys.js",
-                "size": 3065,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "VVqbRGJlCvARPGMJXcSiRRIJwkpged3wG5fQ47gi42U"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/jquery.isonscreen.js",
-                "size": 1502,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "WEyXE6yTYNzAYfzViwksNu7AJAY5zZBI9q6-J9pF1Zw"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/jquery.min.js",
-                "size": 136008,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "mx_4Ep0PLjLSjGct9X4Wo5K_saaN36epmnUlj-cuxGk"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/jquery.tablesorter.min.js",
-                "size": 12795,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "t4ifnz2eByQEUafncoSdJUwD2jUt68VY8CzNjAywo08"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/keybd_closed.png",
-                "size": 112,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "FNDmw-Lx9aptnMr-XiZ4gh2EGPs17nft-QKmXgilIe0"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/keybd_open.png",
-                "size": 112,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "FNDmw-Lx9aptnMr-XiZ4gh2EGPs17nft-QKmXgilIe0"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/status.json",
-                "size": 19818,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "vvJB3qkM6OFk9Vu326xUIQiYpZIHBna-GqrZ3c0SMIU"
-                }
-            },
-            {
-                "path": "appr/tests/data/htmlcov/style.css",
-                "size": 6757,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "jATM7TxH5GdBaBsWKWb66IWtV8ZKoD-75Uwp4mEdPZQ"
-                }
-            },
-            {
-                "path": "appr/tests/data/kube-ui/README.md",
-                "size": 52,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "j-vhdVlTsItvGQrxcOuvC39MqtG4B0cM7B6CMT15hMA"
-                }
-            },
-            {
-                "path": "appr/tests/data/kube-ui/file_to_ignore.yaml",
-                "size": 11,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "VDCM6_3Zl-JZRleqMzvKkV8mky25eO8uxukYwZ2fy4M"
-                }
-            },
-            {
-                "path": "appr/tests/data/kube-ui/manifest.yaml",
-                "size": 368,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "fEFcDXB6wD0jALH0XIKPxt5X9IsxjviCXTl9ZExa-Gw"
-                }
-            },
-            {
-                "path": "appr/tests/data/kube-ui/templates/another_file_to_ignore.cfg",
-                "size": 11,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "VDCM6_3Zl-JZRleqMzvKkV8mky25eO8uxukYwZ2fy4M"
-                }
-            },
-            {
-                "path": "appr/tests/data/kube-ui/templates/kube-ui-rc.yaml",
-                "size": 796,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "2KjcirdBrgrWFHxkb00axLg3_-Y2qNkxX2WmPuitMcI"
-                }
-            },
-            {
-                "path": "appr/tests/data/kube-ui/templates/kube-ui-svc.yaml",
-                "size": 337,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "dnSMLeKizPutWvK1v-mzTAgF9ZF4zrC0YWUvMqaUoeI"
-                }
-            },
-            {
-                "path": "appr/tests/data/responses/kube-ui-replicationcontroller.json",
-                "size": 2999,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Vl5cBQ-XzGN8yTRsLRIAudLtCe0JsGlC0iQ4lK50BR4"
-                }
-            },
-            {
-                "path": "appr/tests/data/responses/kube-ui-service.json",
-                "size": 1289,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "6Ec8VEP8D0OmV3VJmFvi_7v2g6SCRRx6BU0PgUo5Lbo"
-                }
-            },
-            {
-                "path": "appr/tests/data/responses/testns-namespace.json",
-                "size": 426,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "Ij8Ccit-45O20f81ZlsWA7DO8M2fk3PQhvmzWgiITPk"
-                }
-            },
-            {
-                "path": "appr-0.7.4.data/scripts/appr",
-                "size": 82,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "wAWsmgUYY94wZAabWxMyYgir7JksODu2TYGFL36VatU"
-                }
-            },
-            {
-                "path": "appr-0.7.4.data/scripts/apprc",
-                "size": 173,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "I3r4vyV0m3_yhtWIsZOFv7ygQLnVcHjj0JALhVXiJyI"
-                }
-            },
-            {
-                "path": "appr-0.7.4.dist-info/DESCRIPTION.rst",
-                "size": 6440,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "yARAOah8NI63hgjtfilcjX6yE9Wj41dwxezXJT34RIA"
-                }
-            },
-            {
-                "path": "appr-0.7.4.dist-info/METADATA",
-                "size": 7573,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "3u63wzpSADtMGIA1Jmg-ZixvX1lryHQQqw4b3lOspig"
-                }
-            },
-            {
-                "path": "appr-0.7.4.dist-info/RECORD",
-                "size": null,
-                "digest": null
-            },
-            {
-                "path": "appr-0.7.4.dist-info/WHEEL",
-                "size": 110,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "o2k-Qa-RMNIJmUdIc7KU6VWR_ErNRbWNlxDIpl7lm34"
-                }
-            },
-            {
-                "path": "appr-0.7.4.dist-info/dependency_links.txt",
-                "size": 65,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "_8-ghxBdXW0058nqGoWqL8Szgj9VbnWLBR-QaCyXJyo"
-                }
-            },
-            {
-                "path": "appr-0.7.4.dist-info/metadata.json",
-                "size": 1300,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "w9ed4qEAoLy1G8__IXG0DcdsJNEMzpErqldB5ydxeuo"
-                }
-            },
-            {
-                "path": "appr-0.7.4.dist-info/top_level.txt",
-                "size": 5,
-                "digest": {
-                    "algorithm": "sha256",
-                    "digest": "UXsoTtp10sp1SKtU12WFRD4K66a0AYnt0j1ZcNOFWf8"
-                }
+        "record": {
+            "appr/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "FRvN8l0RlbFrMllipwqpB5FMIgFtjE7sUyp7B0IIk_4",
+                "size": 165
+            },
+            "appr/auth.py": {
+                "algorithm": "sha256",
+                "digest": "ZECQ3D8AOCGTt9BjaKKa6iu_PCY9jS05AapIGBYWhxU",
+                "size": 3128
+            },
+            "appr/client.py": {
+                "algorithm": "sha256",
+                "digest": "r2Txx-J7Kc_04F70Xehey1bYPTHvj90QAjoBxJOYXVU",
+                "size": 8666
+            },
+            "appr/config.py": {
+                "algorithm": "sha256",
+                "digest": "dkw26jHaf78uJeZsVaZ5Oa8Rm4x2DPfUxermU4jSbUI",
+                "size": 1636
+            },
+            "appr/discovery.py": {
+                "algorithm": "sha256",
+                "digest": "YBXH-tI4foqT1LWhui5c0xvucQCBDHf9s-by0qupwWU",
+                "size": 2037
+            },
+            "appr/display.py": {
+                "algorithm": "sha256",
+                "digest": "lAK8DMKi6-PnljeGklRc1JVyFut93k8u9wpaPx4tC0A",
+                "size": 1611
+            },
+            "appr/exception.py": {
+                "algorithm": "sha256",
+                "digest": "567PvW2kdD8SSs1VvuEdyVBz5p_RJT2vOoocxpcBoLk",
+                "size": 2930
+            },
+            "appr/pack.py": {
+                "algorithm": "sha256",
+                "digest": "h7Gvomc-xMDoNKnERq644gIxTbk1pp34qsM8pHEZOEM",
+                "size": 4293
+            },
+            "appr/packager.py": {
+                "algorithm": "sha256",
+                "digest": "fwzckS0AMBarSNr4MswqnTRuCtWNLMn3QjZ0nPyaOe4",
+                "size": 2558
+            },
+            "appr/render_jsonnet.py": {
+                "algorithm": "sha256",
+                "digest": "UlgORGSmXoZbv60LBneffBSdMtHfE1ZrFuW8uw6ePyU",
+                "size": 4262
+            },
+            "appr/semver.py": {
+                "algorithm": "sha256",
+                "digest": "z5lItR1vkZCyTMoat7XESIKBc4--EPsXLSN2Q9btgDc",
+                "size": 721
+            },
+            "appr/template_filters.py": {
+                "algorithm": "sha256",
+                "digest": "gWCKaxv6ID173QGfmejmX0exSUxn5ntT6ci9Ecf4b7I",
+                "size": 6642
+            },
+            "appr/utils.py": {
+                "algorithm": "sha256",
+                "digest": "Tk4WgkJAUrQBa4DWtQrXrXtfl4fjp_ce3AwGlj6-Kjs",
+                "size": 7294
+            },
+            "appr/api/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU",
+                "size": 0
+            },
+            "appr/api/app.py": {
+                "algorithm": "sha256",
+                "digest": "CLyOFbOGf2hRnPF_jRHSo6W-8p0BP2IOIWE_eszS6yg",
+                "size": 1307
+            },
+            "appr/api/builder.py": {
+                "algorithm": "sha256",
+                "digest": "6_Nm67M0IcWr55P1O6vMEbAsH6SV_dSl9r1l-98u9yU",
+                "size": 2522
+            },
+            "appr/api/config.py": {
+                "algorithm": "sha256",
+                "digest": "msEmlWavb-qzdORAETmEan4FCz5_KoOMCNUaxyiFl80",
+                "size": 545
+            },
+            "appr/api/deployment.py": {
+                "algorithm": "sha256",
+                "digest": "njiXJegPd1JTi8NJ9ctXrcCPqANnMDcinVgKhDPeij0",
+                "size": 1879
+            },
+            "appr/api/gevent_app.py": {
+                "algorithm": "sha256",
+                "digest": "hymzeOTdsjpawhRqXBc1A4CtocZzsyTA-oZHxylhq7w",
+                "size": 628
+            },
+            "appr/api/gunicorn_app.py": {
+                "algorithm": "sha256",
+                "digest": "cLfJkxELpXRX2vn3BzaY_j4OlQvEdjnDBZoba9ezBXI",
+                "size": 937
+            },
+            "appr/api/info.py": {
+                "algorithm": "sha256",
+                "digest": "YQ0LVwsSlP1ODfMpjtJE3pkaR7cUz3B6WR_2eRM6VLk",
+                "size": 1751
+            },
+            "appr/api/registry.py": {
+                "algorithm": "sha256",
+                "digest": "0QX_oxVnobvV8wcx7UgNA-AUc0c5SOukPIV9e206GNU",
+                "size": 9277
+            },
+            "appr/api/wsgi.py": {
+                "algorithm": "sha256",
+                "digest": "aZsq5pO5M7GTbT48X-ETsHWXj95PdewhrBI7f3nPfYw",
+                "size": 122
+            },
+            "appr/api/impl/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU",
+                "size": 0
+            },
+            "appr/api/impl/builder.py": {
+                "algorithm": "sha256",
+                "digest": "0k1bk9-eKIyNpn0sQX1fUA_whSZW6a4zdWu-WpQ0i3U",
+                "size": 3687
+            },
+            "appr/api/impl/registry.py": {
+                "algorithm": "sha256",
+                "digest": "jrnsCnTreoPHMW0hfqRtWtTL83QPKWf7rE8jHNfNINg",
+                "size": 13391
+            },
+            "appr/commands/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU",
+                "size": 0
+            },
+            "appr/commands/channel.py": {
+                "algorithm": "sha256",
+                "digest": "CZzgFlZ5RUlgfSl5DHSKE0wG5_5PcjXdTTLCDepPahA",
+                "size": 2579
+            },
+            "appr/commands/cli.py": {
+                "algorithm": "sha256",
+                "digest": "zv3OZg6yLDryH7iOj1RL7QQuR3ROQBWnd186HwGAQCw",
+                "size": 2478
+            },
+            "appr/commands/command_base.py": {
+                "algorithm": "sha256",
+                "digest": "6ChsNTg6pcabzpJw9-7nj4dXgDOl0tkDH-d9YKenYHc",
+                "size": 8196
+            },
+            "appr/commands/config.py": {
+                "algorithm": "sha256",
+                "digest": "rHo0R2VCcwZ3zbFX3yueQvf9UsIgmUZpdzc0aDqfxdY",
+                "size": 1082
+            },
+            "appr/commands/delete_package.py": {
+                "algorithm": "sha256",
+                "digest": "rFE7NVKTBvvK0CM-EIcSQ-lZxlOKC28H2VUZcrXzXug",
+                "size": 1432
+            },
+            "appr/commands/deploy.py": {
+                "algorithm": "sha256",
+                "digest": "cjk7ir-kKHfTYVnUt1VxrIQ4pmb3LDpoHe6hUhbOO50",
+                "size": 2784
+            },
+            "appr/commands/generate.py": {
+                "algorithm": "sha256",
+                "digest": "v6evIttXVop_pwbn2yBhvRL6MgkOmQLdeo55pnNnZt8",
+                "size": 676
+            },
+            "appr/commands/helm.py": {
+                "algorithm": "sha256",
+                "digest": "60We8IbFg9P1Lp5qN5q02heiFDXOqljP3RdApB3MSZc",
+                "size": 4398
+            },
+            "appr/commands/inspect.py": {
+                "algorithm": "sha256",
+                "digest": "CMwoH0qGc7R10CHnH4oiScXaXl2jUgEqBSnQHbeDGyc",
+                "size": 2043
+            },
+            "appr/commands/jsonnet.py": {
+                "algorithm": "sha256",
+                "digest": "P96U451peUWqnbE0EPQ1cCh98B1ChHXASH-ajol6GsM",
+                "size": 1855
+            },
+            "appr/commands/list_package.py": {
+                "algorithm": "sha256",
+                "digest": "YgyQ7sex4NKl4knIbnq68Hqg6tDULk6ylf1R2Z6rAwk",
+                "size": 1923
+            },
+            "appr/commands/login.py": {
+                "algorithm": "sha256",
+                "digest": "6UxA-bCv7rFXwDNKhaxeE5xaLa_llhlTj2Qg3fykLF8",
+                "size": 2963
+            },
+            "appr/commands/logout.py": {
+                "algorithm": "sha256",
+                "digest": "5fXUqKBmm94cBxAbAMKLcsV95_j6xdQGMyQlOpSPjOc",
+                "size": 1567
+            },
+            "appr/commands/plugins.py": {
+                "algorithm": "sha256",
+                "digest": "_3gVJOk4avy864fnU2ZsgAh7Uw11O2NY6BMZUKr4yOY",
+                "size": 3024
+            },
+            "appr/commands/pull.py": {
+                "algorithm": "sha256",
+                "digest": "Qr5XfcZEvuitdeqO26idH7l3zWOhvmxOn_qTZj-apMk",
+                "size": 2329
+            },
+            "appr/commands/push.py": {
+                "algorithm": "sha256",
+                "digest": "NdYKUBqjPzOpBCRWHtOgd23yr9fcv-rv7alA3Dj3qYs",
+                "size": 5965
+            },
+            "appr/commands/remove.py": {
+                "algorithm": "sha256",
+                "digest": "l_Idg7V_Olhk7Z_MxhGCcNSkQZ1dMDsw-xjtAqrrkng",
+                "size": 342
+            },
+            "appr/commands/runserver.py": {
+                "algorithm": "sha256",
+                "digest": "gP3Ri86amEJgYQTC_dMOV4xY0TLyArnBYb7n76OVKYo",
+                "size": 1097
+            },
+            "appr/commands/show.py": {
+                "algorithm": "sha256",
+                "digest": "qlS9XvxWzpCFbsm_J_yGIsrxIthjyKOnJDqvI71ZQT0",
+                "size": 1696
+            },
+            "appr/commands/version.py": {
+                "algorithm": "sha256",
+                "digest": "21OVHRDOj1EJiA99eEzR_YuwNNd7IuA-nZDp0HMiLfo",
+                "size": 1555
+            },
+            "appr/formats/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU",
+                "size": 0
+            },
+            "appr/formats/base.py": {
+                "algorithm": "sha256",
+                "digest": "kT0Kpy-HqgqxSf_ajdWWy5HXqADI4DSr6lXD-zx9U2w",
+                "size": 2847
+            },
+            "appr/formats/convert.py": {
+                "algorithm": "sha256",
+                "digest": "HTA0gn3zETsCQT1ZNQleWHS9N5f7qbFnwhgxeh6Ts14",
+                "size": 598
+            },
+            "appr/formats/utils.py": {
+                "algorithm": "sha256",
+                "digest": "Tcam2t3qDB-ILEqrTNQBXR1ZUVQVqRS6kWdlQpur8go",
+                "size": 982
+            },
+            "appr/formats/appr/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU",
+                "size": 0
+            },
+            "appr/formats/appr/appr_package.py": {
+                "algorithm": "sha256",
+                "digest": "gsDGd1qbq51CcdUJcgJzxbm9TUyUbnvCBRINDRhS-ng",
+                "size": 6616
+            },
+            "appr/formats/appr/kpm.py": {
+                "algorithm": "sha256",
+                "digest": "Z4_RP1EThJCHEvHeuKuEjcVDI0fYvI2Woma9JDZ5JCE",
+                "size": 329
+            },
+            "appr/formats/appr/kub.py": {
+                "algorithm": "sha256",
+                "digest": "GJ2i4JgkX1T_ujtW6Buz8ypf6321pqHBuNkomaTVgxs",
+                "size": 7520
+            },
+            "appr/formats/appr/kub_base.py": {
+                "algorithm": "sha256",
+                "digest": "e8z0I_dzfFqQuK_hydGwb7kKwDnAXxtfRDY4fqI3u40",
+                "size": 5923
+            },
+            "appr/formats/appr/kubplain.py": {
+                "algorithm": "sha256",
+                "digest": "ydPT0cFk6DiHp6dc6XxdkWrgqieNCVQcMe1pJpZwokc",
+                "size": 507
+            },
+            "appr/formats/appr/manifest.py": {
+                "algorithm": "sha256",
+                "digest": "rq5W9oiXQN3toUs_VwJcxnpzVAtxZsgTaXbmORpVuSw",
+                "size": 1539
+            },
+            "appr/formats/appr/manifest_jsonnet.py": {
+                "algorithm": "sha256",
+                "digest": "Ow67d0JYxQHLjg-j0ezOJXDn92HSHheEcFXNjIWidCo",
+                "size": 2349
+            },
+            "appr/formats/helm/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU",
+                "size": 0
+            },
+            "appr/formats/helm/chart.py": {
+                "algorithm": "sha256",
+                "digest": "Tlr2bIvI-YIp9yRilCwX31WEYZ1Vee-Rnfm4bMjY1sg",
+                "size": 784
+            },
+            "appr/formats/helm/manifest_chart.py": {
+                "algorithm": "sha256",
+                "digest": "NS2RHVg8O2DF5u2XI9_jwFg4T4idDKxgWsDTn6Ydd3M",
+                "size": 1855
+            },
+            "appr/jsonnet/manifest.jsonnet.j2": {
+                "algorithm": "sha256",
+                "digest": "zMynKC6MObcC8uxkvQxyS0ZkYBxvszrXGds8FMZq_AY",
+                "size": 704
+            },
+            "appr/jsonnet/lib/appr-native-ext.libsonnet": {
+                "algorithm": "sha256",
+                "digest": "OyxE1Gk5uO72JVO49fOX37NlGWywxoIWWcQ9nz8N1-U",
+                "size": 2656
+            },
+            "appr/jsonnet/lib/appr-utils.libsonnet": {
+                "algorithm": "sha256",
+                "digest": "oCqRUPv29rvhFM5pHEurnMU8-Qz5LDjxjkb8Xk5wn8o",
+                "size": 1701
+            },
+            "appr/jsonnet/lib/appr.libsonnet": {
+                "algorithm": "sha256",
+                "digest": "S8nukJKc5taPRZhxFXoU8ZdoD6wtKpBjC0ss7PmtPdU",
+                "size": 5594
+            },
+            "appr/jsonnet/lib/kpm-utils.libjsonnet": {
+                "algorithm": "sha256",
+                "digest": "5MUL4PvDOORrbFznslaK7R3qx4Dv3zAfW0qjD2NnkWs",
+                "size": 30
+            },
+            "appr/jsonnet/lib/kpm.libjsonnet": {
+                "algorithm": "sha256",
+                "digest": "PvfP4jzIMwFT1i59sh34aeyxA5Hm90JVuBL4w4iHiik",
+                "size": 24
+            },
+            "appr/models/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "_LqdPGOjFFZcOUEj-1jBMCoTlyQHtyNFH7I0f3Ago2E",
+                "size": 826
+            },
+            "appr/models/blob_base.py": {
+                "algorithm": "sha256",
+                "digest": "gB5rC4qXM__--NbirPDV58ZwUJ9HQKhDDuYvw21Qxgk",
+                "size": 1029
+            },
+            "appr/models/channel_base.py": {
+                "algorithm": "sha256",
+                "digest": "m4WjpAGD3egVkyKgDSqywo-q7yqSRBSa9W665QtakjA",
+                "size": 2317
+            },
+            "appr/models/db_base.py": {
+                "algorithm": "sha256",
+                "digest": "OsClgPFQWp3jtoAALQfAp1aGOKcBUOQfWdbt0VXKwQA",
+                "size": 2810
+            },
+            "appr/models/package_base.py": {
+                "algorithm": "sha256",
+                "digest": "1lcCMKqETgUr9UIYKXmJy22ay9M_cYRM9QmshQgU7rE",
+                "size": 8827
+            },
+            "appr/models/kv/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "uBR0vMgKjNjTau8FuBvTpS5Z_G_qKr55j-BZ4Ug0wiM",
+                "size": 74
+            },
+            "appr/models/kv/blob_kv_base.py": {
+                "algorithm": "sha256",
+                "digest": "NQksyDymoS8a55eNfUN8CpbckpiOJdusWDtKn6GeQts",
+                "size": 676
+            },
+            "appr/models/kv/channel_kv_base.py": {
+                "algorithm": "sha256",
+                "digest": "VRjbjAAkY4jx6DPlLJxDuX_8xZWoRIbk42xLi7Y5TbY",
+                "size": 1530
+            },
+            "appr/models/kv/models_index_base.py": {
+                "algorithm": "sha256",
+                "digest": "N8QXU81IRh4X6ffV4RZiHAjzBKpf2O6c7SuUjOBlXCM",
+                "size": 13077
+            },
+            "appr/models/kv/package_kv_base.py": {
+                "algorithm": "sha256",
+                "digest": "YXjOsf_CtkDgxeq1lNaUBQVzg0W0MKnomvB3w0hZvrA",
+                "size": 3858
+            },
+            "appr/models/kv/etcd/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "X2Cq7XHPWuOfib3F8JW4svgP8OjsgNaAD95qjrIU0Vc",
+                "size": 173
+            },
+            "appr/models/kv/etcd/blob.py": {
+                "algorithm": "sha256",
+                "digest": "7ZpVdy63Kb2M-L_pGuIv-UgLoh8n0Dx5Gha4tIot9j0",
+                "size": 238
+            },
+            "appr/models/kv/etcd/channel.py": {
+                "algorithm": "sha256",
+                "digest": "SqsHOS9qvRH_ZQwiesGYszIPyckKV_kO-TkiKiS4rpk",
+                "size": 250
+            },
+            "appr/models/kv/etcd/db.py": {
+                "algorithm": "sha256",
+                "digest": "2AunLqUYA-lpd6eYmnURf4uA0SnCXf7k6C05P_FKRJ4",
+                "size": 864
+            },
+            "appr/models/kv/etcd/models_index.py": {
+                "algorithm": "sha256",
+                "digest": "N-izlwaXnGWkRwclyUS4lokdlMjYfmCpyyMnk7PUf2k",
+                "size": 1775
+            },
+            "appr/models/kv/etcd/package.py": {
+                "algorithm": "sha256",
+                "digest": "sVksGgJXHnk8puatLAZILsTtU9rL4eCKijpZv_S7M94",
+                "size": 250
+            },
+            "appr/models/kv/filesystem/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "MQZ7bWeuPqn9uuhDziUtTMKg5L8OYfWJv8oBst06JG4",
+                "size": 1654
+            },
+            "appr/models/kv/filesystem/blob.py": {
+                "algorithm": "sha256",
+                "digest": "hdFa1gtbP4dWxshkLxbN0Abqn99-YbFwpMzjDD91-p4",
+                "size": 256
+            },
+            "appr/models/kv/filesystem/channel.py": {
+                "algorithm": "sha256",
+                "digest": "K2HZYzuaDxJJN6yLqMkv00MdeF6TjZ81lTZEtFsh-Fg",
+                "size": 268
+            },
+            "appr/models/kv/filesystem/db.py": {
+                "algorithm": "sha256",
+                "digest": "naPIhgTuCga8Z_3SiWBIsTnw9PCUBomayz0l_I2me1g",
+                "size": 802
+            },
+            "appr/models/kv/filesystem/models_index.py": {
+                "algorithm": "sha256",
+                "digest": "ECz6kRtUApY4J7hdLNqFjGYbvJis9e6MjJVsuABajIg",
+                "size": 1633
+            },
+            "appr/models/kv/filesystem/package.py": {
+                "algorithm": "sha256",
+                "digest": "Om_KzNkEKg4dqjglWabvLHOjZIrCBZ35rF5aO6QlMns",
+                "size": 268
+            },
+            "appr/models/kv/redis/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "7J49K5StZNBM69w7nu8Yf4YoAS8-sQ5113wbKKp5JOU",
+                "size": 170
+            },
+            "appr/models/kv/redis/blob.py": {
+                "algorithm": "sha256",
+                "digest": "UnvmR2jZ7HvS9-QYfz02p8NTezHB8ZZbxEYvp5-hfCE",
+                "size": 241
+            },
+            "appr/models/kv/redis/channel.py": {
+                "algorithm": "sha256",
+                "digest": "CKpbCvmdYN69nHQGMRzCQot8_hom_WjyCtegcjcI3lk",
+                "size": 253
+            },
+            "appr/models/kv/redis/db.py": {
+                "algorithm": "sha256",
+                "digest": "aLgr1qjr6MKTTEg7avbZZphFgt7T-HinFnFQNBRMxCU",
+                "size": 750
+            },
+            "appr/models/kv/redis/models_index.py": {
+                "algorithm": "sha256",
+                "digest": "GUgxD0weoaqUF_moyNohtbycC_XgTwQIAcvYHYiCp5M",
+                "size": 1638
+            },
+            "appr/models/kv/redis/package.py": {
+                "algorithm": "sha256",
+                "digest": "9PYVcnfXNMmPzh1HdUo0ZKjtkvo-Dv5ejk9JnVbEDio",
+                "size": 253
+            },
+            "appr/platforms/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU",
+                "size": 0
+            },
+            "appr/platforms/dockercompose.py": {
+                "algorithm": "sha256",
+                "digest": "r4djnPLEvUmXTUMoSmDcos1G9NW9vJlAQaEQDFWTd0g",
+                "size": 892
+            },
+            "appr/platforms/helm.py": {
+                "algorithm": "sha256",
+                "digest": "zm2DQIQTYIwZC2avW60onWuiR9iZ8UXGqdd282QDhUI",
+                "size": 116
+            },
+            "appr/platforms/kubernetes.py": {
+                "algorithm": "sha256",
+                "digest": "nEKTwnm3a1CxCRPlCNBxPpMjXmEYk2oWzromGe9mhGI",
+                "size": 8429
+            },
+            "appr/plugins/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU",
+                "size": 0
+            },
+            "appr/plugins/helm.py": {
+                "algorithm": "sha256",
+                "digest": "y-EcQvNXwLvqnLDgjtWRiFs5SSvnI3Hy8d8zFQOC538",
+                "size": 3493
+            },
+            "appr/tests/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU",
+                "size": 0
+            },
+            "appr/tests/conftest.py": {
+                "algorithm": "sha256",
+                "digest": "AnKySDJsTAhh1Lm3WnKea7xqJ0kido-VvcwdEWJe0SE",
+                "size": 5851
+            },
+            "appr/tests/test_apiserver.py": {
+                "algorithm": "sha256",
+                "digest": "-Xg-BtKwjUZd0qXQ5qRGv5x4fxkfdECTeF1MvCeeGdA",
+                "size": 18275
+            },
+            "appr/tests/test_models.py": {
+                "algorithm": "sha256",
+                "digest": "6Pg_D6woaXU1XzgbhvifxGmKSfp7B7b6tZF_OlqXNYk",
+                "size": 13801
+            },
+            "appr/tests/data/backup1.json": {
+                "algorithm": "sha256",
+                "digest": "WekfovkQ9Ll3-G-RbEg1uwb-bPCj8FVcy7X3ngWvBIk",
+                "size": 6392
+            },
+            "appr/tests/data/backup2.json": {
+                "algorithm": "sha256",
+                "digest": "7W_o__1Sp70xw-iR3bAc4e-_i3SOVJn6YLj2Weoftps",
+                "size": 4515
+            },
+            "appr/tests/data/kube-ui.tar.gz": {
+                "algorithm": "sha256",
+                "digest": "NBC-CzhhAxXBtOiRX5n7vvdorIMNAbbGzmHK58xQ41w",
+                "size": 765
+            },
+            "appr/tests/data/kube-ui_release.json": {
+                "algorithm": "sha256",
+                "digest": "pOooKwJkQ_GglMTs5KYZdaq2678hHJaGpE_x6YNRI4A",
+                "size": 3132
+            },
+            "appr/tests/data/manifest.yaml": {
+                "algorithm": "sha256",
+                "digest": "NhUCM3zitrXxofEKSsFwJy1yD6qd6gBtS3TWpompTy0",
+                "size": 15
+            },
+            "appr/tests/data/thirdparty.yaml": {
+                "algorithm": "sha256",
+                "digest": "ubb_LHcmvEpU7rDVY0xkx6GlGGI84XVcc3fghrpuOhs",
+                "size": 225
+            },
+            "appr/tests/data/bad_manifest/manifest.yaml": {
+                "algorithm": "sha256",
+                "digest": "9b2AZsH8uA_cp3Ag_knc58XQlx11tAHi5aygip2aY28",
+                "size": 46
+            },
+            "appr/tests/data/docker-compose/manifest.jsonnet": {
+                "algorithm": "sha256",
+                "digest": "f4CsBe9c_PjhB5g3C_hWIwmffeJ8cSQaXCQ5vaiXD9M",
+                "size": 929
+            },
+            "appr/tests/data/docker-compose/templates/compose-wordpress.yaml": {
+                "algorithm": "sha256",
+                "digest": "Q1cy0kfbuA8vlb9t2b8oFikcoRYLmEKfvDmJrx9DD1g",
+                "size": 585
+            },
+            "appr/tests/data/htmlcov/appr___init___py.html": {
+                "algorithm": "sha256",
+                "digest": "WNtbfOKIN5EkiVtrmDHW-1PjLZ2538xcXjitw6BbwRE",
+                "size": 3357
+            },
+            "appr/tests/data/htmlcov/appr_api___init___py.html": {
+                "algorithm": "sha256",
+                "digest": "PXN_15jtyu230yC-k72PEK_eio18ubleCSKNh48u0Hs",
+                "size": 2500
+            },
+            "appr/tests/data/htmlcov/appr_api_app_py.html": {
+                "algorithm": "sha256",
+                "digest": "wWH3T5dN9LCdlXIJc7jZhL_KBoe9G2Z536BkzdLqX4w",
+                "size": 15569
+            },
+            "appr/tests/data/htmlcov/appr_api_builder_py.html": {
+                "algorithm": "sha256",
+                "digest": "EGZUQ__VM4Ai2EogvBbEHwJ4yFFwD7R0j31DEW5xG14",
+                "size": 21621
+            },
+            "appr/tests/data/htmlcov/appr_api_config_py.html": {
+                "algorithm": "sha256",
+                "digest": "ybd20pIHCmFnsTpOKG3adQOU7pDcHiaIB07U5BAnFsE",
+                "size": 7310
+            },
+            "appr/tests/data/htmlcov/appr_api_deployment_py.html": {
+                "algorithm": "sha256",
+                "digest": "hFn0-D7jJH5cNQgmSav7xrHpaHbfGJO9BIdy2UfaO-I",
+                "size": 19080
+            },
+            "appr/tests/data/htmlcov/appr_api_gevent_app_py.html": {
+                "algorithm": "sha256",
+                "digest": "WfaAygbiI_-BqNLLpwHqQxYAm5WG9Z-Dnz-0AWmPurc",
+                "size": 8383
+            },
+            "appr/tests/data/htmlcov/appr_api_gunicorn_app_py.html": {
+                "algorithm": "sha256",
+                "digest": "C0sIJk_opzOBDwpv8YPTkm9TbzHMvgCUDtMU9E36wRY",
+                "size": 11154
+            },
+            "appr/tests/data/htmlcov/appr_api_impl___init___py.html": {
+                "algorithm": "sha256",
+                "digest": "E6Rx82rKh3PE7WuptGuwtq5_3-DuQC5NMRrXXO4oAsU",
+                "size": 2510
+            },
+            "appr/tests/data/htmlcov/appr_api_impl_builder_py.html": {
+                "algorithm": "sha256",
+                "digest": "5VQkoN7sWz8mY9OcOvtI5dqwXNtXVzwZGV0Awr2MoyU",
+                "size": 23042
+            },
+            "appr/tests/data/htmlcov/appr_api_impl_registry_py.html": {
+                "algorithm": "sha256",
+                "digest": "Uba3chWMwFlVCfEz1MKxiQQe-K7tYDj9xqzEd9HSqlU",
+                "size": 83137
+            },
+            "appr/tests/data/htmlcov/appr_api_info_py.html": {
+                "algorithm": "sha256",
+                "digest": "UyZlR20dfp6i1yhIMjD1A3gxRLSrguAlQ_r1YUkJIdI",
+                "size": 19266
+            },
+            "appr/tests/data/htmlcov/appr_api_registry_py.html": {
+                "algorithm": "sha256",
+                "digest": "WDa7L9whwiSpS2zVI1szqMP3IC7XWovNza-pjS-h5y4",
+                "size": 75678
+            },
+            "appr/tests/data/htmlcov/appr_api_wsgi_py.html": {
+                "algorithm": "sha256",
+                "digest": "Se7m589qTc3cw1fxnKNp-pg_QXCnflEtgm4WrSulcdQ",
+                "size": 3687
+            },
+            "appr/tests/data/htmlcov/appr_auth_py.html": {
+                "algorithm": "sha256",
+                "digest": "X_Sh7i8S9fcZ5hSqpFgHROK1iLRp9-xJeTm6QwxbO1A",
+                "size": 34500
+            },
+            "appr/tests/data/htmlcov/appr_client_py.html": {
+                "algorithm": "sha256",
+                "digest": "lS5WTwW1vrDS6r7Q2XpIoLo9O8fr_QAfebWabF9YO2k",
+                "size": 78828
+            },
+            "appr/tests/data/htmlcov/appr_commands___init___py.html": {
+                "algorithm": "sha256",
+                "digest": "yIOsRCqiY0BVBd0z_ORdVl-SAWvGI1F4t7HP_ufKhUg",
+                "size": 2510
+            },
+            "appr/tests/data/htmlcov/appr_commands_channel_py.html": {
+                "algorithm": "sha256",
+                "digest": "H28LOnG2wSdwTjthE7QYncNPPEXTOuayhuKkHjFlFNU",
+                "size": 22848
+            },
+            "appr/tests/data/htmlcov/appr_commands_cli_py.html": {
+                "algorithm": "sha256",
+                "digest": "N-nyGaywpkVruPwEu2JoRJKkthazn81BbBYFgSDuD3s",
+                "size": 25361
+            },
+            "appr/tests/data/htmlcov/appr_commands_command_base_py.html": {
+                "algorithm": "sha256",
+                "digest": "MYz_o8wR1zvupCfKUGreSxH-hiM-5yS3bFXdXH7FvQg",
+                "size": 73627
+            },
+            "appr/tests/data/htmlcov/appr_commands_config_py.html": {
+                "algorithm": "sha256",
+                "digest": "l1LREjme7_4iU1QIHoXvHKCys3zIh3m-j2DIusRDFsE",
+                "size": 13485
+            },
+            "appr/tests/data/htmlcov/appr_commands_delete_package_py.html": {
+                "algorithm": "sha256",
+                "digest": "9B6-B0nGESML5IVSTtJHlTMyWNU0Bf1HRrqGGx8yYnc",
+                "size": 14230
+            },
+            "appr/tests/data/htmlcov/appr_commands_deploy_py.html": {
+                "algorithm": "sha256",
+                "digest": "BFvJYQ8-c6u2H_DRQL-Mlumt2s5fx9p1OZ1_CIINqlA",
+                "size": 24197
+            },
+            "appr/tests/data/htmlcov/appr_commands_generate_py.html": {
+                "algorithm": "sha256",
+                "digest": "cQcU--0D8ssoT_1D9pB9M4Dq_3qd944iVbtYqvjjHhs",
+                "size": 9594
+            },
+            "appr/tests/data/htmlcov/appr_commands_helm_py.html": {
+                "algorithm": "sha256",
+                "digest": "RJ2uvIC_Hqt-UA2ii3ybrcvisUtxOhyYGefM7Z_NT58",
+                "size": 37023
+            },
+            "appr/tests/data/htmlcov/appr_commands_inspect_py.html": {
+                "algorithm": "sha256",
+                "digest": "Hjm4zS8rfg-lLvIks7bpQiUn8PMxYa7OiOnemm2DY_I",
+                "size": 19584
+            },
+            "appr/tests/data/htmlcov/appr_commands_jsonnet_py.html": {
+                "algorithm": "sha256",
+                "digest": "uEx75Ng-GbKVeTcwFrAfRj0IN3pyTlbE9dISwG7rwKk",
+                "size": 18395
+            },
+            "appr/tests/data/htmlcov/appr_commands_list_package_py.html": {
+                "algorithm": "sha256",
+                "digest": "Y1ex-5gduIsKQsAMhlPubRWCj7mi2BA0alXXQ1RbACc",
+                "size": 18744
+            },
+            "appr/tests/data/htmlcov/appr_commands_login_py.html": {
+                "algorithm": "sha256",
+                "digest": "doYPyhP2DlpPux-W_PlI9n18xc2HPbpsRueKsNtdw5k",
+                "size": 27181
+            },
+            "appr/tests/data/htmlcov/appr_commands_logout_py.html": {
+                "algorithm": "sha256",
+                "digest": "DHNhA-XF_q9a933k1lne4wqO2LcsZhzaEcsPF87j7Fc",
+                "size": 15429
+            },
+            "appr/tests/data/htmlcov/appr_commands_plugins_py.html": {
+                "algorithm": "sha256",
+                "digest": "PSRQhRQyDyCPHIhYg8d-qfwq82o-jCwzBlveGvrq-Cs",
+                "size": 28121
+            },
+            "appr/tests/data/htmlcov/appr_commands_pull_py.html": {
+                "algorithm": "sha256",
+                "digest": "1JVm_2AJt7Cp3urEVhw4eWPwkNh-Vk3iMtJSDu5Lx9o",
+                "size": 21967
+            },
+            "appr/tests/data/htmlcov/appr_commands_push_py.html": {
+                "algorithm": "sha256",
+                "digest": "12sZKiWhdrbO3ojI47jCgRP6b1F9tT0_DGMPQ8TP_BI",
+                "size": 52838
+            },
+            "appr/tests/data/htmlcov/appr_commands_remove_py.html": {
+                "algorithm": "sha256",
+                "digest": "GhO1Fd1PqF-jWrHs41LuwBUxvs7jZQGSq8YrRj9IUyQ",
+                "size": 5634
+            },
+            "appr/tests/data/htmlcov/appr_commands_runserver_py.html": {
+                "algorithm": "sha256",
+                "digest": "VIA32GVMCd8_Iz5EWOtBuT_E8vR_xvZUmMulNp1_MsU",
+                "size": 12135
+            },
+            "appr/tests/data/htmlcov/appr_commands_show_py.html": {
+                "algorithm": "sha256",
+                "digest": "5w28h2RDu0NO9xevtUJO7uCziMf3ULc6E5LonBtMXOw",
+                "size": 16203
+            },
+            "appr/tests/data/htmlcov/appr_commands_version_py.html": {
+                "algorithm": "sha256",
+                "digest": "b37v-b5UR2Cn00_C3pkcWUyk6JTxriwicI6i-lv_d84",
+                "size": 16263
+            },
+            "appr/tests/data/htmlcov/appr_config_py.html": {
+                "algorithm": "sha256",
+                "digest": "hnWWDYrgvSP6sQK3Ouw5rGvr7T6sGMh1vVnk_dsZqeE",
+                "size": 18137
+            },
+            "appr/tests/data/htmlcov/appr_discovery_py.html": {
+                "algorithm": "sha256",
+                "digest": "1UqQIV-YG_fGzZkWMzJbcVVCYJ4rlkgIHrYk_4quwjQ",
+                "size": 22673
+            },
+            "appr/tests/data/htmlcov/appr_display_py.html": {
+                "algorithm": "sha256",
+                "digest": "AOrTEc-llb4UCtR_LDmgXR19zILPwjJCRdJ4bEi23Zk",
+                "size": 18228
+            },
+            "appr/tests/data/htmlcov/appr_exception_py.html": {
+                "algorithm": "sha256",
+                "digest": "QfjAz_-hRjUKsCuP5qhcT_HnI7cO5xNyq7Pul4mepYI",
+                "size": 29403
+            },
+            "appr/tests/data/htmlcov/appr_formats___init___py.html": {
+                "algorithm": "sha256",
+                "digest": "lX3fddXjX470GKMkSEBuv6jQHT5ZgpdfClnseOUZ5sw",
+                "size": 2508
+            },
+            "appr/tests/data/htmlcov/appr_formats_appr___init___py.html": {
+                "algorithm": "sha256",
+                "digest": "f5RlD83tCdvmn1NvD-XmksQN4oUskvLyAOT8Z7INyA8",
+                "size": 2518
+            },
+            "appr/tests/data/htmlcov/appr_formats_appr_kpm_py.html": {
+                "algorithm": "sha256",
+                "digest": "OpUbLGAjL9CdcOA_iHF99fd3kMbS4sVTvoO_daRZX7M",
+                "size": 5687
+            },
+            "appr/tests/data/htmlcov/appr_formats_appr_kub_base_py.html": {
+                "algorithm": "sha256",
+                "digest": "FayMZonY1TqaH9ZqEr9HxGGczy71U04LC4Co3C-FJok",
+                "size": 57468
+            },
+            "appr/tests/data/htmlcov/appr_formats_appr_kub_py.html": {
+                "algorithm": "sha256",
+                "digest": "BfP4aYXql85fiswxjdj8G7uDGzlB2IAOH9B-6jg23ok",
+                "size": 65814
+            },
+            "appr/tests/data/htmlcov/appr_formats_appr_kubplain_py.html": {
+                "algorithm": "sha256",
+                "digest": "BV6Fmzg9Q5IaxxIhpSkyDVuMPLMT-ekIe8iZj3pCUJo",
+                "size": 10563
+            },
+            "appr/tests/data/htmlcov/appr_formats_appr_manifest_jsonnet_py.html": {
+                "algorithm": "sha256",
+                "digest": "aSXEX17QqMKuEo4SrTI1y3CoA_vYyhZe0a08DVapx6U",
+                "size": 23383
+            },
+            "appr/tests/data/htmlcov/appr_formats_appr_manifest_py.html": {
+                "algorithm": "sha256",
+                "digest": "2MEoRWssvKZ1_qcM5R3Mw_iY0Pte6adXbWiAxreRSEg",
+                "size": 19244
+            },
+            "appr/tests/data/htmlcov/appr_formats_base_py.html": {
+                "algorithm": "sha256",
+                "digest": "OT6xcYAmRujCc36ub7Y1Q0L0UUuxrgmUvaDQH0wm5s8",
+                "size": 29607
+            },
+            "appr/tests/data/htmlcov/appr_formats_helm___init___py.html": {
+                "algorithm": "sha256",
+                "digest": "IdElka5XvFhzKxXAV2GcZnnUpbl2L6eo9GUSmPSazWw",
+                "size": 2518
+            },
+            "appr/tests/data/htmlcov/appr_formats_helm_chart_py.html": {
+                "algorithm": "sha256",
+                "digest": "0u5DN2hy6Vihib2d_4zpla8mXIwK9tvPrBMGulZPH3Y",
+                "size": 24469
+            },
+            "appr/tests/data/htmlcov/appr_formats_helm_manifest_chart_py.html": {
+                "algorithm": "sha256",
+                "digest": "f5izjxnf-64xlWbSm4fzL6RM76rdpWVZkSoEq-V88kM",
+                "size": 22352
+            },
+            "appr/tests/data/htmlcov/appr_formats_utils_py.html": {
+                "algorithm": "sha256",
+                "digest": "pJcNiHQljwuKneKHG9BgKIbKawPCWZL-1qo3Hme0rU0",
+                "size": 12037
+            },
+            "appr/tests/data/htmlcov/appr_models___init___py.html": {
+                "algorithm": "sha256",
+                "digest": "7V6ZDcEX21v5SiCT0kBVBfKc47bW4VoWfph9ZwBdSbc",
+                "size": 11046
+            },
+            "appr/tests/data/htmlcov/appr_models_blob_base_py.html": {
+                "algorithm": "sha256",
+                "digest": "eUIGS3oLu2pJu7ONePoCu0T5rWuPgz-RPWDy15kWJBg",
+                "size": 13050
+            },
+            "appr/tests/data/htmlcov/appr_models_channel_base_py.html": {
+                "algorithm": "sha256",
+                "digest": "rmiSqxu9NVYJCs_o8wqBCVByXZSnR2dlftKBDngKK8A",
+                "size": 22685
+            },
+            "appr/tests/data/htmlcov/appr_models_db_base_py.html": {
+                "algorithm": "sha256",
+                "digest": "FUh7242IQCXPy7ewL-m497jU2BM9TkvXN0WOuvvrCW4",
+                "size": 23944
+            },
+            "appr/tests/data/htmlcov/appr_models_kv___init___py.html": {
+                "algorithm": "sha256",
+                "digest": "SvtzFlRVEHZcP44gaHrsJ_YWe_UhtNNMobeFXXOMKWo",
+                "size": 3254
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_blob_kv_base_py.html": {
+                "algorithm": "sha256",
+                "digest": "oC0U1kLetYqepyXb1_c_7vCvA_pkn4NWhpLL1x8zI5o",
+                "size": 8999
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_channel_kv_base_py.html": {
+                "algorithm": "sha256",
+                "digest": "kHKYdsHbh0fDLhi3fHoKkmUtF6Kxzjd6jLR72hMuBso",
+                "size": 17329
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_etcd___init___py.html": {
+                "algorithm": "sha256",
+                "digest": "I-FT8xqaga--YEgs0ZkJ3ROyffpUrxTioZkJnXhoZ0w",
+                "size": 4834
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_etcd_blob_py.html": {
+                "algorithm": "sha256",
+                "digest": "LjY4NNa8xZWD3gPdhLWYjOespwqh326LE4XPe46Om0E",
+                "size": 4700
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_etcd_channel_py.html": {
+                "algorithm": "sha256",
+                "digest": "XSZTCor6HZqNN5U0WlQw1HeGnZlc12kGwTzP7vc8aWg",
+                "size": 4718
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_etcd_db_py.html": {
+                "algorithm": "sha256",
+                "digest": "2IgrtRuk0NS43ApzBTxZDfqXvypp32ELT83fcUnMoME",
+                "size": 11286
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_etcd_models_index_py.html": {
+                "algorithm": "sha256",
+                "digest": "tB8PNIhw6IDpaIqpsECnf_aQA3brgkaPduRDhhnP4a8",
+                "size": 18344
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_etcd_package_py.html": {
+                "algorithm": "sha256",
+                "digest": "c6auRrEi6kfwfCuVJpH_g7AzZHGdEHU_WRAO7R0wZMo",
+                "size": 4718
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_filesystem___init___py.html": {
+                "algorithm": "sha256",
+                "digest": "9W1BBwDkGhCXBNY0bsqZM9b28TqDqFPqAiGL_sZGFS0",
+                "size": 20982
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_filesystem_blob_py.html": {
+                "algorithm": "sha256",
+                "digest": "SLFgPAq0C_iZr5d0273JTQfFJ-U9-m0Aff4Iy-8_k_Y",
+                "size": 4730
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_filesystem_channel_py.html": {
+                "algorithm": "sha256",
+                "digest": "yrWaahDyfzhUaCcfSOYJ4d8a9B_-XxLtOIs5Go0SA7A",
+                "size": 4748
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_filesystem_db_py.html": {
+                "algorithm": "sha256",
+                "digest": "E9wk53umIOPUj2uddumIyt8IEsH4i4QqFP_WtZEUVMA",
+                "size": 10286
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_filesystem_models_index_py.html": {
+                "algorithm": "sha256",
+                "digest": "y0XcQycbIs95guISKBhB9h4lBo4vFe6vC2qTCc__ySY",
+                "size": 16549
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_filesystem_package_py.html": {
+                "algorithm": "sha256",
+                "digest": "5XJGwMkw868WOXadJvmRywzr5lV32wQn_TLmYdDBfkU",
+                "size": 4748
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_models_index_base_py.html": {
+                "algorithm": "sha256",
+                "digest": "SVl2tiseM5kuHTyWDsbktOk7Wa2Akm6x0wTzeLhvPSk",
+                "size": 114008
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_package_kv_base_py.html": {
+                "algorithm": "sha256",
+                "digest": "iw91SLZoEzyYHY5gbLyXrguvrFZ1ffdVLvcHhG_JROI",
+                "size": 34801
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_redis___init___py.html": {
+                "algorithm": "sha256",
+                "digest": "x9TkALh1jJU0-d8ZolNg7G96OWysXE6FrBE_utFdMUw",
+                "size": 4358
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_redis_blob_py.html": {
+                "algorithm": "sha256",
+                "digest": "Ra3AmXAkfEJ06DeoIyaacv69uGyJppkSRtwWOSAd6d4",
+                "size": 4705
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_redis_channel_py.html": {
+                "algorithm": "sha256",
+                "digest": "eZtD1YEpy3vqraga7D1SgbeLlWq3GbLFG7biu-Tna2o",
+                "size": 4723
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_redis_db_py.html": {
+                "algorithm": "sha256",
+                "digest": "vPvTzbCVBEpS3c0E8f1EaXRQ8AjAJ_7UvSJOafNUzwk",
+                "size": 9903
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_redis_models_index_py.html": {
+                "algorithm": "sha256",
+                "digest": "4ClsCQHWAx0Cc-B9FZXM48JEXcn3NiamXFQq2g8doDI",
+                "size": 16814
+            },
+            "appr/tests/data/htmlcov/appr_models_kv_redis_package_py.html": {
+                "algorithm": "sha256",
+                "digest": "Ab5Rp_jXTVICT14Eoh1wB14XX6uQLg-4HOh0cQVe090",
+                "size": 4723
+            },
+            "appr/tests/data/htmlcov/appr_models_package_base_py.html": {
+                "algorithm": "sha256",
+                "digest": "xjzwoOiOwfl_7p6ZKS5oDtscUWsgm6ts1RFNIVa45Tw",
+                "size": 78802
+            },
+            "appr/tests/data/htmlcov/appr_pack_py.html": {
+                "algorithm": "sha256",
+                "digest": "GdrqGqBWYmPon9xGdWFm-meqhi_DxImJDNdh2kbFz8M",
+                "size": 46854
+            },
+            "appr/tests/data/htmlcov/appr_platforms___init___py.html": {
+                "algorithm": "sha256",
+                "digest": "fw8YH82pGy82R3p7cIpND2WOdS-OyzCbP02HQk0nYFg",
+                "size": 2512
+            },
+            "appr/tests/data/htmlcov/appr_platforms_dockercompose_py.html": {
+                "algorithm": "sha256",
+                "digest": "0eLrV17-kPmVpHeSZv5v9hTMeT00FA5g3K7YKUkHSJg",
+                "size": 11752
+            },
+            "appr/tests/data/htmlcov/appr_platforms_helm_py.html": {
+                "algorithm": "sha256",
+                "digest": "ieMKkhncyApEZz4q4c07BNGjb9USffMOLu0H3CfHJiY",
+                "size": 6910
+            },
+            "appr/tests/data/htmlcov/appr_platforms_kubernetes_py.html": {
+                "algorithm": "sha256",
+                "digest": "7oFxSpYZd933s5JgYJPIJSLGjE_54so28ahtOwsuOno",
+                "size": 73171
+            },
+            "appr/tests/data/htmlcov/appr_plugins___init___py.html": {
+                "algorithm": "sha256",
+                "digest": "KT2aKcQs5Of_62n274pTjlFzt_pekkJ7ywPReKz8_iI",
+                "size": 2508
+            },
+            "appr/tests/data/htmlcov/appr_plugins_helm_py.html": {
+                "algorithm": "sha256",
+                "digest": "pMT9lprTD1mvtV11o7BRDi9NemxBRI-MxgPOLi4apvQ",
+                "size": 29585
+            },
+            "appr/tests/data/htmlcov/appr_render_jsonnet_py.html": {
+                "algorithm": "sha256",
+                "digest": "3PrIiD7y0Rgr3IwxNrIhSIBXkdIP91vWSSLJNaCgoKg",
+                "size": 38087
+            },
+            "appr/tests/data/htmlcov/appr_semver_py.html": {
+                "algorithm": "sha256",
+                "digest": "EnZAINqvxVRYJUQtnTHrSP86-LNB01V3W3sznJ9wMbY",
+                "size": 10201
+            },
+            "appr/tests/data/htmlcov/appr_template_filters_py.html": {
+                "algorithm": "sha256",
+                "digest": "yKMA2lS_TfOhO7IE_vzGpGS1xZBWNAm5sZL2jlcDa-k",
+                "size": 65604
+            },
+            "appr/tests/data/htmlcov/appr_tests___init___py.html": {
+                "algorithm": "sha256",
+                "digest": "cpXbSpGI_L0cFL-BV8Y9LwMXNqTojgxt6wM9jBl_dio",
+                "size": 2504
+            },
+            "appr/tests/data/htmlcov/appr_tests_conftest_py.html": {
+                "algorithm": "sha256",
+                "digest": "cSD6Cd-GM8BlOFJ8HYCxbi8z0WEYoKr-AlLigSCzkhM",
+                "size": 55804
+            },
+            "appr/tests/data/htmlcov/appr_tests_test_apiserver_py.html": {
+                "algorithm": "sha256",
+                "digest": "Xb6bezlOspAkwi8xWpS23oK2GoQxig1MlPDRzd0vKmU",
+                "size": 163767
+            },
+            "appr/tests/data/htmlcov/appr_tests_test_models_py.html": {
+                "algorithm": "sha256",
+                "digest": "vDK4TKEf3qfQHJfeUYWiHVyLW5mcJlLpywl_mGWfcSE",
+                "size": 113637
+            },
+            "appr/tests/data/htmlcov/appr_utils_py.html": {
+                "algorithm": "sha256",
+                "digest": "AACn4G4wbpLOTKS9nVuCP7VfQL6L2BDQT-Nl2zXd4FI",
+                "size": 70081
+            },
+            "appr/tests/data/htmlcov/coverage_html.js": {
+                "algorithm": "sha256",
+                "digest": "m60KpPDw7SSBYP04pyRZv0MkTbSEadEQAcsOb5M79fI",
+                "size": 18458
+            },
+            "appr/tests/data/htmlcov/index.html": {
+                "algorithm": "sha256",
+                "digest": "vi4ZrbMvLihnGAnZq0jhbciyZAEmyL-L8y6cNnv-Vws",
+                "size": 35279
+            },
+            "appr/tests/data/htmlcov/jquery.ba-throttle-debounce.min.js": {
+                "algorithm": "sha256",
+                "digest": "wXepUsOX1VYr5AyWGbIoAqlrvjQz9unPbtEyM7wFBnw",
+                "size": 731
+            },
+            "appr/tests/data/htmlcov/jquery.hotkeys.js": {
+                "algorithm": "sha256",
+                "digest": "VVqbRGJlCvARPGMJXcSiRRIJwkpged3wG5fQ47gi42U",
+                "size": 3065
+            },
+            "appr/tests/data/htmlcov/jquery.isonscreen.js": {
+                "algorithm": "sha256",
+                "digest": "WEyXE6yTYNzAYfzViwksNu7AJAY5zZBI9q6-J9pF1Zw",
+                "size": 1502
+            },
+            "appr/tests/data/htmlcov/jquery.min.js": {
+                "algorithm": "sha256",
+                "digest": "mx_4Ep0PLjLSjGct9X4Wo5K_saaN36epmnUlj-cuxGk",
+                "size": 136008
+            },
+            "appr/tests/data/htmlcov/jquery.tablesorter.min.js": {
+                "algorithm": "sha256",
+                "digest": "t4ifnz2eByQEUafncoSdJUwD2jUt68VY8CzNjAywo08",
+                "size": 12795
+            },
+            "appr/tests/data/htmlcov/keybd_closed.png": {
+                "algorithm": "sha256",
+                "digest": "FNDmw-Lx9aptnMr-XiZ4gh2EGPs17nft-QKmXgilIe0",
+                "size": 112
+            },
+            "appr/tests/data/htmlcov/keybd_open.png": {
+                "algorithm": "sha256",
+                "digest": "FNDmw-Lx9aptnMr-XiZ4gh2EGPs17nft-QKmXgilIe0",
+                "size": 112
+            },
+            "appr/tests/data/htmlcov/status.json": {
+                "algorithm": "sha256",
+                "digest": "vvJB3qkM6OFk9Vu326xUIQiYpZIHBna-GqrZ3c0SMIU",
+                "size": 19818
+            },
+            "appr/tests/data/htmlcov/style.css": {
+                "algorithm": "sha256",
+                "digest": "jATM7TxH5GdBaBsWKWb66IWtV8ZKoD-75Uwp4mEdPZQ",
+                "size": 6757
+            },
+            "appr/tests/data/kube-ui/README.md": {
+                "algorithm": "sha256",
+                "digest": "j-vhdVlTsItvGQrxcOuvC39MqtG4B0cM7B6CMT15hMA",
+                "size": 52
+            },
+            "appr/tests/data/kube-ui/file_to_ignore.yaml": {
+                "algorithm": "sha256",
+                "digest": "VDCM6_3Zl-JZRleqMzvKkV8mky25eO8uxukYwZ2fy4M",
+                "size": 11
+            },
+            "appr/tests/data/kube-ui/manifest.yaml": {
+                "algorithm": "sha256",
+                "digest": "fEFcDXB6wD0jALH0XIKPxt5X9IsxjviCXTl9ZExa-Gw",
+                "size": 368
+            },
+            "appr/tests/data/kube-ui/templates/another_file_to_ignore.cfg": {
+                "algorithm": "sha256",
+                "digest": "VDCM6_3Zl-JZRleqMzvKkV8mky25eO8uxukYwZ2fy4M",
+                "size": 11
+            },
+            "appr/tests/data/kube-ui/templates/kube-ui-rc.yaml": {
+                "algorithm": "sha256",
+                "digest": "2KjcirdBrgrWFHxkb00axLg3_-Y2qNkxX2WmPuitMcI",
+                "size": 796
+            },
+            "appr/tests/data/kube-ui/templates/kube-ui-svc.yaml": {
+                "algorithm": "sha256",
+                "digest": "dnSMLeKizPutWvK1v-mzTAgF9ZF4zrC0YWUvMqaUoeI",
+                "size": 337
+            },
+            "appr/tests/data/responses/kube-ui-replicationcontroller.json": {
+                "algorithm": "sha256",
+                "digest": "Vl5cBQ-XzGN8yTRsLRIAudLtCe0JsGlC0iQ4lK50BR4",
+                "size": 2999
+            },
+            "appr/tests/data/responses/kube-ui-service.json": {
+                "algorithm": "sha256",
+                "digest": "6Ec8VEP8D0OmV3VJmFvi_7v2g6SCRRx6BU0PgUo5Lbo",
+                "size": 1289
+            },
+            "appr/tests/data/responses/testns-namespace.json": {
+                "algorithm": "sha256",
+                "digest": "Ij8Ccit-45O20f81ZlsWA7DO8M2fk3PQhvmzWgiITPk",
+                "size": 426
+            },
+            "appr-0.7.4.data/scripts/appr": {
+                "algorithm": "sha256",
+                "digest": "wAWsmgUYY94wZAabWxMyYgir7JksODu2TYGFL36VatU",
+                "size": 82
+            },
+            "appr-0.7.4.data/scripts/apprc": {
+                "algorithm": "sha256",
+                "digest": "I3r4vyV0m3_yhtWIsZOFv7ygQLnVcHjj0JALhVXiJyI",
+                "size": 173
+            },
+            "appr-0.7.4.dist-info/DESCRIPTION.rst": {
+                "algorithm": "sha256",
+                "digest": "yARAOah8NI63hgjtfilcjX6yE9Wj41dwxezXJT34RIA",
+                "size": 6440
+            },
+            "appr-0.7.4.dist-info/METADATA": {
+                "algorithm": "sha256",
+                "digest": "3u63wzpSADtMGIA1Jmg-ZixvX1lryHQQqw4b3lOspig",
+                "size": 7573
+            },
+            "appr-0.7.4.dist-info/RECORD": null,
+            "appr-0.7.4.dist-info/WHEEL": {
+                "algorithm": "sha256",
+                "digest": "o2k-Qa-RMNIJmUdIc7KU6VWR_ErNRbWNlxDIpl7lm34",
+                "size": 110
+            },
+            "appr-0.7.4.dist-info/dependency_links.txt": {
+                "algorithm": "sha256",
+                "digest": "_8-ghxBdXW0058nqGoWqL8Szgj9VbnWLBR-QaCyXJyo",
+                "size": 65
+            },
+            "appr-0.7.4.dist-info/metadata.json": {
+                "algorithm": "sha256",
+                "digest": "w9ed4qEAoLy1G8__IXG0DcdsJNEMzpErqldB5ydxeuo",
+                "size": 1300
+            },
+            "appr-0.7.4.dist-info/top_level.txt": {
+                "algorithm": "sha256",
+                "digest": "UXsoTtp10sp1SKtU12WFRD4K66a0AYnt0j1ZcNOFWf8",
+                "size": 5
             }
-        ],
+        },
         "top_level": [
             "appr"
         ],

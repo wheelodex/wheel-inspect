@@ -4,17 +4,8 @@ import hashlib
 from keyword import iskeyword
 import os
 import re
-from typing import (
-    IO,
-    Dict,
-    Iterable,
-    Iterator,
-    List,
-    Optional,
-    TextIO,
-    Tuple,
-    Union,
-)
+from typing import IO, Dict, Iterable, Iterator, List, Optional, TextIO, Tuple, Union
+import attr
 from packaging.utils import canonicalize_name, canonicalize_version
 from .errors import DistInfoError
 
@@ -91,8 +82,22 @@ def unique_projects(projects: Iterable[str]) -> Iterator[str]:
         seen.add(pn)
 
 
-def digest_file(fp: IO[bytes], algorithms: Iterable[str]) -> Dict[str, str]:
-    digests = {alg: getattr(hashlib, alg)() for alg in algorithms}
+@attr.s(auto_attribs=True)
+class SizeDigester:
+    size: int = 0
+
+    def update(self, bs: bytes) -> None:
+        self.size += len(bs)
+
+    def hexdigest(self) -> int:
+        return self.size
+
+
+def digest_file(fp: IO[bytes], algorithms: Iterable[str]) -> Dict[str, Union[str, int]]:
+    digests = {
+        alg: SizeDigester() if alg == "size" else getattr(hashlib, alg)()
+        for alg in algorithms
+    }
     for chunk in iter(lambda: fp.read(DIGEST_CHUNK_SIZE), b""):
         for d in digests.values():
             d.update(chunk)

@@ -52,7 +52,7 @@ def jsonify_entry_points(epset: EntryPointSet) -> Dict[str, Any]:
         gr: {
             k: {
                 "module": e.module,
-                "attr": e.object,
+                "attr": e.attr,
                 "extras": list(e.extras),
             }
             for k, e in eps.items()

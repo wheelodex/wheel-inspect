@@ -13,13 +13,6 @@
         "any"
     ],
     "valid": true,
-    "file": {
-        "size": 16158,
-        "digests": {
-            "md5": "1196d31e100b5ac25b509e4c7e13cb6b",
-            "sha256": "488a65d6bd8c10f211e098d2d6e4a66df003be12f028b8f6f858ac2863579eb1"
-        }
-    },
     "dist_info": {
         "metadata": {
             "metadata_version": "2.0",

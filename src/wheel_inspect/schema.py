@@ -243,7 +243,6 @@ WHEEL_SCHEMA["required"].extend(
         "pyver",
         "abi",
         "arch",
-        "file",
     ]
 )
 
@@ -276,23 +275,6 @@ WHEEL_SCHEMA["properties"].update(
             "type": "array",
             "items": {"type": "string"},
             "description": "A list of architectures with which the wheel is compatible as extracted from the filename",
-        },
-        "file": {
-            "type": "object",
-            "required": ["size", "digests"],
-            "additionalProperties": False,
-            "properties": {
-                "size": {"type": "integer"},
-                "digests": {
-                    "type": "object",
-                    "required": ["md5", "sha256"],
-                    "additionalProperties": False,
-                    "properties": {
-                        "md5": {"type": "string", "pattern": "^[0-9A-Fa-f]{32}$"},
-                        "sha256": {"type": "string", "pattern": "^[0-9A-Fa-f]{64}$"},
-                    },
-                },
-            },
         },
     }
 )

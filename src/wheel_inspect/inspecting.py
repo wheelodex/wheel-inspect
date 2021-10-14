@@ -87,7 +87,7 @@ def inspect(obj: DistInfoProvider) -> Dict[str, Any]:
     has_dist_info = True
 
     try:
-        record = obj.get_record()
+        record = obj.record
     except errors.WheelValidationError as e:
         about["valid"] = False
         about["validation_error"] = {
@@ -109,7 +109,7 @@ def inspect(obj: DistInfoProvider) -> Dict[str, Any]:
 
     if has_dist_info:
         try:
-            metadata = obj.get_metadata()
+            metadata = obj.metadata
         except errors.WheelValidationError as e:
             metadata = {}
             about["valid"] = False
@@ -121,7 +121,7 @@ def inspect(obj: DistInfoProvider) -> Dict[str, Any]:
             about["dist_info"]["metadata"] = metadata
 
         try:
-            about["dist_info"]["wheel"] = obj.get_wheel_info()
+            about["dist_info"]["wheel"] = obj.wheel_info
         except errors.WheelValidationError as e:
             about["valid"] = False
             about["validation_error"] = {
@@ -190,7 +190,7 @@ def inspect_wheel(path: AnyPath) -> Dict[str, Any]:
     Examine the Python wheel at the given path and return various information
     about the contents within as a JSON-serializable `dict`
     """
-    with WheelFile(path) as wf:
+    with WheelFile.from_path(path) as wf:
         return inspect(wf)
 
 

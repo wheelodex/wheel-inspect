@@ -180,13 +180,6 @@
         },
         "zip_safe": true
     },
-    "file": {
-        "digests": {
-            "md5": "e8a776fd026119ce67a285a0f3f39c22",
-            "sha256": "a86e30d3c3f463f6e2221f506a8fe4a2b4c671593029f408d94d7c3271abb9b5"
-        },
-        "size": 4560
-    },
     "filename": "gitgud2-2.1-py2.py3-none-any.whl",
     "project": "gitgud2",
     "pyver": [

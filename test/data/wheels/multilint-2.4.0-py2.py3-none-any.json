@@ -165,13 +165,6 @@
             "wheel_version": "1.0"
         }
     },
-    "file": {
-        "digests": {
-            "md5": "07e43f021f0859985ea08e13fe6065bc",
-            "sha256": "f1a36263fcd7a08de8e5828a268e984accd34c7b91e98f4fde85de54e9c30a7e"
-        },
-        "size": 6179
-    },
     "filename": "multilint-2.4.0-py2.py3-none-any.whl",
     "project": "multilint",
     "pyver": [

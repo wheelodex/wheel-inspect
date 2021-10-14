@@ -2272,13 +2272,6 @@
             "wheel_version": "1.0"
         }
     },
-    "file": {
-        "digests": {
-            "md5": "6645b8ec3ecb1378caf00b27581f6496",
-            "sha256": "b59f63d727d3d591dcb3365f32c521e5f0178915fb54cc949e8ff408d10db8cd"
-        },
-        "size": 484721
-    },
     "filename": "appr-0.7.4-py2.py3-none-any.whl",
     "project": "appr",
     "pyver": [

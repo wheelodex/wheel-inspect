@@ -77,13 +77,6 @@
             "wheel_version": "1.0"
         }
     },
-    "file": {
-        "digests": {
-            "md5": "9ec7edf8473aa1240f82d14ad8205297",
-            "sha256": "b554c3135119cf1c0e24f81e50f709add7ce948b3bd9deb8428cbe79447dad84"
-        },
-        "size": 1420
-    },
     "filename": "dirs_in_record-1.0.0-py3-none-any.whl",
     "project": "dirs_in_record",
     "pyver": [

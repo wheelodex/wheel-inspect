@@ -192,13 +192,6 @@
             "wheel_version": "1.0"
         }
     },
-    "file": {
-        "digests": {
-            "md5": "d8bc66b692fcce56fc37eb0e8a6e04e4",
-            "sha256": "40bdf941bfdb6fbef00e8984d7b8d7b9ee1f3ec0e4ed23e6e29b0aac67799172"
-        },
-        "size": 18656
-    },
     "filename": "txtble-0.11.0.dev1-py2.py3-none-any.whl",
     "project": "txtble",
     "pyver": [

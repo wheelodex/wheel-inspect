@@ -164,13 +164,6 @@
             "wheel_version": "1.0"
         }
     },
-    "file": {
-        "digests": {
-            "md5": "0b7ec3e02daa303263e2583e44878d05",
-            "sha256": "cddf7f060fa4ae42c309deacfbb12c02276b23bc4d7fde3d8c800b6029b149d9"
-        },
-        "size": 5212
-    },
     "filename": "NLPTriples-0.1.7-py3-none-any.whl",
     "project": "NLPTriples",
     "pyver": [

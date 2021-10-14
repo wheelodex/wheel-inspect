@@ -72,13 +72,6 @@
             "wheel_version": "1.0"
         }
     },
-    "file": {
-        "digests": {
-            "md5": "de02937c567aae5dcde8d88a8c126d81",
-            "sha256": "d489af7673decc8faa03e139592d6b49555fd9f7e82fe827f20a8df052117ec0"
-        },
-        "size": 1342
-    },
     "filename": "missing_dir_in_record-1.0.0-py3-none-any.whl",
     "project": "missing_dir_in_record",
     "pyver": [

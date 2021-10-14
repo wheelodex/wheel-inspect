@@ -3,14 +3,22 @@ import abc
 import io
 import os
 from pathlib import Path
+import sys
 from typing import IO, Any, Dict, List, Optional, TextIO, TypeVar, overload
 from zipfile import ZipFile
+import attr
 from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from . import errors as exc
 from .metadata import parse_metadata
 from .record import Record
 from .util import AnyPath, digest_file, find_dist_info_dir
 from .wheel_info import parse_wheel_info
+
+if sys.version_info[:2] >= (3, 8):
+    from functools import cached_property
+else:
+    from cached_property import cached_property
+
 
 T = TypeVar("T", bound="DistInfoProvider")
 
@@ -80,14 +88,16 @@ class DistInfoProvider(abc.ABC):
         """
         ...
 
-    def get_metadata(self) -> Dict[str, Any]:
+    @cached_property
+    def metadata(self) -> Dict[str, Any]:
         try:
             with self.open_dist_info_file("METADATA", encoding="utf-8") as fp:
                 return parse_metadata(fp)
         except exc.MissingDistInfoFileError:
             raise exc.MissingMetadataError()
 
-    def get_record(self) -> Record:
+    @cached_property
+    def record(self) -> Record:
         try:
             with self.open_dist_info_file("RECORD", encoding="utf-8", newline="") as fp:
                 # The csv module requires this file to be opened with
@@ -96,7 +106,8 @@ class DistInfoProvider(abc.ABC):
         except exc.MissingDistInfoFileError:
             raise exc.MissingRecordError()
 
-    def get_wheel_info(self) -> Dict[str, Any]:
+    @cached_property
+    def wheel_info(self) -> Dict[str, Any]:
         try:
             with self.open_dist_info_file("WHEEL", encoding="utf-8") as fp:
                 return parse_wheel_info(fp)
@@ -198,19 +209,21 @@ class DistInfoDir(DistInfoProvider):
         return (self.path / path).exists()
 
 
+@attr.s(auto_attribs=True)
 class WheelFile(DistInfoProvider, FileProvider):
-    def __init__(self, path: AnyPath):
-        self.path: Path = Path(os.fsdecode(path))
-        self.filename: ParsedWheelFilename = parse_wheel_filename(self.path)
-        self.fp: IO[bytes] = self.path.open("rb")
-        self.zipfile: ZipFile = ZipFile(self.fp)
-        self._dist_info: Optional[str] = None
+    filename: ParsedWheelFilename
+    fp: IO[bytes]
+    zipfile: ZipFile
 
     @classmethod
     def from_path(cls, path: AnyPath) -> WheelFile:
         # Recommend the use of this method in case __init__'s signature changes
         # later
-        return cls(path)
+        p = Path(os.fsdecode(path))
+        filename = parse_wheel_filename(p)
+        fp = p.open("rb")
+        zipfile = ZipFile(fp)
+        return cls(filename=filename, fp=fp, zipfile=zipfile)
 
     def __enter__(self) -> WheelFile:
         return self
@@ -226,37 +239,24 @@ class WheelFile(DistInfoProvider, FileProvider):
     def closed(self) -> bool:
         return self.fp.closed
 
-    @property
+    @cached_property
     def dist_info(self) -> str:
-        if self._dist_info is None:
-            if self.zipfile is None:
-                raise RuntimeError(
-                    "WheelFile.dist_info cannot be determined when WheelFile"
-                    " is not open in context"
-                )
-            self._dist_info = find_dist_info_dir(
-                self.zipfile.namelist(),
-                self.filename.project,
-                self.filename.version,
-            )
-        return self._dist_info
+        return find_dist_info_dir(
+            self.zipfile.namelist(),
+            self.filename.project,
+            self.filename.version,
+        )
 
     def basic_metadata(self) -> Dict[str, Any]:
-        namebits = self.filename
         about: Dict[str, Any] = {
-            "filename": self.path.name,
-            "project": namebits.project,
-            "version": namebits.version,
-            "buildver": namebits.build,
-            "pyver": namebits.python_tags,
-            "abi": namebits.abi_tags,
-            "arch": namebits.platform_tags,
-            "file": {
-                "size": self.path.stat().st_size,
-            },
+            "filename": str(self.filename),
+            "project": self.filename.project,
+            "version": self.filename.version,
+            "buildver": self.filename.build,
+            "pyver": self.filename.python_tags,
+            "abi": self.filename.abi_tags,
+            "arch": self.filename.platform_tags,
         }
-        self.fp.seek(0)
-        about["file"]["digests"] = digest_file(self.fp, ["md5", "sha256"])
         return about
 
     @overload

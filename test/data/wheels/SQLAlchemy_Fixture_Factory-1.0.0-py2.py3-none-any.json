@@ -174,13 +174,6 @@
             "wheel_version": "1.0"
         }
     },
-    "file": {
-        "digests": {
-            "md5": "3b01bf52c846983dfcfc38eff4d1f38b",
-            "sha256": "3df544165e616adf9ce6e1c1cbdf3820b0efc709f0bc6fc3e00ba4731038e0a6"
-        },
-        "size": 9689
-    },
     "filename": "SQLAlchemy_Fixture_Factory-1.0.0-py2.py3-none-any.whl",
     "project": "SQLAlchemy_Fixture_Factory",
     "pyver": [

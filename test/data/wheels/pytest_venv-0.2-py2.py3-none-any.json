@@ -170,13 +170,6 @@
             "wheel_version": "1.0"
         }
     },
-    "file": {
-        "digests": {
-            "md5": "0157c8201a91e8ae9e8ddea9503b59b3",
-            "sha256": "ec842cbc60affbea6b1136bf9876ca858d0b77f6c58740e69a6e0ef708f43ea3"
-        },
-        "size": 4908
-    },
     "filename": "pytest_venv-0.2-py2.py3-none-any.whl",
     "project": "pytest_venv",
     "pyver": [

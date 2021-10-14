@@ -67,13 +67,6 @@
             "wheel_version": "1.0"
         }
     },
-    "file": {
-        "digests": {
-            "md5": "ca80fa9355ee5ade1d589e38c5120a94",
-            "sha256": "92e4e787e216997a40c9432479ae8e3a46e1a5344630303b20bbe5578cf59576"
-        },
-        "size": 1288
-    },
     "filename": "digest_mismatch-1.0.0-py3-none-any.whl",
     "project": "digest_mismatch",
     "pyver": [

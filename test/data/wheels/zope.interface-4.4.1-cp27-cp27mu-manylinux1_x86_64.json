@@ -13,13 +13,6 @@
         "manylinux1_x86_64"
     ],
     "valid": true,
-    "file": {
-        "size": 169361,
-        "digests": {
-            "md5": "ccee7ce872b7a7248fed878bbdb2f709",
-            "sha256": "34968eeca7c2dd0ec7426ebc2ed27fb6681aaffd9b69382438d5338878b8733c"
-        }
-    },
     "dist_info": {
         "metadata": {
             "metadata_version": "2.0",

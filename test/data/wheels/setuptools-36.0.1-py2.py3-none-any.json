@@ -14,13 +14,6 @@
         "any"
     ],
     "valid": true,
-    "file": {
-        "size": 476152,
-        "digests": {
-            "md5": "7a52500dcfd7c4f37f5d20e462c93560",
-            "sha256": "f2900e560efc479938a219433c48f15a4ff4ecfe575a65de385eeb44f2425587"
-        }
-    },
     "dist_info": {
         "metadata": {
             "metadata_version": "2.0",

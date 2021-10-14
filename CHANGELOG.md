@@ -13,6 +13,8 @@ v2.0.0 (in development)
     - Files in `RECORD` now represent their digest information in a `"digest"`
       key that is either `null` or a subobject with `"algorithm"` and
       `"digest"` fields
+    - The `.file` property in wheel inspection results (containing the file's
+      size and digest) has been removed
 - `RECORD` entries with negative sizes are now detected & errorred on earlier
 
 

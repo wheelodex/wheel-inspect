@@ -9,8 +9,8 @@ from wheel_inspect.inspecting import verify_record
 
 @pytest.mark.parametrize("whlfile,expected", filecases("bad-wheels", "*.whl"))
 def test_verify_bad_wheels(whlfile: Path, expected: Any) -> None:
-    with WheelFile(whlfile) as whl:
+    with WheelFile.from_path(whlfile) as whl:
         with pytest.raises(WheelValidationError) as excinfo:
-            verify_record(whl, whl.get_record())
+            verify_record(whl, whl.record)
         assert type(excinfo.value).__name__ == expected["type"]
         assert str(excinfo.value) == expected["str"]

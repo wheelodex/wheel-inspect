@@ -207,7 +207,7 @@ class WheelFile(DistInfoProvider, FileProvider):
         self._dist_info: Optional[str] = None
 
     @classmethod
-    def from_zipfile_path(cls, path: AnyPath) -> WheelFile:
+    def from_path(cls, path: AnyPath) -> WheelFile:
         # Recommend the use of this method in case __init__'s signature changes
         # later
         return cls(path)

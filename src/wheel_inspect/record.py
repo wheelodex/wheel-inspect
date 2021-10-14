@@ -9,7 +9,7 @@ from . import errors
 from .util import digest_file
 
 
-@attr.s(auto_attribs=True)
+@attr.define
 class FileData:
     algorithm: str
     digest: str  # In the pseudo-base64 format

@@ -82,7 +82,7 @@ def unique_projects(projects: Iterable[str]) -> Iterator[str]:
         seen.add(pn)
 
 
-@attr.s(auto_attribs=True)
+@attr.define
 class SizeDigester:
     size: int = 0
 

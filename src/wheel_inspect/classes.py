@@ -200,7 +200,7 @@ class DistInfoDir(DistInfoProvider):
         return (self.path / path).exists()
 
 
-@attr.s(auto_attribs=True)
+@attr.define
 class WheelFile(DistInfoProvider, FileProvider):
     filename: ParsedWheelFilename
     fp: IO[bytes]

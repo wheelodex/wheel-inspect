@@ -7,6 +7,8 @@ v2.0.0 (in development)
 - Removed the old `SCHEMA` alias for `WHEEL_SCHEMA` (deprecated in v1.6.0)
 - Removed the re-export of `ParsedWheelFilename` and `parse_wheel_filename()`
   from `wheel-filename` (deprecated in v1.5.0)
+- Digest algorithm names in `RECORD` files are now converted to lowercase
+  during parsing
 - Schema changes:
     - Files in `RECORD` now represent their digest information in a `"digest"`
       key that is either `null` or a subobject with `"algorithm"` and

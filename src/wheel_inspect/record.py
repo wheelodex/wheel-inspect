@@ -11,7 +11,7 @@ from .util import digest_file
 
 @attr.s(auto_attribs=True)
 class Record:
-    entries: Dict[str, RecordEntry] = attr.ib(factory=dict)
+    entries: Dict[str, RecordEntry] = attr.Factory(dict)
 
     @classmethod
     def load(cls, fp: TextIO) -> Record:
@@ -104,7 +104,7 @@ class RecordEntry:
 @attr.s(auto_attribs=True)
 class Digest:
     algorithm: str
-    digest: bytes
+    digest: str  # In the pseudo-base64 format
 
     @classmethod
     def parse(cls, s: str, path: str) -> Digest:
@@ -112,6 +112,7 @@ class Digest:
         ### them filled in by the caller
         ### TODO: Raise a custom exception if the below line fails:
         algorithm, digest = s.split("=", 1)
+        algorithm = algorithm.lower()
         if algorithm not in hashlib.algorithms_guaranteed:
             raise errors.UnknownDigestError(path, algorithm)
         elif algorithm in ("md5", "sha1"):
@@ -119,19 +120,24 @@ class Digest:
         sz = (getattr(hashlib, algorithm)().digest_size * 8 + 5) // 6
         if not re.fullmatch(r"[-_0-9A-Za-z]{%d}" % (sz,), digest):
             raise errors.MalformedDigestError(path, algorithm, digest)
-        ### TODO: Raise a custom exception if the digest decoding fails
-        return cls(algorithm=algorithm, digest=urlsafe_b64decode_nopad(digest))
-
-    def __str__(self) -> str:
-        return f"{self.algorithm}={self.b64_digest}"
+        try:
+            urlsafe_b64decode_nopad(digest)
+        except ValueError:
+            raise errors.MalformedDigestError(path, algorithm, digest)
+        return cls(algorithm=algorithm, digest=digest)
 
     @property
     def b64_digest(self) -> str:
-        return urlsafe_b64encode_nopad(self.digest)
+        # Alias for readability
+        return self.digest
 
     @property
     def hex_digest(self) -> str:
-        return self.digest.hex()
+        return self.bytes_digest.hex()
+
+    @property
+    def bytes_digest(self) -> bytes:
+        return urlsafe_b64decode_nopad(self.digest)
 
     def verify(self, fp: BinaryIO) -> None:
         digest = digest_file(fp, [self.algorithm])[self.algorithm]
@@ -145,10 +151,7 @@ class Digest:
             )
 
     def for_json(self) -> dict:
-        return {
-            "algorithm": self.algorithm,
-            "digest": self.b64_digest,
-        }
+        return attr.asdict(self)
 
 
 def urlsafe_b64encode_nopad(data: bytes) -> str:

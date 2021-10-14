@@ -5,7 +5,6 @@ from keyword import iskeyword
 import os
 import re
 from typing import IO, Dict, Iterable, Iterator, List, Optional, TextIO, Tuple, Union
-import attr
 from packaging.utils import canonicalize_name, canonicalize_version
 from .errors import DistInfoError
 
@@ -82,26 +81,14 @@ def unique_projects(projects: Iterable[str]) -> Iterator[str]:
         seen.add(pn)
 
 
-@attr.define
-class SizeDigester:
-    size: int = 0
-
-    def update(self, bs: bytes) -> None:
-        self.size += len(bs)
-
-    def hexdigest(self) -> int:
-        return self.size
-
-
-def digest_file(fp: IO[bytes], algorithms: Iterable[str]) -> Dict[str, Union[str, int]]:
-    digests = {
-        alg: SizeDigester() if alg == "size" else getattr(hashlib, alg)()
-        for alg in algorithms
-    }
+def digest_file(fp: IO[bytes], algorithms: Iterable[str]) -> Tuple[Dict[str, str], int]:
+    digests = {alg: getattr(hashlib, alg)() for alg in algorithms}
+    size = 0
     for chunk in iter(lambda: fp.read(DIGEST_CHUNK_SIZE), b""):
         for d in digests.values():
             d.update(chunk)
-    return {k: v.hexdigest() for k, v in digests.items()}
+            size += len(chunk)
+    return ({k: v.hexdigest() for k, v in digests.items()}, size)
 
 
 def split_content_type(s: str) -> Tuple[str, str, Dict[str, str]]:

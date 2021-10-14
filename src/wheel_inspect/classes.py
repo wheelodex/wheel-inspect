@@ -360,8 +360,7 @@ class WheelFile(DistInfoProvider, FileProvider):
         if algorithm == "size":
             raise ValueError("Invalid file hash algorithm: 'size'")
         with self.open(path) as fp:
-            digest = digest_file(fp, [algorithm])[algorithm]
-        assert isinstance(digest, str)
+            digest = digest_file(fp, [algorithm])[0][algorithm]
         return digest
 
     @overload

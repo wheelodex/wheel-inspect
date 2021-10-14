@@ -74,11 +74,8 @@ class FileData:
         return urlsafe_b64decode_nopad(self.digest)
 
     def verify(self, fp: IO[bytes], path: str) -> None:
-        digested = digest_file(fp, [self.algorithm, "size"])
-        actual_digest = digested[self.algorithm]
-        actual_size = digested["size"]
-        assert isinstance(actual_digest, str)
-        assert isinstance(actual_size, int)
+        digests, actual_size = digest_file(fp, [self.algorithm])
+        actual_digest = digests[self.algorithm]
         if self.hex_digest != actual_digest:
             raise errors.RecordDigestMismatchError(
                 path=path,

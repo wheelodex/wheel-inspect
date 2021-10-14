@@ -6,7 +6,7 @@ import re
 from typing import IO, Dict, List, Optional, TextIO, Tuple
 import attr
 from . import errors
-from .util import digest_file
+from .util import digest_file, is_dist_info_path
 
 
 @attr.define
@@ -125,6 +125,10 @@ def load_record(fp: TextIO) -> RecordType:
         if not fields:
             continue
         path, data = FileData.from_csv_fields(fields)
+        if data is None and not (
+            path.endswith("/") or is_dist_info_path(path, "RECORD")
+        ):
+            raise errors.NullEntryError(path)
         if path in entries and entries[path] != data:
             raise errors.RecordConflictError(path)
         entries[path] = data

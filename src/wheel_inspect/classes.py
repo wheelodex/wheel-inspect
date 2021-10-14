@@ -417,8 +417,6 @@ class WheelFile(DistInfoProvider, FileProvider):
             elif data is not None:
                 with self.open(path) as fp:
                     data.verify(fp, path)
-            elif not is_dist_info_path(path, "RECORD"):
-                raise exc.NullEntryError(path)
             files.discard(path)
         # Check that the only files that aren't in RECORD are signatures:
         for path in files:

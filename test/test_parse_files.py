@@ -1,8 +1,9 @@
 from pathlib import Path
 from typing import Any
+from entry_points_txt import load
 import pytest
 from testing_lib import filecases
-from wheel_inspect.inspecting import parse_entry_points
+from wheel_inspect.inspecting import jsonify_entry_points
 from wheel_inspect.metadata import parse_metadata
 from wheel_inspect.wheel_info import parse_wheel_info
 
@@ -14,9 +15,9 @@ def test_parse_metadata(mdfile: Path, expected: Any) -> None:
 
 
 @pytest.mark.parametrize("epfile,expected", filecases("entry_points", "*.txt"))
-def test_parse_entry_points(epfile: Path, expected: Any) -> None:
+def test_jsonify_entry_points(epfile: Path, expected: Any) -> None:
     with epfile.open(encoding="utf-8") as fp:
-        assert parse_entry_points(fp) == expected
+        assert jsonify_entry_points(load(fp)) == expected
 
 
 @pytest.mark.parametrize("wifile,expected", filecases("wheel_info", "*.wheel"))

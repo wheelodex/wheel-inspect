@@ -1,6 +1,5 @@
-import io
-from typing import Any, Callable, Dict, List, TextIO, Tuple
-import entry_points_txt
+from typing import Any, Dict
+from entry_points_txt import EntryPointSet
 from readme_renderer.rst import render
 from . import errors
 from .classes import DistInfoDir, DistInfoProvider, WheelFile
@@ -14,14 +13,13 @@ from .util import (
 )
 
 
-def parse_entry_points(fp: TextIO) -> Dict[str, Any]:
+def jsonify_entry_points(epset: EntryPointSet) -> Dict[str, Any]:
     """
-    Parse the contents of a text filehandle ``fp`` as an
-    :file:`entry_points.txt` file and return a `dict` that maps entry point
-    group names to sub-`dict`s that map entry point names to sub-sub-`dict`s
-    with ``"module"``, ``"attr"``, and ``"extras"`` keys.
+    Convert an `entry_points_txt.EntryPointSet` to a `dict` that maps entry
+    point group names to sub-`dict`s that map entry point names to
+    sub-sub-`dict`s with ``"module"``, ``"attr"``, and ``"extras"`` keys.
 
-    For example, the following input:
+    For example, the following :file:`entry_points.txt`:
 
     .. code-block:: ini
 
@@ -31,7 +29,7 @@ def parse_entry_points(fp: TextIO) -> Dict[str, Any]:
         [plugin.point]
         plug-thing = pkg.plug [xtra]
 
-    would be parsed into the following structure::
+    would become the following structure::
 
         {
             "console_scripts": {
@@ -50,7 +48,6 @@ def parse_entry_points(fp: TextIO) -> Dict[str, Any]:
             }
         }
     """
-    epset = entry_points_txt.load(fp)
     return {
         gr: {
             k: {
@@ -64,18 +61,8 @@ def parse_entry_points(fp: TextIO) -> Dict[str, Any]:
     }
 
 
-def readlines(fp: TextIO) -> List[str]:
-    return list(yield_lines(fp))
-
-
-EXTRA_DIST_INFO_FILES: List[Tuple[str, Callable[[TextIO], Any], str]] = [
-    # file name, handler function, result dict key
-    # <https://setuptools.readthedocs.io/en/latest/formats.html>:
-    ("dependency_links.txt", readlines, "dependency_links"),
-    ("entry_points.txt", parse_entry_points, "entry_points"),
-    ("namespace_packages.txt", readlines, "namespace_packages"),
-    ("top_level.txt", readlines, "top_level"),
-]
+# <https://setuptools.readthedocs.io/en/latest/formats.html>
+EXTRA_DIST_INFO_FILES = ["dependency_links", "namespace_packages", "top_level"]
 
 
 def inspect(obj: DistInfoProvider) -> Dict[str, Any]:
@@ -129,12 +116,13 @@ def inspect(obj: DistInfoProvider) -> Dict[str, Any]:
                 "str": str(e),
             }
 
-        for fname, parser, key in EXTRA_DIST_INFO_FILES:
+        if obj.has_dist_info_file("entry_points.txt"):
+            about["dist_info"]["entry_points"] = jsonify_entry_points(obj.entry_points)
+
+        for key in EXTRA_DIST_INFO_FILES:
             try:
-                with obj.open_dist_info_file(fname) as binfp, io.TextIOWrapper(
-                    binfp, "utf-8"
-                ) as txtfp:
-                    about["dist_info"][key] = parser(txtfp)
+                with obj.open_dist_info_file(f"{key}.txt", encoding="utf-8") as fp:
+                    about["dist_info"][key] = list(yield_lines(fp))
             except errors.MissingDistInfoFileError:
                 pass
 

@@ -7,6 +7,8 @@ import sys
 from typing import IO, Any, Dict, List, Optional, TextIO, TypeVar, overload
 from zipfile import ZipFile
 import attr
+from entry_points_txt import EntryPointSet
+from entry_points_txt import load as load_entry_points
 from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from . import errors as exc
 from .metadata import parse_metadata
@@ -104,6 +106,14 @@ class DistInfoProvider(abc.ABC):
     def wheel_info(self) -> Dict[str, Any]:
         with self.open_dist_info_file("WHEEL", encoding="utf-8") as fp:
             return parse_wheel_info(fp)
+
+    @cached_property
+    def entry_points(self) -> EntryPointSet:
+        try:
+            with self.open_dist_info_file("entry_points.txt", encoding="utf-8") as fp:
+                return load_entry_points(fp)
+        except exc.MissingDistInfoFileError:
+            return {}
 
 
 class FileProvider(abc.ABC):

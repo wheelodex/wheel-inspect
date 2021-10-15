@@ -2,7 +2,7 @@ from typing import Any, Dict
 from entry_points_txt import EntryPointSet
 from readme_renderer.rst import render
 from . import errors
-from .classes import DistInfoDir, DistInfoProvider, WheelFile
+from .classes import BackedDistInfo, DistInfoDir, DistInfoProvider, WheelFile
 from .util import (
     AnyPath,
     extract_modules,
@@ -84,7 +84,7 @@ def inspect(obj: DistInfoProvider, verify_files: bool = True) -> Dict[str, Any]:
         about["dist_info"]["record"] = {
             k: v.for_json() if v is not None else None for k, v in record.items()
         }
-        if isinstance(obj, WheelFile) and verify_files:
+        if isinstance(obj, BackedDistInfo) and verify_files:
             try:
                 obj.verify_record()
             except errors.WheelValidationError as e:

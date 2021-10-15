@@ -200,6 +200,28 @@ class FileProvider(abc.ABC):
         ...
 
 
+class BackedDistInfo(DistInfoProvider, FileProvider):
+    def verify_record(self) -> None:
+        files = set(self.list_files())
+        # Check everything in RECORD against actual values:
+        for path, data in self.record.items():
+            if path.endswith("/"):
+                if not self.has_directory(path):
+                    raise exc.FileMissingError(path)
+            elif path not in files:
+                raise exc.FileMissingError(path)
+            elif data is not None:
+                with self.open(path) as fp:
+                    data.verify(fp, path)
+            files.discard(path)
+        # Check that the only files that aren't in RECORD are signatures:
+        for path in files:
+            if not is_dist_info_path(path, "RECORD.jws") and not is_dist_info_path(
+                path, "RECORD.p7s"
+            ):
+                raise exc.ExtraFileError(path)
+
+
 class DistInfoDir(DistInfoProvider):
     def __init__(self, path: AnyPath) -> None:
         self.path: Path = Path(os.fsdecode(path))
@@ -249,7 +271,7 @@ class DistInfoDir(DistInfoProvider):
 
 
 @attr.define
-class WheelFile(DistInfoProvider, FileProvider):
+class WheelFile(BackedDistInfo):
     filename: ParsedWheelFilename
     fp: IO[bytes]
     zipfile: ZipFile
@@ -401,25 +423,3 @@ class WheelFile(DistInfoProvider, FileProvider):
             )
         else:
             return fp
-
-    # TODO: Make this a method of a joint subclass of DistInfoProvider and
-    # FileProvider?
-    def verify_record(self) -> None:
-        files = set(self.list_files())
-        # Check everything in RECORD against actual values:
-        for path, data in self.record.items():
-            if path.endswith("/"):
-                if not self.has_directory(path):
-                    raise exc.FileMissingError(path)
-            elif path not in files:
-                raise exc.FileMissingError(path)
-            elif data is not None:
-                with self.open(path) as fp:
-                    data.verify(fp, path)
-            files.discard(path)
-        # Check that the only files that aren't in RECORD are signatures:
-        for path in files:
-            if not is_dist_info_path(path, "RECORD.jws") and not is_dist_info_path(
-                path, "RECORD.p7s"
-            ):
-                raise exc.ExtraFileError(path)

@@ -18,7 +18,7 @@ DIST_INFO_SCHEMA = {
         },
         "validation_error": {
             "type": "object",
-            "description": "If the wheel is invalid, this field contains information on the `WheelValidationError` raised.",
+            "description": "If the wheel is invalid, this field contains information on the `WheelError` raised.",
             "required": ["type", "str"],
             "additionalProperties": False,
             "properties": {

@@ -207,9 +207,9 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
         for path, data in self.record.items():
             if path.endswith("/"):
                 if not self.has_directory(path):
-                    raise exc.FileMissingError(path)
+                    raise exc.MissingFileError(path)
             elif path not in files:
-                raise exc.FileMissingError(path)
+                raise exc.MissingFileError(path)
             elif data is not None:
                 with self.open(path) as fp:
                     data.verify(fp, path)

@@ -123,12 +123,12 @@ def yield_lines(fp: TextIO) -> Iterator[str]:
 def find_dist_info_dir(namelist: List[str], project: str, version: str) -> str:
     """
     Given a list ``namelist`` of files in a wheel for a project ``project`` and
-    version ``version``, find & return the name of the wheel's ``.dist-info``
-    directory.
+    version ``version``, find & return the name of the wheel's
+    :file:`*.dist-info` directory.
 
-    :raises DistInfoError: if there is no unique ``.dist-info`` directory in
-        the input
-    :raises DistInfoError: if the name & version of the ``.dist-info``
+    :raises DistInfoError: if there is no unique :file:`*.dist-info` directory
+        in the input
+    :raises DistInfoError: if the name & version of the :file:`*.dist-info`
         directory are not normalization-equivalent to ``project`` & ``version``
     """
     canon_project = canonicalize_name(project)

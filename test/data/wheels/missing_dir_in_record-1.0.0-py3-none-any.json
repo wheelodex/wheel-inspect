@@ -63,7 +63,7 @@
     "valid": false,
     "validation_error": {
         "str": "File declared in RECORD not found in archive: 'not-found/'",
-        "type": "FileMissingError"
+        "type": "MissingFileError"
     },
     "version": "1.0.0"
 }

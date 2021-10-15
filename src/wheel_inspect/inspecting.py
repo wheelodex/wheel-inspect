@@ -73,7 +73,7 @@ def inspect(obj: DistInfoProvider, verify_files: bool = True) -> Dict[str, Any]:
 
     try:
         record = obj.record
-    except errors.WheelValidationError as e:
+    except errors.WheelError as e:
         about["valid"] = False
         about["validation_error"] = {
             "type": type(e).__name__,
@@ -87,7 +87,7 @@ def inspect(obj: DistInfoProvider, verify_files: bool = True) -> Dict[str, Any]:
         if isinstance(obj, BackedDistInfo) and verify_files:
             try:
                 obj.verify_record()
-            except errors.WheelValidationError as e:
+            except errors.WheelError as e:
                 about["valid"] = False
                 about["validation_error"] = {
                     "type": type(e).__name__,
@@ -97,7 +97,7 @@ def inspect(obj: DistInfoProvider, verify_files: bool = True) -> Dict[str, Any]:
     if has_dist_info:
         try:
             metadata = obj.metadata
-        except errors.WheelValidationError as e:
+        except errors.WheelError as e:
             metadata = {}
             about["valid"] = False
             about["validation_error"] = {
@@ -109,7 +109,7 @@ def inspect(obj: DistInfoProvider, verify_files: bool = True) -> Dict[str, Any]:
 
         try:
             about["dist_info"]["wheel"] = obj.wheel_info
-        except errors.WheelValidationError as e:
+        except errors.WheelError as e:
             about["valid"] = False
             about["validation_error"] = {
                 "type": type(e).__name__,

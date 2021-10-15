@@ -8,23 +8,26 @@ class Error(Exception):
     pass
 
 
-class WheelValidationError(Error):
-    """Superclass for all wheel validation errors raised by this package"""
+class WheelError(Error):
+    """
+    Superclass for all wheel and/or :file:`*.dist-info` validation errors
+    raised by this package
+    """
 
     pass
 
 
-class RecordValidationError(WheelValidationError):
+class RecordVerificationError(WheelError):
     """
-    Superclass for all validation errors raised due to a wheel's :file:`RECORD`
-    being inaccurate or incomplete
+    Superclass for all verification errors raised due to a wheel's
+    :file:`RECORD` not matching the files in the wheel
     """
 
     pass
 
 
 @attr.define
-class RecordSizeMismatchError(RecordValidationError):
+class SizeMismatchError(RecordVerificationError):
     """
     Raised when the size of a file as declared in a wheel's :file:`RECORD` does
     not match the file's actual size
@@ -45,7 +48,7 @@ class RecordSizeMismatchError(RecordValidationError):
 
 
 @attr.define
-class RecordDigestMismatchError(RecordValidationError):
+class DigestMismatchError(RecordVerificationError):
     """
     Raised when a file's digest as declared in a wheel's :file:`RECORD` does
     not match the file's actual digest
@@ -68,7 +71,7 @@ class RecordDigestMismatchError(RecordValidationError):
 
 
 @attr.define
-class FileMissingError(RecordValidationError):
+class MissingFileError(RecordVerificationError):
     """
     Raised when a file listed in a wheel's :file:`RECORD` is not found in the
     wheel
@@ -82,7 +85,7 @@ class FileMissingError(RecordValidationError):
 
 
 @attr.define
-class ExtraFileError(RecordValidationError):
+class ExtraFileError(RecordVerificationError):
     """
     Raised when a wheel contains a file that is not listed in the
     :file:`RECORD` (other than :file:`RECORD.jws` and :file:`RECORD.p7s`)
@@ -95,7 +98,7 @@ class ExtraFileError(RecordValidationError):
         return f"File not declared in RECORD: {self.path!r}"
 
 
-class MalformedRecordError(WheelValidationError):
+class RecordError(WheelError):
     """
     Superclass for all validation errors raised due to a wheel's :file:`RECORD`
     being malformed
@@ -105,16 +108,136 @@ class MalformedRecordError(WheelValidationError):
 
 
 @attr.define
-class UnknownDigestError(MalformedRecordError):
+class RecordEntryError(RecordError):
     """
-    Raised when an entry in a wheel's :file:`RECORD` uses a digest not listed
-    in `hashlib.algorithms_guaranteed`
+    Superclass for all validation errors raised due to an individual entry in a
+    :file:`RECORD` being malformed
+    """
+
+    #: The path the entry is for (if nonempty)
+    path: Optional[str]
+
+
+@attr.define
+class RecordEntryLengthError(RecordEntryError):
+    """
+    Raised when an entry in a wheel's :file:`RECORD` has the wrong number of
+    fields
+    """
+
+    #: The number of fields in the entry
+    length: int
+
+    def __str__(self) -> str:
+        if self.path is None:
+            return "Empty RECORD entry (blank line)"
+        else:
+            return (
+                f"RECORD entry for {self.path!r} has {self.length} fields;"
+                " expected 3"
+            )
+
+
+@attr.define
+class NullEntryError(RecordEntryError):
+    """
+    Raised when an entry in a wheel's :file:`RECORD` lacks both digest and size
+    and the entry is not for a directory or the :file:`RECORD` itself
     """
 
     #: The path the entry is for
     path: str
-    #: The unknown digest algorithm
+
+    def __str__(self) -> str:
+        return f"RECORD entry for {self.path!r} lacks both digest and size"
+
+
+@attr.define
+class RecordPathError(RecordEntryError):
+    """
+    Raised when an an entry in a wheel's :file:`RECORD` has an invalid path
+    """
+
+    #: The path in question
+    path: str
+
+
+@attr.define
+class EmptyPathError(RecordPathError):
+    """Raised when an entry in a wheel's :file:`RECORD` has an empty path"""
+
+    path: str = ""
+
+    def __str__(self) -> str:
+        return "RECORD entry has an empty path"
+
+
+@attr.define
+class NonNormalizedPathError(RecordPathError):
+    """
+    Raised when an entry in a wheel's :file:`RECORD` has a non-normalized path
+    """
+
+    def __str__(self) -> str:
+        return f"RECORD entry has a non-normalized path: {self.path!r}"
+
+
+@attr.define
+class AbsolutePathError(RecordPathError):
+    """Raised when an entry in a wheel's :file:`RECORD` has an absolute path"""
+
+    def __str__(self) -> str:
+        return f"RECORD entry has an absolute path: {self.path!r}"
+
+
+@attr.define
+class RecordSizeError(RecordEntryError):
+    """
+    Raised when an entry in a wheel's :file:`RECORD` contains a malformed or
+    invalid file size
+    """
+
+    #: The path the entry is for
+    path: str
+    #: The size (as a string)
+    size: str
+
+    def __str__(self) -> str:
+        return f"RECORD contains invalid size for {self.path!r}: {self.size!r}"
+
+
+@attr.define
+class EmptySizeError(RecordSizeError):
+    """
+    Raised when an entry in a wheel's :file:`RECORD` has a digest but not a
+    size
+    """
+
+    size: str = ""
+
+    def __str__(self) -> str:
+        return f"RECORD entry for {self.path!r} has a digest but no size"
+
+
+@attr.define
+class RecordAlgorithmError(RecordEntryError):
+    """
+    Raised when an entry in a wheel's :file:`RECORD` uses an invalid digest
+    algorithm
+    """
+
+    #: The path the entry is for
+    path: str
+    #: The algorithm in question
     algorithm: str
+
+
+@attr.define
+class UnknownAlgorithmError(RecordAlgorithmError):
+    """
+    Raised when an entry in a wheel's :file:`RECORD` uses a digest algorithm
+    not listed in `hashlib.algorithms_guaranteed`
+    """
 
     def __str__(self) -> str:
         return (
@@ -124,16 +247,11 @@ class UnknownDigestError(MalformedRecordError):
 
 
 @attr.define
-class WeakDigestError(MalformedRecordError):
+class WeakAlgorithmError(RecordAlgorithmError):
     """
-    Raised when an entry in a wheel's :file:`RECORD` uses a digest weaker than
-    sha256
+    Raised when an entry in a wheel's :file:`RECORD` uses a digest algorithm
+    weaker than sha256
     """
-
-    #: The path the entry is for
-    path: str
-    #: The weak digest algorithm
-    algorithm: str
 
     def __str__(self) -> str:
         return (
@@ -143,7 +261,7 @@ class WeakDigestError(MalformedRecordError):
 
 
 @attr.define
-class MalformedDigestError(MalformedRecordError):
+class RecordDigestError(RecordEntryError):
     """
     Raised when an entry in a wheel's :file:`RECORD` contains a malformed or
     invalid digest
@@ -164,23 +282,21 @@ class MalformedDigestError(MalformedRecordError):
 
 
 @attr.define
-class MalformedSizeError(MalformedRecordError):
+class EmptyDigestError(RecordDigestError):
     """
-    Raised when an entry in a wheel's :file:`RECORD` contains a malformed or
-    invalid file size
+    Raised when an entry in a wheel's :file:`RECORD` has a size but not a
+    digest
     """
 
-    #: The path the entry is for
-    path: str
-    #: The size (as a string)
-    size: str
+    algorithm: str = ""
+    digest: str = ""
 
     def __str__(self) -> str:
-        return f"RECORD contains invalid size for {self.path!r}: {self.size!r}"
+        return f"RECORD entry for {self.path!r} has a size but no digest"
 
 
 @attr.define
-class RecordConflictError(MalformedRecordError):
+class RecordConflictError(RecordError):
     """
     Raised when a wheel's :file:`RECORD` contains two or more conflicting
     entries for the same path
@@ -193,104 +309,7 @@ class RecordConflictError(MalformedRecordError):
         return f"RECORD contains multiple conflicting entries for {self.path!r}"
 
 
-@attr.define
-class EmptyDigestError(MalformedRecordError):
-    """
-    Raised when an entry in a wheel's :file:`RECORD` has a size but not a
-    digest
-    """
-
-    #: The path the entry is for
-    path: str
-
-    def __str__(self) -> str:
-        return f"RECORD entry for {self.path!r} has a size but no digest"
-
-
-@attr.define
-class EmptySizeError(MalformedRecordError):
-    """
-    Raised when an entry in a wheel's :file:`RECORD` has a digest but not a
-    size
-    """
-
-    #: The path the entry is for
-    path: str
-
-    def __str__(self) -> str:
-        return f"RECORD entry for {self.path!r} has a digest but no size"
-
-
-class EmptyPathError(MalformedRecordError):
-    """Raised when an entry in a wheel's :file:`RECORD` has an empty path"""
-
-    def __str__(self) -> str:
-        return "RECORD entry has an empty path"
-
-
-@attr.define
-class RecordLengthError(MalformedRecordError):
-    """
-    Raised when an entry in a wheel's :file:`RECORD` has the wrong number of
-    fields
-    """
-
-    #: The path the entry is for (if nonempty)
-    path: Optional[str]
-    #: The number of fields in the entry
-    length: int
-
-    def __str__(self) -> str:
-        if self.path is None:
-            return "Empty RECORD entry (blank line)"
-        else:
-            return (
-                f"RECORD entry for {self.path!r} has {self.length} fields;"
-                " expected 3"
-            )
-
-
-@attr.define
-class NullEntryError(MalformedRecordError):
-    """
-    Raised when an entry in a wheel's :file:`RECORD` lacks both digest and size
-    and the entry is not for the :file:`RECORD` itself
-    """
-
-    #: The path the entry is for
-    path: str
-
-    def __str__(self) -> str:
-        return f"RECORD entry for {self.path!r} lacks both digest and size"
-
-
-@attr.define
-class NonNormalizedPathError(MalformedRecordError):
-    """
-    Raised when an entry in a wheel's :file:`RECORD` has a non-normalized path
-    """
-
-    #: The non-normalized path
-    path: str
-
-    def __str__(self) -> str:
-        return f"RECORD entry has a non-normalized path: {self.path!r}"
-
-
-@attr.define
-class AbsolutePathError(MalformedRecordError):
-    """
-    Raised when an entry in a wheel's :file:`RECORD` has an absolute path
-    """
-
-    #: The absolute path
-    path: str
-
-    def __str__(self) -> str:
-        return f"RECORD entry has an absolute path: {self.path!r}"
-
-
-class DistInfoError(WheelValidationError):
+class DistInfoError(WheelError):
     """
     Raised when a wheel's :file:`*.dist-info` directory cannot be found or
     determined
@@ -300,7 +319,7 @@ class DistInfoError(WheelValidationError):
 
 
 @attr.define
-class MissingDistInfoFileError(WheelValidationError):
+class MissingDistInfoFileError(WheelError):
     """
     Raised when a given file is not found in the wheel's :file:`*.dist-info`
     directory

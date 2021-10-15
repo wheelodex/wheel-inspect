@@ -20,7 +20,7 @@ class FileData:
         try:
             path, alg_digest, size = fields
         except ValueError:
-            raise errors.RecordLengthError(
+            raise errors.RecordEntryLengthError(
                 fields[0] if fields else None,
                 len(fields),
             )
@@ -42,9 +42,9 @@ class FileData:
             try:
                 isize = int(size)
             except ValueError:
-                raise errors.MalformedSizeError(path, size)
+                raise errors.RecordSizeError(path, size)
             if isize < 0:
-                raise errors.MalformedSizeError(path, size)
+                raise errors.RecordSizeError(path, size)
         else:
             isize = None
         if digest is None and isize is not None:
@@ -77,14 +77,14 @@ class FileData:
         digests, actual_size = digest_file(fp, [self.algorithm])
         actual_digest = digests[self.algorithm]
         if self.hex_digest != actual_digest:
-            raise errors.RecordDigestMismatchError(
+            raise errors.DigestMismatchError(
                 path=path,
                 algorithm=self.algorithm,
                 record_digest=self.hex_digest,
                 actual_digest=actual_digest,
             )
         if self.size != actual_size:
-            raise errors.RecordSizeMismatchError(
+            raise errors.SizeMismatchError(
                 path=path,
                 record_size=self.size,
                 actual_size=actual_size,
@@ -99,16 +99,16 @@ def parse_digest(s: str, path: str) -> Tuple[str, str]:
     algorithm, digest = s.split("=", 1)
     algorithm = algorithm.lower()
     if algorithm not in hashlib.algorithms_guaranteed:
-        raise errors.UnknownDigestError(path, algorithm)
+        raise errors.UnknownAlgorithmError(path, algorithm)
     elif algorithm in ("md5", "sha1"):
-        raise errors.WeakDigestError(path, algorithm)
+        raise errors.WeakAlgorithmError(path, algorithm)
     sz = (getattr(hashlib, algorithm)().digest_size * 8 + 5) // 6
     if not re.fullmatch(r"[-_0-9A-Za-z]{%d}" % (sz,), digest):
-        raise errors.MalformedDigestError(path, algorithm, digest)
+        raise errors.RecordDigestError(path, algorithm, digest)
     try:
         urlsafe_b64decode_nopad(digest)
     except ValueError:
-        raise errors.MalformedDigestError(path, algorithm, digest)
+        raise errors.RecordDigestError(path, algorithm, digest)
     return (algorithm, digest)
 
 

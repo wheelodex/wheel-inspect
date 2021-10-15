@@ -3,7 +3,7 @@ import json
 from operator import attrgetter
 from pathlib import Path
 import pytest
-from wheel_inspect.errors import MalformedRecordError
+from wheel_inspect.errors import RecordError
 from wheel_inspect.record import FileData, load_record
 
 
@@ -95,7 +95,7 @@ def test_parse_bad_records(recfile: Path) -> None:
     with recfile.with_suffix(".json").open() as fp:
         expected = json.load(fp)
     with recfile.open(newline="") as fp:
-        with pytest.raises(MalformedRecordError) as excinfo:
+        with pytest.raises(RecordError) as excinfo:
             load_record(fp)
         assert type(excinfo.value).__name__ == expected["type"]
         assert str(excinfo.value) == expected["str"]

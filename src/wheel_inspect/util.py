@@ -5,6 +5,7 @@ from keyword import iskeyword
 import os
 from pathlib import Path
 import re
+import sys
 from typing import (
     IO,
     Any,
@@ -13,7 +14,6 @@ from typing import (
     Iterable,
     Iterator,
     List,
-    Literal,
     Mapping,
     Optional,
     Sequence,
@@ -27,6 +27,11 @@ from entry_points_txt import EntryPoint
 from packaging.utils import canonicalize_name, canonicalize_version
 from wheel_filename import ParsedWheelFilename
 from .errors import SpecialDirError
+
+if sys.version_info[:2] >= (3, 8):
+    from typing import Literal
+else:
+    from type_extensions import Literal
 
 AnyPath = Union[bytes, str, "os.PathLike[bytes]", "os.PathLike[str]"]
 

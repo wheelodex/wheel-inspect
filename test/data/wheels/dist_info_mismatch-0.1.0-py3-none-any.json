@@ -26,7 +26,7 @@
     },
     "valid": false,
     "validation_error": {
-        "str": "Project & version of wheel's .dist-info directory do not match wheel name: 'foobar-1.0.0.dist-info'",
-        "type": "DistInfoError"
+        "str": "Project & version of wheel's *.dist-info directory do not match wheel name: 'foobar-1.0.0.dist-info'",
+        "type": "SpecialDirError"
     }
 }

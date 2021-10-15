@@ -13,7 +13,7 @@ from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from . import errors as exc
 from .metadata import parse_metadata
 from .record import Record
-from .util import AnyPath, digest_file, find_dist_info_dir, is_dist_info_path, mkpath
+from .util import AnyPath, digest_file, find_special_dir, is_dist_info_path, mkpath
 from .wheel_info import parse_wheel_info
 
 if sys.version_info[:2] >= (3, 8):
@@ -279,6 +279,7 @@ class WheelFile(BackedDistInfo):
         w = cls(filename=filename, fp=fp, zipfile=zipfile)
         if strict:
             w.dist_info_dirname
+            w.data_dirname
             w.wheel_info
             w.record
             w.metadata
@@ -302,10 +303,22 @@ class WheelFile(BackedDistInfo):
 
     @cached_property
     def dist_info_dirname(self) -> str:
-        return find_dist_info_dir(
+        return find_special_dir(
+            ".dist-info",
             self.zipfile.namelist(),
             self.filename.project,
             self.filename.version,
+            required=True,
+        )
+
+    @cached_property
+    def data_dirname(self) -> Optional[str]:
+        return find_special_dir(
+            ".data",
+            self.zipfile.namelist(),
+            self.filename.project,
+            self.filename.version,
+            required=False,
         )
 
     @overload
@@ -359,7 +372,7 @@ class WheelFile(BackedDistInfo):
     def has_directory(self, path: str) -> bool:
         if not path.endswith("/"):
             path += "/"
-        if path == "/":
+        if path == "/":  # This is the only time `path` can be absolute.
             return True
         return any(name.startswith(path) for name in self.zipfile.namelist())
 

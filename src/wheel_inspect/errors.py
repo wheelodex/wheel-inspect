@@ -328,10 +328,10 @@ class RecordConflictError(RecordError):
         return f"RECORD contains multiple conflicting entries for {self.path!r}"
 
 
-class DistInfoError(WheelError):
+class SpecialDirError(WheelError):
     """
-    Raised when a wheel's :file:`*.dist-info` directory cannot be found or
-    determined
+    Raised when a wheel's :file:`*.dist-info` or :file:`*.data` directory
+    cannot be found or determined
     """
 
     pass

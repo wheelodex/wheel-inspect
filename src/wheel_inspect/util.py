@@ -13,31 +13,31 @@ from typing import (
     Iterable,
     Iterator,
     List,
+    Literal,
     Mapping,
     Optional,
     Sequence,
     TextIO,
     Tuple,
     Union,
+    overload,
 )
 import attr
 from entry_points_txt import EntryPoint
 from packaging.utils import canonicalize_name, canonicalize_version
 from wheel_filename import ParsedWheelFilename
-from .errors import DistInfoError
+from .errors import SpecialDirError
 
 AnyPath = Union[bytes, str, "os.PathLike[bytes]", "os.PathLike[str]"]
 
 
 DIGEST_CHUNK_SIZE = 65535
 
-DIST_INFO_DIR_RGX = re.compile(
-    r"[A-Za-z0-9](?:[A-Za-z0-9._]*[A-Za-z0-9])?-[A-Za-z0-9_.!+]+\.dist-info"
-)
+PROJECT_VERSION_RGX = r"[A-Za-z0-9](?:[A-Za-z0-9._]*[A-Za-z0-9])?-[A-Za-z0-9_.!+]+"
 
-DATA_DIR_RGX = re.compile(
-    r"[A-Za-z0-9](?:[A-Za-z0-9._]*[A-Za-z0-9])?-[A-Za-z0-9_.!+]+\.data"
-)
+DIST_INFO_DIR_RGX = re.compile(fr"{PROJECT_VERSION_RGX}\.dist-info")
+
+DATA_DIR_RGX = re.compile(fr"{PROJECT_VERSION_RGX}\.data")
 
 # <https://discuss.python.org/t/identifying-parsing-binary-extension-filenames/>
 MODULE_EXT_RGX = re.compile(r"(?<=.)\.(?:py|pyd|so|[-A-Za-z0-9_]+\.(?:pyd|so))\Z")
@@ -138,40 +138,75 @@ def yield_lines(fp: TextIO) -> Iterator[str]:
             yield line
 
 
-def find_dist_info_dir(namelist: List[str], project: str, version: str) -> str:
+@overload
+def find_special_dir(
+    suffix: str,
+    namelist: List[str],
+    project: str,
+    version: str,
+    required: Literal[True],
+) -> str:
+    ...
+
+
+@overload
+# Is it necessary to repeat this?
+def find_special_dir(
+    suffix: str,
+    namelist: List[str],
+    project: str,
+    version: str,
+    required: Literal[False],
+) -> Optional[str]:
+    ...
+
+
+def find_special_dir(
+    suffix: str, namelist: List[str], project: str, version: str, required: bool = False
+) -> Optional[str]:
     """
     Given a list ``namelist`` of files in a wheel for a project ``project`` and
-    version ``version``, find & return the name of the wheel's
-    :file:`*.dist-info` directory.
+    version ``version``, find & return the name of the top-level directory in
+    the wheel with a name of the form :samp:`{project}-{version}{suffix}`,
+    *modulo* project & version canonicalization.  Typical values for ``suffix``
+    are ``".dist-info"`` and ``".data"``.
 
-    :raises DistInfoError: if there is no unique :file:`*.dist-info` directory
-        in the input
-    :raises DistInfoError: if the name & version of the :file:`*.dist-info`
-        directory are not normalization-equivalent to ``project`` & ``version``
+    :raises SpecialDirError:
+        - if there is more than one matching top-level directory in the input
+        - if ``required`` is true and there is no matching directory
+        - if the project & version in the directory name are not equivalent to
+          ``project`` & ``version`` after canonicalization
     """
+    ### TODO: Catch errors when calling canonicalize_version
     canon_project = canonicalize_name(project)
     canon_version = canonicalize_version(version.replace("_", "-"))
-    dist_info_dirs = set()
+    candidates = set()
+    rgx = re.compile(f"{PROJECT_VERSION_RGX}{re.escape(suffix)}")
     for n in namelist:
-        basename = n.rstrip("/").split("/")[0]
-        if is_dist_info_dir(basename):
-            dist_info_dirs.add(basename)
-    if len(dist_info_dirs) > 1:
-        raise DistInfoError("Wheel contains multiple .dist-info directories")
-    elif len(dist_info_dirs) == 1:
-        dist_info_dir = next(iter(dist_info_dirs))
-        diname, _, diversion = dist_info_dir[: -len(".dist-info")].partition("-")
+        n = n.rstrip("/")
+        if not n:
+            continue
+        basename = n.split("/")[0]
+        if rgx.fullmatch(basename):
+            candidates.add(basename)
+    if len(candidates) > 1:
+        raise SpecialDirError(f"Wheel contains multiple *{suffix} directories")
+    elif len(candidates) == 1:
+        (winner,) = candidates
+        diname, _, diversion = winner[: -len(suffix)].partition("-")
         if (
             canonicalize_name(diname) != canon_project
             or canonicalize_version(diversion.replace("_", "-")) != canon_version
         ):
-            raise DistInfoError(
-                f"Project & version of wheel's .dist-info directory do not"
-                f" match wheel name: {dist_info_dir!r}"
+            raise SpecialDirError(
+                f"Project & version of wheel's *{suffix} directory do not"
+                f" match wheel name: {winner!r}"
             )
-        return dist_info_dir
+        return winner
+    elif required:
+        raise SpecialDirError(f"No *{suffix} directory in wheel")
     else:
-        raise DistInfoError("No .dist-info directory in wheel")
+        return None
 
 
 def jsonify_entry_point(ep: EntryPoint) -> Dict[str, Any]:

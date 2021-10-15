@@ -1,9 +1,9 @@
 from typing import Dict, List, Tuple
 import pytest
-from wheel_inspect.errors import DistInfoError
+from wheel_inspect.errors import SpecialDirError
 from wheel_inspect.util import (
     extract_modules,
-    find_dist_info_dir,
+    find_special_dir,
     is_data_dir,
     is_dist_info_dir,
     split_content_type,
@@ -340,10 +340,13 @@ def test_is_data_dir(name: str, expected: bool) -> None:
         ),
     ],
 )
-def test_find_dist_info_dir(
+def test_find_special_dir(
     namelist: List[str], project: str, version: str, expected: str
 ) -> None:
-    assert find_dist_info_dir(namelist, project, version) == expected
+    assert (
+        find_special_dir(".dist-info", namelist, project, version, required=True)
+        == expected
+    )
 
 
 @pytest.mark.parametrize(
@@ -356,7 +359,7 @@ def test_find_dist_info_dir(
             ],
             "foo",
             "1.0",
-            "No .dist-info directory in wheel",
+            "No *.dist-info directory in wheel",
         ),
         (
             [
@@ -365,7 +368,7 @@ def test_find_dist_info_dir(
             ],
             "foo",
             "1.0",
-            "Project & version of wheel's .dist-info directory do not match wheel"
+            "Project & version of wheel's *.dist-info directory do not match wheel"
             " name: 'bar-1.0.dist-info'",
         ),
         (
@@ -375,7 +378,7 @@ def test_find_dist_info_dir(
             ],
             "foo",
             "1.0",
-            "Project & version of wheel's .dist-info directory do not match wheel"
+            "Project & version of wheel's *.dist-info directory do not match wheel"
             " name: 'foo-2.0.dist-info'",
         ),
         (
@@ -386,7 +389,7 @@ def test_find_dist_info_dir(
             ],
             "foo",
             "1.0",
-            "Wheel contains multiple .dist-info directories",
+            "Wheel contains multiple *.dist-info directories",
         ),
         (
             [
@@ -396,21 +399,21 @@ def test_find_dist_info_dir(
             ],
             "foo",
             "1.0",
-            "Wheel contains multiple .dist-info directories",
+            "Wheel contains multiple *.dist-info directories",
         ),
         (
             ["foo.py", ".dist-info/WHEEL"],
             "foo",
             "1.0",
-            "No .dist-info directory in wheel",
+            "No *.dist-info directory in wheel",
         ),
     ],
 )
-def test_find_dist_info_dir_error(
+def test_find_special_dir_error(
     namelist: List[str], project: str, version: str, msg: str
 ) -> None:
-    with pytest.raises(DistInfoError) as excinfo:
-        find_dist_info_dir(namelist, project, version)
+    with pytest.raises(SpecialDirError) as excinfo:
+        find_special_dir(".dist-info", namelist, project, version, required=True)
     assert str(excinfo.value) == msg
 
 

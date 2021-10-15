@@ -1,67 +1,18 @@
 from typing import Any, Dict
-from entry_points_txt import EntryPointSet
 from readme_renderer.rst import render
 from . import errors
 from .classes import BackedDistInfo, DistInfoDir, DistInfoProvider, WheelFile
 from .util import (
     AnyPath,
     extract_modules,
+    for_json,
     split_content_type,
     split_keywords,
     unique_projects,
     yield_lines,
 )
 
-
-def jsonify_entry_points(epset: EntryPointSet) -> Dict[str, Any]:
-    """
-    Convert an `entry_points_txt.EntryPointSet` to a `dict` that maps entry
-    point group names to sub-`dict`s that map entry point names to
-    sub-sub-`dict`s with ``"module"``, ``"attr"``, and ``"extras"`` keys.
-
-    For example, the following :file:`entry_points.txt`:
-
-    .. code-block:: ini
-
-        [console_scripts]
-        do-thing = pkg.main:__main__
-
-        [plugin.point]
-        plug-thing = pkg.plug [xtra]
-
-    would become the following structure::
-
-        {
-            "console_scripts": {
-                "do-thing": {
-                    "module": "pkg.main",
-                    "attr": "__main__",
-                    "extras": []
-                }
-            },
-            "plugin.point": {
-                "plug-thing": {
-                    "module": "pkg.plug",
-                    "attr": None,
-                    "extras": ["xtra"]
-                }
-            }
-        }
-    """
-    return {
-        gr: {
-            k: {
-                "module": e.module,
-                "attr": e.attr,
-                "extras": list(e.extras),
-            }
-            for k, e in eps.items()
-        }
-        for gr, eps in epset.items()
-    }
-
-
-# <https://setuptools.readthedocs.io/en/latest/formats.html>
+# <https://setuptools.pypa.io/en/latest/deprecated/python_eggs.html>
 EXTRA_DIST_INFO_FILES = ["dependency_links", "namespace_packages", "top_level"]
 
 
@@ -117,7 +68,7 @@ def inspect(obj: DistInfoProvider, verify_files: bool = True) -> Dict[str, Any]:
             }
 
         if obj.has_dist_info_file("entry_points.txt"):
-            about["dist_info"]["entry_points"] = jsonify_entry_points(obj.entry_points)
+            about["dist_info"]["entry_points"] = for_json(obj.entry_points)
 
         for key in EXTRA_DIST_INFO_FILES:
             try:

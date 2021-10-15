@@ -3,8 +3,25 @@ from email.message import EmailMessage
 import hashlib
 from keyword import iskeyword
 import os
+from pathlib import Path
 import re
-from typing import IO, Dict, Iterable, Iterator, List, Optional, TextIO, Tuple, Union
+from typing import (
+    IO,
+    Any,
+    Callable,
+    Dict,
+    Iterable,
+    Iterator,
+    List,
+    Mapping,
+    Optional,
+    Sequence,
+    TextIO,
+    Tuple,
+    Union,
+)
+import attr
+from entry_points_txt import EntryPoint
 from packaging.utils import canonicalize_name, canonicalize_version
 from .errors import DistInfoError
 
@@ -154,3 +171,40 @@ def find_dist_info_dir(namelist: List[str], project: str, version: str) -> str:
         return dist_info_dir
     else:
         raise DistInfoError("No .dist-info directory in wheel")
+
+
+def jsonify_entry_point(ep: EntryPoint) -> Dict[str, Any]:
+    return {
+        "module": ep.module,
+        "attr": ep.attr,
+        "extras": list(ep.extras),
+    }
+
+
+CUSTOM_JSONIFIERS: Dict[type, Callable] = {
+    EntryPoint: jsonify_entry_point,
+}
+
+
+def for_json(value: Any) -> Any:
+    if type(value) in CUSTOM_JSONIFIERS:
+        return for_json(CUSTOM_JSONIFIERS[type(value)](value))
+    elif hasattr(value, "for_json"):
+        return for_json(value.for_json())
+    elif attr.has(value):
+        return for_json(attr.asdict(value, recurse=False))
+    elif isinstance(value, Mapping):
+        return {k: for_json(v) for k, v in value.items()}
+    elif isinstance(value, set):
+        return sorted(map(for_json, value))
+    elif isinstance(value, str):
+        # Needs to come before Sequence or we'll get infinite recursion
+        return value
+    elif isinstance(value, Sequence):
+        return list(map(for_json, value))
+    else:
+        return value
+
+
+def mkpath(path: AnyPath) -> Path:
+    return Path(os.fsdecode(path))

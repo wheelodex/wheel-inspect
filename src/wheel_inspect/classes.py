@@ -13,7 +13,7 @@ from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from . import errors as exc
 from .metadata import parse_metadata
 from .record import RecordType, load_record
-from .util import AnyPath, digest_file, find_dist_info_dir, is_dist_info_path
+from .util import AnyPath, digest_file, find_dist_info_dir, is_dist_info_path, mkpath
 from .wheel_info import parse_wheel_info
 
 if sys.version_info[:2] >= (3, 8):
@@ -224,7 +224,7 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
 
 @attr.define
 class DistInfoDir(DistInfoProvider):
-    path: Path = attr.ib(converter=[os.fsdecode, Path])
+    path: Path = attr.ib(converter=mkpath)
 
     def basic_metadata(self) -> Dict[str, Any]:
         return {}

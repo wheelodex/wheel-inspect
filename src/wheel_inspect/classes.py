@@ -153,7 +153,7 @@ class FileProvider(abc.ABC):
         ...
 
     @abc.abstractmethod
-    def get_file_hash(self, path: str, algorithm: str) -> str:
+    def get_file_digest(self, path: str, algorithm: str) -> str:
         """
         Returns a hexdigest of the contents of the file at ``path`` computed
         using the digest algorithm ``algorithm``.
@@ -393,9 +393,7 @@ class WheelFile(BackedDistInfo):
     def get_file_size(self, path: str) -> int:
         return self.zipfile.getinfo(path).file_size
 
-    def get_file_hash(self, path: str, algorithm: str) -> str:
-        if algorithm == "size":
-            raise ValueError("Invalid file hash algorithm: 'size'")
+    def get_file_digest(self, path: str, algorithm: str) -> str:
         with self.open(path) as fp:
             digest = digest_file(fp, [algorithm])[0][algorithm]
         return digest

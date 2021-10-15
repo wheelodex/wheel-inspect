@@ -301,7 +301,7 @@ class WheelFile(BackedDistInfo):
         return self.fp.closed
 
     @cached_property
-    def dist_info(self) -> str:
+    def dist_info_dirname(self) -> str:
         return find_dist_info_dir(
             self.zipfile.namelist(),
             self.filename.project,
@@ -349,7 +349,7 @@ class WheelFile(BackedDistInfo):
     ) -> IO:
         try:
             return self.open(
-                self.dist_info + "/" + path,
+                self.dist_info_dirname + "/" + path,
                 encoding=encoding,
                 errors=errors,
                 newline=newline,
@@ -359,7 +359,7 @@ class WheelFile(BackedDistInfo):
 
     def has_dist_info_file(self, path: str) -> bool:
         try:
-            self.zipfile.getinfo(self.dist_info + "/" + path)
+            self.zipfile.getinfo(self.dist_info_dirname + "/" + path)
         except KeyError:
             return False
         else:

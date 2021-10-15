@@ -6,8 +6,8 @@ copyright = "2017-2021 John Thorvald Wodder II"  # noqa: A001
 
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinx.ext.inheritance_diagram",
     "sphinx.ext.intersphinx",
-    "sphinx.ext.todo",
     "sphinx.ext.viewcode",
     "sphinx_copybutton",
 ]
@@ -40,3 +40,5 @@ html_show_copyright = True
 
 copybutton_prompt_text = r">>> |\.\.\. |\$ "
 copybutton_prompt_is_regexp = True
+
+# inheritance_graph_attrs = {"rankdir": "TB"}

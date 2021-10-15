@@ -217,7 +217,7 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
 
 @attr.define
 class DistInfoDir(DistInfoProvider):
-    path: Path = attr.ib(converter=mkpath)
+    path: Path = attr.field(converter=mkpath)
 
     @overload
     def open_dist_info_file(

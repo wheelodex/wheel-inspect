@@ -47,9 +47,6 @@ class FileData:
                 actual_size=actual_size,
             )
 
-    def for_json(self) -> dict:
-        return attr.asdict(self)
-
 
 @attr.define(slots=False)
 # Inheriting from multiple slotted classes doesn't work

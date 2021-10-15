@@ -300,8 +300,9 @@ class WheelFile(BackedDistInfo):
         self.close()
 
     def close(self) -> None:
-        self.zipfile.close()
-        self.fp.close()
+        if not self.closed:
+            self.zipfile.close()
+            self.fp.close()
 
     @property
     def closed(self) -> bool:

@@ -15,11 +15,13 @@ v2.0.0 (in development)
 - Digest algorithm names in :file:`RECORD` files are now converted to lowercase
   during parsing
 - Schema changes:
-    - :file:`RECORD`\s are now represented by an object that maps each file
-      path to either ``null`` or a subobject with "algorithm", "digest", and
-      "size" properties
-    - The ``.file`` property in wheel inspection results (containing the file's
-      size and digest) has been removed
+
+  - :file:`RECORD`\s are now represented by an object that maps each file path
+    to either ``null`` or a subobject with "algorithm", "digest", and "size"
+    properties
+  - The ``.file`` property in wheel inspection results (containing the file's
+    size and digest) has been removed
+
 - :file:`RECORD` entries with negative sizes are now detected & errored on
   earlier
 - Gave `inspect_wheel()` a ``verify_files`` option for controlling verification

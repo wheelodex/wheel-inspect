@@ -22,7 +22,7 @@ from .classes import (
     WheelFile,
 )
 from .inspecting import inspect_dist_info_dir, inspect_wheel
-from .schema import DIST_INFO_SCHEMA, WHEEL_SCHEMA
+from .schema import WHEEL_SCHEMA
 
 __version__ = "2.0.0.dev1"
 __author__ = "John Thorvald Wodder II"
@@ -32,7 +32,6 @@ __url__ = "https://github.com/wheelodex/wheel-inspect"
 
 __all__ = [
     "BackedDistInfo",
-    "DIST_INFO_SCHEMA",
     "DistInfoDir",
     "DistInfoProvider",
     "FileProvider",

@@ -9,7 +9,8 @@ v2.0.0 (in development)
 - Support Python 3.11 and 3.12
 - Moved to wheelodex organization
 - Added type annotations
-- Removed the old ``SCHEMA`` alias for `WHEEL_SCHEMA` (deprecated in v1.6.0)
+- Removed the old ``SCHEMA`` alias for `~wheel_inspect.schema.WHEEL_SCHEMA`
+  (deprecated in v1.6.0)
 - Removed the re-export of ``ParsedWheelFilename`` and
   ``parse_wheel_filename()`` from `wheel-filename` (deprecated in v1.5.0)
 - Digest algorithm names in :file:`RECORD` files are now converted to lowercase
@@ -21,6 +22,10 @@ v2.0.0 (in development)
     properties
   - The ``.file`` property in wheel inspection results (containing the file's
     size and digest) has been removed
+  - ``DIST_INFO_SCHEMA`` has been eliminated; the only difference between the
+    output structure for dist-info directories and wheels is the presence of
+    the ``"filename"`` property, which is now marked optional in
+    `~wheel_inspect.schema.WHEEL_SCHEMA`
 
 - :file:`RECORD` entries with negative sizes are now detected & errored on
   earlier
@@ -57,10 +62,10 @@ v1.6.0 (2020-05-01)
 -------------------
 - Added an `inspect_dist_info_dir()` function for inspecting bare, unpacked
   :file:`*.dist-info` directories
-- Added a `DIST_INFO_SCHEMA` schema describing the return value of
+- Added a ``DIST_INFO_SCHEMA`` schema describing the return value of
   `inspect_dist_info_dir()`
-- Renamed ``SCHEMA`` to `WHEEL_SCHEMA`; the value remains available under the
-  old name for backwards compatibility
+- Renamed ``SCHEMA`` to `~wheel_inspect.schema.WHEEL_SCHEMA`; the value remains
+  available under the old name for backwards compatibility
 - The :command:`wheel2json` command now accepts directory arguments and
   inspects them with `inspect_dist_info_dir()`
 

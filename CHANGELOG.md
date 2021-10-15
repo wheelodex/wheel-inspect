@@ -17,6 +17,9 @@ v2.0.0 (in development)
       size and digest) has been removed
     - The filename component properties have been organized into a `"filename"`
       subobject, and many of them have been renamed
+    - `DIST_INFO_SCHEMA` has been eliminated; the only difference between the
+      output structure for dist-info directories and wheels is the presence of
+      the `"filename"` property, which is now marked optional in `WHEEL_SCHEMA`
 - `RECORD` entries with negative sizes are now detected & errored on earlier
 - Gave `inspect_wheel()` a `verify_files` option for controlling verification
   of files' digests

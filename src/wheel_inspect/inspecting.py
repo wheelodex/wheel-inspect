@@ -144,7 +144,7 @@ def inspect_dist_info_dir(path: AnyPath) -> Dict[str, Any]:
     Examine the :file:`*.dist-info` directory at the given path and return
     various information about the contents within as a JSON-serializable
     `dict`.  The structure of the return value is described by
-    `~wheel_inspect.schema.DIST_INFO_SCHEMA`.
+    `~wheel_inspect.schema.WHEEL_SCHEMA`.
     """
     with DistInfoDir(path) as did:
         return inspect(did)

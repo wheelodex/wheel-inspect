@@ -9,6 +9,3 @@ Inspecting Wheels
 
 .. autodata:: wheel_inspect.schema.WHEEL_SCHEMA
     :no-value:
-
-.. autodata:: wheel_inspect.schema.DIST_INFO_SCHEMA
-    :no-value:

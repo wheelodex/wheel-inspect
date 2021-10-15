@@ -5,12 +5,7 @@ from typing import Any
 from jsonschema import validate
 import pytest
 from testing_lib import filecases
-from wheel_inspect import (
-    DIST_INFO_SCHEMA,
-    WHEEL_SCHEMA,
-    inspect_dist_info_dir,
-    inspect_wheel,
-)
+from wheel_inspect import WHEEL_SCHEMA, inspect_dist_info_dir, inspect_wheel
 
 
 @pytest.mark.parametrize("whlfile,expected", filecases("wheels", "*.whl"))
@@ -34,4 +29,4 @@ def test_inspect_dist_info_dir(didir: Path) -> None:
         expected = json.load(fp)
     inspection = inspect_dist_info_dir(didir)
     assert inspection == expected
-    validate(inspection, DIST_INFO_SCHEMA)
+    validate(inspection, WHEEL_SCHEMA)

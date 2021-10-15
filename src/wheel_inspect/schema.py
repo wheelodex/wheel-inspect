@@ -1,10 +1,8 @@
-from copy import deepcopy
 from typing import Any, Dict
 
 #: A `JSON Schema <http://json-schema.org>`_ for the structure returned by
-#: `inspect_dist_info_dir()` and by `inspect()` when called on a `DistInfoDir`.
-#: It is the same as `WHEEL_SCHEMA`, but without the ``"filename"`` key.
-DIST_INFO_SCHEMA: Dict[str, Any] = {
+#: `inspect()`, `inspect_wheel()`, and `inspect_dist_info_dir()`.
+WHEEL_SCHEMA: Dict[str, Any] = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "required": ["valid", "dist_info", "derived"],
@@ -220,55 +218,52 @@ DIST_INFO_SCHEMA: Dict[str, Any] = {
                 },
             },
         },
-    },
-}
-
-#: A `JSON Schema <http://json-schema.org>`_ for the structure returned by
-#: `inspect_wheel()` and by `inspect()` when called on a `WheelFile`.
-WHEEL_SCHEMA: Dict[str, Any] = deepcopy(DIST_INFO_SCHEMA)
-
-WHEEL_SCHEMA["required"].append("filename")
-
-WHEEL_SCHEMA["properties"]["filename"] = {
-    "type": ["null", "object"],
-    "required": [
-        "name",
-        "project",
-        "version",
-        "build",
-        "python_tags",
-        "abi_tags",
-        "platform_tags",
-    ],
-    "additionalProperties": False,
-    "properties": {
-        "name": {"type": "string", "description": "The base filename of the wheel"},
-        "project": {
-            "type": "string",
-            "description": "The name of the wheel's project as extracted from the filename",
-        },
-        "version": {
-            "type": "string",
-            "description": "The wheel's project version as extracted from the filename",
-        },
-        "build": {
-            "type": ["string", "null"],
-            "description": "The wheel's build tag as extracted from the filename; `null` if there is no build tag",
-        },
-        "python_tags": {
-            "type": "array",
-            "items": {"type": "string"},
-            "description": "A list of Python versions with which the wheel is compatible as extracted from the filename",
-        },
-        "abi_tags": {
-            "type": "array",
-            "items": {"type": "string"},
-            "description": "A list of ABIs with which the wheel is compatible as extracted from the filename",
-        },
-        "platform_tags": {
-            "type": "array",
-            "items": {"type": "string"},
-            "description": "A list of platforms with which the wheel is compatible as extracted from the filename",
+        "filename": {
+            "description": "Data obtained from the wheel file's basename.  This is only present when inspecting a wheel, and it is `null` if the file's name is unknown.",
+            "type": ["null", "object"],
+            "required": [
+                "name",
+                "project",
+                "version",
+                "build",
+                "python_tags",
+                "abi_tags",
+                "platform_tags",
+            ],
+            "additionalProperties": False,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The base filename of the wheel",
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name of the wheel's project as extracted from the filename",
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The wheel's project version as extracted from the filename",
+                },
+                "build": {
+                    "type": ["string", "null"],
+                    "description": "The wheel's build tag as extracted from the filename; `null` if there is no build tag",
+                },
+                "python_tags": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "A list of Python versions with which the wheel is compatible as extracted from the filename",
+                },
+                "abi_tags": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "A list of ABIs with which the wheel is compatible as extracted from the filename",
+                },
+                "platform_tags": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "A list of platforms with which the wheel is compatible as extracted from the filename",
+                },
+            },
         },
     },
 }

@@ -277,14 +277,21 @@ class WheelFile(BackedDistInfo):
     zipfile: ZipFile
 
     @classmethod
-    def from_path(cls, path: AnyPath) -> WheelFile:
+    def from_path(cls, path: AnyPath, strict: bool = False) -> WheelFile:
         # Recommend the use of this method in case __init__'s signature changes
         # later
         p = Path(os.fsdecode(path))
         filename = parse_wheel_filename(p)
         fp = p.open("rb")
         zipfile = ZipFile(fp)
-        return cls(filename=filename, fp=fp, zipfile=zipfile)
+        w = cls(filename=filename, fp=fp, zipfile=zipfile)
+        if strict:
+            w.dist_info_dirname
+            w.wheel_info
+            w.record
+            w.metadata
+            w.entry_points
+        return w
 
     def __enter__(self) -> WheelFile:
         return self

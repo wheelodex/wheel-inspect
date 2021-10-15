@@ -17,7 +17,7 @@ Visit <https://github.com/wheelodex/wheel-inspect> for more information.
 from .inspecting import inspect_dist_info_dir, inspect_wheel
 from .schema import DIST_INFO_SCHEMA, WHEEL_SCHEMA
 
-__version__ = "1.7.1"
+__version__ = "2.0.0.dev1"
 __author__ = "John Thorvald Wodder II"
 __author_email__ = "wheel-inspect@varonathe.org"
 __license__ = "MIT"

@@ -21,7 +21,7 @@ from .classes import (
     FileProvider,
     WheelFile,
 )
-from .inspecting import inspect_dist_info_dir, inspect_wheel
+from .inspecting import inspect, inspect_dist_info_dir, inspect_wheel
 from .schema import WHEEL_SCHEMA
 
 __version__ = "2.0.0.dev1"
@@ -37,6 +37,7 @@ __all__ = [
     "FileProvider",
     "WHEEL_SCHEMA",
     "WheelFile",
+    "inspect",
     "inspect_dist_info_dir",
     "inspect_wheel",
 ]

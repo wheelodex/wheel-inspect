@@ -3,6 +3,8 @@
 Inspecting Wheels
 =================
 
+.. autofunction:: inspect
+
 .. autofunction:: inspect_wheel
 
 .. autofunction:: inspect_dist_info_dir

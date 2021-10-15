@@ -1,7 +1,8 @@
 from typing import Any, Dict
 
 #: A `JSON Schema <http://json-schema.org>`_ for the structure returned by
-#: `inspect()`, `inspect_wheel()`, and `inspect_dist_info_dir()`.
+#: `~wheel_inspect.inspect()`, `~wheel_inspect.inspect_wheel()`, and
+#: `~wheel_inspect.inspect_dist_info_dir()`.
 WHEEL_SCHEMA: Dict[str, Any] = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",

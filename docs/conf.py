@@ -30,7 +30,7 @@ release = __version__
 today_fmt = "%Y %b %d"
 default_role = "py:obj"
 pygments_style = "sphinx"
-todo_include_todos = True
+# nitpicky = True
 
 html_theme = "furo"
 html_last_updated_fmt = "%Y %b %d"

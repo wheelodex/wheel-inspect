@@ -12,7 +12,7 @@ v2.0.0 (in development)
 - Removed the old ``SCHEMA`` alias for `~wheel_inspect.schema.WHEEL_SCHEMA`
   (deprecated in v1.6.0)
 - Removed the re-export of ``ParsedWheelFilename`` and
-  ``parse_wheel_filename()`` from `wheel-filename` (deprecated in v1.5.0)
+  ``parse_wheel_filename()`` from ``wheel-filename`` (deprecated in v1.5.0)
 - Digest algorithm names in :file:`RECORD` files are now converted to lowercase
   during parsing
 - Schema changes:
@@ -103,7 +103,7 @@ v1.4.0 (2020-01-25)
 v1.3.0 (2019-05-09)
 -------------------
 - Upgraded ``wheel_inspect.SCHEMA`` from JSON Schema draft 4 to draft 7
-- Don't require directory entries in wheels to be listed in `RECORD`
+- Don't require directory entries in wheels to be listed in :file:`RECORD`
 
 
 v1.2.1 (2019-04-20)

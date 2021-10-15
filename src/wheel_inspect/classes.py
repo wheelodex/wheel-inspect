@@ -132,6 +132,17 @@ class FileProvider(abc.ABC):
         ...
 
     @abc.abstractmethod
+    def has_file(self, path: str) -> bool:
+        """
+        Returns true iff the file at ``path`` exists in the resource.
+
+        :param str path: a relative ``/``-separated path that does not end with
+            a ``/``
+        :rtype: bool
+        """
+        ...
+
+    @abc.abstractmethod
     def get_file_size(self, path: str) -> int:
         """
         Returns the size of the file at ``path`` in bytes.
@@ -359,12 +370,7 @@ class WheelFile(BackedDistInfo):
             raise exc.MissingDistInfoFileError(path)
 
     def has_dist_info_file(self, path: str) -> bool:
-        try:
-            self.zipfile.getinfo(self.dist_info_dirname + "/" + path)
-        except KeyError:
-            return False
-        else:
-            return True
+        return self.has_file(self.dist_info_dirname + "/" + path)
 
     def list_files(self) -> List[str]:
         return [name for name in self.zipfile.namelist() if not name.endswith("/")]
@@ -375,6 +381,14 @@ class WheelFile(BackedDistInfo):
         if path == "/":  # This is the only time `path` can be absolute.
             return True
         return any(name.startswith(path) for name in self.zipfile.namelist())
+
+    def has_file(self, path: str) -> bool:
+        try:
+            self.zipfile.getinfo(path)
+        except KeyError:
+            return False
+        else:
+            return True
 
     def get_file_size(self, path: str) -> int:
         return self.zipfile.getinfo(path).file_size

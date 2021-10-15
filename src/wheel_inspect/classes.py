@@ -195,7 +195,7 @@ class FileProvider(abc.ABC):
         handle; otherwise, it is a text handle decoded using the given
         encoding.
 
-        :raises MissingFileError: if the given file does not exist
+        :raises NoSuchFileError: if the given file does not exist
         """
         ...
 
@@ -362,7 +362,7 @@ class WheelFile(BackedDistInfo):
                 errors=errors,
                 newline=newline,
             )
-        except exc.MissingFileError:
+        except exc.NoSuchFileError:
             raise exc.MissingDistInfoFileError(path)
 
     def has_dist_info_file(self, path: str) -> bool:
@@ -423,7 +423,7 @@ class WheelFile(BackedDistInfo):
         try:
             zi = self.zipfile.getinfo(path)
         except KeyError:
-            raise exc.MissingFileError(path)
+            raise exc.NoSuchFileError(path)
         fp = self.zipfile.open(zi)
         if encoding is not None:
             return io.TextIOWrapper(

@@ -2,7 +2,13 @@ from typing import Optional
 import attr
 
 
-class WheelValidationError(Exception):
+class Error(Exception):
+    """Superclass for all errors raised by this package"""
+
+    pass
+
+
+class WheelValidationError(Error):
     """Superclass for all wheel validation errors raised by this package"""
 
     pass
@@ -308,8 +314,8 @@ class MissingDistInfoFileError(WheelValidationError):
 
 
 @attr.define
-class MissingFileError(WheelValidationError):
-    """Raised when a given file is not found in the wheel"""
+class NoSuchFileError(Error):
+    """Raised when a file requested by the user is not found in the wheel"""
 
     #: The path to the file
     path: str

@@ -4,9 +4,9 @@ from typing import Any, Dict
 #: A `JSON Schema <http://json-schema.org>`_ for the structure returned by
 #: `inspect_dist_info_dir()` and by `inspect()` when called on a `DistInfoDir`.
 #: It is the same as `WHEEL_SCHEMA`, but without the ``"filename"``,
-#: ``"project"``, ``"version"``, ``"buildver"``, ``"pyver"``, ``"abi"``,
-#: ``"arch"``, and ``"file"`` keys.
-DIST_INFO_SCHEMA = {
+#: ``"project"``, ``"version"``, ``"buildver"``, ``"pyver"``, ``"abi"``, and
+#: ``"arch"`` keys.
+DIST_INFO_SCHEMA: Dict[str, Any] = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "required": ["valid", "dist_info", "derived"],

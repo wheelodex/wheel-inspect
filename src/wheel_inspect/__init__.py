@@ -14,6 +14,13 @@ or from the command line with the ``wheel2json`` command.
 Visit <https://github.com/wheelodex/wheel-inspect> for more information.
 """
 
+from .classes import (
+    BackedDistInfo,
+    DistInfoDir,
+    DistInfoProvider,
+    FileProvider,
+    WheelFile,
+)
 from .inspecting import inspect_dist_info_dir, inspect_wheel
 from .schema import DIST_INFO_SCHEMA, WHEEL_SCHEMA
 
@@ -24,8 +31,13 @@ __license__ = "MIT"
 __url__ = "https://github.com/wheelodex/wheel-inspect"
 
 __all__ = [
+    "BackedDistInfo",
     "DIST_INFO_SCHEMA",
+    "DistInfoDir",
+    "DistInfoProvider",
+    "FileProvider",
     "WHEEL_SCHEMA",
+    "WheelFile",
     "inspect_dist_info_dir",
     "inspect_wheel",
 ]

@@ -1,30 +1,27 @@
-.. image:: https://www.repostatus.org/badges/latest/active.svg
-    :target: https://www.repostatus.org/#active
-    :alt: Project Status: Active — The project has reached a stable, usable
-          state and is being actively developed.
+.. module:: wheel_inspect
 
-.. image:: https://github.com/wheelodex/wheel-inspect/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/wheelodex/wheel-inspect/actions/workflows/test.yml
-    :alt: CI Status
+===============================================
+wheel-inspect — Extract information from wheels
+===============================================
 
-.. image:: https://codecov.io/gh/wheelodex/wheel-inspect/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/wheelodex/wheel-inspect
-
-.. image:: https://img.shields.io/pypi/pyversions/wheel-inspect.svg
-    :target: https://pypi.org/project/wheel-inspect/
-
-.. image:: https://img.shields.io/github/license/wheelodex/wheel-inspect.svg
-    :target: https://opensource.org/licenses/MIT
-    :alt: MIT License
-
-`GitHub <https://github.com/wheelodex/wheel-inspect>`_
+`GitHub <https://github.com/jwodder/wheel-inspect>`_
 | `PyPI <https://pypi.org/project/wheel-inspect/>`_
-| `Issues <https://github.com/wheelodex/wheel-inspect/issues>`_
-| `Changelog <https://github.com/wheelodex/wheel-inspect/blob/master/CHANGELOG.md>`_
+| `Documentation <https://wheel-inspect.readthedocs.io>`_
+| `Issues <https://github.com/jwodder/wheel-inspect/issues>`_
+| :doc:`Changelog <changelog>`
 
-``wheel-inspect`` examines Python wheel files & ``*.dist-info`` directories and
-outputs various information about their contents as JSON-serializable objects.
-It can be invoked in Python code as:
+.. toctree::
+    :hidden:
+
+    classes
+    inspecting
+    errors
+    command
+    changelog
+
+``wheel-inspect`` examines Python wheel files & :file:`*.dist-info` directories
+and outputs various information about their contents as JSON-serializable
+objects.  It can be invoked in Python code as:
 
 .. code:: python
 
@@ -32,7 +29,7 @@ It can be invoked in Python code as:
 
     output = inspect_wheel(path_to_wheel_file)
 
-or from the command line with the ``wheel2json`` command.
+or from the command line with the :command:`wheel2json` command.
 
 
 Installation
@@ -282,40 +279,7 @@ Example
     }
 
 
-API
-===
-
-``wheel_inspect.DIST_INFO_SCHEMA``
-   A `JSON Schema <http://json-schema.org>`_ for the structure returned by
-   ``inspect_dist_info_dir()``.  It is the same as ``WHEEL_SCHEMA``, but
-   without the ``"filename"``, ``"project"``, ``"version"``, ``"buildver"``,
-   ``"pyver"``, ``"abi"``, ``"arch"``, and ``"file"`` keys.
-
-``wheel_inspect.WHEEL_SCHEMA``
-   A `JSON Schema <http://json-schema.org>`_ for the structure returned by
-   ``inspect_wheel()``.
-
-``wheel_inspect.inspect_dist_info_dir(dirpath)``
-   Treat ``dirpath`` as a ``*.dist-info`` directory and inspect just it & its
-   contents.  The structure of the return value is described by
-   ``DIST_INFO_SCHEMA``.
-
-``wheel_inspect.inspect_wheel(path)``
-   Inspect the wheel file at the given ``path``.  The structure of the return
-   value is described by ``WHEEL_SCHEMA``.
-
-
-Command
-=======
-
-::
-
-    wheel2json [<path> ...]
-
-``wheel-inspect`` provides a ``wheel2json`` command (also accessible as
-``python -m wheel_inspect``) that can be used to inspect wheels and
-``*.dist-info`` directories from the command line.  Each path passed to the
-command is inspected separately (treated as a ``*.dist-info`` directory if it
-is a directory, treated as a wheel file otherwise), and the resulting data is
-output as a pretty-printed JSON object.  (Note that this results in a stream of
-JSON objects with no separation when multiple paths are given.)
+Indices and tables
+==================
+* :ref:`genindex`
+* :ref:`search`

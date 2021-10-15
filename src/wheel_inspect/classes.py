@@ -27,7 +27,7 @@ T = TypeVar("T", bound="DistInfoProvider")
 
 class DistInfoProvider(abc.ABC):
     """
-    An interface for resources that are or contain a :file:`*.dist-info`
+    An abstract class for resources that are or contain a :file:`*.dist-info`
     directory
     """
 
@@ -222,9 +222,9 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
                 raise exc.ExtraFileError(path)
 
 
+@attr.define
 class DistInfoDir(DistInfoProvider):
-    def __init__(self, path: AnyPath) -> None:
-        self.path: Path = Path(os.fsdecode(path))
+    path: Path = attr.ib(converter=[os.fsdecode, Path])
 
     def basic_metadata(self) -> Dict[str, Any]:
         return {}

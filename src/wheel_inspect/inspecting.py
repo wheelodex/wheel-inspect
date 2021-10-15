@@ -176,7 +176,8 @@ def inspect(obj: DistInfoProvider, verify_files: bool = True) -> Dict[str, Any]:
 def inspect_wheel(path: AnyPath, verify_files: bool = True) -> Dict[str, Any]:
     """
     Examine the Python wheel at the given path and return various information
-    about the contents within as a JSON-serializable `dict`
+    about the contents within as a JSON-serializable `dict` The structure of
+    the return value is described by `~wheel_inspect.schema.WHEEL_SCHEMA`.
 
     :param bool verify_files: If true, the files within the wheel will have
         their digests calculated in order to verify the digests & sizes listed
@@ -188,8 +189,10 @@ def inspect_wheel(path: AnyPath, verify_files: bool = True) -> Dict[str, Any]:
 
 def inspect_dist_info_dir(path: AnyPath) -> Dict[str, Any]:
     """
-    Examine the ``*.dist-info`` directory at the given path and return various
-    information about the contents within as a JSON-serializable `dict`
+    Examine the :file:`*.dist-info` directory at the given path and return
+    various information about the contents within as a JSON-serializable
+    `dict`.  The structure of the return value is described by
+    `~wheel_inspect.schema.DIST_INFO_SCHEMA`.
     """
     with DistInfoDir(path) as did:
         return inspect(did)

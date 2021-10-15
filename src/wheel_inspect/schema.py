@@ -230,7 +230,7 @@ WHEEL_SCHEMA: Dict[str, Any] = deepcopy(DIST_INFO_SCHEMA)
 WHEEL_SCHEMA["required"].append("filename")
 
 WHEEL_SCHEMA["properties"]["filename"] = {
-    "type": "object",
+    "type": ["null", "object"],
     "required": [
         "name",
         "project",

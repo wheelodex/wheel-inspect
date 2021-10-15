@@ -275,19 +275,27 @@ class DistInfoDir(DistInfoProvider):
 
 @attr.define
 class WheelFile(BackedDistInfo):
-    filename: ParsedWheelFilename
+    # __init__ is not for public use; users should use one of the classmethods
+    # to construct instances
+    filename: Optional[ParsedWheelFilename]
     fp: IO[bytes]
     zipfile: ZipFile
 
     @classmethod
     def from_path(cls, path: AnyPath, strict: bool = False) -> WheelFile:
-        # Recommend the use of this method in case __init__'s signature changes
-        # later
         p = Path(os.fsdecode(path))
-        filename = parse_wheel_filename(p)
-        fp = p.open("rb")
-        zipfile = ZipFile(fp)
-        w = cls(filename=filename, fp=fp, zipfile=zipfile)
+        return cls.from_file(p.open("rb"), path=p, strict=strict)
+
+    @classmethod
+    def from_file(
+        cls, fp: IO[bytes], path: Optional[AnyPath] = None, strict: bool = False
+    ) -> WheelFile:
+        filename: Optional[ParsedWheelFilename]
+        if path is not None:
+            filename = parse_wheel_filename(path)
+        else:
+            filename = None
+        w = cls(filename=filename, fp=fp, zipfile=ZipFile(fp))
         if strict:
             w.dist_info_dirname
             w.data_dirname
@@ -317,8 +325,7 @@ class WheelFile(BackedDistInfo):
         return find_special_dir(
             ".dist-info",
             self.zipfile.namelist(),
-            self.filename.project,
-            self.filename.version,
+            wheelname=self.filename,
             required=True,
         )
 
@@ -327,8 +334,7 @@ class WheelFile(BackedDistInfo):
         return find_special_dir(
             ".data",
             self.zipfile.namelist(),
-            self.filename.project,
-            self.filename.version,
+            wheelname=self.filename,
             required=False,
         )
 

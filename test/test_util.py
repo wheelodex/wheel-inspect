@@ -1,5 +1,6 @@
 from typing import Dict, List, Tuple
 import pytest
+from wheel_filename import parse_wheel_filename
 from wheel_inspect.errors import SpecialDirError
 from wheel_inspect.util import (
     extract_modules,
@@ -296,7 +297,7 @@ def test_is_data_dir(name: str, expected: bool) -> None:
 
 
 @pytest.mark.parametrize(
-    "namelist,project,version,expected",
+    "namelist,wheelname,expected",
     [
         (
             [
@@ -304,8 +305,7 @@ def test_is_data_dir(name: str, expected: bool) -> None:
                 "foo-1.0.dist-info/WHEEL",
                 "foo-1.0.dist-info/RECORD",
             ],
-            "foo",
-            "1.0",
+            "foo-1.0-py3-none-any.whl",
             "foo-1.0.dist-info",
         ),
         (
@@ -314,8 +314,7 @@ def test_is_data_dir(name: str, expected: bool) -> None:
                 "FOO-1.0.0.dist-info/WHEEL",
                 "FOO-1.0.0.dist-info/RECORD",
             ],
-            "foo",
-            "1.0",
+            "foo-1.0-py3-none-any.whl",
             "FOO-1.0.0.dist-info",
         ),
         (
@@ -324,8 +323,7 @@ def test_is_data_dir(name: str, expected: bool) -> None:
                 "foo-1.dist-info/WHEEL",
                 "foo-1.dist-info/RECORD",
             ],
-            "foo",
-            "1.0",
+            "foo-1.0-py3-none-any.whl",
             "foo-1.dist-info",
         ),
         (
@@ -334,31 +332,32 @@ def test_is_data_dir(name: str, expected: bool) -> None:
                 "FOO-1.0_1.dist-info/WHEEL",
                 "FOO-1.0_1.dist-info/RECORD",
             ],
-            "foo",
-            "1.0.post1",
+            "foo-1.0.post1-py3-none-any.whl",
             "FOO-1.0_1.dist-info",
         ),
     ],
 )
-def test_find_special_dir(
-    namelist: List[str], project: str, version: str, expected: str
-) -> None:
+def test_find_special_dir(namelist: List[str], wheelname: str, expected: str) -> None:
     assert (
-        find_special_dir(".dist-info", namelist, project, version, required=True)
+        find_special_dir(
+            ".dist-info",
+            namelist,
+            wheelname=parse_wheel_filename(wheelname),
+            required=True,
+        )
         == expected
     )
 
 
 @pytest.mark.parametrize(
-    "namelist,project,version,msg",
+    "namelist,wheelname,msg",
     [
         (
             [
                 "foo.py",
                 "foo-1.0.dist/WHEEL",
             ],
-            "foo",
-            "1.0",
+            "foo-1.0-py3-none-any.whl",
             "No *.dist-info directory in wheel",
         ),
         (
@@ -366,20 +365,18 @@ def test_find_special_dir(
                 "foo.py",
                 "bar-1.0.dist-info/WHEEL",
             ],
-            "foo",
-            "1.0",
+            "foo-1.0-py3-none-any.whl",
             "Project & version of wheel's *.dist-info directory do not match wheel"
-            " name: 'bar-1.0.dist-info'",
+            " name: 'bar-1.0.dist-info' vs. 'foo-1.0-py3-none-any.whl'",
         ),
         (
             [
                 "foo.py",
                 "foo-2.0.dist-info/WHEEL",
             ],
-            "foo",
-            "1.0",
+            "foo-1.0-py3-none-any.whl",
             "Project & version of wheel's *.dist-info directory do not match wheel"
-            " name: 'foo-2.0.dist-info'",
+            " name: 'foo-2.0.dist-info' vs. 'foo-1.0-py3-none-any.whl'",
         ),
         (
             [
@@ -387,8 +384,7 @@ def test_find_special_dir(
                 "foo-1.0.dist-info/WHEEL",
                 "bar-2.0.dist-info/RECORD",
             ],
-            "foo",
-            "1.0",
+            "foo-1.0-py3-none-any.whl",
             "Wheel contains multiple *.dist-info directories",
         ),
         (
@@ -397,23 +393,24 @@ def test_find_special_dir(
                 "FOO-1.0.0.dist-info/WHEEL",
                 "foo-1.dist-info/RECORD",
             ],
-            "foo",
-            "1.0",
+            "foo-1.0-py3-none-any.whl",
             "Wheel contains multiple *.dist-info directories",
         ),
         (
             ["foo.py", ".dist-info/WHEEL"],
-            "foo",
-            "1.0",
+            "foo-1.0-py3-none-any.whl",
             "No *.dist-info directory in wheel",
         ),
     ],
 )
-def test_find_special_dir_error(
-    namelist: List[str], project: str, version: str, msg: str
-) -> None:
+def test_find_special_dir_error(namelist: List[str], wheelname: str, msg: str) -> None:
     with pytest.raises(SpecialDirError) as excinfo:
-        find_special_dir(".dist-info", namelist, project, version, required=True)
+        find_special_dir(
+            ".dist-info",
+            namelist,
+            wheelname=parse_wheel_filename(wheelname),
+            required=True,
+        )
     assert str(excinfo.value) == msg
 
 

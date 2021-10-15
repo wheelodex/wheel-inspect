@@ -12,7 +12,7 @@ from entry_points_txt import load as load_entry_points
 from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from . import errors as exc
 from .metadata import parse_metadata
-from .record import RecordType, load_record
+from .record import Record
 from .util import AnyPath, digest_file, find_dist_info_dir, is_dist_info_path, mkpath
 from .wheel_info import parse_wheel_info
 
@@ -89,11 +89,11 @@ class DistInfoProvider(abc.ABC):
             return parse_metadata(fp)
 
     @cached_property
-    def record(self) -> RecordType:
+    def record(self) -> Record:
         with self.open_dist_info_file("RECORD", encoding="utf-8", newline="") as fp:
             # The csv module requires this file to be opened with
             # `newline=''`
-            return load_record(fp)
+            return Record.load(fp)
 
     @cached_property
     def wheel_info(self) -> Dict[str, Any]:
@@ -204,6 +204,8 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
             elif path not in files:
                 raise exc.MissingFileError(path)
             elif data is not None:
+                ### TODO: What happens if the given path is backed by a
+                ### directory?
                 with self.open(path) as fp:
                     data.verify(fp, path)
             files.discard(path)

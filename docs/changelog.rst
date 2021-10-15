@@ -27,6 +27,8 @@ v2.0.0 (in development)
 - Gave the CLI command a :option:`wheel2json
   --verify-files`/:option:`wheel2json --no-verify-files` option for controlling
   verification of files' digests
+- :file:`RECORD` parsing now detects & errors when it encounters a file path
+  that is also a parent path of another entry
 
 
 v1.7.1 (2022-04-08)

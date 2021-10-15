@@ -35,9 +35,7 @@ def inspect(obj: DistInfoProvider, verify_files: bool = True) -> Dict[str, Any]:
         }
         has_dist_info = not isinstance(e, errors.DistInfoError)
     else:
-        about["dist_info"]["record"] = {
-            k: v.for_json() if v is not None else None for k, v in record.items()
-        }
+        about["dist_info"]["record"] = for_json(record)
         if isinstance(obj, BackedDistInfo) and verify_files:
             try:
                 obj.verify_record()

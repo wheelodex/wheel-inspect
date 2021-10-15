@@ -8,7 +8,7 @@ V_co = TypeVar("V_co", covariant=True)
 
 @attr.define
 class AttrMapping(Mapping[K, V_co]):
-    data: Dict[K, V_co] = attr.Factory(dict)
+    data: Dict[K, V_co] = attr.field(factory=dict, kw_only=True)
 
     def __getitem__(self, key: K) -> V_co:
         return self.data[key]

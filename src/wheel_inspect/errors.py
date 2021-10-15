@@ -220,6 +220,25 @@ class EmptySizeError(RecordSizeError):
 
 
 @attr.define
+class RecordAlgDigestError(RecordEntryError):
+    """
+    Raised when a record entry's algorithm+digest field is completely
+    unparseable
+    """
+
+    #: The path the entry is for
+    path: str
+    #: The value of the field in question
+    alg_digest: str
+
+    def __str__(self) -> str:
+        return (
+            f"RECORD entry for {self.path!r} has an unparseable"
+            f" algorithm+digest field: {self.alg_digest!r}"
+        )
+
+
+@attr.define
 class RecordAlgorithmError(RecordEntryError):
     """
     Raised when an entry in a wheel's :file:`RECORD` uses an invalid digest

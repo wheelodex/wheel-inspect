@@ -4,11 +4,11 @@ from operator import attrgetter
 from pathlib import Path
 import pytest
 from wheel_inspect.errors import RecordError
-from wheel_inspect.record import FileData, load_record
+from wheel_inspect.record import FileData, Record
 
 
 def test_parse_record() -> None:
-    assert load_record(
+    r = Record.load(
         StringIO(
             """\
 qypi/__init__.py,sha256=zgE5-Sk8hED4NRmtnPUuvp1FDC4Z6VWCzJOOZwZ2oh8,532
@@ -26,7 +26,8 @@ qypi-0.4.1.dist-info/metadata.json,sha256=KI5TdfaYL-TPS1dMTABV6S8BFq9iAJRk3rkTXj
 qypi-0.4.1.dist-info/top_level.txt,sha256=J2Q5xVa8BtnOTGxjqY2lKQRB22Ydn9JF2PirqDEKE_Y,5
 """
         )
-    ) == {
+    )
+    assert dict(r) == {
         "qypi/__init__.py": FileData(
             algorithm="sha256",
             digest="zgE5-Sk8hED4NRmtnPUuvp1FDC4Z6VWCzJOOZwZ2oh8",
@@ -84,6 +85,7 @@ qypi-0.4.1.dist-info/top_level.txt,sha256=J2Q5xVa8BtnOTGxjqY2lKQRB22Ydn9JF2PirqD
             size=5,
         ),
     }
+    ### TODO: Test the filetree nodes
 
 
 @pytest.mark.parametrize(
@@ -96,6 +98,6 @@ def test_parse_bad_records(recfile: Path) -> None:
         expected = json.load(fp)
     with recfile.open(newline="") as fp:
         with pytest.raises(RecordError) as excinfo:
-            load_record(fp)
+            Record.load(fp)
         assert type(excinfo.value).__name__ == expected["type"]
         assert str(excinfo.value) == expected["str"]

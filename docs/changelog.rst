@@ -22,6 +22,8 @@ v2.0.0 (in development)
     properties
   - The ``.file`` property in wheel inspection results (containing the file's
     size and digest) has been removed
+  - The filename component properties have been organized into a ``"filename"``
+    subobject, and many of them have been renamed
   - ``DIST_INFO_SCHEMA`` has been eliminated; the only difference between the
     output structure for dist-info directories and wheels is the presence of
     the ``"filename"`` property, which is now marked optional in

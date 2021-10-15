@@ -1,11 +1,4 @@
 {
-    "abi": [
-        "none"
-    ],
-    "arch": [
-        "any"
-    ],
-    "buildver": null,
     "derived": {
         "dependencies": [
             "Flask",
@@ -1548,12 +1541,21 @@
             "wheel_version": "1.0"
         }
     },
-    "filename": "appr-0.7.4-py2.py3-none-any.whl",
-    "project": "appr",
-    "pyver": [
-        "py2",
-        "py3"
-    ],
-    "valid": true,
-    "version": "0.7.4"
+    "filename": {
+        "name": "appr-0.7.4-py2.py3-none-any.whl",
+        "project": "appr",
+        "version": "0.7.4",
+        "build": null,
+        "python_tags": [
+            "py2",
+            "py3"
+        ],
+        "abi_tags": [
+            "none"
+        ],
+        "platform_tags": [
+            "any"
+        ]
+    },
+    "valid": true
 }

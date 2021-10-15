@@ -1,11 +1,4 @@
 {
-    "abi": [
-        "none"
-    ],
-    "arch": [
-        "any"
-    ],
-    "buildver": null,
     "derived": {
         "dependencies": [
             "benepar",
@@ -139,11 +132,20 @@
             "wheel_version": "1.0"
         }
     },
-    "filename": "NLPTriples-0.1.7-py3-none-any.whl",
-    "project": "NLPTriples",
-    "pyver": [
-        "py3"
-    ],
-    "valid": true,
-    "version": "0.1.7"
+    "filename": {
+        "name": "NLPTriples-0.1.7-py3-none-any.whl",
+        "project": "NLPTriples",
+        "version": "0.1.7",
+        "build": null,
+        "python_tags": [
+            "py3"
+        ],
+        "abi_tags": [
+            "none"
+        ],
+        "platform_tags": [
+            "any"
+        ]
+    },
+    "valid": true
 }

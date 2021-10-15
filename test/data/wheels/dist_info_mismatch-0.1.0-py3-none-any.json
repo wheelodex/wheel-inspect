@@ -1,11 +1,4 @@
 {
-    "abi": [
-        "none"
-    ],
-    "arch": [
-        "any"
-    ],
-    "buildver": null,
     "derived": {
         "dependencies": [],
         "description_in_body": false,
@@ -16,15 +9,24 @@
         "readme_renders": null
     },
     "dist_info": {},
-    "filename": "dist_info_mismatch-0.1.0-py3-none-any.whl",
-    "project": "dist_info_mismatch",
-    "pyver": [
-        "py3"
-    ],
+    "filename": {
+        "name": "dist_info_mismatch-0.1.0-py3-none-any.whl",
+        "project": "dist_info_mismatch",
+        "version": "0.1.0",
+        "build": null,
+        "python_tags": [
+            "py3"
+        ],
+        "abi_tags": [
+            "none"
+        ],
+        "platform_tags": [
+            "any"
+        ]
+    },
     "valid": false,
     "validation_error": {
         "str": "Project & version of wheel's .dist-info directory do not match wheel name: 'foobar-1.0.0.dist-info'",
         "type": "DistInfoError"
-    },
-    "version": "0.1.0"
+    }
 }

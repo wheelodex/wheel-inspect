@@ -37,13 +37,6 @@ class DistInfoProvider(abc.ABC):
     def __exit__(self, *_exc: Any) -> Optional[bool]:
         pass
 
-    @abc.abstractmethod
-    def basic_metadata(self) -> Dict[str, Any]:
-        """
-        Returns a `dict` of class-specific simple metadata about the resource
-        """
-        ...
-
     @overload
     def open_dist_info_file(
         self,
@@ -226,9 +219,6 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
 class DistInfoDir(DistInfoProvider):
     path: Path = attr.ib(converter=mkpath)
 
-    def basic_metadata(self) -> Dict[str, Any]:
-        return {}
-
     @overload
     def open_dist_info_file(
         self,
@@ -315,18 +305,6 @@ class WheelFile(BackedDistInfo):
             self.filename.project,
             self.filename.version,
         )
-
-    def basic_metadata(self) -> Dict[str, Any]:
-        about: Dict[str, Any] = {
-            "filename": str(self.filename),
-            "project": self.filename.project,
-            "version": self.filename.version,
-            "buildver": self.filename.build,
-            "pyver": self.filename.python_tags,
-            "abi": self.filename.abi_tags,
-            "arch": self.filename.platform_tags,
-        }
-        return about
 
     @overload
     def open_dist_info_file(

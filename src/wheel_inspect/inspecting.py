@@ -17,10 +17,13 @@ EXTRA_DIST_INFO_FILES = ["dependency_links", "namespace_packages", "top_level"]
 
 
 def inspect(obj: DistInfoProvider, verify_files: bool = True) -> Dict[str, Any]:
-    about = obj.basic_metadata()
+    about: Dict[str, Any] = {}
     about["dist_info"] = {}
     about["valid"] = True
     has_dist_info = True
+
+    if isinstance(obj, WheelFile):
+        about["filename"] = for_json(obj.filename)
 
     try:
         record = obj.record

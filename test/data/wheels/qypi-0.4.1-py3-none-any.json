@@ -1,17 +1,19 @@
 {
-    "filename": "qypi-0.4.1-py3-none-any.whl",
-    "project": "qypi",
-    "version": "0.4.1",
-    "buildver": null,
-    "pyver": [
-        "py3"
-    ],
-    "abi": [
-        "none"
-    ],
-    "arch": [
-        "any"
-    ],
+    "filename": {
+        "name": "qypi-0.4.1-py3-none-any.whl",
+        "project": "qypi",
+        "version": "0.4.1",
+        "build": null,
+        "python_tags": [
+            "py3"
+        ],
+        "abi_tags": [
+            "none"
+        ],
+        "platform_tags": [
+            "any"
+        ]
+    },
     "valid": true,
     "dist_info": {
         "metadata": {

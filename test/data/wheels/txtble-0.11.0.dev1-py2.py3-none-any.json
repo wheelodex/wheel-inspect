@@ -1,11 +1,4 @@
 {
-    "abi": [
-        "none"
-    ],
-    "arch": [
-        "any"
-    ],
-    "buildver": null,
     "derived": {
         "dependencies": [
             "attrs",
@@ -161,12 +154,21 @@
             "wheel_version": "1.0"
         }
     },
-    "filename": "txtble-0.11.0.dev1-py2.py3-none-any.whl",
-    "project": "txtble",
-    "pyver": [
-        "py2",
-        "py3"
-    ],
-    "valid": true,
-    "version": "0.11.0.dev1"
+    "filename": {
+        "name": "txtble-0.11.0.dev1-py2.py3-none-any.whl",
+        "project": "txtble",
+        "version": "0.11.0.dev1",
+        "build": null,
+        "python_tags": [
+            "py2",
+            "py3"
+        ],
+        "abi_tags": [
+            "none"
+        ],
+        "platform_tags": [
+            "any"
+        ]
+    },
+    "valid": true
 }

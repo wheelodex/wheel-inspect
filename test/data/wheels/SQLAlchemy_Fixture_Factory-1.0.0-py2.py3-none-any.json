@@ -1,11 +1,4 @@
 {
-    "abi": [
-        "none"
-    ],
-    "arch": [
-        "any"
-    ],
-    "buildver": null,
     "derived": {
         "dependencies": [
             "SQLAlchemy"
@@ -146,12 +139,21 @@
             "wheel_version": "1.0"
         }
     },
-    "filename": "SQLAlchemy_Fixture_Factory-1.0.0-py2.py3-none-any.whl",
-    "project": "SQLAlchemy_Fixture_Factory",
-    "pyver": [
-        "py2",
-        "py3"
-    ],
-    "valid": true,
-    "version": "1.0.0"
+    "filename": {
+        "name": "SQLAlchemy_Fixture_Factory-1.0.0-py2.py3-none-any.whl",
+        "project": "SQLAlchemy_Fixture_Factory",
+        "version": "1.0.0",
+        "build": null,
+        "python_tags": [
+            "py2",
+            "py3"
+        ],
+        "abi_tags": [
+            "none"
+        ],
+        "platform_tags": [
+            "any"
+        ]
+    },
+    "valid": true
 }

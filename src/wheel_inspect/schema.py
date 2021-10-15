@@ -3,9 +3,7 @@ from typing import Any, Dict
 
 #: A `JSON Schema <http://json-schema.org>`_ for the structure returned by
 #: `inspect_dist_info_dir()` and by `inspect()` when called on a `DistInfoDir`.
-#: It is the same as `WHEEL_SCHEMA`, but without the ``"filename"``,
-#: ``"project"``, ``"version"``, ``"buildver"``, ``"pyver"``, ``"abi"``, and
-#: ``"arch"`` keys.
+#: It is the same as `WHEEL_SCHEMA`, but without the ``"filename"`` key.
 DIST_INFO_SCHEMA: Dict[str, Any] = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
@@ -229,21 +227,22 @@ DIST_INFO_SCHEMA: Dict[str, Any] = {
 #: `inspect_wheel()` and by `inspect()` when called on a `WheelFile`.
 WHEEL_SCHEMA: Dict[str, Any] = deepcopy(DIST_INFO_SCHEMA)
 
-WHEEL_SCHEMA["required"].extend(
-    [
-        "filename",
+WHEEL_SCHEMA["required"].append("filename")
+
+WHEEL_SCHEMA["properties"]["filename"] = {
+    "type": "object",
+    "required": [
+        "name",
         "project",
         "version",
-        "buildver",
-        "pyver",
-        "abi",
-        "arch",
-    ]
-)
-
-WHEEL_SCHEMA["properties"].update(
-    {
-        "filename": {"type": "string", "description": "The filename of the wheel"},
+        "build",
+        "python_tags",
+        "abi_tags",
+        "platform_tags",
+    ],
+    "additionalProperties": False,
+    "properties": {
+        "name": {"type": "string", "description": "The base filename of the wheel"},
         "project": {
             "type": "string",
             "description": "The name of the wheel's project as extracted from the filename",
@@ -252,24 +251,24 @@ WHEEL_SCHEMA["properties"].update(
             "type": "string",
             "description": "The wheel's project version as extracted from the filename",
         },
-        "buildver": {
+        "build": {
             "type": ["string", "null"],
             "description": "The wheel's build tag as extracted from the filename; `null` if there is no build tag",
         },
-        "pyver": {
+        "python_tags": {
             "type": "array",
             "items": {"type": "string"},
             "description": "A list of Python versions with which the wheel is compatible as extracted from the filename",
         },
-        "abi": {
+        "abi_tags": {
             "type": "array",
             "items": {"type": "string"},
             "description": "A list of ABIs with which the wheel is compatible as extracted from the filename",
         },
-        "arch": {
+        "platform_tags": {
             "type": "array",
             "items": {"type": "string"},
-            "description": "A list of architectures with which the wheel is compatible as extracted from the filename",
+            "description": "A list of platforms with which the wheel is compatible as extracted from the filename",
         },
-    }
-)
+    },
+}

@@ -1,11 +1,4 @@
 {
-    "abi": [
-        "none"
-    ],
-    "arch": [
-        "any"
-    ],
-    "buildver": null,
     "derived": {
         "dependencies": [],
         "description_in_body": true,
@@ -56,11 +49,20 @@
             "wheel_version": "1.0"
         }
     },
-    "filename": "dirs_in_record-1.0.0-py3-none-any.whl",
-    "project": "dirs_in_record",
-    "pyver": [
-        "py3"
-    ],
-    "valid": true,
-    "version": "1.0.0"
+    "filename": {
+        "name": "dirs_in_record-1.0.0-py3-none-any.whl",
+        "project": "dirs_in_record",
+        "version": "1.0.0",
+        "build": null,
+        "python_tags": [
+            "py3"
+        ],
+        "abi_tags": [
+            "none"
+        ],
+        "platform_tags": [
+            "any"
+        ]
+    },
+    "valid": true
 }

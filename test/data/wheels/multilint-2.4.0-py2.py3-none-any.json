@@ -1,11 +1,4 @@
 {
-    "abi": [
-        "none"
-    ],
-    "arch": [
-        "any"
-    ],
-    "buildver": null,
     "derived": {
         "dependencies": [
             "six"
@@ -140,12 +133,21 @@
             "wheel_version": "1.0"
         }
     },
-    "filename": "multilint-2.4.0-py2.py3-none-any.whl",
-    "project": "multilint",
-    "pyver": [
-        "py2",
-        "py3"
-    ],
-    "valid": true,
-    "version": "2.4.0"
+    "filename": {
+        "name": "multilint-2.4.0-py2.py3-none-any.whl",
+        "project": "multilint",
+        "version": "2.4.0",
+        "build": null,
+        "python_tags": [
+            "py2",
+            "py3"
+        ],
+        "abi_tags": [
+            "none"
+        ],
+        "platform_tags": [
+            "any"
+        ]
+    },
+    "valid": true
 }

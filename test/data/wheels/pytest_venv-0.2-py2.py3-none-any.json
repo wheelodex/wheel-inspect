@@ -1,11 +1,4 @@
 {
-    "abi": [
-        "none"
-    ],
-    "arch": [
-        "any"
-    ],
-    "buildver": null,
     "derived": {
         "dependencies": [
             "pytest",
@@ -145,12 +138,21 @@
             "wheel_version": "1.0"
         }
     },
-    "filename": "pytest_venv-0.2-py2.py3-none-any.whl",
-    "project": "pytest_venv",
-    "pyver": [
-        "py2",
-        "py3"
-    ],
-    "valid": true,
-    "version": "0.2"
+    "filename": {
+        "name": "pytest_venv-0.2-py2.py3-none-any.whl",
+        "project": "pytest_venv",
+        "version": "0.2",
+        "build": null,
+        "python_tags": [
+            "py2",
+            "py3"
+        ],
+        "abi_tags": [
+            "none"
+        ],
+        "platform_tags": [
+            "any"
+        ]
+    },
+    "valid": true
 }

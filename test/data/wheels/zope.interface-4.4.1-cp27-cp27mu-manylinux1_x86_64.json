@@ -1,17 +1,19 @@
 {
-    "filename": "zope.interface-4.4.1-cp27-cp27mu-manylinux1_x86_64.whl",
-    "project": "zope.interface",
-    "version": "4.4.1",
-    "buildver": null,
-    "pyver": [
-        "cp27"
-    ],
-    "abi": [
-        "cp27mu"
-    ],
-    "arch": [
-        "manylinux1_x86_64"
-    ],
+    "filename": {
+        "name": "zope.interface-4.4.1-cp27-cp27mu-manylinux1_x86_64.whl",
+        "project": "zope.interface",
+        "version": "4.4.1",
+        "build": null,
+        "python_tags": [
+            "cp27"
+        ],
+        "abi_tags": [
+            "cp27mu"
+        ],
+        "platform_tags": [
+            "manylinux1_x86_64"
+        ]
+    },
     "valid": true,
     "dist_info": {
         "metadata": {

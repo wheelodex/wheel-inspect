@@ -1,11 +1,4 @@
 {
-    "abi": [
-        "none"
-    ],
-    "arch": [
-        "any"
-    ],
-    "buildver": null,
     "derived": {
         "dependencies": [
             "argparse",
@@ -152,12 +145,21 @@
         },
         "zip_safe": true
     },
-    "filename": "gitgud2-2.1-py2.py3-none-any.whl",
-    "project": "gitgud2",
-    "pyver": [
-        "py2",
-        "py3"
-    ],
-    "valid": true,
-    "version": "2.1"
+    "filename": {
+        "name": "gitgud2-2.1-py2.py3-none-any.whl",
+        "project": "gitgud2",
+        "version": "2.1",
+        "build": null,
+        "python_tags": [
+            "py2",
+            "py3"
+        ],
+        "abi_tags": [
+            "none"
+        ],
+        "platform_tags": [
+            "any"
+        ]
+    },
+    "valid": true
 }

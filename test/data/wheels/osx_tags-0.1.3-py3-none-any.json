@@ -1,11 +1,4 @@
 {
-    "abi": [
-        "none"
-    ],
-    "arch": [
-        "any"
-    ],
-    "buildver": null,
     "derived": {
         "dependencies": [
             "biplist",
@@ -137,11 +130,20 @@
         },
         "zip_safe": true
     },
-    "filename": "osx_tags-0.1.3-py3-none-any.whl",
-    "project": "osx_tags",
-    "pyver": [
-        "py3"
-    ],
-    "valid": true,
-    "version": "0.1.3"
+    "filename": {
+        "name": "osx_tags-0.1.3-py3-none-any.whl",
+        "project": "osx_tags",
+        "version": "0.1.3",
+        "build": null,
+        "python_tags": [
+            "py3"
+        ],
+        "abi_tags": [
+            "none"
+        ],
+        "platform_tags": [
+            "any"
+        ]
+    },
+    "valid": true
 }

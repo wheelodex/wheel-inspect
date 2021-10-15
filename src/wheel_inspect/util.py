@@ -23,6 +23,7 @@ from typing import (
 import attr
 from entry_points_txt import EntryPoint
 from packaging.utils import canonicalize_name, canonicalize_version
+from wheel_filename import ParsedWheelFilename
 from .errors import DistInfoError
 
 AnyPath = Union[bytes, str, "os.PathLike[bytes]", "os.PathLike[str]"]
@@ -181,8 +182,13 @@ def jsonify_entry_point(ep: EntryPoint) -> Dict[str, Any]:
     }
 
 
+def jsonify_parsed_wheel_filename(pwf: ParsedWheelFilename) -> Dict[str, Any]:
+    return {"name": str(pwf), **pwf._asdict()}
+
+
 CUSTOM_JSONIFIERS: Dict[type, Callable] = {
     EntryPoint: jsonify_entry_point,
+    ParsedWheelFilename: jsonify_parsed_wheel_filename,
 }
 
 

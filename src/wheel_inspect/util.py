@@ -31,7 +31,7 @@ from .errors import SpecialDirError
 if sys.version_info[:2] >= (3, 8):
     from typing import Literal
 else:
-    from type_extensions import Literal
+    from typing_extensions import Literal
 
 AnyPath = Union[bytes, str, "os.PathLike[bytes]", "os.PathLike[str]"]
 

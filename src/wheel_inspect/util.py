@@ -2,8 +2,6 @@ from __future__ import annotations
 from email.message import EmailMessage
 import hashlib
 from keyword import iskeyword
-import os
-from pathlib import Path
 import re
 import sys
 from typing import (
@@ -32,7 +30,6 @@ from .consts import (
     DIST_INFO_DIR_RGX,
     MODULE_EXT_RGX,
     PROJECT_VERSION_RGX,
-    AnyPath,
 )
 from .errors import SpecialDirError
 
@@ -245,10 +242,6 @@ def for_json(value: Any) -> Any:
         return list(map(for_json, value))
     else:
         return value
-
-
-def mkpath(path: AnyPath) -> Path:
-    return Path(os.fsdecode(path))
 
 
 def parse_special_dir(dirname: str, suffix: str) -> Tuple[str, str]:

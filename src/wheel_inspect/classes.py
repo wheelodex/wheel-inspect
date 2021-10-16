@@ -14,13 +14,7 @@ from . import errors as exc
 from .consts import AnyPath, PathType
 from .metadata import parse_metadata
 from .record import Record, RecordPath
-from .util import (
-    digest_file,
-    find_special_dir,
-    is_record_file,
-    is_signature_file,
-    mkpath,
-)
+from .util import digest_file, find_special_dir, is_record_file, is_signature_file
 from .wheel_info import parse_wheel_info
 
 if sys.version_info[:2] >= (3, 8):
@@ -233,11 +227,11 @@ class FileProvider(abc.ABC):
 
 @attr.define
 class DistInfoDir(DistInfoProvider):
-    path: Path = attr.field(converter=mkpath)
+    path: Path
 
     @classmethod
     def from_path(cls, path: AnyPath, strict: bool = True) -> DistInfoDir:
-        d = cls(path)
+        d = cls(Path(os.fsdecode(path)))
         if strict:
             d.validate()
         return d

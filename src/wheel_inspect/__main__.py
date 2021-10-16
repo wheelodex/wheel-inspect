@@ -10,7 +10,7 @@ from .inspecting import inspect_dist_info_dir, inspect_wheel
     "--verify-files/--no-verify-files",
     default=True,
     help=(
-        "Verify the digests of files listed inside wheels' RECORDs"
+        "Verify the sizes & digests of files listed inside wheels' RECORDs"
         "  [default: --verify-files]"
     ),
 )

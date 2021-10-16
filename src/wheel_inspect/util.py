@@ -24,7 +24,8 @@ from typing import (
 )
 import attr
 from entry_points_txt import EntryPoint
-from packaging.utils import canonicalize_name, canonicalize_version
+from packaging.utils import canonicalize_name
+from packaging.version import Version
 from wheel_filename import ParsedWheelFilename
 from .errors import SpecialDirError
 
@@ -38,7 +39,10 @@ AnyPath = Union[bytes, str, "os.PathLike[bytes]", "os.PathLike[str]"]
 
 DIGEST_CHUNK_SIZE = 65535
 
-PROJECT_VERSION_RGX = r"[A-Za-z0-9](?:[A-Za-z0-9._]*[A-Za-z0-9])?-[A-Za-z0-9_.!+]+"
+PROJECT_VERSION_RGX = (
+    r"(?P<project>[A-Za-z0-9](?:[A-Za-z0-9._]*[A-Za-z0-9])?)"
+    r"-(?P<version>[A-Za-z0-9_.!+]+)"
+)
 
 DIST_INFO_DIR_RGX = re.compile(fr"{PROJECT_VERSION_RGX}\.dist-info")
 
@@ -185,24 +189,30 @@ def find_special_dir(
         - if the project & version in the found directory name do not match
           ``wheelname``
     """
-    rgx = re.compile(f"{PROJECT_VERSION_RGX}{re.escape(suffix)}/?")
-    candidates = [n for n in dirnames if rgx.fullmatch(n)]
+    candidates: List[Tuple[str, str, str]] = []
+    for n in dirnames:
+        try:
+            project, version = parse_special_dir(n, suffix)
+        except ValueError:
+            continue
+        candidates.append((n, project, version))
     if len(candidates) > 1:
         raise SpecialDirError(f"Wheel contains multiple *{suffix} directories")
     elif len(candidates) == 1:
-        (winner,) = candidates
+        winner, project, version = candidates[0]
         if wheelname is not None:
-            ### TODO: Catch errors when calling canonicalize_version
-            wproject = canonicalize_name(wheelname.project)
-            wversion = canonicalize_version(wheelname.version.replace("_", "-"))
-            dname, _, dversion = winner.rstrip("/")[: -len(suffix)].partition("-")
-            if (
-                canonicalize_name(dname) != wproject
-                or canonicalize_version(dversion.replace("_", "-")) != wversion
-            ):
+            try:
+                if not same_project(project, wheelname.project) or not same_version(
+                    version, wheelname.version, unescape=True
+                ):
+                    raise SpecialDirError(
+                        f"Project & version of wheel's *{suffix} directory do"
+                        f" not match wheel name: {winner!r} vs. '{wheelname}'"
+                    )
+            except ValueError:
                 raise SpecialDirError(
-                    f"Project & version of wheel's *{suffix} directory do not"
-                    f" match wheel name: {winner!r} vs. '{wheelname}'"
+                    f"Project or version of wheel's filename or *{suffix}"
+                    f" directory is invalid: '{wheelname}', {winner!r}"
                 )
         return winner
     elif required:
@@ -251,3 +261,26 @@ def for_json(value: Any) -> Any:
 
 def mkpath(path: AnyPath) -> Path:
     return Path(os.fsdecode(path))
+
+
+def parse_special_dir(dirname: str, suffix: str) -> Tuple[str, str]:
+    n = dirname.rstrip("/")
+    if not n.endswith(suffix):
+        raise ValueError(f"{dirname!r} does not end in suffix {suffix!r}")
+    m = re.fullmatch(PROJECT_VERSION_RGX, n[: -len(suffix)])
+    if not m:
+        raise ValueError(
+            f"{dirname!r} is not of the form '{{project}}-{{version}}{suffix}'"
+        )
+    return (m["project"], m["version"])
+
+
+def same_project(p1: str, p2: str) -> bool:
+    return canonicalize_name(p1) == canonicalize_name(p2)
+
+
+def same_version(v1: str, v2: str, unescape: bool = False) -> bool:
+    if unescape:
+        v1 = v1.replace("_", "-")
+        v2 = v2.replace("_", "-")
+    return Version(v1) == Version(v2)

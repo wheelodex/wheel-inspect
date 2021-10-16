@@ -360,3 +360,14 @@ class NoSuchFileError(Error):
 
     def __str__(self) -> str:
         return f"File not found in wheel: {self.path!r}"
+
+
+@attr.define
+class NotDirectoryError(Error):
+    """Raised when a directory-specific operation is attempted on a file path"""
+
+    #: The path to the file operated on
+    path: str
+
+    def __str__(self) -> str:
+        return f"Not a directory: {self.path!r}"

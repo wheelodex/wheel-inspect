@@ -4,10 +4,11 @@ import base64
 import csv
 import hashlib
 import re
-from typing import IO, Dict, List, Optional, TextIO, Tuple
+from typing import IO, Dict, Iterator, List, Optional, TextIO, Tuple
 import attr
 from . import errors
 from .mapping import AttrMapping
+from .pathlike import PathLike
 from .util import digest_file, is_dist_info_path
 
 
@@ -48,45 +49,101 @@ class FileData:
             )
 
 
-@attr.define(slots=False)
-# Inheriting from multiple slotted classes doesn't work
-class RecordNode:
-    parts: Tuple[str, ...]
+@attr.define
+class RecordPath(PathLike):
     filedata: Optional[FileData] = None
+    _parent: Optional[RecordPath] = attr.field(default=None, repr=False)
+    _children: Optional[Dict[str, RecordPath]] = attr.field(default=None, repr=False)
+    _exists: bool = attr.field(default=True, repr=False)
 
-    @property
-    def name(self) -> str:
-        return (("",) + self.parts)[-1]
+    @classmethod
+    def _mkroot(cls) -> RecordPath:
+        return cls(parts=(), children={}, exists=True)
 
-    @property
-    def path(self) -> str:
-        return "/".join(self.parts)
+    def _mkchild(
+        self,
+        name: str,
+        filedata: Optional[FileData] = None,
+        children: Optional[Dict[str, RecordPath]] = None,
+        exists: bool = True,
+    ) -> RecordPath:
+        if self.is_file():
+            raise ValueError("Cannot create a child of a file")
+        node = RecordPath(
+            parts=self.parts + (name,),
+            filedata=filedata,
+            # attrs strips leading underscores in __init__ args
+            parent=self,
+            children=children,
+            exists=exists,
+        )
+        if self._children is not None:
+            if name in self._children:
+                raise ValueError(
+                    f"Path {str(self)!r} already has an entry named {name!r}"
+                )
+            self._children[name] = node
+        return node
 
+    def _attach(self, node: RecordPath) -> None:
+        if self._children is None:
+            raise ValueError("Cannot attach a path to a non-directory")
+        node._parent = self
+        self._children[node.name] = node
 
-@attr.define
-class FileNode(RecordNode):
-    pass
-
-
-@attr.define
-class DirectoryNode(RecordNode, AttrMapping[str, RecordNode]):
-    def _mkdir(self, name: str) -> DirectoryNode:
+    def _mkdir(self, name: str) -> RecordPath:
+        if self._children is None:
+            raise ValueError("Cannot create a directory in a non-directory")
         try:
-            n = self[name]
+            n = self._children[name]
         except KeyError:
-            d = DirectoryNode(parts=self.parts + (name,))
-            self.data[name] = d
-            return d
+            return self._mkchild(name, children={}, exists=True)
         else:
-            if isinstance(n, DirectoryNode):
+            if n.is_dir():
                 return n
             else:
-                raise errors.RecordConflictError(self.path)
+                raise errors.RecordConflictError(str(n))
+
+    @property
+    def parent(self) -> RecordPath:
+        return self._parent if self._parent is not None else self
+
+    def get_subpath(self, name: str) -> RecordPath:
+        if not name or "/" in name:
+            raise ValueError("Invalid filename: {name!r}")
+        if not self._exists:
+            return self._mkchild(name, exists=False)
+        elif self._children is not None:
+            try:
+                return self._children[name]
+            except KeyError:
+                return self._mkchild(name, exists=False)
+        else:
+            # self is a file
+            raise errors.NotDirectoryError(str(self))
+
+    def exists(self) -> bool:
+        return self._exists
+
+    def is_file(self) -> bool:
+        return self._exists and self._children is None
+
+    def is_dir(self) -> bool:
+        return self._exists and self._children is not None
+
+    def iterdir(self) -> Iterator[RecordPath]:
+        if not self._exists:
+            raise errors.NoSuchFileError(str(self))
+        elif self._children is not None:
+            return iter(self._children.values())
+        else:
+            # self is a file
+            raise errors.NotDirectoryError(str(self))
 
 
 @attr.define
 class Record(AttrMapping[str, Optional[FileData]]):
-    filetree: DirectoryNode = attr.Factory(lambda: DirectoryNode(parts=()))
+    filetree: RecordPath = attr.Factory(RecordPath._mkroot)
 
     @classmethod
     def load(cls, fp: TextIO) -> Record:
@@ -98,10 +155,8 @@ class Record(AttrMapping[str, Optional[FileData]]):
             if not path.endswith("/"):
                 if data is None and not is_dist_info_path(path, "RECORD"):
                     raise errors.NullEntryError(path)
-                r._insert_file(path, data)
-            else:
-                # TODO: Raise error if data is not None?
-                r._insert_directory(path)
+            # TODO: Raise error if data is not None?
+            r._insert(path, data)
         return r
 
     @staticmethod
@@ -152,26 +207,27 @@ class Record(AttrMapping[str, Optional[FileData]]):
             assert isize is not None
             return (path, FileData(algorithm, digest, isize))
 
-    def _insert_file(self, path: str, data: Optional[FileData]) -> None:
-        self._insert_node(FileNode(parts=tuple(path.split("/")), filedata=data))
-        self.data[path] = data
-
-    def _insert_directory(self, path: str) -> None:
-        self._insert_node(DirectoryNode(parts=tuple(path.split("/"))))
-        self.data[path] = None
-
-    def _insert_node(self, node: RecordNode) -> None:
-        *parts, name = node.parts
+    def _insert(self, path: str, data: Optional[FileData]) -> None:
+        children: Optional[Dict[str, RecordPath]]
+        if path.endswith("/"):
+            spath = path[:-1]
+            children = {}
+        else:
+            spath = path
+            children = None
+        *parts, name = spath.split("/")
         tree = self.filetree
         for p in parts:
             tree = tree._mkdir(p)
+        assert tree._children is not None
         try:
-            n = tree[name]
+            n = tree._children[name]
         except KeyError:
-            tree.data[name] = node
+            tree._mkchild(name, filedata=data, children=children, exists=True)
         else:
-            if n.filedata != node.filedata:
-                raise errors.RecordConflictError(node.path)
+            if n.filedata != data:
+                raise errors.RecordConflictError(path)
+        self.data[path] = data
 
     def for_json(self) -> Dict[str, Optional[FileData]]:
         return dict(self)

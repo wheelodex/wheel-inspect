@@ -12,7 +12,7 @@ from entry_points_txt import load as load_entry_points
 from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from . import errors as exc
 from .metadata import parse_metadata
-from .record import Record, RecordNode
+from .record import Record, RecordPath
 from .util import AnyPath, digest_file, find_special_dir, is_dist_info_path, mkpath
 from .wheel_info import parse_wheel_info
 
@@ -168,7 +168,7 @@ class FileProvider(abc.ABC):
     @overload
     def open(
         self,
-        path: Union[str, RecordNode],
+        path: Union[str, RecordPath],
         encoding: None = None,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
@@ -178,7 +178,7 @@ class FileProvider(abc.ABC):
     @overload
     def open(
         self,
-        path: Union[str, RecordNode],
+        path: Union[str, RecordPath],
         encoding: str,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
@@ -188,7 +188,7 @@ class FileProvider(abc.ABC):
     @abc.abstractmethod
     def open(
         self,
-        path: Union[str, RecordNode],
+        path: Union[str, RecordPath],
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
@@ -407,7 +407,7 @@ class WheelFile(BackedDistInfo):
     @overload
     def open(
         self,
-        path: Union[str, RecordNode],
+        path: Union[str, RecordPath],
         encoding: None = None,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
@@ -417,7 +417,7 @@ class WheelFile(BackedDistInfo):
     @overload
     def open(
         self,
-        path: Union[str, RecordNode],
+        path: Union[str, RecordPath],
         encoding: str,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
@@ -426,13 +426,12 @@ class WheelFile(BackedDistInfo):
 
     def open(
         self,
-        path: Union[str, RecordNode],
+        path: Union[str, RecordPath],
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
     ) -> IO:
-        if isinstance(path, RecordNode):
-            path = str(path)
+        path = str(path)
         try:
             zi = self.zipfile.getinfo(path)
         except KeyError:

@@ -51,6 +51,10 @@ class FileData:
 
 @attr.define
 class RecordPath(Path):
+    # This is all smushed into one class instead of having separate FilePath
+    # and DirectoryPath classes because the types of the Path methods that
+    # return new Paths require the return values to be of the same class as the
+    # invocant.
     filedata: Optional[FileData] = None
     _parent: Optional[RecordPath] = attr.field(default=None)
     _children: Optional[Dict[str, RecordPath]] = attr.field(default=None)

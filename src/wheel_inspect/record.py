@@ -123,7 +123,8 @@ class RecordPath(Path):
 
     def iterdir(self) -> Iterator[RecordPath]:
         if not self._exists:
-            raise errors.NoSuchFileError(str(self))
+            ### TODO: Replace this with a different exception:
+            raise errors.NoSuchPathError(str(self))
         elif self._children is not None:
             return iter(self._children.values())
         else:

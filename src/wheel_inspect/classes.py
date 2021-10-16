@@ -15,6 +15,7 @@ from .metadata import parse_metadata
 from .record import Record, RecordPath
 from .util import (
     AnyPath,
+    PathType,
     digest_file,
     find_special_dir,
     is_dist_info_path,
@@ -143,6 +144,10 @@ class FileProvider(abc.ABC):
         ...
 
     @abc.abstractmethod
+    def get_path_type(self, path: str) -> PathType:
+        ...
+
+    @abc.abstractmethod
     def has_directory(self, path: str) -> bool:
         """
         Returns true iff the directory at ``path`` exists in the resource.
@@ -221,7 +226,7 @@ class FileProvider(abc.ABC):
         handle; otherwise, it is a text handle decoded using the given
         encoding.
 
-        :raises NoSuchFileError: if the given file does not exist
+        :raises NoSuchPathError: if the given file does not exist
         """
         ...
 
@@ -436,8 +441,15 @@ class WheelFile(BackedDistInfo):
                 errors=errors,
                 newline=newline,
             )
-        except exc.NoSuchFileError:
+        except exc.NoSuchPathError:
             raise exc.MissingDistInfoFileError(path)
+
+    def get_path_type(self, path: str) -> PathType:
+        try:
+            zi = self.zipfile.getinfo(path)
+        except KeyError:
+            raise exc.NoSuchPathError(path)
+        return PathType.DIRECTORY if zi.is_dir() else PathType.FILE
 
     def list_files(self) -> List[str]:
         return [name for name in self.zipfile.namelist() if not name.endswith("/")]
@@ -470,7 +482,7 @@ class WheelFile(BackedDistInfo):
         try:
             return self.zipfile.getinfo(path).file_size
         except KeyError:
-            raise exc.NoSuchFileError(path)
+            raise exc.NoSuchPathError(path)
 
     def get_file_digest(self, path: str, algorithm: str) -> str:
         with self.open(path) as fp:
@@ -508,7 +520,7 @@ class WheelFile(BackedDistInfo):
         try:
             zi = self.zipfile.getinfo(path)
         except KeyError:
-            raise exc.NoSuchFileError(path)
+            raise exc.NoSuchPathError(path)
         fp = self.zipfile.open(zi)
         if encoding is not None:
             return io.TextIOWrapper(

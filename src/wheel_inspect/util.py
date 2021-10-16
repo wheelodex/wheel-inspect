@@ -1,5 +1,6 @@
 from __future__ import annotations
 from email.message import EmailMessage
+from enum import Enum
 import hashlib
 from keyword import iskeyword
 import os
@@ -36,7 +37,6 @@ else:
 
 AnyPath = Union[bytes, str, "os.PathLike[bytes]", "os.PathLike[str]"]
 
-
 DIGEST_CHUNK_SIZE = 65535
 
 PROJECT_VERSION_RGX = (
@@ -50,6 +50,12 @@ DATA_DIR_RGX = re.compile(fr"{PROJECT_VERSION_RGX}\.data")
 
 # <https://discuss.python.org/t/identifying-parsing-binary-extension-filenames/>
 MODULE_EXT_RGX = re.compile(r"(?<=.)\.(?:py|pyd|so|[-A-Za-z0-9_]+\.(?:pyd|so))\Z")
+
+
+class PathType(Enum):
+    FILE = "file"
+    DIRECTORY = "directory"
+    UNKNOWN = "unknown"  # for symlinks, devices, sockets, etc. in the backing
 
 
 def extract_modules(filelist: Iterable[str]) -> List[str]:

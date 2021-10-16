@@ -352,14 +352,17 @@ class MissingDistInfoFileError(WheelError):
 
 
 @attr.define
-class NoSuchFileError(Error):
-    """Raised when a file requested by the user is not found in the wheel"""
+class NoSuchPathError(Error):
+    """
+    Raised when a path requested by the user is not found in the wheel or
+    backing
+    """
 
-    #: The path to the file
+    #: The requested path
     path: str
 
     def __str__(self) -> str:
-        return f"File not found in wheel: {self.path!r}"
+        return f"Path does not exist: {self.path!r}"
 
 
 @attr.define

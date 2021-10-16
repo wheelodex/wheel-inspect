@@ -216,6 +216,27 @@ class FileProvider(abc.ABC):
 
 
 class BackedDistInfo(DistInfoProvider, FileProvider):
+    @cached_property
+    def dist_info_dirname(self) -> str:
+        return find_special_dir(
+            ".dist-info", self.list_top_level_dirs(), required=True
+        ).rstrip("/")
+
+    @cached_property
+    def data_dirname(self) -> Optional[str]:
+        dirname = find_special_dir(".data", self.list_top_level_dirs(), required=False)
+        if dirname is not None:
+            dirname = dirname.rstrip("/")
+        return dirname
+
+    def has_dist_info_file(self, path: str) -> bool:
+        return self.has_file(self.dist_info_dirname + "/" + path)
+
+    def validate(self) -> None:
+        self.dist_info_dirname
+        self.data_dirname
+        super().validate()
+
     def verify_record(self) -> None:
         files = set(self.list_files())
         # Check everything in RECORD against actual values:
@@ -324,11 +345,6 @@ class WheelFile(BackedDistInfo):
     def __exit__(self, *_exc: Any) -> None:
         self.close()
 
-    def validate(self) -> None:
-        self.dist_info_dirname
-        self.data_dirname
-        super().validate()
-
     def close(self) -> None:
         if not self.closed:
             self.zipfile.close()
@@ -395,9 +411,6 @@ class WheelFile(BackedDistInfo):
             )
         except exc.NoSuchFileError:
             raise exc.MissingDistInfoFileError(path)
-
-    def has_dist_info_file(self, path: str) -> bool:
-        return self.has_file(self.dist_info_dirname + "/" + path)
 
     def list_files(self) -> List[str]:
         return [name for name in self.zipfile.namelist() if not name.endswith("/")]

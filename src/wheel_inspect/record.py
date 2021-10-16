@@ -164,16 +164,13 @@ class Record(AttrMapping[str, Optional[FileData]]):
         *parts, name = node.parts
         tree = self.filetree
         for p in parts:
-            if isinstance(tree, DirectoryNode):
-                tree = tree._mkdir(p)
-            else:
-                raise errors.RecordConflictError(tree.path)
+            tree = tree._mkdir(p)
         try:
             n = tree[name]
         except KeyError:
             tree.data[name] = node
         else:
-            if n != node:
+            if n.filedata != node.filedata:
                 raise errors.RecordConflictError(node.path)
 
     def for_json(self) -> Dict[str, Optional[FileData]]:

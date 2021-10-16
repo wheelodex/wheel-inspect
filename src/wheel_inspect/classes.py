@@ -25,11 +25,14 @@ else:
 T = TypeVar("T", bound="DistInfoProvider")
 
 
+@attr.define(slots=False)  # slots=False so that cached_property works
 class DistInfoProvider(abc.ABC):
     """
     An abstract class for resources that are or contain a :file:`*.dist-info`
     directory
     """
+
+    wheel_name: Optional[ParsedWheelFilename] = attr.field(default=None, kw_only=True)
 
     def __enter__(self: T) -> T:
         return self
@@ -215,51 +218,6 @@ class FileProvider(abc.ABC):
         ...
 
 
-class BackedDistInfo(DistInfoProvider, FileProvider):
-    @cached_property
-    def dist_info_dirname(self) -> str:
-        return find_special_dir(
-            ".dist-info", self.list_top_level_dirs(), required=True
-        ).rstrip("/")
-
-    @cached_property
-    def data_dirname(self) -> Optional[str]:
-        dirname = find_special_dir(".data", self.list_top_level_dirs(), required=False)
-        if dirname is not None:
-            dirname = dirname.rstrip("/")
-        return dirname
-
-    def has_dist_info_file(self, path: str) -> bool:
-        return self.has_file(self.dist_info_dirname + "/" + path)
-
-    def validate(self) -> None:
-        self.dist_info_dirname
-        self.data_dirname
-        super().validate()
-
-    def verify_record(self) -> None:
-        files = set(self.list_files())
-        # Check everything in RECORD against actual values:
-        for path, data in self.record.items():
-            if path.endswith("/"):
-                if not self.has_directory(path):
-                    raise exc.MissingFileError(path)
-            elif path not in files:
-                raise exc.MissingFileError(path)
-            elif data is not None:
-                ### TODO: What happens if the given path is backed by a
-                ### directory?
-                with self.open(path) as fp:
-                    data.verify(fp, path)
-            files.discard(path)
-        # Check that the only files that aren't in RECORD are signatures:
-        for path in files:
-            if not is_dist_info_path(path, "RECORD.jws") and not is_dist_info_path(
-                path, "RECORD.p7s"
-            ):
-                raise exc.ExtraFileError(path)
-
-
 @attr.define
 class DistInfoDir(DistInfoProvider):
     path: Path = attr.field(converter=mkpath)
@@ -313,10 +271,63 @@ class DistInfoDir(DistInfoProvider):
 
 
 @attr.define
+class BackedDistInfo(DistInfoProvider, FileProvider):
+    @cached_property
+    def dist_info_dirname(self) -> str:
+        return find_special_dir(
+            ".dist-info",
+            self.list_top_level_dirs(),
+            wheel_name=self.wheel_name,
+            required=True,
+        ).rstrip("/")
+
+    @cached_property
+    def data_dirname(self) -> Optional[str]:
+        dirname = find_special_dir(
+            ".data",
+            self.list_top_level_dirs(),
+            wheel_name=self.wheel_name,
+            required=False,
+        )
+        if dirname is not None:
+            dirname = dirname.rstrip("/")
+        return dirname
+
+    def has_dist_info_file(self, path: str) -> bool:
+        return self.has_file(self.dist_info_dirname + "/" + path)
+
+    def validate(self) -> None:
+        self.dist_info_dirname
+        self.data_dirname
+        super().validate()
+
+    def verify_record(self) -> None:
+        files = set(self.list_files())
+        # Check everything in RECORD against actual values:
+        for path, data in self.record.items():
+            if path.endswith("/"):
+                if not self.has_directory(path):
+                    raise exc.MissingFileError(path)
+            elif path not in files:
+                raise exc.MissingFileError(path)
+            elif data is not None:
+                ### TODO: What happens if the given path is backed by a
+                ### directory?
+                with self.open(path) as fp:
+                    data.verify(fp, path)
+            files.discard(path)
+        # Check that the only files that aren't in RECORD are signatures:
+        for path in files:
+            if not is_dist_info_path(path, "RECORD.jws") and not is_dist_info_path(
+                path, "RECORD.p7s"
+            ):
+                raise exc.ExtraFileError(path)
+
+
+@attr.define
 class WheelFile(BackedDistInfo):
     # __init__ is not for public use; users should use one of the classmethods
     # to construct instances
-    filename: Optional[ParsedWheelFilename]
     fp: IO[bytes]
     zipfile: ZipFile
 
@@ -329,12 +340,12 @@ class WheelFile(BackedDistInfo):
     def from_file(
         cls, fp: IO[bytes], path: Optional[AnyPath] = None, strict: bool = True
     ) -> WheelFile:
-        filename: Optional[ParsedWheelFilename]
+        name: Optional[ParsedWheelFilename]
         if path is not None:
-            filename = parse_wheel_filename(path)
+            name = parse_wheel_filename(path)
         else:
-            filename = None
-        w = cls(filename=filename, fp=fp, zipfile=ZipFile(fp))
+            name = None
+        w = cls(wheel_name=name, fp=fp, zipfile=ZipFile(fp))
         if strict:
             w.validate()
         return w
@@ -353,27 +364,6 @@ class WheelFile(BackedDistInfo):
     @property
     def closed(self) -> bool:
         return self.fp.closed
-
-    @cached_property
-    def dist_info_dirname(self) -> str:
-        return find_special_dir(
-            ".dist-info",
-            self.list_top_level_dirs(),
-            wheelname=self.filename,
-            required=True,
-        ).rstrip("/")
-
-    @cached_property
-    def data_dirname(self) -> Optional[str]:
-        dirname = find_special_dir(
-            ".data",
-            self.list_top_level_dirs(),
-            wheelname=self.filename,
-            required=False,
-        )
-        if dirname is not None:
-            dirname = dirname.rstrip("/")
-        return dirname
 
     @overload
     def open_dist_info_file(

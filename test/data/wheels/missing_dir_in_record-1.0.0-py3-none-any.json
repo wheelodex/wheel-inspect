@@ -48,7 +48,7 @@
             "wheel_version": "1.0"
         }
     },
-    "filename": {
+    "wheel_name": {
         "name": "missing_dir_in_record-1.0.0-py3-none-any.whl",
         "project": "missing_dir_in_record",
         "version": "1.0.0",

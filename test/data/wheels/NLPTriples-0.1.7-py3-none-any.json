@@ -132,7 +132,7 @@
             "wheel_version": "1.0"
         }
     },
-    "filename": {
+    "wheel_name": {
         "name": "NLPTriples-0.1.7-py3-none-any.whl",
         "project": "NLPTriples",
         "version": "0.1.7",

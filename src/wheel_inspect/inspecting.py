@@ -20,10 +20,8 @@ def inspect(obj: DistInfoProvider, verify_files: bool = True) -> Dict[str, Any]:
     about: Dict[str, Any] = {}
     about["dist_info"] = {}
     about["valid"] = True
+    about["wheel_name"] = for_json(obj.wheel_name)
     has_dist_info = True
-
-    if isinstance(obj, WheelFile):
-        about["filename"] = for_json(obj.filename)
 
     try:
         record = obj.record

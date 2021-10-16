@@ -154,7 +154,7 @@
             "wheel_version": "1.0"
         }
     },
-    "filename": {
+    "wheel_name": {
         "name": "txtble-0.11.0.dev1-py2.py3-none-any.whl",
         "project": "txtble",
         "version": "0.11.0.dev1",

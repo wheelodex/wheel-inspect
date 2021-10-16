@@ -151,7 +151,7 @@ def yield_lines(fp: TextIO) -> Iterator[str]:
 def find_special_dir(
     suffix: str,
     dirnames: Iterable[str],
-    wheelname: Optional[ParsedWheelFilename] = None,
+    wheel_name: Optional[ParsedWheelFilename] = None,
     required: Literal[True] = True,
 ) -> str:
     ...
@@ -162,7 +162,7 @@ def find_special_dir(
 def find_special_dir(
     suffix: str,
     dirnames: Iterable[str],
-    wheelname: Optional[ParsedWheelFilename] = None,
+    wheel_name: Optional[ParsedWheelFilename] = None,
     required: Literal[False] = False,
 ) -> Optional[str]:
     ...
@@ -171,7 +171,7 @@ def find_special_dir(
 def find_special_dir(
     suffix: str,
     dirnames: Iterable[str],
-    wheelname: Optional[ParsedWheelFilename] = None,
+    wheel_name: Optional[ParsedWheelFilename] = None,
     required: bool = False,
 ) -> Optional[str]:
     """
@@ -180,14 +180,14 @@ def find_special_dir(
     with a name of the form :samp:`{project}-{version}{suffix}`.  Typical
     values for ``suffix`` are ``".dist-info"`` and ``".data"``.
 
-    If ``wheelname`` is given, the found directory must use the same project &
-    version as ``wheelname`` *modulo* canonicalization.
+    If ``wheel_name`` is given, the found directory must use the same project &
+    version as ``wheel_name`` *modulo* canonicalization.
 
     :raises SpecialDirError:
         - if there is more than one matching directory in the input
         - if ``required`` is true and there is no matching directory
         - if the project & version in the found directory name do not match
-          ``wheelname``
+          ``wheel_name``
     """
     candidates: List[Tuple[str, str, str]] = []
     for n in dirnames:
@@ -200,19 +200,19 @@ def find_special_dir(
         raise SpecialDirError(f"Wheel contains multiple *{suffix} directories")
     elif len(candidates) == 1:
         winner, project, version = candidates[0]
-        if wheelname is not None:
+        if wheel_name is not None:
             try:
-                if not same_project(project, wheelname.project) or not same_version(
-                    version, wheelname.version, unescape=True
+                if not same_project(project, wheel_name.project) or not same_version(
+                    version, wheel_name.version, unescape=True
                 ):
                     raise SpecialDirError(
                         f"Project & version of wheel's *{suffix} directory do"
-                        f" not match wheel name: {winner!r} vs. '{wheelname}'"
+                        f" not match wheel name: {winner!r} vs. '{wheel_name}'"
                     )
             except ValueError:
                 raise SpecialDirError(
                     f"Project or version of wheel's filename or *{suffix}"
-                    f" directory is invalid: '{wheelname}', {winner!r}"
+                    f" directory is invalid: '{wheel_name}', {winner!r}"
                 )
         return winner
     elif required:

@@ -47,7 +47,7 @@
             "wheel_version": "1.0"
         }
     },
-    "filename": {
+    "wheel_name": {
         "name": "digest_mismatch-1.0.0-py3-none-any.whl",
         "project": "digest_mismatch",
         "version": "1.0.0",

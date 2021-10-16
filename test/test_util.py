@@ -331,7 +331,7 @@ def test_find_special_dir(namelist: List[str], wheelname: str, expected: str) ->
         find_special_dir(
             ".dist-info",
             namelist,
-            wheelname=parse_wheel_filename(wheelname),
+            wheel_name=parse_wheel_filename(wheelname),
             required=True,
         )
         == expected
@@ -380,7 +380,7 @@ def test_find_special_dir_error(namelist: List[str], wheelname: str, msg: str) -
         find_special_dir(
             ".dist-info",
             namelist,
-            wheelname=parse_wheel_filename(wheelname),
+            wheel_name=parse_wheel_filename(wheelname),
             required=True,
         )
     assert str(excinfo.value) == msg

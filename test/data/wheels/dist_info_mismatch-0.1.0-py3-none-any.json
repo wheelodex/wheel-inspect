@@ -9,7 +9,7 @@
         "readme_renders": null
     },
     "dist_info": {},
-    "filename": {
+    "wheel_name": {
         "name": "dist_info_mismatch-0.1.0-py3-none-any.whl",
         "project": "dist_info_mismatch",
         "version": "0.1.0",

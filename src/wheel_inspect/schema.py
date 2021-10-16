@@ -6,7 +6,7 @@ from typing import Any, Dict
 WHEEL_SCHEMA: Dict[str, Any] = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
-    "required": ["valid", "dist_info", "derived"],
+    "required": ["valid", "dist_info", "derived", "wheel_name"],
     "additionalProperties": False,
     "properties": {
         "valid": {
@@ -219,8 +219,8 @@ WHEEL_SCHEMA: Dict[str, Any] = {
                 },
             },
         },
-        "filename": {
-            "description": "Data obtained from the wheel file's basename.  This is only present when inspecting a wheel, and it is `null` if the file's name is unknown.",
+        "wheel_name": {
+            "description": "Data obtained from the wheel's filename.  This is `null` if the file's name is unknown.",
             "type": ["null", "object"],
             "required": [
                 "name",

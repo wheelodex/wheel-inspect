@@ -49,7 +49,7 @@
             "wheel_version": "1.0"
         }
     },
-    "filename": {
+    "wheel_name": {
         "name": "dirs_in_record-1.0.0-py3-none-any.whl",
         "project": "dirs_in_record",
         "version": "1.0.0",

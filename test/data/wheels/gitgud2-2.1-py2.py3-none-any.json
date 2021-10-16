@@ -145,7 +145,7 @@
         },
         "zip_safe": true
     },
-    "filename": {
+    "wheel_name": {
         "name": "gitgud2-2.1-py2.py3-none-any.whl",
         "project": "gitgud2",
         "version": "2.1",

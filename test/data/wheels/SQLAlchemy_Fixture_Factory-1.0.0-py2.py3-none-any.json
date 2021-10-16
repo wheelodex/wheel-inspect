@@ -139,7 +139,7 @@
             "wheel_version": "1.0"
         }
     },
-    "filename": {
+    "wheel_name": {
         "name": "SQLAlchemy_Fixture_Factory-1.0.0-py2.py3-none-any.whl",
         "project": "SQLAlchemy_Fixture_Factory",
         "version": "1.0.0",

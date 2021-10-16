@@ -1541,7 +1541,7 @@
             "wheel_version": "1.0"
         }
     },
-    "filename": {
+    "wheel_name": {
         "name": "appr-0.7.4-py2.py3-none-any.whl",
         "project": "appr",
         "version": "0.7.4",

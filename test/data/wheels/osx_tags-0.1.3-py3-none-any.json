@@ -130,7 +130,7 @@
         },
         "zip_safe": true
     },
-    "filename": {
+    "wheel_name": {
         "name": "osx_tags-0.1.3-py3-none-any.whl",
         "project": "osx_tags",
         "version": "0.1.3",

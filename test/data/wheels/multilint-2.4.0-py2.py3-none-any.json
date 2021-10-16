@@ -133,7 +133,7 @@
             "wheel_version": "1.0"
         }
     },
-    "filename": {
+    "wheel_name": {
         "name": "multilint-2.4.0-py2.py3-none-any.whl",
         "project": "multilint",
         "version": "2.4.0",

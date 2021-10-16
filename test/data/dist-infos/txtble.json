@@ -1,4 +1,5 @@
 {
+    "wheel_name": null,
     "derived": {
         "dependencies": [
             "attrs",

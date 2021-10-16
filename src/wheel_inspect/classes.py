@@ -11,11 +11,10 @@ from entry_points_txt import EntryPointSet
 from entry_points_txt import load as load_entry_points
 from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from . import errors as exc
+from .consts import AnyPath, PathType
 from .metadata import parse_metadata
 from .record import Record, RecordPath
 from .util import (
-    AnyPath,
-    PathType,
     digest_file,
     find_special_dir,
     is_record_file,
@@ -314,46 +313,60 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
         super().validate()
 
     def verify_file(self, path: Union[str, RecordPath]) -> None:
-        if not isinstance(path, RecordPath):
-            path = self.record.filetree / path
-        assert isinstance(path, RecordPath)
-        spath = str(path)
-        filedata = path.filedata
-        if not path.exists():
+        if isinstance(path, RecordPath):
+            rpath = path
+        else:
+            rpath = self.record.filetree / path
+        spath = str(rpath)
+        filedata = rpath.filedata
+        if not rpath.exists():
             if is_signature_file(spath):
                 pass
             elif self.has_file(spath):
                 raise exc.ExtraFileError(spath)
             elif self.has_directory(spath):
                 raise exc.ExtraFileError(spath + "/")
-        elif path.is_dir():
-            ### TODO: Raise an error if the backing has a file at this path
-            ### instead
-            if not self.has_directory(spath):
+        elif rpath.is_dir():
+            try:
+                ptype = self.get_path_type(spath)
+            except exc.NoSuchPathError:
                 raise exc.MissingFileError(spath + "/")
-        elif filedata is None:
-            if not is_record_file(spath):
-                raise exc.NullEntryError(spath)
-        elif not self.has_file(spath):
-            ### TODO: Raise an error if the backing has a directory at this
-            ### path
-            raise exc.MissingFileError(spath)
+            if ptype != PathType.DIRECTORY:
+                raise exc.PathTypeMismatchError(
+                    spath,
+                    record_type=PathType.DIRECTORY,
+                    actual_type=ptype,
+                )
         else:
-            size = self.get_file_size(spath)
-            if filedata.size != size:
-                raise exc.SizeMismatchError(
-                    path=spath,
-                    record_size=filedata.size,
-                    actual_size=size,
+            try:
+                ptype = self.get_path_type(spath)
+            except exc.NoSuchPathError:
+                raise exc.MissingFileError(spath)
+            if ptype != PathType.FILE:
+                raise exc.PathTypeMismatchError(
+                    spath,
+                    record_type=PathType.FILE,
+                    actual_type=ptype,
                 )
-            digest = self.get_file_digest(spath, filedata.algorithm)
-            if filedata.hex_digest != digest:
-                raise exc.DigestMismatchError(
-                    path=spath,
-                    algorithm=filedata.algorithm,
-                    record_digest=filedata.hex_digest,
-                    actual_digest=digest,
-                )
+            elif filedata is None:
+                if not is_record_file(spath):
+                    raise exc.NullEntryError(spath)
+            else:
+                size = self.get_file_size(spath)
+                if filedata.size != size:
+                    raise exc.SizeMismatchError(
+                        path=spath,
+                        record_size=filedata.size,
+                        actual_size=size,
+                    )
+                digest = self.get_file_digest(spath, filedata.algorithm)
+                if filedata.hex_digest != digest:
+                    raise exc.DigestMismatchError(
+                        path=spath,
+                        algorithm=filedata.algorithm,
+                        record_digest=filedata.hex_digest,
+                        actual_digest=digest,
+                    )
 
     def verify_record(self) -> None:
         ### TODO: Verify directories as well?
@@ -446,11 +459,14 @@ class WheelFile(BackedDistInfo):
             raise exc.MissingDistInfoFileError(path)
 
     def get_path_type(self, path: str) -> PathType:
-        try:
-            zi = self.zipfile.getinfo(path)
-        except KeyError:
+        # We can't get the path type from zipfile.getinfo(), as that errors for
+        # "implied" directories
+        if self.has_directory(path):
+            return PathType.DIRECTORY
+        elif self.has_file(path):
+            return PathType.FILE
+        else:
             raise exc.NoSuchPathError(path)
-        return PathType.DIRECTORY if zi.is_dir() else PathType.FILE
 
     def list_files(self) -> List[str]:
         return [name for name in self.zipfile.namelist() if not name.endswith("/")]
@@ -473,11 +489,11 @@ class WheelFile(BackedDistInfo):
 
     def has_file(self, path: str) -> bool:
         try:
-            self.zipfile.getinfo(path)
+            zi = self.zipfile.getinfo(path)
         except KeyError:
             return False
         else:
-            return True
+            return not zi.is_dir()
 
     def get_file_size(self, path: str) -> int:
         try:

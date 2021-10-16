@@ -36,6 +36,8 @@ v2.0.0 (in development)
   verification of files' digests
 - :file:`RECORD` parsing now detects & errors when it encounters a file path
   that is also a parent path of another entry
+- Path type mismatches between the :file:`RECORD` and the wheel now cause
+  verification to fail
 
 
 v1.7.1 (2022-04-08)

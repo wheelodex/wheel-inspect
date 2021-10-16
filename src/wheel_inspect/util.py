@@ -1,6 +1,5 @@
 from __future__ import annotations
 from email.message import EmailMessage
-from enum import Enum
 import hashlib
 from keyword import iskeyword
 import os
@@ -20,7 +19,6 @@ from typing import (
     Sequence,
     TextIO,
     Tuple,
-    Union,
     overload,
 )
 import attr
@@ -28,34 +26,20 @@ from entry_points_txt import EntryPoint
 from packaging.utils import canonicalize_name
 from packaging.version import Version
 from wheel_filename import ParsedWheelFilename
+from .consts import (
+    DATA_DIR_RGX,
+    DIGEST_CHUNK_SIZE,
+    DIST_INFO_DIR_RGX,
+    MODULE_EXT_RGX,
+    PROJECT_VERSION_RGX,
+    AnyPath,
+)
 from .errors import SpecialDirError
 
 if sys.version_info[:2] >= (3, 8):
     from typing import Literal
 else:
     from typing_extensions import Literal
-
-AnyPath = Union[bytes, str, "os.PathLike[bytes]", "os.PathLike[str]"]
-
-DIGEST_CHUNK_SIZE = 65535
-
-PROJECT_VERSION_RGX = (
-    r"(?P<project>[A-Za-z0-9](?:[A-Za-z0-9._]*[A-Za-z0-9])?)"
-    r"-(?P<version>[A-Za-z0-9_.!+]+)"
-)
-
-DIST_INFO_DIR_RGX = re.compile(fr"{PROJECT_VERSION_RGX}\.dist-info")
-
-DATA_DIR_RGX = re.compile(fr"{PROJECT_VERSION_RGX}\.data")
-
-# <https://discuss.python.org/t/identifying-parsing-binary-extension-filenames/>
-MODULE_EXT_RGX = re.compile(r"(?<=.)\.(?:py|pyd|so|[-A-Za-z0-9_]+\.(?:pyd|so))\Z")
-
-
-class PathType(Enum):
-    FILE = "file"
-    DIRECTORY = "directory"
-    OTHER = "other"  # for symlinks, devices, sockets, etc. in the backing
 
 
 def extract_modules(filelist: Iterable[str]) -> List[str]:

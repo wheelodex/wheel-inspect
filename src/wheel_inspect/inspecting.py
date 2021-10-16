@@ -2,8 +2,8 @@ from typing import Any, Dict
 from readme_renderer.rst import render
 from . import errors
 from .classes import BackedDistInfo, DistInfoDir, DistInfoProvider, WheelFile
+from .consts import AnyPath
 from .util import (
-    AnyPath,
     extract_modules,
     for_json,
     split_content_type,

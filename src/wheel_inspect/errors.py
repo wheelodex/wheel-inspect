@@ -1,5 +1,6 @@
 from typing import Optional
 import attr
+from .consts import PathType
 
 
 class Error(Exception):
@@ -26,6 +27,23 @@ class RecordVerificationError(WheelError):
 
     #: The path that failed verification
     path: str
+
+
+@attr.define
+class PathTypeMismatchError(RecordVerificationError):
+    """
+    Raised when the type of a path as declared in a :file:`RECORD` file does
+    not match the type of the actual path
+    """
+
+    record_type: PathType
+    actual_type: PathType
+
+    def __str__(self) -> str:
+        return (
+            f"Type of path {self.path!r} listed as {self.record_type} in"
+            f" RECORD, actually {self.actual_type}"
+        )
 
 
 @attr.define

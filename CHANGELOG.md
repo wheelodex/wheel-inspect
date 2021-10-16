@@ -26,6 +26,8 @@ v2.0.0 (in development)
   controlling verification of files' digests
 - `RECORD` parsing now detects & errors when it encounters a file path that is
   also a parent path of another entry
+- Path type mismatches between the `RECORD` and the wheel now cause
+  verification to fail
 
 
 v1.7.1 (2022-04-08)

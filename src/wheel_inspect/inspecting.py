@@ -36,7 +36,7 @@ def inspect(obj: DistInfoProvider, verify_files: bool = True) -> Dict[str, Any]:
         about["dist_info"]["record"] = for_json(record)
         if isinstance(obj, BackedDistInfo) and verify_files:
             try:
-                obj.verify_record()
+                obj.verify()
             except errors.WheelError as e:
                 about["valid"] = False
                 about["validation_error"] = {

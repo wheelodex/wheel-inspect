@@ -10,7 +10,7 @@ Core Classes
 .. autoclass:: BackedDistInfo
     :show-inheritance:
 
-.. autoclass:: DistInfoDir
+.. autoclass:: DistInfoDir()
     :show-inheritance:
 
 .. autoclass:: WheelFile()

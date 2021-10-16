@@ -37,6 +37,12 @@ class DistInfoProvider(abc.ABC):
     def __exit__(self, *_exc: Any) -> Optional[bool]:
         pass
 
+    def validate(self) -> None:
+        self.wheel_info
+        self.record
+        self.metadata
+        self.entry_points
+
     @overload
     def open_dist_info_file(
         self,
@@ -232,6 +238,13 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
 class DistInfoDir(DistInfoProvider):
     path: Path = attr.field(converter=mkpath)
 
+    @classmethod
+    def from_path(cls, path: AnyPath, strict: bool = False) -> DistInfoDir:
+        d = cls(path)
+        if strict:
+            d.validate()
+        return d
+
     @overload
     def open_dist_info_file(
         self,
@@ -297,12 +310,7 @@ class WheelFile(BackedDistInfo):
             filename = None
         w = cls(filename=filename, fp=fp, zipfile=ZipFile(fp))
         if strict:
-            w.dist_info_dirname
-            w.data_dirname
-            w.wheel_info
-            w.record
-            w.metadata
-            w.entry_points
+            w.validate()
         return w
 
     def __enter__(self) -> WheelFile:
@@ -310,6 +318,11 @@ class WheelFile(BackedDistInfo):
 
     def __exit__(self, *_exc: Any) -> None:
         self.close()
+
+    def validate(self) -> None:
+        self.dist_info_dirname
+        self.data_dirname
+        super().validate()
 
     def close(self) -> None:
         if not self.closed:

@@ -9,7 +9,7 @@ import attr
 from . import errors
 from .mapping import AttrMapping
 from .path import Path
-from .util import is_dist_info_path
+from .util import is_record_file
 
 
 @attr.define
@@ -147,7 +147,7 @@ class Record(AttrMapping[str, Optional[FileData]]):
                 continue
             path, data = cls.parse_row(fields)
             if not path.endswith("/"):
-                if data is None and not is_dist_info_path(path, "RECORD"):
+                if data is None and not is_record_file(path):
                     raise errors.NullEntryError(path)
             r._insert(path, data)
         return r

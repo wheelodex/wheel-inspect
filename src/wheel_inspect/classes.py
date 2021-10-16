@@ -18,7 +18,7 @@ from .util import (
     PathType,
     digest_file,
     find_special_dir,
-    is_dist_info_path,
+    is_record_file,
     is_signature_file,
     mkpath,
 )
@@ -331,7 +331,7 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
             if not self.has_directory(spath):
                 raise exc.MissingFileError(spath + "/")
         elif filedata is None:
-            if not is_dist_info_path(spath, "RECORD"):
+            if not is_record_file(spath):
                 raise exc.NullEntryError(spath)
         elif not self.has_file(spath):
             ### TODO: Raise an error if the backing has a directory at this

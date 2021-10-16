@@ -294,3 +294,7 @@ def is_signature_file(path: str) -> bool:
     return is_dist_info_path(path, "RECORD.jws") or is_dist_info_path(
         path, "RECORD.p7s"
     )
+
+
+def is_record_file(path: str) -> bool:
+    return is_dist_info_path(path, "RECORD")

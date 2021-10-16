@@ -1,4 +1,4 @@
 {
-    "type": "ExtraFileError",
-    "str": "File not declared in RECORD: 'extra.py'"
+    "type": "UnrecordedPathError",
+    "str": "Path not declared in RECORD: 'extra.py'"
 }

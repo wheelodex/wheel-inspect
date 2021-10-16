@@ -324,9 +324,9 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
             if is_signature_file(spath):
                 pass
             elif self.has_file(spath):
-                raise exc.ExtraFileError(spath)
+                raise exc.UnrecordedPathError(spath)
             elif self.has_directory(spath):
-                raise exc.ExtraFileError(spath + "/")
+                raise exc.UnrecordedPathError(spath + "/")
         elif rpath.is_dir():
             try:
                 ptype = self.get_path_type(spath)
@@ -378,7 +378,7 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
         # Check that the only files that aren't in RECORD are signatures:
         for path in files:
             if not is_signature_file(path):
-                raise exc.ExtraFileError(path)
+                raise exc.UnrecordedPathError(path)
 
 
 @attr.define

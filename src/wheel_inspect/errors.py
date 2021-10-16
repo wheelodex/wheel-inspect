@@ -98,14 +98,14 @@ class MissingPathError(RecordVerificationError):
 
 
 @attr.define
-class ExtraFileError(RecordVerificationError):
+class UnrecordedPathError(RecordVerificationError):
     """
-    Raised when a backing contains a file that is not listed in the
+    Raised when a backing contains a path that is not listed in the
     :file:`RECORD` (other than :file:`RECORD.jws` and :file:`RECORD.p7s`)
     """
 
     def __str__(self) -> str:
-        return f"File not declared in RECORD: {self.path!r}"
+        return f"Path not declared in RECORD: {self.path!r}"
 
 
 class RecordError(WheelError):

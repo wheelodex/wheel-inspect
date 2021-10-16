@@ -330,7 +330,7 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
             try:
                 ptype = self.get_path_type(spath)
             except exc.NoSuchPathError:
-                raise exc.MissingFileError(spath + "/")
+                raise exc.MissingPathError(spath + "/")
             if ptype != PathType.DIRECTORY:
                 raise exc.PathTypeMismatchError(
                     spath,
@@ -341,7 +341,7 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
             try:
                 ptype = self.get_path_type(spath)
             except exc.NoSuchPathError:
-                raise exc.MissingFileError(spath)
+                raise exc.MissingPathError(spath)
             if ptype != PathType.FILE:
                 raise exc.PathTypeMismatchError(
                     spath,

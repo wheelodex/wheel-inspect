@@ -87,14 +87,14 @@ class DigestMismatchError(RecordVerificationError):
 
 
 @attr.define
-class MissingFileError(RecordVerificationError):
+class MissingPathError(RecordVerificationError):
     """
-    Raised when a file listed in a :file:`RECORD` file is not found in the
+    Raised when a path listed in a :file:`RECORD` file is not found in the
     backing
     """
 
     def __str__(self) -> str:
-        return f"File declared in RECORD does not exist: {self.path!r}"
+        return f"Path declared in RECORD does not exist: {self.path!r}"
 
 
 @attr.define

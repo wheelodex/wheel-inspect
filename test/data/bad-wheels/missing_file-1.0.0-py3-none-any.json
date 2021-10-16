@@ -1,4 +1,4 @@
 {
     "type": "MissingFileError",
-    "str": "File declared in RECORD not found in archive: 'missing.py'"
+    "str": "File declared in RECORD does not exist: 'missing.py'"
 }

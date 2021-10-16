@@ -65,7 +65,7 @@
     },
     "valid": false,
     "validation_error": {
-        "str": "File declared in RECORD not found in archive: 'not-found/'",
+        "str": "File declared in RECORD does not exist: 'not-found/'",
         "type": "MissingFileError"
     }
 }

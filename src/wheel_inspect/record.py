@@ -8,7 +8,7 @@ from typing import IO, Dict, Iterator, List, Optional, TextIO, Tuple
 import attr
 from . import errors
 from .mapping import AttrMapping
-from .pathlike import PathLike
+from .path import Path
 from .util import digest_file, is_dist_info_path
 
 
@@ -50,7 +50,7 @@ class FileData:
 
 
 @attr.define
-class RecordPath(PathLike):
+class RecordPath(Path):
     filedata: Optional[FileData] = None
     _parent: Optional[RecordPath] = attr.field(default=None)
     _children: Optional[Dict[str, RecordPath]] = attr.field(default=None)

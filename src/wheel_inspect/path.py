@@ -3,11 +3,11 @@ from fnmatch import fnmatchcase
 from typing import Iterator, List, Tuple, TypeVar
 import attr
 
-P = TypeVar("P", bound="PathLike")
+P = TypeVar("P", bound="Path")
 
 
 @attr.define
-class PathLike(abc.ABC):
+class Path(abc.ABC):
     parts: Tuple[str, ...]
 
     def __str__(self) -> str:

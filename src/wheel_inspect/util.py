@@ -55,7 +55,7 @@ MODULE_EXT_RGX = re.compile(r"(?<=.)\.(?:py|pyd|so|[-A-Za-z0-9_]+\.(?:pyd|so))\Z
 class PathType(Enum):
     FILE = "file"
     DIRECTORY = "directory"
-    UNKNOWN = "unknown"  # for symlinks, devices, sockets, etc. in the backing
+    OTHER = "other"  # for symlinks, devices, sockets, etc. in the backing
 
 
 def extract_modules(filelist: Iterable[str]) -> List[str]:

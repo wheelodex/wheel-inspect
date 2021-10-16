@@ -108,14 +108,12 @@ def unique_projects(projects: Iterable[str]) -> Iterator[str]:
         seen.add(pn)
 
 
-def digest_file(fp: IO[bytes], algorithms: Iterable[str]) -> Tuple[Dict[str, str], int]:
+def digest_file(fp: IO[bytes], algorithms: Iterable[str]) -> Dict[str, str]:
     digests = {alg: getattr(hashlib, alg)() for alg in algorithms}
-    size = 0
     for chunk in iter(lambda: fp.read(DIGEST_CHUNK_SIZE), b""):
         for d in digests.values():
             d.update(chunk)
-            size += len(chunk)
-    return ({k: v.hexdigest() for k, v in digests.items()}, size)
+    return {k: v.hexdigest() for k, v in digests.items()}
 
 
 def split_content_type(s: str) -> Tuple[str, str, Dict[str, str]]:
@@ -284,3 +282,9 @@ def same_version(v1: str, v2: str, unescape: bool = False) -> bool:
         v1 = v1.replace("_", "-")
         v2 = v2.replace("_", "-")
     return Version(v1) == Version(v2)
+
+
+def is_signature_file(path: str) -> bool:
+    return is_dist_info_path(path, "RECORD.jws") or is_dist_info_path(
+        path, "RECORD.p7s"
+    )

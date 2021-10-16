@@ -13,7 +13,14 @@ from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from . import errors as exc
 from .metadata import parse_metadata
 from .record import Record, RecordPath
-from .util import AnyPath, digest_file, find_special_dir, is_dist_info_path, mkpath
+from .util import (
+    AnyPath,
+    digest_file,
+    find_special_dir,
+    is_dist_info_path,
+    is_signature_file,
+    mkpath,
+)
 from .wheel_info import parse_wheel_info
 
 if sys.version_info[:2] >= (3, 8):
@@ -140,7 +147,8 @@ class FileProvider(abc.ABC):
         """
         Returns true iff the directory at ``path`` exists in the resource.
 
-        :param str path: a relative ``/``-separated path that ends with a ``/``
+        :param str path: a relative ``/``-separated path; trailing ``/`` is
+            optional
         :rtype: bool
         """
         ...
@@ -270,7 +278,6 @@ class DistInfoDir(DistInfoProvider):
         return (self.path / path).exists()
 
 
-@attr.define
 class BackedDistInfo(DistInfoProvider, FileProvider):
     @cached_property
     def dist_info_dirname(self) -> str:
@@ -301,26 +308,56 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
         self.data_dirname
         super().validate()
 
+    def verify_file(self, path: Union[str, RecordPath]) -> None:
+        if not isinstance(path, RecordPath):
+            path = self.record.filetree / path
+        spath = str(path)
+        filedata = path.filedata
+        if not path.exists():
+            if is_signature_file(spath):
+                pass
+            elif self.has_file(spath):
+                raise exc.ExtraFileError(spath)
+            elif self.has_directory(spath):
+                raise exc.ExtraFileError(spath + "/")
+        elif path.is_dir():
+            ### TODO: Raise an error if the backing has a file at this path
+            ### instead
+            if not self.has_directory(spath):
+                raise exc.MissingFileError(spath + "/")
+        elif filedata is None:
+            if not is_dist_info_path(spath, "RECORD"):
+                raise exc.NullEntryError(spath)
+        elif not self.has_file(spath):
+            ### TODO: Raise an error if the backing has a directory at this
+            ### path
+            raise exc.MissingFileError(spath)
+        else:
+            size = self.get_file_size(spath)
+            if filedata.size != size:
+                raise exc.SizeMismatchError(
+                    path=spath,
+                    record_size=filedata.size,
+                    actual_size=size,
+                )
+            digest = self.get_file_digest(spath, filedata.algorithm)
+            if filedata.hex_digest != digest:
+                raise exc.DigestMismatchError(
+                    path=spath,
+                    algorithm=filedata.algorithm,
+                    record_digest=filedata.hex_digest,
+                    actual_digest=digest,
+                )
+
     def verify_record(self) -> None:
+        ### TODO: Verify directories as well?
         files = set(self.list_files())
-        # Check everything in RECORD against actual values:
-        for path, data in self.record.items():
-            if path.endswith("/"):
-                if not self.has_directory(path):
-                    raise exc.MissingFileError(path)
-            elif path not in files:
-                raise exc.MissingFileError(path)
-            elif data is not None:
-                ### TODO: What happens if the given path is backed by a
-                ### directory?
-                with self.open(path) as fp:
-                    data.verify(fp, path)
+        for path in self.record:
+            self.verify_file(path)
             files.discard(path)
         # Check that the only files that aren't in RECORD are signatures:
         for path in files:
-            if not is_dist_info_path(path, "RECORD.jws") and not is_dist_info_path(
-                path, "RECORD.p7s"
-            ):
+            if not is_signature_file(path):
                 raise exc.ExtraFileError(path)
 
 
@@ -430,11 +467,14 @@ class WheelFile(BackedDistInfo):
             return True
 
     def get_file_size(self, path: str) -> int:
-        return self.zipfile.getinfo(path).file_size
+        try:
+            return self.zipfile.getinfo(path).file_size
+        except KeyError:
+            raise exc.NoSuchFileError(path)
 
     def get_file_digest(self, path: str, algorithm: str) -> str:
         with self.open(path) as fp:
-            digest = digest_file(fp, [algorithm])[0][algorithm]
+            digest = digest_file(fp, [algorithm])[algorithm]
         return digest
 
     @overload

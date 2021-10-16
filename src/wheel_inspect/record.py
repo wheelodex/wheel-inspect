@@ -4,12 +4,12 @@ import base64
 import csv
 import hashlib
 import re
-from typing import IO, Dict, Iterator, List, Optional, TextIO, Tuple
+from typing import Dict, Iterator, List, Optional, TextIO, Tuple
 import attr
 from . import errors
 from .mapping import AttrMapping
 from .path import Path
-from .util import digest_file, is_dist_info_path
+from .util import is_dist_info_path
 
 
 @attr.define
@@ -30,23 +30,6 @@ class FileData:
     @property
     def bytes_digest(self) -> bytes:
         return urlsafe_b64decode_nopad(self.digest)
-
-    def verify(self, fp: IO[bytes], path: str) -> None:
-        digests, actual_size = digest_file(fp, [self.algorithm])
-        actual_digest = digests[self.algorithm]
-        if self.hex_digest != actual_digest:
-            raise errors.DigestMismatchError(
-                path=path,
-                algorithm=self.algorithm,
-                record_digest=self.hex_digest,
-                actual_digest=actual_digest,
-            )
-        if self.size != actual_size:
-            raise errors.SizeMismatchError(
-                path=path,
-                record_size=self.size,
-                actual_size=actual_size,
-            )
 
 
 @attr.define

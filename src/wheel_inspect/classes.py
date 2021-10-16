@@ -239,7 +239,7 @@ class DistInfoDir(DistInfoProvider):
     path: Path = attr.field(converter=mkpath)
 
     @classmethod
-    def from_path(cls, path: AnyPath, strict: bool = False) -> DistInfoDir:
+    def from_path(cls, path: AnyPath, strict: bool = True) -> DistInfoDir:
         d = cls(path)
         if strict:
             d.validate()
@@ -295,13 +295,13 @@ class WheelFile(BackedDistInfo):
     zipfile: ZipFile
 
     @classmethod
-    def from_path(cls, path: AnyPath, strict: bool = False) -> WheelFile:
+    def from_path(cls, path: AnyPath, strict: bool = True) -> WheelFile:
         p = Path(os.fsdecode(path))
         return cls.from_file(p.open("rb"), path=p, strict=strict)
 
     @classmethod
     def from_file(
-        cls, fp: IO[bytes], path: Optional[AnyPath] = None, strict: bool = False
+        cls, fp: IO[bytes], path: Optional[AnyPath] = None, strict: bool = True
     ) -> WheelFile:
         filename: Optional[ParsedWheelFilename]
         if path is not None:

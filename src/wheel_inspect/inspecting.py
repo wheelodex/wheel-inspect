@@ -135,7 +135,7 @@ def inspect_wheel(path: AnyPath, verify_files: bool = True) -> Dict[str, Any]:
         their digests calculated in order to verify the digests & sizes listed
         in the wheel's :file:`RECORD`
     """
-    with WheelFile.from_path(path) as wf:
+    with WheelFile.from_path(path, strict=False) as wf:
         return inspect(wf, verify_files=verify_files)
 
 
@@ -146,5 +146,5 @@ def inspect_dist_info_dir(path: AnyPath) -> Dict[str, Any]:
     `dict`.  The structure of the return value is described by
     `~wheel_inspect.schema.WHEEL_SCHEMA`.
     """
-    with DistInfoDir(path) as did:
+    with DistInfoDir.from_path(path, strict=False) as did:
         return inspect(did)

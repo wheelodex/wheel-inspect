@@ -52,9 +52,12 @@ class FileData:
 @attr.define
 class RecordPath(PathLike):
     filedata: Optional[FileData] = None
-    _parent: Optional[RecordPath] = attr.field(default=None, repr=False)
-    _children: Optional[Dict[str, RecordPath]] = attr.field(default=None, repr=False)
-    _exists: bool = attr.field(default=True, repr=False)
+    _parent: Optional[RecordPath] = attr.field(default=None)
+    _children: Optional[Dict[str, RecordPath]] = attr.field(default=None)
+    _exists: bool = attr.field(default=True)
+
+    def __repr__(self) -> str:
+        return f"{type(self).__name__}({str(self)!r}, filedata={self.filedata!r})"
 
     @classmethod
     def _mkroot(cls) -> RecordPath:
@@ -144,6 +147,9 @@ class RecordPath(PathLike):
 @attr.define
 class Record(AttrMapping[str, Optional[FileData]]):
     filetree: RecordPath = attr.Factory(RecordPath._mkroot)
+
+    def __repr__(self) -> str:
+        return f"{type(self).__name__}({self.data!r})"
 
     @classmethod
     def load(cls, fp: TextIO) -> Record:

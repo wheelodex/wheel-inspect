@@ -13,6 +13,9 @@ class PathLike(abc.ABC):
     def __str__(self) -> str:
         return "/".join(self.parts)
 
+    def __repr__(self) -> str:
+        return f"{type(self).__name__}({str(self)!r})"
+
     @property
     def name(self) -> str:
         # Returns "" for the root of a filetree

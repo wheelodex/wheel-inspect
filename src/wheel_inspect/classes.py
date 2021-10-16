@@ -385,8 +385,9 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
 class WheelFile(BackedDistInfo):
     # __init__ is not for public use; users should use one of the classmethods
     # to construct instances
-    fp: IO[bytes]
+    fp: Optional[IO[bytes]]
     zipfile: ZipFile
+    closed: bool = attr.field(default=False, init=False)
 
     @classmethod
     def from_path(cls, path: AnyPath, strict: bool = True) -> WheelFile:
@@ -407,6 +408,27 @@ class WheelFile(BackedDistInfo):
             w.validate()
         return w
 
+    @classmethod
+    ### TODO: Rethink whether this (and from_file()) should take a path or a
+    ### wheel name
+    def from_zipfile(
+        cls,
+        zipfile: ZipFile,
+        wheel_name: Union[None, str, ParsedWheelFilename] = None,
+        strict: bool = True,
+    ) -> WheelFile:
+        name: Optional[ParsedWheelFilename]
+        if wheel_name is None:
+            name = None
+        elif isinstance(wheel_name, str):
+            name = parse_wheel_filename(wheel_name)
+        else:
+            name = wheel_name
+        w = cls(wheel_name=name, fp=None, zipfile=zipfile)
+        if strict:
+            w.validate()
+        return w
+
     def __enter__(self) -> WheelFile:
         return self
 
@@ -416,11 +438,9 @@ class WheelFile(BackedDistInfo):
     def close(self) -> None:
         if not self.closed:
             self.zipfile.close()
-            self.fp.close()
-
-    @property
-    def closed(self) -> bool:
-        return self.fp.closed
+            if self.fp is not None:
+                self.fp.close()
+            self.closed = True
 
     @overload
     def open_dist_info_file(

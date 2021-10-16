@@ -4,7 +4,7 @@ import io
 import os
 from pathlib import Path
 import sys
-from typing import IO, Any, Dict, List, Optional, TextIO, TypeVar, Union, overload
+from typing import IO, Any, Dict, List, Optional, Set, TextIO, TypeVar, Union, overload
 from zipfile import ZipFile
 import attr
 from entry_points_txt import EntryPointSet
@@ -125,6 +125,11 @@ class FileProvider(abc.ABC):
 
         :rtype: List[str]
         """
+        ...
+
+    @abc.abstractmethod
+    def list_top_level_dirs(self) -> List[str]:
+        # TODO: Should the results have trailing slashes or not?
         ...
 
     @abc.abstractmethod
@@ -337,19 +342,22 @@ class WheelFile(BackedDistInfo):
     def dist_info_dirname(self) -> str:
         return find_special_dir(
             ".dist-info",
-            self.zipfile.namelist(),
+            self.list_top_level_dirs(),
             wheelname=self.filename,
             required=True,
-        )
+        ).rstrip("/")
 
     @cached_property
     def data_dirname(self) -> Optional[str]:
-        return find_special_dir(
+        dirname = find_special_dir(
             ".data",
-            self.zipfile.namelist(),
+            self.list_top_level_dirs(),
             wheelname=self.filename,
             required=False,
         )
+        if dirname is not None:
+            dirname = dirname.rstrip("/")
+        return dirname
 
     @overload
     def open_dist_info_file(
@@ -393,6 +401,15 @@ class WheelFile(BackedDistInfo):
 
     def list_files(self) -> List[str]:
         return [name for name in self.zipfile.namelist() if not name.endswith("/")]
+
+    def list_top_level_dirs(self) -> List[str]:
+        # TODO: Should the results have trailing slashes or not?
+        dirs: Set[str] = set()
+        for name in self.zipfile.namelist():
+            name = name.strip("/")
+            if name:
+                dirs.add(name.split("/")[0])
+        return list(dirs)
 
     def has_directory(self, path: str) -> bool:
         if not path.endswith("/"):

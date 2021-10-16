@@ -300,38 +300,27 @@ def test_is_data_dir(name: str, expected: bool) -> None:
     "namelist,wheelname,expected",
     [
         (
-            [
-                "foo.py",
-                "foo-1.0.dist-info/WHEEL",
-                "foo-1.0.dist-info/RECORD",
-            ],
+            ["foo-1.0.dist-info"],
             "foo-1.0-py3-none-any.whl",
             "foo-1.0.dist-info",
         ),
         (
-            [
-                "foo.py",
-                "FOO-1.0.0.dist-info/WHEEL",
-                "FOO-1.0.0.dist-info/RECORD",
-            ],
+            ["foo-1.0.dist-info/"],
+            "foo-1.0-py3-none-any.whl",
+            "foo-1.0.dist-info/",
+        ),
+        (
+            ["FOO-1.0.0.dist-info"],
             "foo-1.0-py3-none-any.whl",
             "FOO-1.0.0.dist-info",
         ),
         (
-            [
-                "foo.py",
-                "foo-1.dist-info/WHEEL",
-                "foo-1.dist-info/RECORD",
-            ],
+            ["foo-1.dist-info"],
             "foo-1.0-py3-none-any.whl",
             "foo-1.dist-info",
         ),
         (
-            [
-                "foo.py",
-                "FOO-1.0_1.dist-info/WHEEL",
-                "FOO-1.0_1.dist-info/RECORD",
-            ],
+            ["FOO-1.0_1.dist-info"],
             "foo-1.0.post1-py3-none-any.whl",
             "FOO-1.0_1.dist-info",
         ),
@@ -353,51 +342,34 @@ def test_find_special_dir(namelist: List[str], wheelname: str, expected: str) ->
     "namelist,wheelname,msg",
     [
         (
-            [
-                "foo.py",
-                "foo-1.0.dist/WHEEL",
-            ],
+            ["foo-1.0.dist"],
             "foo-1.0-py3-none-any.whl",
             "No *.dist-info directory in wheel",
         ),
         (
-            [
-                "foo.py",
-                "bar-1.0.dist-info/WHEEL",
-            ],
+            ["bar-1.0.dist-info"],
             "foo-1.0-py3-none-any.whl",
             "Project & version of wheel's *.dist-info directory do not match wheel"
             " name: 'bar-1.0.dist-info' vs. 'foo-1.0-py3-none-any.whl'",
         ),
         (
-            [
-                "foo.py",
-                "foo-2.0.dist-info/WHEEL",
-            ],
+            ["foo-2.0.dist-info"],
             "foo-1.0-py3-none-any.whl",
             "Project & version of wheel's *.dist-info directory do not match wheel"
             " name: 'foo-2.0.dist-info' vs. 'foo-1.0-py3-none-any.whl'",
         ),
         (
-            [
-                "foo.py",
-                "foo-1.0.dist-info/WHEEL",
-                "bar-2.0.dist-info/RECORD",
-            ],
+            ["foo-1.0.dist-info", "bar-2.0.dist-info"],
             "foo-1.0-py3-none-any.whl",
             "Wheel contains multiple *.dist-info directories",
         ),
         (
-            [
-                "foo.py",
-                "FOO-1.0.0.dist-info/WHEEL",
-                "foo-1.dist-info/RECORD",
-            ],
+            ["FOO-1.0.0.dist-info", "foo-1.dist-info"],
             "foo-1.0-py3-none-any.whl",
             "Wheel contains multiple *.dist-info directories",
         ),
         (
-            ["foo.py", ".dist-info/WHEEL"],
+            [".dist-info"],
             "foo-1.0-py3-none-any.whl",
             "No *.dist-info directory in wheel",
         ),

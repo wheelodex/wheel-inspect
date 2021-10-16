@@ -146,7 +146,7 @@ def yield_lines(fp: TextIO) -> Iterator[str]:
 @overload
 def find_special_dir(
     suffix: str,
-    namelist: List[str],
+    dirnames: Iterable[str],
     wheelname: Optional[ParsedWheelFilename] = None,
     required: Literal[True] = True,
 ) -> str:
@@ -157,7 +157,7 @@ def find_special_dir(
 # Is it necessary to repeat this?
 def find_special_dir(
     suffix: str,
-    namelist: List[str],
+    dirnames: Iterable[str],
     wheelname: Optional[ParsedWheelFilename] = None,
     required: Literal[False] = False,
 ) -> Optional[str]:
@@ -166,34 +166,27 @@ def find_special_dir(
 
 def find_special_dir(
     suffix: str,
-    namelist: List[str],
+    dirnames: Iterable[str],
     wheelname: Optional[ParsedWheelFilename] = None,
     required: bool = False,
 ) -> Optional[str]:
     """
-    Given a list ``namelist`` of files in a wheel, find & return the name of
-    the top-level directory in the wheel with a name of the form
-    :samp:`{project}-{version}{suffix}`.  Typical values for ``suffix`` are
-    ``".dist-info"`` and ``".data"``.
+    Given an iterable ``dirnames`` of top-level directories in a wheel (with or
+    without trailing slashes), find & return the unique element of the list
+    with a name of the form :samp:`{project}-{version}{suffix}`.  Typical
+    values for ``suffix`` are ``".dist-info"`` and ``".data"``.
 
-    If ``wheelname`` is given, the directory must use the same project &
-    version *modulo* canonicalization.
+    If ``wheelname`` is given, the found directory must use the same project &
+    version as ``wheelname`` *modulo* canonicalization.
 
     :raises SpecialDirError:
-        - if there is more than one matching top-level directory in the input
+        - if there is more than one matching directory in the input
         - if ``required`` is true and there is no matching directory
-        - if the project & version in the directory name do not match
+        - if the project & version in the found directory name do not match
           ``wheelname``
     """
-    candidates = set()
-    rgx = re.compile(f"{PROJECT_VERSION_RGX}{re.escape(suffix)}")
-    for n in namelist:
-        n = n.rstrip("/")
-        if not n:
-            continue
-        basename = n.split("/")[0]
-        if rgx.fullmatch(basename):
-            candidates.add(basename)
+    rgx = re.compile(f"{PROJECT_VERSION_RGX}{re.escape(suffix)}/?")
+    candidates = [n for n in dirnames if rgx.fullmatch(n)]
     if len(candidates) > 1:
         raise SpecialDirError(f"Wheel contains multiple *{suffix} directories")
     elif len(candidates) == 1:
@@ -202,7 +195,7 @@ def find_special_dir(
             ### TODO: Catch errors when calling canonicalize_version
             wproject = canonicalize_name(wheelname.project)
             wversion = canonicalize_version(wheelname.version.replace("_", "-"))
-            dname, _, dversion = winner[: -len(suffix)].partition("-")
+            dname, _, dversion = winner.rstrip("/")[: -len(suffix)].partition("-")
             if (
                 canonicalize_name(dname) != wproject
                 or canonicalize_version(dversion.replace("_", "-")) != wversion

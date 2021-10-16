@@ -155,7 +155,6 @@ class Record(AttrMapping[str, Optional[FileData]]):
             if not path.endswith("/"):
                 if data is None and not is_dist_info_path(path, "RECORD"):
                     raise errors.NullEntryError(path)
-            # TODO: Raise error if data is not None?
             r._insert(path, data)
         return r
 

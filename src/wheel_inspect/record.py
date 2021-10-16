@@ -16,7 +16,7 @@ from .util import find_special_dir, is_record_file
 if sys.version_info[:2] >= (3, 8):
     from functools import cached_property
 else:
-    from cached_property import cached_property
+    from backports.cached_property import cached_property
 
 
 @attr.define

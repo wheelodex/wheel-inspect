@@ -4,13 +4,19 @@ import base64
 import csv
 import hashlib
 import re
+import sys
 from typing import Dict, Iterator, List, Optional, TextIO, Tuple
 import attr
 from . import errors
 from .consts import PathType
 from .mapping import AttrMapping
 from .path import Path
-from .util import is_record_file
+from .util import find_special_dir, is_record_file
+
+if sys.version_info[:2] >= (3, 8):
+    from functools import cached_property
+else:
+    from cached_property import cached_property
 
 
 @attr.define
@@ -232,6 +238,19 @@ class Record(AttrMapping[str, Optional[FileData]]):
             if n.filedata != data:
                 raise errors.RecordConflictError(path)
         self.data[path] = data
+
+    @cached_property
+    def dist_info_dirname(self) -> str:
+        top_dirs = [str(p) for p in self.filetree.iterdir() if p.is_dir()]
+        return find_special_dir(".dist-info", top_dirs, required=True).rstrip("/")
+
+    @cached_property
+    def data_dirname(self) -> Optional[str]:
+        top_dirs = [str(p) for p in self.filetree.iterdir() if p.is_dir()]
+        dirname = find_special_dir(".data", top_dirs, required=False)
+        if dirname is not None:
+            dirname = dirname.rstrip("/")
+        return dirname
 
     def for_json(self) -> Dict[str, Optional[FileData]]:
         return dict(self)

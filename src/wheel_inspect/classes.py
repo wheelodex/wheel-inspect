@@ -286,6 +286,8 @@ class DistInfoDir(DistInfoProvider):
 class BackedDistInfo(DistInfoProvider, FileProvider):
     @cached_property
     def dist_info_dirname(self) -> str:
+        # We can't get this one from the RECORD, as doing so would require us
+        # to already know the dist-info dirname
         return find_special_dir(
             ".dist-info",
             self.list_top_level_dirs(),
@@ -295,23 +297,18 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
 
     @cached_property
     def data_dirname(self) -> Optional[str]:
-        dirname = find_special_dir(
-            ".data",
-            self.list_top_level_dirs(),
-            wheel_name=self.wheel_name,
-            required=False,
-        )
-        if dirname is not None:
-            dirname = dirname.rstrip("/")
-        return dirname
+        return self.record.data_dirname
 
     def has_dist_info_file(self, path: str) -> bool:
         return self.has_file(self.dist_info_dirname + "/" + path)
 
     def validate(self) -> None:
         self.dist_info_dirname
-        self.data_dirname
         super().validate()
+        self.data_dirname
+        ### TODO: Check that self.dist_info_dirname ==
+        ### self.record.dist_info_dirname?  Or should that be left to
+        ### verification?
 
     def verify_file(self, path: Union[str, RecordPath]) -> None:
         if isinstance(path, RecordPath):

@@ -7,6 +7,7 @@ import re
 from typing import Dict, Iterator, List, Optional, TextIO, Tuple
 import attr
 from . import errors
+from .consts import PathType
 from .mapping import AttrMapping
 from .path import Path
 from .util import is_record_file
@@ -120,6 +121,16 @@ class RecordPath(Path):
 
     def is_dir(self) -> bool:
         return self._exists and self._children is not None
+
+    @property
+    def path_type(self) -> PathType:
+        if not self.exists():
+            ### TODO: Replace this with a different exception:
+            raise errors.NoSuchPathError(str(self))
+        elif self.is_file():
+            return PathType.FILE
+        else:
+            return PathType.DIRECTORY
 
     def iterdir(self) -> Iterator[RecordPath]:
         if not self._exists:

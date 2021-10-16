@@ -2,6 +2,7 @@ import abc
 from fnmatch import fnmatchcase
 from typing import Iterator, List, Tuple, TypeVar
 import attr
+from .consts import PathType
 
 P = TypeVar("P", bound="Path")
 
@@ -108,6 +109,10 @@ class Path(abc.ABC):
             if not fnmatchcase(part, pat):
                 return False
         return True
+
+    @abc.abstractproperty
+    def path_type(self) -> PathType:
+        ...
 
     @abc.abstractmethod
     def exists(self) -> bool:

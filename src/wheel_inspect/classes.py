@@ -370,7 +370,7 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
                     )
 
     def verify_record(self) -> None:
-        ### TODO: Verify directories as well?
+        ### TODO: Verify that all directories are present in RECORD
         files = set(self.list_files())
         for path in self.record:
             self.verify_file(path)

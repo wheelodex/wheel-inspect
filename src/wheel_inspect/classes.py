@@ -316,6 +316,7 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
     def verify_file(self, path: Union[str, RecordPath]) -> None:
         if not isinstance(path, RecordPath):
             path = self.record.filetree / path
+        assert isinstance(path, RecordPath)
         spath = str(path)
         filedata = path.filedata
         if not path.exists():

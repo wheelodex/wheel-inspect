@@ -178,7 +178,6 @@ class FileProvider(abc.ABC):
         """
         ...
 
-    @abc.abstractmethod
     def get_file_digest(self, path: str, algorithm: str) -> str:
         """
         Returns a hexdigest of the contents of the file at ``path`` computed
@@ -189,7 +188,9 @@ class FileProvider(abc.ABC):
             recognized by `hashlib`
         :rtype: str
         """
-        ...
+        with self.open(path) as fp:
+            digest = digest_file(fp, [algorithm])[algorithm]
+        return digest
 
     @overload
     def open(
@@ -500,11 +501,6 @@ class WheelFile(BackedDistInfo):
             return self.zipfile.getinfo(path).file_size
         except KeyError:
             raise exc.NoSuchPathError(path)
-
-    def get_file_digest(self, path: str, algorithm: str) -> str:
-        with self.open(path) as fp:
-            digest = digest_file(fp, [algorithm])[algorithm]
-        return digest
 
     @overload
     def open(

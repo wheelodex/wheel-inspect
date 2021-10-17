@@ -108,7 +108,11 @@ class RecordPath(Path):
     def get_subpath(self, name: str) -> RecordPath:
         if not name or "/" in name:
             raise ValueError("Invalid filename: {name!r}")
-        if not self._exists:
+        elif name == ".":
+            return self
+        elif name == "..":
+            return self.parent
+        elif not self._exists:
             return self._mkchild(name, exists=False)
         elif self._children is not None:
             try:

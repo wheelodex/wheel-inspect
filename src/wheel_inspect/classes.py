@@ -622,7 +622,13 @@ class WheelFile(BackedDistInfo):
     ) -> IO:
         if mode not in ("r", "rb"):
             raise ValueError(f"Unsupported file mode: {mode!r}")
-        path = str(path)
+        if not isinstance(path, str):
+            if path.is_dir():
+                # Don't raise NotFileError yet; NoSuchPathError might be more
+                # accurate
+                path = str(path) + "/"
+            else:
+                path = str(path)
         try:
             zi = self.zipfile.getinfo(path)
         except KeyError:

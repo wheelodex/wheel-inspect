@@ -1,4 +1,5 @@
 {
     "type": "UnknownAlgorithmError",
-    "str": "RECORD entry for 'unkdigest-1.0.0.dist-info/METADATA' uses an unknown digest algorithm: 'bla360'"
+    "message": "RECORD entry for 'unkdigest-1.0.0.dist-info/METADATA' uses an unknown digest algorithm: 'bla360'",
+    "args": {"path": "unkdigest-1.0.0.dist-info/METADATA", "algorithm": "bla360"}
 }

@@ -1,4 +1,5 @@
 {
     "type": "RecordConflictError",
-    "str": "RECORD contains multiple conflicting entries for 'module.py'"
+    "message": "RECORD contains multiple conflicting entries for 'module.py'",
+    "args": {"path": "module.py"}
 }

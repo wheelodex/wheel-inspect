@@ -1,4 +1,5 @@
 {
     "type": "RecordEntryLengthError",
-    "str": "RECORD entry for 'module.py' has 2 fields; expected 3"
+    "message": "RECORD entry for 'module.py' has 2 fields; expected 3",
+    "args": {"path": "module.py", "length": 2}
 }

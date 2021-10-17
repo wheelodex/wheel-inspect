@@ -1,4 +1,5 @@
 {
     "type": "NonNormalizedPathError",
-    "str": "RECORD entry has a non-normalized path: './module.py'"
+    "message": "RECORD entry has a non-normalized path: './module.py'",
+    "args": {"path": "./module.py"}
 }

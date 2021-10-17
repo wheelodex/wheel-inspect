@@ -1,4 +1,5 @@
 {
     "type": "UnrecordedPathError",
-    "str": "Path not declared in RECORD: 'extra.py'"
+    "message": "Path not declared in RECORD: 'extra.py'",
+    "args": {"path": "extra.py"}
 }

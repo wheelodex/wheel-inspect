@@ -31,7 +31,7 @@ from .consts import (
     MODULE_EXT_RGX,
     PROJECT_VERSION_RGX,
 )
-from .errors import SpecialDirError
+from .errors import Error, SpecialDirError
 
 if sys.version_info[:2] >= (3, 8):
     from typing import Literal
@@ -229,7 +229,14 @@ def for_json(value: Any) -> Any:
         return for_json(CUSTOM_JSONIFIERS[type(value)](value))
     elif hasattr(value, "for_json"):
         return for_json(value.for_json())
-    elif attr.has(value):
+    elif isinstance(value, Error):
+        data: Dict[str, Any] = {"type": type(value).__name__, "message": str(value)}
+        if attr.has(type(value)):
+            data["args"] = for_json(attr.asdict(value, recurse=False))
+        else:
+            data["args"] = {}
+        return data
+    elif attr.has(type(value)):
         return for_json(attr.asdict(value, recurse=False))
     elif isinstance(value, Mapping):
         return {k: for_json(v) for k, v in value.items()}

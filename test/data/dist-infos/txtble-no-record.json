@@ -107,7 +107,8 @@
     },
     "valid": false,
     "validation_error": {
-        "str": "Required file not present in *.dist-info directory: 'RECORD'",
-        "type": "MissingDistInfoFileError"
+        "type": "MissingDistInfoFileError",
+        "message": "Required file not present in *.dist-info directory: 'RECORD'",
+        "args": {"path": "RECORD"}
     }
 }

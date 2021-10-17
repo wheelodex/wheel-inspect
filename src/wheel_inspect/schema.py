@@ -16,16 +16,20 @@ WHEEL_SCHEMA: Dict[str, Any] = {
         "validation_error": {
             "type": "object",
             "description": "If the wheel is invalid, this field contains information on the `WheelError` raised.",
-            "required": ["type", "str"],
+            "required": ["type", "message", "args"],
             "additionalProperties": False,
             "properties": {
                 "type": {
                     "type": "string",
                     "description": "The name of the type of exception raised",
                 },
-                "str": {
+                "message": {
                     "type": "string",
                     "description": "The exception's error message",
+                },
+                "args": {
+                    "type": "object",
+                    "description": "Type-specific properties of the exception object",
                 },
             },
         },

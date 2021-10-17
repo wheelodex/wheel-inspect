@@ -1,4 +1,5 @@
 {
     "type": "WeakAlgorithmError",
-    "str": "RECORD entry for 'weak_digest-1.0.0.dist-info/METADATA' uses a weak digest algorithm: 'sha1'"
+    "message": "RECORD entry for 'weak_digest-1.0.0.dist-info/METADATA' uses a weak digest algorithm: 'sha1'",
+    "args": {"path": "weak_digest-1.0.0.dist-info/METADATA", "algorithm": "sha1"}
 }

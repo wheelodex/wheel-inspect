@@ -1,4 +1,5 @@
 {
     "type": "NullEntryError",
-    "str": "RECORD entry for 'module.py' lacks both digest and size"
+    "message": "RECORD entry for 'module.py' lacks both digest and size",
+    "args": {"path": "module.py"}
 }

@@ -1,4 +1,5 @@
 {
     "type": "EmptySizeError",
-    "str": "RECORD entry for 'module.py' has a digest but no size"
+    "message": "RECORD entry for 'module.py' has a digest but no size",
+    "args": {"path": "module.py", "size": ""}
 }

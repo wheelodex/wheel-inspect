@@ -1,4 +1,5 @@
 {
     "type": "EmptyPathError",
-    "str": "RECORD entry has an empty path"
+    "message": "RECORD entry has an empty path",
+    "args": {"path": ""}
 }

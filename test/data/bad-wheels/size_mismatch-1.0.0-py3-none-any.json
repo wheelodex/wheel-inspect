@@ -1,4 +1,5 @@
 {
     "type": "SizeMismatchError",
-    "str": "Size of file 'module.py' listed as 66 in RECORD, actually 65"
+    "message": "Size of file 'module.py' listed as 66 in RECORD, actually 65",
+    "args": {"path": "module.py", "record_size": 66, "actual_size": 65}
 }

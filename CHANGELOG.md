@@ -23,6 +23,9 @@ v2.0.0 (in development)
       `top_level`, and `zip_safe` properties of the `dist_info` object are now
       `null` instead of absent if the respective files are absent from the
       `*.dist-info` directory.
+    - `.validation_error.str` has been renamed to "message"
+    - `.validation_error` now contains an "args" field giving type-specific
+      properties
 - `RECORD` entries with negative sizes are now detected & errored on earlier
 - Gave `inspect_wheel()` a `digest_files` option for controlling verification
   of files' digests

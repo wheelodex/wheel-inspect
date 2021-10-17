@@ -70,7 +70,8 @@
     },
     "valid": false,
     "validation_error": {
-        "str": "Path declared in RECORD does not exist: 'not-found/'",
-        "type": "MissingPathError"
+        "type": "MissingPathError",
+        "message": "Path declared in RECORD does not exist: 'not-found/'",
+        "args": {"path": "not-found/"}
     }
 }

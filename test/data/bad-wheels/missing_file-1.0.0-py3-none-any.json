@@ -1,4 +1,5 @@
 {
     "type": "MissingPathError",
-    "str": "Path declared in RECORD does not exist: 'missing.py'"
+    "message": "Path declared in RECORD does not exist: 'missing.py'",
+    "args": {"path": "missing.py"}
 }

@@ -1,4 +1,5 @@
 {
     "type": "MissingDistInfoFileError",
-    "str": "Required file not present in *.dist-info directory: 'RECORD'"
+    "message": "Required file not present in *.dist-info directory: 'RECORD'",
+    "args": {"path": "RECORD"}
 }

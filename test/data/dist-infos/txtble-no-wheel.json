@@ -152,7 +152,8 @@
     },
     "valid": false,
     "validation_error": {
-        "str": "Required file not present in *.dist-info directory: 'WHEEL'",
-        "type": "MissingDistInfoFileError"
+        "type": "MissingDistInfoFileError",
+        "message": "Required file not present in *.dist-info directory: 'WHEEL'",
+        "args": {"path": "WHEEL"}
     }
 }

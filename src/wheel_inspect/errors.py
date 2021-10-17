@@ -310,8 +310,8 @@ class RecordDigestError(RecordEntryError):
 
     def __str__(self) -> str:
         return (
-            f"RECORD contains invalid {self.algorithm} base64 nopad digest for"
-            f" {self.path!r}: {self.digest!r}"
+            f"RECORD entry for {self.path!r} contains invalid {self.algorithm}"
+            f" base64 nopad digest: {self.digest!r}"
         )
 
 

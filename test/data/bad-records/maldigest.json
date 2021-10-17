@@ -1,4 +1,9 @@
 {
     "type": "RecordDigestError",
-    "str": "RECORD contains invalid sha256 base64 nopad digest for 'module.py': 'AeOOlP4F6s77YK8wg9sHxzMQKP3Issk9nVy7Z2nTZ0I='"
+    "message": "RECORD entry for 'module.py' contains invalid sha256 base64 nopad digest: 'AeOOlP4F6s77YK8wg9sHxzMQKP3Issk9nVy7Z2nTZ0I='",
+    "args": {
+        "path": "module.py",
+        "algorithm": "sha256",
+        "digest": "AeOOlP4F6s77YK8wg9sHxzMQKP3Issk9nVy7Z2nTZ0I="
+    }
 }

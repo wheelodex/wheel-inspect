@@ -23,10 +23,7 @@ def inspect(obj: DistInfoProvider, digest_files: bool = True) -> Dict[str, Any]:
         record = obj.record
     except errors.WheelError as e:
         about["valid"] = False
-        about["validation_error"] = {
-            "type": type(e).__name__,
-            "str": str(e),
-        }
+        about["validation_error"] = for_json(e)
         has_dist_info = not isinstance(e, errors.SpecialDirError)
     else:
         about["dist_info"]["record"] = for_json(record)
@@ -35,10 +32,7 @@ def inspect(obj: DistInfoProvider, digest_files: bool = True) -> Dict[str, Any]:
                 obj.verify(digest=digest_files)
             except errors.WheelError as e:
                 about["valid"] = False
-                about["validation_error"] = {
-                    "type": type(e).__name__,
-                    "str": str(e),
-                }
+                about["validation_error"] = for_json(e)
 
     if has_dist_info:
         try:
@@ -46,10 +40,7 @@ def inspect(obj: DistInfoProvider, digest_files: bool = True) -> Dict[str, Any]:
         except errors.WheelError as e:
             metadata = {}
             about["valid"] = False
-            about["validation_error"] = {
-                "type": type(e).__name__,
-                "str": str(e),
-            }
+            about["validation_error"] = for_json(e)
         else:
             about["dist_info"]["metadata"] = metadata
 
@@ -57,10 +48,7 @@ def inspect(obj: DistInfoProvider, digest_files: bool = True) -> Dict[str, Any]:
             about["dist_info"]["wheel"] = obj.wheel_info
         except errors.WheelError as e:
             about["valid"] = False
-            about["validation_error"] = {
-                "type": type(e).__name__,
-                "str": str(e),
-            }
+            about["validation_error"] = for_json(e)
 
         about["dist_info"]["entry_points"] = for_json(obj.entry_points)
         about["dist_info"]["dependency_links"] = for_json(obj.dependency_links)

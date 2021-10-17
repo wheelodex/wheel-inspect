@@ -83,7 +83,8 @@
     },
     "valid": false,
     "validation_error": {
-        "str": "Required file not present in *.dist-info directory: 'METADATA'",
-        "type": "MissingDistInfoFileError"
+        "type": "MissingDistInfoFileError",
+        "message": "Required file not present in *.dist-info directory: 'METADATA'",
+        "args": {"path": "METADATA"}
     }
 }

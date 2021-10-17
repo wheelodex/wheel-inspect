@@ -5,6 +5,7 @@ from pathlib import Path
 import pytest
 from wheel_inspect.errors import RecordError
 from wheel_inspect.record import FileData, Record
+from wheel_inspect.util import for_json
 
 
 def test_parse_record() -> None:
@@ -99,5 +100,4 @@ def test_parse_bad_records(recfile: Path) -> None:
     with recfile.open(newline="") as fp:
         with pytest.raises(RecordError) as excinfo:
             Record.load(fp)
-        assert type(excinfo.value).__name__ == expected["type"]
-        assert str(excinfo.value) == expected["str"]
+        assert for_json(excinfo.value) == expected

@@ -14,7 +14,7 @@ from .inspecting import inspect_dist_info_dir, inspect_wheel
         "  [default: --digest-files]"
     ),
 )
-@click.argument("paths", type=click.Path(exists=True, path_type=Path))
+@click.argument("paths", type=click.Path(exists=True, path_type=Path), nargs=-1)
 def main(paths: Sequence[Path], digest_files: bool) -> None:
     for p in paths:
         if p.is_dir():

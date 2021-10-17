@@ -25,8 +25,10 @@ from .wheel_info import parse_wheel_info
 
 if sys.version_info[:2] >= (3, 8):
     from functools import cached_property
+    from typing import Literal
 else:
     from backports.cached_property import cached_property
+    from typing_extensions import Literal
 
 
 T = TypeVar("T", bound="DistInfoProvider")
@@ -61,35 +63,36 @@ class DistInfoProvider(abc.ABC):
     def open_dist_info_file(
         self,
         path: str,
-        encoding: None = None,
+        mode: Literal["r"] = "r",
+        encoding: Optional[str] = None,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
-    ) -> IO[bytes]:
+    ) -> TextIO:
         ...
 
     @overload
     def open_dist_info_file(
         self,
         path: str,
-        encoding: str,
-        errors: Optional[str] = None,
-        newline: Optional[str] = None,
-    ) -> TextIO:
+        mode: Literal["rb"],
+        encoding: None = None,
+        errors: None = None,
+        newline: None = None,
+    ) -> IO[bytes]:
         ...
 
     @abc.abstractmethod
     def open_dist_info_file(
         self,
         path: str,
+        mode: Literal["r", "rb"] = "r",
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
     ) -> IO:
         """
         Returns a readable IO handle for reading the contents of the file at
-        the given path beneath the :file:`*.dist-info` directory.  If
-        ``encoding`` is `None`, the handle is a binary handle; otherwise, it is
-        a text handle decoded using the given encoding.
+        the given path beneath the :file:`*.dist-info` directory.
 
         :raises NoSuchPathError: if the given file does not exist
         """
@@ -106,7 +109,7 @@ class DistInfoProvider(abc.ABC):
     @cached_property
     def metadata(self) -> Dict[str, Any]:
         try:
-            with self.open_dist_info_file("METADATA", encoding="utf-8") as fp:
+            with self.open_dist_info_file("METADATA", "r", encoding="utf-8") as fp:
                 return parse_metadata(fp)
         except exc.NoSuchPathError:
             raise exc.MissingDistInfoFileError("METADATA")
@@ -114,7 +117,9 @@ class DistInfoProvider(abc.ABC):
     @cached_property
     def record(self) -> Record:
         try:
-            with self.open_dist_info_file("RECORD", encoding="utf-8", newline="") as fp:
+            with self.open_dist_info_file(
+                "RECORD", "r", encoding="utf-8", newline=""
+            ) as fp:
                 # The csv module requires this file to be opened with
                 # `newline=''`
                 return Record.load(fp)
@@ -124,7 +129,7 @@ class DistInfoProvider(abc.ABC):
     @cached_property
     def wheel_info(self) -> Dict[str, Any]:
         try:
-            with self.open_dist_info_file("WHEEL", encoding="utf-8") as fp:
+            with self.open_dist_info_file("WHEEL", "r", encoding="utf-8") as fp:
                 return parse_wheel_info(fp)
         except exc.NoSuchPathError:
             raise exc.MissingDistInfoFileError("WHEEL")
@@ -132,7 +137,9 @@ class DistInfoProvider(abc.ABC):
     @cached_property
     def entry_points(self) -> Optional[EntryPointSet]:
         try:
-            with self.open_dist_info_file("entry_points.txt", encoding="utf-8") as fp:
+            with self.open_dist_info_file(
+                "entry_points.txt", "r", encoding="utf-8"
+            ) as fp:
                 return load_entry_points(fp)
         except exc.NoSuchPathError:
             return None
@@ -141,7 +148,7 @@ class DistInfoProvider(abc.ABC):
     def dependency_links(self) -> Optional[List[str]]:
         try:
             with self.open_dist_info_file(
-                "dependency_links.txt", encoding="utf-8"
+                "dependency_links.txt", "r", encoding="utf-8"
             ) as fp:
                 return list(yield_lines(fp))
         except exc.NoSuchPathError:
@@ -151,7 +158,7 @@ class DistInfoProvider(abc.ABC):
     def namespace_packages(self) -> Optional[List[str]]:
         try:
             with self.open_dist_info_file(
-                "namespace_packages.txt", encoding="utf-8"
+                "namespace_packages.txt", "r", encoding="utf-8"
             ) as fp:
                 return list(yield_lines(fp))
         except exc.NoSuchPathError:
@@ -160,7 +167,7 @@ class DistInfoProvider(abc.ABC):
     @property
     def top_level(self) -> Optional[List[str]]:
         try:
-            with self.open_dist_info_file("top_level.txt", encoding="utf-8") as fp:
+            with self.open_dist_info_file("top_level.txt", "r", encoding="utf-8") as fp:
                 return list(yield_lines(fp))
         except exc.NoSuchPathError:
             return None
@@ -239,7 +246,7 @@ class FileProvider(abc.ABC):
             recognized by `hashlib`
         :rtype: str
         """
-        with self.open(path) as fp:
+        with self.open(path, "rb") as fp:
             digest = digest_file(fp, [algorithm])[algorithm]
         return digest
 
@@ -247,35 +254,36 @@ class FileProvider(abc.ABC):
     def open(
         self,
         path: Union[str, RecordPath],
-        encoding: None = None,
+        mode: Literal["r"] = "r",
+        encoding: Optional[str] = None,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
-    ) -> IO[bytes]:
+    ) -> TextIO:
         ...
 
     @overload
     def open(
         self,
         path: Union[str, RecordPath],
-        encoding: str,
-        errors: Optional[str] = None,
-        newline: Optional[str] = None,
-    ) -> TextIO:
+        mode: Literal["rb"],
+        encoding: None = None,
+        errors: None = None,
+        newline: None = None,
+    ) -> IO[bytes]:
         ...
 
     @abc.abstractmethod
     def open(
         self,
         path: Union[str, RecordPath],
+        mode: Literal["r", "rb"] = "r",
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
     ) -> IO:
         """
         Returns a readable IO handle for reading the contents of the file at
-        the given path.  If ``encoding`` is `None`, the handle is a binary
-        handle; otherwise, it is a text handle decoded using the given
-        encoding.
+        the given path.
 
         :raises NoSuchPathError: if the given file does not exist
         """
@@ -297,36 +305,38 @@ class DistInfoDir(DistInfoProvider):
     def open_dist_info_file(
         self,
         path: str,
-        encoding: None = None,
+        mode: Literal["r"] = "r",
+        encoding: Optional[str] = None,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
-    ) -> IO[bytes]:
+    ) -> TextIO:
         ...
 
     @overload
     def open_dist_info_file(
         self,
         path: str,
-        encoding: str,
-        errors: Optional[str] = None,
-        newline: Optional[str] = None,
-    ) -> TextIO:
+        mode: Literal["rb"],
+        encoding: None = None,
+        errors: None = None,
+        newline: None = None,
+    ) -> IO[bytes]:
         ...
 
     def open_dist_info_file(
         self,
         path: str,
+        mode: Literal["r", "rb"] = "r",
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
     ) -> IO:
+        if mode not in ("r", "rb"):
+            raise ValueError(f"Unsupported file mode: {mode!r}")
         try:
-            if encoding is None:
-                return (self.path / path).open("rb")
-            else:
-                return (self.path / path).open(
-                    "r", encoding=encoding, errors=errors, newline=newline
-                )
+            return (self.path / path).open(
+                mode, encoding=encoding, errors=errors, newline=newline
+            )
         except FileNotFoundError:
             raise exc.NoSuchPathError(path)
 
@@ -488,35 +498,44 @@ class WheelFile(BackedDistInfo):
     def open_dist_info_file(
         self,
         path: str,
-        encoding: None = None,
+        mode: Literal["r"] = "r",
+        encoding: Optional[str] = None,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
-    ) -> IO[bytes]:
+    ) -> TextIO:
         ...
 
     @overload
     def open_dist_info_file(
         self,
         path: str,
-        encoding: str,
-        errors: Optional[str] = None,
-        newline: Optional[str] = None,
-    ) -> TextIO:
+        mode: Literal["rb"],
+        encoding: None = None,
+        errors: None = None,
+        newline: None = None,
+    ) -> IO[bytes]:
         ...
 
     def open_dist_info_file(
         self,
         path: str,
+        mode: Literal["r", "rb"] = "r",
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
     ) -> IO:
-        return self.open(
-            self.dist_info_dirname + "/" + path,
-            encoding=encoding,
-            errors=errors,
-            newline=newline,
-        )
+        if mode not in ("r", "rb"):
+            raise ValueError(f"Unsupported file mode: {mode!r}")
+        if mode == "r":
+            return self.open(
+                self.dist_info_dirname + "/" + path,
+                mode=mode,
+                encoding=encoding,
+                errors=errors,
+                newline=newline,
+            )
+        else:
+            return self.open(self.dist_info_dirname + "/" + path, mode=mode)
 
     def get_path_type(self, path: str) -> PathType:
         # We can't get the path type from zipfile.getinfo(), as that errors for
@@ -565,36 +584,41 @@ class WheelFile(BackedDistInfo):
     def open(
         self,
         path: Union[str, RecordPath],
-        encoding: None = None,
+        mode: Literal["r"] = "r",
+        encoding: Optional[str] = None,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
-    ) -> IO[bytes]:
+    ) -> TextIO:
         ...
 
     @overload
     def open(
         self,
         path: Union[str, RecordPath],
-        encoding: str,
-        errors: Optional[str] = None,
-        newline: Optional[str] = None,
-    ) -> TextIO:
+        mode: Literal["rb"],
+        encoding: None = None,
+        errors: None = None,
+        newline: None = None,
+    ) -> IO[bytes]:
         ...
 
     def open(
         self,
         path: Union[str, RecordPath],
+        mode: Literal["r", "rb"] = "r",
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
         newline: Optional[str] = None,
     ) -> IO:
+        if mode not in ("r", "rb"):
+            raise ValueError(f"Unsupported file mode: {mode!r}")
         path = str(path)
         try:
             zi = self.zipfile.getinfo(path)
         except KeyError:
             raise exc.NoSuchPathError(path)
         fp = self.zipfile.open(zi)
-        if encoding is not None:
+        if mode == "r":
             return io.TextIOWrapper(
                 fp, encoding=encoding, errors=errors, newline=newline
             )

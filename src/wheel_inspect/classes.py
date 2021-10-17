@@ -458,21 +458,14 @@ class WheelFile(BackedDistInfo):
         return w
 
     @classmethod
-    ### TODO: Rethink whether this (and from_file()) should take a path or a
-    ### wheel name
     def from_zipfile(
-        cls,
-        zipfile: ZipFile,
-        wheel_name: Union[None, str, ParsedWheelFilename] = None,
-        strict: bool = True,
+        cls, zipfile: ZipFile, path: Optional[AnyPath] = None, strict: bool = True
     ) -> WheelFile:
         name: Optional[ParsedWheelFilename]
-        if wheel_name is None:
-            name = None
-        elif isinstance(wheel_name, str):
-            name = parse_wheel_filename(wheel_name)
+        if path is not None:
+            name = parse_wheel_filename(path)
         else:
-            name = wheel_name
+            name = None
         w = cls(wheel_name=name, fp=None, zipfile=zipfile)
         if strict:
             w.validate()

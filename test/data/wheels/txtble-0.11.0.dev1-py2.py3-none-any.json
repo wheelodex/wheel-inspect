@@ -152,7 +152,11 @@
                 "py3-none-any"
             ],
             "wheel_version": "1.0"
-        }
+        },
+        "dependency_links": null,
+        "entry_points": null,
+        "namespace_packages": null,
+        "zip_safe": null
     },
     "wheel_name": {
         "name": "txtble-0.11.0.dev1-py2.py3-none-any.whl",

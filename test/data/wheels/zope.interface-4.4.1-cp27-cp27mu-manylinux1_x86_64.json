@@ -391,7 +391,10 @@
                 "digest": "PdltVi5qeBdE91VidySWJ3Kcf0I_CW9brfBnGT3elxo",
                 "size": 1562
             }
-        }
+        },
+        "dependency_links": null,
+        "entry_points": null,
+        "zip_safe": null
     },
     "derived": {
         "readme_renders": true,

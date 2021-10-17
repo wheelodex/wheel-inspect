@@ -33,6 +33,7 @@ WHEEL_SCHEMA: Dict[str, Any] = {
             "type": "object",
             "description": "JSONifications of files from the wheel's .dist-info directory",
             "additionalProperties": False,
+            ### TODO: Set "required"
             "properties": {
                 "metadata": {
                     "type": "object",
@@ -144,9 +145,12 @@ WHEEL_SCHEMA: Dict[str, Any] = {
                         "BODY": {"type": "string"},
                     },
                 },
-                "dependency_links": {"type": "array", "items": {"type": "string"}},
+                "dependency_links": {
+                    "type": ["null", "array"],
+                    "items": {"type": "string"},
+                },
                 "entry_points": {
-                    "type": "object",
+                    "type": ["null", "object"],
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": {
@@ -164,9 +168,12 @@ WHEEL_SCHEMA: Dict[str, Any] = {
                         },
                     },
                 },
-                "namespace_packages": {"type": "array", "items": {"type": "string"}},
-                "top_level": {"type": "array", "items": {"type": "string"}},
-                "zip_safe": {"type": "boolean"},
+                "namespace_packages": {
+                    "type": ["null", "array"],
+                    "items": {"type": "string"},
+                },
+                "top_level": {"type": ["null", "array"], "items": {"type": "string"}},
+                "zip_safe": {"type": ["null", "boolean"]},
             },
         },
         "derived": {

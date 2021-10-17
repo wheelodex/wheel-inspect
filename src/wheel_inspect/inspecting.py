@@ -9,11 +9,7 @@ from .util import (
     split_content_type,
     split_keywords,
     unique_projects,
-    yield_lines,
 )
-
-# <https://setuptools.pypa.io/en/latest/deprecated/python_eggs.html>
-EXTRA_DIST_INFO_FILES = ["dependency_links", "namespace_packages", "top_level"]
 
 
 def inspect(obj: DistInfoProvider, verify_files: bool = True) -> Dict[str, Any]:
@@ -66,20 +62,11 @@ def inspect(obj: DistInfoProvider, verify_files: bool = True) -> Dict[str, Any]:
                 "str": str(e),
             }
 
-        if obj.has_dist_info_file("entry_points.txt"):
-            about["dist_info"]["entry_points"] = for_json(obj.entry_points)
-
-        for key in EXTRA_DIST_INFO_FILES:
-            try:
-                with obj.open_dist_info_file(f"{key}.txt", encoding="utf-8") as fp:
-                    about["dist_info"][key] = list(yield_lines(fp))
-            except errors.MissingDistInfoFileError:
-                pass
-
-        if obj.has_dist_info_file("zip-safe"):
-            about["dist_info"]["zip_safe"] = True
-        elif obj.has_dist_info_file("not-zip-safe"):
-            about["dist_info"]["zip_safe"] = False
+        about["dist_info"]["entry_points"] = for_json(obj.entry_points)
+        about["dist_info"]["dependency_links"] = for_json(obj.dependency_links)
+        about["dist_info"]["namespace_packages"] = for_json(obj.namespace_packages)
+        about["dist_info"]["top_level"] = for_json(obj.top_level)
+        about["dist_info"]["zip_safe"] = obj.zip_safe
 
     else:
         metadata = {}

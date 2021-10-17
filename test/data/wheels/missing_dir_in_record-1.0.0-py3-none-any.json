@@ -46,7 +46,12 @@
                 "py3-none-any"
             ],
             "wheel_version": "1.0"
-        }
+        },
+        "dependency_links": null,
+        "entry_points": null,
+        "namespace_packages": null,
+        "top_level": null,
+        "zip_safe": null
     },
     "wheel_name": {
         "name": "missing_dir_in_record-1.0.0-py3-none-any.whl",

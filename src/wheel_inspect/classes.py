@@ -14,7 +14,13 @@ from . import errors as exc
 from .consts import AnyPath, PathType
 from .metadata import parse_metadata
 from .record import Record, RecordPath
-from .util import digest_file, find_special_dir, is_record_file, is_signature_file
+from .util import (
+    digest_file,
+    find_special_dir,
+    is_record_file,
+    is_signature_file,
+    yield_lines,
+)
 from .wheel_info import parse_wheel_info
 
 if sys.version_info[:2] >= (3, 8):
@@ -46,6 +52,10 @@ class DistInfoProvider(abc.ABC):
         self.record
         self.metadata
         self.entry_points
+        ### TODO: Should dependency_links, top_level, and namespace_packages
+        ### also be checked here?  The only way they could go wrong is if
+        ### they're not UTF-8.
+        ### What about zip_safe?
 
     @overload
     def open_dist_info_file(
@@ -111,12 +121,50 @@ class DistInfoProvider(abc.ABC):
             return parse_wheel_info(fp)
 
     @cached_property
-    def entry_points(self) -> EntryPointSet:
+    def entry_points(self) -> Optional[EntryPointSet]:
         try:
             with self.open_dist_info_file("entry_points.txt", encoding="utf-8") as fp:
                 return load_entry_points(fp)
         except exc.MissingDistInfoFileError:
-            return {}
+            return None
+
+    @property
+    def dependency_links(self) -> Optional[List[str]]:
+        try:
+            with self.open_dist_info_file(
+                "dependency_links.txt", encoding="utf-8"
+            ) as fp:
+                return list(yield_lines(fp))
+        except exc.MissingDistInfoFileError:
+            return None
+
+    @property
+    def namespace_packages(self) -> Optional[List[str]]:
+        try:
+            with self.open_dist_info_file(
+                "namespace_packages.txt", encoding="utf-8"
+            ) as fp:
+                return list(yield_lines(fp))
+        except exc.MissingDistInfoFileError:
+            return None
+
+    @property
+    def top_level(self) -> Optional[List[str]]:
+        try:
+            with self.open_dist_info_file("top_level.txt", encoding="utf-8") as fp:
+                return list(yield_lines(fp))
+        except exc.MissingDistInfoFileError:
+            return None
+
+    @property
+    def zip_safe(self) -> Optional[bool]:
+        ### TODO: What should happen if they're both present?
+        if self.has_dist_info_file("zip-safe"):
+            return True
+        elif self.has_dist_info_file("not-zip-safe"):
+            return False
+        else:
+            return None
 
 
 class FileProvider(abc.ABC):

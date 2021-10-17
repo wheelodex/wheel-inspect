@@ -143,7 +143,9 @@
             ],
             "wheel_version": "1.0"
         },
-        "zip_safe": true
+        "zip_safe": true,
+        "dependency_links": null,
+        "namespace_packages": null
     },
     "wheel_name": {
         "name": "gitgud2-2.1-py2.py3-none-any.whl",

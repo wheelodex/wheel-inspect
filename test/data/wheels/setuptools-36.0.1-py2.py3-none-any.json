@@ -789,7 +789,8 @@
                 "digest": "AbpHGcgLb-kRsJGnwFEktk7uzpZOCcBY74-YBdrKVGs",
                 "size": 1
             }
-        }
+        },
+        "namespace_packages": null
     },
     "derived": {
         "readme_renders": true,

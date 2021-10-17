@@ -26,6 +26,10 @@ v2.0.0 (in development)
     ``"wheel_name"`` subobject, and many of them have been renamed
   - ``DIST_INFO_SCHEMA`` has been eliminated;
     `~wheel_inspect.schema.WHEEL_SCHEMA` is now used for all inspection results
+  - The ``dependency_links``, ``entry_points``, ``namespace_packages``,
+    ``top_level``, and ``zip_safe`` properties of the ``dist_info`` object are
+    now ``null`` instead of absent if the respective files are absent from the
+    :file:`*.dist-info` directory.
 
 - :file:`RECORD` entries with negative sizes are now detected & errored on
   earlier

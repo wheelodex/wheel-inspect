@@ -137,7 +137,11 @@
                 "py3-none-any"
             ],
             "wheel_version": "1.0"
-        }
+        },
+        "dependency_links": null,
+        "entry_points": null,
+        "namespace_packages": null,
+        "zip_safe": null
     },
     "wheel_name": {
         "name": "SQLAlchemy_Fixture_Factory-1.0.0-py2.py3-none-any.whl",

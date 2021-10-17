@@ -132,7 +132,10 @@
                 "digest": "J2Q5xVa8BtnOTGxjqY2lKQRB22Ydn9JF2PirqDEKE_Y",
                 "size": 5
             }
-        }
+        },
+        "dependency_links": null,
+        "namespace_packages": null,
+        "zip_safe": null
     },
     "derived": {
         "readme_renders": true,

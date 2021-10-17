@@ -144,7 +144,11 @@
         },
         "top_level": [
             "txtble"
-        ]
+        ],
+        "dependency_links": null,
+        "entry_points": null,
+        "namespace_packages": null,
+        "zip_safe": null
     },
     "valid": false,
     "validation_error": {

@@ -1539,7 +1539,10 @@
                 "py3-none-any"
             ],
             "wheel_version": "1.0"
-        }
+        },
+        "entry_points": null,
+        "namespace_packages": null,
+        "zip_safe": null
     },
     "wheel_name": {
         "name": "appr-0.7.4-py2.py3-none-any.whl",

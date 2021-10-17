@@ -128,7 +128,9 @@
             ],
             "wheel_version": "1.0"
         },
-        "zip_safe": true
+        "zip_safe": true,
+        "dependency_links": null,
+        "namespace_packages": null
     },
     "wheel_name": {
         "name": "osx_tags-0.1.3-py3-none-any.whl",

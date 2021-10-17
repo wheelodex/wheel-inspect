@@ -33,10 +33,10 @@ v2.0.0 (in development)
 
 - :file:`RECORD` entries with negative sizes are now detected & errored on
   earlier
-- Gave `inspect_wheel()` a ``verify_files`` option for controlling verification
+- Gave `inspect_wheel()` a ``digest_files`` option for controlling verification
   of files' digests
 - Gave the CLI command a :option:`wheel2json
-  --verify-files`/:option:`wheel2json --no-verify-files` option for controlling
+  --digest-files`/:option:`wheel2json --no-digest-files` option for controlling
   verification of files' digests
 - :file:`RECORD` parsing now detects & errors when it encounters a file path
   that is also a parent path of another entry

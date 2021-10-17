@@ -361,7 +361,7 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
         ### self.record.dist_info_dirname?  Or should that be left to
         ### verification?
 
-    def verify_file(self, path: Union[str, RecordPath]) -> None:
+    def verify_file(self, path: Union[str, RecordPath], digest: bool = True) -> None:
         if isinstance(path, RecordPath):
             rpath = path
         else:
@@ -408,20 +408,21 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
                         record_size=filedata.size,
                         actual_size=size,
                     )
-                digest = self.get_file_digest(spath, filedata.algorithm)
-                if filedata.hex_digest != digest:
-                    raise exc.DigestMismatchError(
-                        path=spath,
-                        algorithm=filedata.algorithm,
-                        record_digest=filedata.hex_digest,
-                        actual_digest=digest,
-                    )
+                if digest:
+                    d = self.get_file_digest(spath, filedata.algorithm)
+                    if filedata.hex_digest != d:
+                        raise exc.DigestMismatchError(
+                            path=spath,
+                            algorithm=filedata.algorithm,
+                            record_digest=filedata.hex_digest,
+                            actual_digest=d,
+                        )
 
-    def verify(self) -> None:
+    def verify(self, digest: bool = True) -> None:
         ### TODO: Verify that all directories are present in RECORD
         files = set(self.list_files())
         for path in self.record:
-            self.verify_file(path)
+            self.verify_file(path, digest=digest)
             files.discard(path)
         # Check that the only files that aren't in RECORD are signatures:
         for path in files:

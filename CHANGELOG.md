@@ -24,9 +24,9 @@ v2.0.0 (in development)
       `null` instead of absent if the respective files are absent from the
       `*.dist-info` directory.
 - `RECORD` entries with negative sizes are now detected & errored on earlier
-- Gave `inspect_wheel()` a `verify_files` option for controlling verification
+- Gave `inspect_wheel()` a `digest_files` option for controlling verification
   of files' digests
-- Gave the CLI command a `--verify-files`/`--no-verify-files` option for
+- Gave the CLI command a `--digest-files`/`--no-digest-files` option for
   controlling verification of files' digests
 - `RECORD` parsing now detects & errors when it encounters a file path that is
   also a parent path of another entry

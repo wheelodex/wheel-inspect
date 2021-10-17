@@ -20,11 +20,11 @@ Options
 
 .. program:: wheel2json
 
-.. option:: --verify-files
+.. option:: --digest-files
 
-    Verify the sizes & digests of files listed inside wheels' :file:`RECORD`\s.
-    This is the default.
+    Verify the digests of files listed inside wheels' :file:`RECORD`\s.  This
+    is the default.
 
-.. option:: --no-verify-files
+.. option:: --no-digest-files
 
-    Do not verify files sizes & digests
+    Do not verify file digests

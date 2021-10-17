@@ -11,7 +11,7 @@ from . import errors
 from .consts import PathType
 from .mapping import AttrMapping
 from .path import Path
-from .util import find_special_dir, is_record_file
+from .util import filedata_is_optional, find_special_dir
 
 if sys.version_info[:2] >= (3, 8):
     from functools import cached_property
@@ -182,9 +182,8 @@ class Record(AttrMapping[str, Optional[FileData]]):
             if not fields:
                 continue
             path, data = cls.parse_row(fields)
-            if not path.endswith("/"):
-                if data is None and not is_record_file(path):
-                    raise errors.NullEntryError(path)
+            if data is None and not filedata_is_optional(path):
+                raise errors.NullEntryError(path)
             r._insert(path, data)
         return r
 

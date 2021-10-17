@@ -16,8 +16,8 @@ from .metadata import parse_metadata
 from .record import Record, RecordPath
 from .util import (
     digest_file,
+    filedata_is_optional,
     find_special_dir,
-    is_record_file,
     is_signature_file,
     yield_lines,
 )
@@ -398,7 +398,7 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
                     actual_type=ptype,
                 )
             elif filedata is None:
-                if not is_record_file(spath):
+                if not filedata_is_optional(spath):
                     raise exc.NullEntryError(spath)
             else:
                 size = self.get_file_size(spath)

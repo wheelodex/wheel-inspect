@@ -275,3 +275,7 @@ def is_signature_file(path: str) -> bool:
 
 def is_record_file(path: str) -> bool:
     return is_dist_info_path(path, "RECORD")
+
+
+def filedata_is_optional(path: str) -> bool:
+    return path.endswith("/") or is_record_file(path) or is_signature_file(path)

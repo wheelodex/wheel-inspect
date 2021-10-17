@@ -157,7 +157,8 @@ class RecordEntryLengthError(RecordEntryError):
 class NullEntryError(RecordEntryError):
     """
     Raised when an entry in a :file:`RECORD` file lacks both digest and size
-    and the entry is not for a directory or the :file:`RECORD` itself
+    and the entry is not for a directory, a signature file, or the
+    :file:`RECORD` itself
     """
 
     #: The path the entry is for

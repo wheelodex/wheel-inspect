@@ -153,6 +153,21 @@ class RecordPath(Path):
 class Record(AttrMapping[str, Optional[FileData]]):
     filetree: RecordPath = attr.Factory(RecordPath._mkroot)
 
+    def __getitem__(self, key: str) -> Optional[FileData]:
+        try:
+            return self.data[key]
+        except KeyError as e:
+            # Special casing so that directories can be looked up with &
+            # without the trailing slash
+            if key.endswith("/"):
+                raise e
+            try:
+                return self.data[key + "/"]
+            except KeyError:
+                # Use the original KeyError so that it reflects the `key`
+                # passed in by the user
+                raise e
+
     def __repr__(self) -> str:
         return f"{type(self).__name__}({self.data!r})"
 

@@ -289,6 +289,71 @@ class FileProvider(abc.ABC):
         """
         ...
 
+    def verify_record(self, record: Record, digest: bool = True) -> None:
+        ### TODO: Verify that all directories are present in RECORD
+        files = set(self.list_files())
+        for path in record:
+            self.verify_file(record.filetree / path, digest=digest)
+            files.discard(path)
+        # Check that the only files that aren't in RECORD are signatures:
+        for path in files:
+            if not is_signature_file(path):
+                raise exc.UnrecordedPathError(path)
+
+    def verify_file(self, path: RecordPath, digest: bool = True) -> None:
+        rpath = path  # For readability
+        spath = str(rpath)
+        filedata = rpath.filedata
+        if not rpath.exists():
+            if is_signature_file(spath):
+                pass
+            elif self.has_file(spath):
+                raise exc.UnrecordedPathError(spath)
+            elif self.has_directory(spath):
+                raise exc.UnrecordedPathError(spath + "/")
+        elif rpath.is_dir():
+            try:
+                ptype = self.get_path_type(spath)
+            except exc.NoSuchPathError:
+                raise exc.MissingPathError(spath + "/")
+            if ptype != PathType.DIRECTORY:
+                raise exc.PathTypeMismatchError(
+                    spath,
+                    record_type=PathType.DIRECTORY,
+                    actual_type=ptype,
+                )
+        else:
+            try:
+                ptype = self.get_path_type(spath)
+            except exc.NoSuchPathError:
+                raise exc.MissingPathError(spath)
+            if ptype != PathType.FILE:
+                raise exc.PathTypeMismatchError(
+                    spath,
+                    record_type=PathType.FILE,
+                    actual_type=ptype,
+                )
+            elif filedata is None:
+                if not filedata_is_optional(spath):
+                    raise exc.NullEntryError(spath)
+            else:
+                size = self.get_file_size(spath)
+                if filedata.size != size:
+                    raise exc.SizeMismatchError(
+                        path=spath,
+                        record_size=filedata.size,
+                        actual_size=size,
+                    )
+                if digest:
+                    d = self.get_file_digest(spath, filedata.algorithm)
+                    if filedata.hex_digest != d:
+                        raise exc.DigestMismatchError(
+                            path=spath,
+                            algorithm=filedata.algorithm,
+                            record_digest=filedata.hex_digest,
+                            actual_digest=d,
+                        )
+
 
 @attr.define
 class DistInfoDir(DistInfoProvider):
@@ -371,73 +436,13 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
         ### self.record.dist_info_dirname?  Or should that be left to
         ### verification?
 
-    def verify_file(self, path: Union[str, RecordPath], digest: bool = True) -> None:
-        if isinstance(path, RecordPath):
-            rpath = path
-        else:
-            rpath = self.record.filetree / path
-        spath = str(rpath)
-        filedata = rpath.filedata
-        if not rpath.exists():
-            if is_signature_file(spath):
-                pass
-            elif self.has_file(spath):
-                raise exc.UnrecordedPathError(spath)
-            elif self.has_directory(spath):
-                raise exc.UnrecordedPathError(spath + "/")
-        elif rpath.is_dir():
-            try:
-                ptype = self.get_path_type(spath)
-            except exc.NoSuchPathError:
-                raise exc.MissingPathError(spath + "/")
-            if ptype != PathType.DIRECTORY:
-                raise exc.PathTypeMismatchError(
-                    spath,
-                    record_type=PathType.DIRECTORY,
-                    actual_type=ptype,
-                )
-        else:
-            try:
-                ptype = self.get_path_type(spath)
-            except exc.NoSuchPathError:
-                raise exc.MissingPathError(spath)
-            if ptype != PathType.FILE:
-                raise exc.PathTypeMismatchError(
-                    spath,
-                    record_type=PathType.FILE,
-                    actual_type=ptype,
-                )
-            elif filedata is None:
-                if not filedata_is_optional(spath):
-                    raise exc.NullEntryError(spath)
-            else:
-                size = self.get_file_size(spath)
-                if filedata.size != size:
-                    raise exc.SizeMismatchError(
-                        path=spath,
-                        record_size=filedata.size,
-                        actual_size=size,
-                    )
-                if digest:
-                    d = self.get_file_digest(spath, filedata.algorithm)
-                    if filedata.hex_digest != d:
-                        raise exc.DigestMismatchError(
-                            path=spath,
-                            algorithm=filedata.algorithm,
-                            record_digest=filedata.hex_digest,
-                            actual_digest=d,
-                        )
-
     def verify(self, digest: bool = True) -> None:
-        ### TODO: Verify that all directories are present in RECORD
-        files = set(self.list_files())
-        for path in self.record:
-            self.verify_file(path, digest=digest)
-            files.discard(path)
-        # Check that the only files that aren't in RECORD are signatures:
-        for path in files:
-            if not is_signature_file(path):
-                raise exc.UnrecordedPathError(path)
+        self.verify_record(self.record, digest=digest)
+
+    def verify_file(self, path: Union[str, RecordPath], digest: bool = True) -> None:
+        if not isinstance(path, RecordPath):
+            path = self.record.filetree / path
+        super().verify_file(path, digest=digest)
 
 
 @attr.define

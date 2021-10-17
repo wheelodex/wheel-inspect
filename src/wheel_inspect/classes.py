@@ -91,7 +91,7 @@ class DistInfoProvider(abc.ABC):
         ``encoding`` is `None`, the handle is a binary handle; otherwise, it is
         a text handle decoded using the given encoding.
 
-        :raises MissingDistInfoFileError: if the given file does not exist
+        :raises NoSuchPathError: if the given file does not exist
         """
         ...
 
@@ -105,27 +105,36 @@ class DistInfoProvider(abc.ABC):
 
     @cached_property
     def metadata(self) -> Dict[str, Any]:
-        with self.open_dist_info_file("METADATA", encoding="utf-8") as fp:
-            return parse_metadata(fp)
+        try:
+            with self.open_dist_info_file("METADATA", encoding="utf-8") as fp:
+                return parse_metadata(fp)
+        except exc.NoSuchPathError:
+            raise exc.MissingDistInfoFileError("METADATA")
 
     @cached_property
     def record(self) -> Record:
-        with self.open_dist_info_file("RECORD", encoding="utf-8", newline="") as fp:
-            # The csv module requires this file to be opened with
-            # `newline=''`
-            return Record.load(fp)
+        try:
+            with self.open_dist_info_file("RECORD", encoding="utf-8", newline="") as fp:
+                # The csv module requires this file to be opened with
+                # `newline=''`
+                return Record.load(fp)
+        except exc.NoSuchPathError:
+            raise exc.MissingDistInfoFileError("RECORD")
 
     @cached_property
     def wheel_info(self) -> Dict[str, Any]:
-        with self.open_dist_info_file("WHEEL", encoding="utf-8") as fp:
-            return parse_wheel_info(fp)
+        try:
+            with self.open_dist_info_file("WHEEL", encoding="utf-8") as fp:
+                return parse_wheel_info(fp)
+        except exc.NoSuchPathError:
+            raise exc.MissingDistInfoFileError("WHEEL")
 
     @cached_property
     def entry_points(self) -> Optional[EntryPointSet]:
         try:
             with self.open_dist_info_file("entry_points.txt", encoding="utf-8") as fp:
                 return load_entry_points(fp)
-        except exc.MissingDistInfoFileError:
+        except exc.NoSuchPathError:
             return None
 
     @property
@@ -135,7 +144,7 @@ class DistInfoProvider(abc.ABC):
                 "dependency_links.txt", encoding="utf-8"
             ) as fp:
                 return list(yield_lines(fp))
-        except exc.MissingDistInfoFileError:
+        except exc.NoSuchPathError:
             return None
 
     @property
@@ -145,7 +154,7 @@ class DistInfoProvider(abc.ABC):
                 "namespace_packages.txt", encoding="utf-8"
             ) as fp:
                 return list(yield_lines(fp))
-        except exc.MissingDistInfoFileError:
+        except exc.NoSuchPathError:
             return None
 
     @property
@@ -153,7 +162,7 @@ class DistInfoProvider(abc.ABC):
         try:
             with self.open_dist_info_file("top_level.txt", encoding="utf-8") as fp:
                 return list(yield_lines(fp))
-        except exc.MissingDistInfoFileError:
+        except exc.NoSuchPathError:
             return None
 
     @property
@@ -319,7 +328,7 @@ class DistInfoDir(DistInfoProvider):
                     "r", encoding=encoding, errors=errors, newline=newline
                 )
         except FileNotFoundError:
-            raise exc.MissingDistInfoFileError(path)
+            raise exc.NoSuchPathError(path)
 
     def has_dist_info_file(self, path: str) -> bool:
         return (self.path / path).exists()
@@ -508,15 +517,12 @@ class WheelFile(BackedDistInfo):
         errors: Optional[str] = None,
         newline: Optional[str] = None,
     ) -> IO:
-        try:
-            return self.open(
-                self.dist_info_dirname + "/" + path,
-                encoding=encoding,
-                errors=errors,
-                newline=newline,
-            )
-        except exc.NoSuchPathError:
-            raise exc.MissingDistInfoFileError(path)
+        return self.open(
+            self.dist_info_dirname + "/" + path,
+            encoding=encoding,
+            errors=errors,
+            newline=newline,
+        )
 
     def get_path_type(self, path: str) -> PathType:
         # We can't get the path type from zipfile.getinfo(), as that errors for

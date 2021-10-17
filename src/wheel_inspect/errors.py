@@ -351,17 +351,18 @@ class SpecialDirError(ValidationError):
 
 
 @attr.define
-class MissingDistInfoFileError(WheelError):
+class MissingDistInfoFileError(ValidationError):
     """
-    Raised when a given file is not found in the a :file:`*.dist-info`
+    Raised when a required file is absent from the :file:`*.dist-info`
     directory
     """
 
-    #: The path to the file, relative to the :file:`*.dist-info` directory
+    #: The path to the missing file, relative to the :file:`*.dist-info`
+    #: directory
     path: str
 
     def __str__(self) -> str:
-        return f"File not found in *.dist-info directory: {self.path!r}"
+        return f"Required file not present in *.dist-info directory: {self.path!r}"
 
 
 @attr.define

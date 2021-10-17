@@ -404,6 +404,8 @@ class DistInfoDir(DistInfoProvider):
             )
         except FileNotFoundError:
             raise exc.NoSuchPathError(path)
+        except IsADirectoryError:
+            raise exc.NotFileError(path)
 
     def has_dist_info_file(self, path: str) -> bool:
         return (self.path / path).exists()
@@ -581,9 +583,12 @@ class WheelFile(BackedDistInfo):
 
     def get_file_size(self, path: str) -> int:
         try:
-            return self.zipfile.getinfo(path).file_size
+            zi = self.zipfile.getinfo(path)
         except KeyError:
             raise exc.NoSuchPathError(path)
+        if zi.is_dir():
+            raise exc.NotFileError(path)
+        return zi.file_size
 
     @overload
     def open(
@@ -622,6 +627,8 @@ class WheelFile(BackedDistInfo):
             zi = self.zipfile.getinfo(path)
         except KeyError:
             raise exc.NoSuchPathError(path)
+        if zi.is_dir():
+            raise exc.NotFileError(path)
         fp = self.zipfile.open(zi)
         if mode == "r":
             return io.TextIOWrapper(

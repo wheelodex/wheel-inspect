@@ -389,3 +389,14 @@ class NotDirectoryError(Error):
 
     def __str__(self) -> str:
         return f"Not a directory: {self.path!r}"
+
+
+@attr.define
+class NotFileError(Error):
+    """Raised when a file-specific operation is attempted on a directory path"""
+
+    #: The path to the directory operated on
+    path: str
+
+    def __str__(self) -> str:
+        return f"Not a file: {self.path!r}"

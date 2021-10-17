@@ -11,18 +11,23 @@ class Error(Exception):
 
 class WheelError(Error):
     """
-    Superclass for all wheel and/or :file:`*.dist-info` validation errors
-    raised by this package
+    Superclass for all validation & verification errors raised by this package
     """
 
     pass
 
 
+class ValidationError(WheelError):
+    """Superclass for all validation errors raised by this package"""
+
+    pass
+
+
 @attr.define
-class RecordVerificationError(WheelError):
+class VerificationError(WheelError):
     """
     Superclass for all verification errors raised due to a :file:`RECORD` file
-    not matching the actual file
+    not matching the backing files
     """
 
     #: The path that failed verification
@@ -30,7 +35,7 @@ class RecordVerificationError(WheelError):
 
 
 @attr.define
-class PathTypeMismatchError(RecordVerificationError):
+class PathTypeMismatchError(VerificationError):
     """
     Raised when the type of a path as declared in a :file:`RECORD` file does
     not match the type of the actual path
@@ -47,7 +52,7 @@ class PathTypeMismatchError(RecordVerificationError):
 
 
 @attr.define
-class SizeMismatchError(RecordVerificationError):
+class SizeMismatchError(VerificationError):
     """
     Raised when the size of a file as declared in a :file:`RECORD` file does
     not match the file's actual size
@@ -66,7 +71,7 @@ class SizeMismatchError(RecordVerificationError):
 
 
 @attr.define
-class DigestMismatchError(RecordVerificationError):
+class DigestMismatchError(VerificationError):
     """
     Raised when a file's digest as declared in a :file:`RECORD` file does not
     match the file's actual digest
@@ -87,7 +92,7 @@ class DigestMismatchError(RecordVerificationError):
 
 
 @attr.define
-class MissingPathError(RecordVerificationError):
+class MissingPathError(VerificationError):
     """
     Raised when a path listed in a :file:`RECORD` file is not found in the
     backing
@@ -98,7 +103,7 @@ class MissingPathError(RecordVerificationError):
 
 
 @attr.define
-class UnrecordedPathError(RecordVerificationError):
+class UnrecordedPathError(VerificationError):
     """
     Raised when a backing contains a path that is not listed in the
     :file:`RECORD` (other than :file:`RECORD.jws` and :file:`RECORD.p7s`)
@@ -108,7 +113,7 @@ class UnrecordedPathError(RecordVerificationError):
         return f"Path not declared in RECORD: {self.path!r}"
 
 
-class RecordError(WheelError):
+class RecordError(ValidationError):
     """
     Superclass for all validation errors raised due to a :file:`RECORD` file
     being malformed
@@ -336,7 +341,7 @@ class RecordConflictError(RecordError):
         return f"RECORD contains multiple conflicting entries for {self.path!r}"
 
 
-class SpecialDirError(WheelError):
+class SpecialDirError(ValidationError):
     """
     Raised when a wheel's :file:`*.dist-info` or :file:`*.data` directory
     cannot be found or determined

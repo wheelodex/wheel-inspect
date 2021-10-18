@@ -21,6 +21,7 @@ from .classes import (
     FileProvider,
     WheelFile,
 )
+from .consts import PathType, Tree
 from .inspecting import inspect, inspect_dist_info_dir, inspect_wheel
 from .schema import WHEEL_SCHEMA
 
@@ -35,6 +36,8 @@ __all__ = [
     "DistInfoDir",
     "DistInfoProvider",
     "FileProvider",
+    "PathType",
+    "Tree",
     "WHEEL_SCHEMA",
     "WheelFile",
     "inspect",

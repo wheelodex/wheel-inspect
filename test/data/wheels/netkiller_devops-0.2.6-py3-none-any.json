@@ -1,0 +1,291 @@
+{
+    "derived": {
+        "dependencies": [
+            "pyttsx3",
+            "pyyaml",
+            "redis",
+            "requests"
+        ],
+        "description_in_body": true,
+        "description_in_headers": false,
+        "keyword_separator": null,
+        "keywords": [],
+        "modules": [
+            "netkiller",
+            "netkiller.docker",
+            "netkiller.git",
+            "netkiller.kubernetes",
+            "netkiller.nagios",
+            "netkiller.rsync",
+            "netkiller.wework",
+            "netkiller.whiptail"
+        ],
+        "readme_renders": true
+    },
+    "dist_info": {
+        "dependency_links": null,
+        "entry_points": null,
+        "metadata": {
+            "author": "Neo Chen",
+            "author_email": "netkiller@msn.com",
+            "classifier": [
+                "Development Status :: 5 - Production/Stable",
+                "Environment :: Console",
+                "Programming Language :: Python :: 3",
+                "License :: OSI Approved :: MIT License",
+                "Operating System :: OS Independent"
+            ],
+            "description": {
+                "length": 1187
+            },
+            "description_content_type": "text/markdown",
+            "home_page": "https://github.com/oscm/devops",
+            "license": "BSD",
+            "license_file": [
+                "LICENSE"
+            ],
+            "metadata_version": "2.1",
+            "name": "netkiller-devops",
+            "platform": [],
+            "requires_dist": [
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "pyyaml",
+                    "specifier": "",
+                    "url": null
+                },
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "requests",
+                    "specifier": "",
+                    "url": null
+                },
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "redis",
+                    "specifier": "",
+                    "url": null
+                },
+                {
+                    "extras": [],
+                    "marker": null,
+                    "name": "pyttsx3",
+                    "specifier": "",
+                    "url": null
+                }
+            ],
+            "summary": "DevOps of useful deployment and automation",
+            "version": "0.2.6"
+        },
+        "namespace_packages": null,
+        "record": {
+            "netkiller/__init__.py": {
+                "algorithm": "sha256",
+                "digest": "4KCG6HW6TFtOVNi6qv2avEnqWto9dGgvRrT78R1aq0c",
+                "size": 71
+            },
+            "netkiller/docker.py": {
+                "algorithm": "sha256",
+                "digest": "P85q3d2HZhLtgPmcGWI-AJ-SCW9-OhqHeSq_7M56uWU",
+                "size": 13172
+            },
+            "netkiller/git.py": {
+                "algorithm": "sha256",
+                "digest": "q4qe2bJ4VVDWf8957CXluW7sZ2vInIP6h9b2j0v8gHo",
+                "size": 2141
+            },
+            "netkiller/kubernetes.py": {
+                "algorithm": "sha256",
+                "digest": "DcysaMKfFuvgmVvFA0bHcxlAr3vJh3cGgQMiFAAoNJM",
+                "size": 4948
+            },
+            "netkiller/nagios.py": {
+                "algorithm": "sha256",
+                "digest": "sQDdYARGDL_RqO-5TXbrQgI4S38Ql9oVCM5KAuEIbAs",
+                "size": 2195
+            },
+            "netkiller/rsync.py": {
+                "algorithm": "sha256",
+                "digest": "a9gq01Esaehi-OmWzhJtmLTKBCC-EWvSNpQHUTpALa4",
+                "size": 1705
+            },
+            "netkiller/wework.py": {
+                "algorithm": "sha256",
+                "digest": "7sUMxYtO8dEnoYdDJRJwh5q6JCU4VDGPIheFEb5QL8M",
+                "size": 1786
+            },
+            "netkiller/whiptail.py": {
+                "algorithm": "sha256",
+                "digest": "XtI4KaFYCt7KOOCiFkn7KzAVAEtUmc6E5LTWe3AVrxM",
+                "size": 2320
+            },
+            "netkiller_devops-0.2.6.data/data/etc/deployment.cfg": {
+                "algorithm": "sha256",
+                "digest": "k32CGZi-S_2uZq-hXeqhJkX9KwPGhapgKwgzbLMPbjc",
+                "size": 336
+            },
+            "netkiller_devops-0.2.6.data/data/etc/notification.ini": {
+                "algorithm": "sha256",
+                "digest": "pMXnBoDcxvL46X4dDTps4_-wc3PZgzeXyFM-YGmDdek",
+                "size": 87
+            },
+            "netkiller_devops-0.2.6.data/data/etc/os.ini": {
+                "algorithm": "sha256",
+                "digest": "xypYUmck9pV4R16eYcY3bHlAh2MufJ6vAmUYp9GZtog",
+                "size": 218
+            },
+            "netkiller_devops-0.2.6.data/data/etc/schedule.cfg": {
+                "algorithm": "sha256",
+                "digest": "CWNUKAv6Wqijj1hIxn9Wn1UfmGOH6VkK2QRcsDbJCZk",
+                "size": 125
+            },
+            "netkiller_devops-0.2.6.data/data/etc/task.cfg": {
+                "algorithm": "sha256",
+                "digest": "-OzNjkUrBTc5SjUeNJpOp69xTgyIxWGWldyvQadjZfM",
+                "size": 1117
+            },
+            "netkiller_devops-0.2.6.data/data/libexec/devops/backup.mysql.gpg.sh": {
+                "algorithm": "sha256",
+                "digest": "o7L6mRl41TJoHMF60wqFe7T_b6iEtZrAk8rl9YkFDLw",
+                "size": 1500
+            },
+            "netkiller_devops-0.2.6.data/data/libexec/devops/backup.mysql.sh": {
+                "algorithm": "sha256",
+                "digest": "yNOF31crnVm98X7Uj55Z6nZCwulZgAIEZ0KIuIS-LDU",
+                "size": 1412
+            },
+            "netkiller_devops-0.2.6.data/data/libexec/devops/backup.mysql.struct.sh": {
+                "algorithm": "sha256",
+                "digest": "9zpuRbtjlzqxYUrLsuqDhHkuRGXw2vhjwO6lhiTRpSQ",
+                "size": 2382
+            },
+            "netkiller_devops-0.2.6.data/data/share/devops.sh": {
+                "algorithm": "sha256",
+                "digest": "dXC19mPiuUDTlqpTRsMfB-Z9DqKytMPBMQ2dYSDxsRU",
+                "size": 34
+            },
+            "netkiller_devops-0.2.6.data/data/share/devops/voice.md": {
+                "algorithm": "sha256",
+                "digest": "zyQ-QttBwpVG5-nH8dy1ShHgc0YaH89325d9yzJerM4",
+                "size": 1130
+            },
+            "netkiller_devops-0.2.6.data/data/share/devops/wechat.md": {
+                "algorithm": "sha256",
+                "digest": "KEcZD5yAnyQGVgtyUmYIKli7CGFtSGgkiHakADtNKA8",
+                "size": 769
+            },
+            "netkiller_devops-0.2.6.data/data/share/example.com.ini": {
+                "algorithm": "sha256",
+                "digest": "bnlEqLzGNHhN6y3EHTKO0bOXHVoM5KcT2M5shznfdnE",
+                "size": 1121
+            },
+            "netkiller_devops-0.2.6.data/scripts/backup": {
+                "algorithm": "sha256",
+                "digest": "e7yAF3uiCebWkzs_LPNIEvHbiYTKjVMjb4A5htZIDf4",
+                "size": 8161
+            },
+            "netkiller_devops-0.2.6.data/scripts/chpasswd.sh": {
+                "algorithm": "sha256",
+                "digest": "y5Z_Q9wcIBK4HqwWrgCC7PpG3h57N-_Z1VPR-TxBfcU",
+                "size": 512
+            },
+            "netkiller_devops-0.2.6.data/scripts/deployment": {
+                "algorithm": "sha256",
+                "digest": "Vok_C5PXv1yLTE2Q9xuwD-c7rZ3Rddl6-vWGVp2TqM4",
+                "size": 18030
+            },
+            "netkiller_devops-0.2.6.data/scripts/gitsync": {
+                "algorithm": "sha256",
+                "digest": "XKmCZI9u0e9vohhVc2X9WJqtHBRSnRi-2n7PrYgF1BE",
+                "size": 1929
+            },
+            "netkiller_devops-0.2.6.data/scripts/lrsync": {
+                "algorithm": "sha256",
+                "digest": "5iiObQMndPhQAjFzZj5kpz6IAyMk3ELbETjwzNTa7zk",
+                "size": 3080
+            },
+            "netkiller_devops-0.2.6.data/scripts/matrixpasswd": {
+                "algorithm": "sha256",
+                "digest": "ELwngk6mC_B_6t3mHZFZqQKa_8xFCdhxAZ-QO228pUE",
+                "size": 60
+            },
+            "netkiller_devops-0.2.6.data/scripts/mysqlshell": {
+                "algorithm": "sha256",
+                "digest": "4AME6QiQfPIX5FbFAxF4EZKO_2mCWrJmohXsEcuyKso",
+                "size": 5103
+            },
+            "netkiller_devops-0.2.6.data/scripts/osconf": {
+                "algorithm": "sha256",
+                "digest": "MCEjw3zLzM0UwA0DRnRhvXEOGxgyFuQdqrCCO1N8WFo",
+                "size": 9457
+            },
+            "netkiller_devops-0.2.6.data/scripts/randpasswd": {
+                "algorithm": "sha256",
+                "digest": "QjHu62b9f5-O3hCdDiUT587PRp1jcim_SYeVugdV6js",
+                "size": 48
+            },
+            "netkiller_devops-0.2.6.data/scripts/voice": {
+                "algorithm": "sha256",
+                "digest": "2NMFNmrnQ7K8H8LnX8ZrQ7xqPneNgiLkImmqzHvtmWk",
+                "size": 3848
+            },
+            "netkiller_devops-0.2.6.data/scripts/wechat": {
+                "algorithm": "sha256",
+                "digest": "4nZKunqD81RuFYe52fIkYa4TTCmoNAV0qyAkq23N9lo",
+                "size": 1889
+            },
+            "netkiller_devops-0.2.6.dist-info/LICENSE": {
+                "algorithm": "sha256",
+                "digest": "_RRcNTcT56nDkrSN1nRI9nWzMpBeEBrYTn4fnHh6Wkw",
+                "size": 1081
+            },
+            "netkiller_devops-0.2.6.dist-info/METADATA": {
+                "algorithm": "sha256",
+                "digest": "iOHoc6dUwMYsd88rNm7A36lu-2nnE3WyzWW2Aw8GAwg",
+                "size": 1825
+            },
+            "netkiller_devops-0.2.6.dist-info/RECORD": null,
+            "netkiller_devops-0.2.6.dist-info/WHEEL": {
+                "algorithm": "sha256",
+                "digest": "ewwEueio1C2XeHTvT17n8dZUJgOvyCWCt0WVNLClP9o",
+                "size": 92
+            },
+            "netkiller_devops-0.2.6.dist-info/top_level.txt": {
+                "algorithm": "sha256",
+                "digest": "43lHmF7KzdqgcxA6_yrYmSQOg8YXBGeCRbt7xtHPF-g",
+                "size": 10
+            }
+        },
+        "top_level": [
+            "netkiller"
+        ],
+        "wheel": {
+            "generator": "bdist_wheel (0.37.0)",
+            "root_is_purelib": true,
+            "tag": [
+                "py3-none-any"
+            ],
+            "wheel_version": "1.0"
+        },
+        "zip_safe": null
+    },
+    "valid": true,
+    "wheel_name": {
+        "abi_tags": [
+            "none"
+        ],
+        "build": null,
+        "name": "netkiller_devops-0.2.6-py3-none-any.whl",
+        "platform_tags": [
+            "any"
+        ],
+        "project": "netkiller_devops",
+        "python_tags": [
+            "py3"
+        ],
+        "version": "0.2.6"
+    }
+}

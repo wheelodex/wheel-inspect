@@ -101,6 +101,28 @@ class RecordPath(Path):
             else:
                 raise errors.RecordConflictError(str(n))
 
+    def _prune(self, names: List[str]) -> RecordPath:
+        if not self.is_dir():
+            raise TypeError("Cannot prune a non-directory")
+        assert self._children is not None
+        pruned = self._children.copy()
+        for n in names:
+            pruned.pop(n, None)
+        newdir = attr.evolve(self, children=pruned)
+        newdir._adopt()
+        return newdir
+
+    def _adopt(self) -> None:
+        if not self.is_dir():
+            raise TypeError("Non-directories cannot adopt")
+        assert self._children is not None
+        self._children = {
+            k: attr.evolve(v, parent=self) for k, v in self._children.items()
+        }
+        for v in self._children.values():
+            if v.is_dir():
+                v._adopt()
+
     @property
     def parent(self) -> RecordPath:
         return self._parent if self._parent is not None else self

@@ -19,8 +19,11 @@ class Path(abc.ABC):
 
     @property
     def name(self) -> str:
-        # Returns "" for the root of a filetree
-        return (("",) + self.parts)[-1]
+        if self.is_root():
+            return ""
+        else:
+            assert self.parts
+            return self.parts[-1]
 
     @abc.abstractmethod
     def get_subpath(self: P, name: str) -> P:

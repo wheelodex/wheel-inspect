@@ -1,19 +1,34 @@
 from __future__ import annotations
 import abc
-import io
+from io import TextIOWrapper
 import os
-from pathlib import Path
+import pathlib
 import sys
-from typing import IO, Any, Dict, List, Optional, Set, TextIO, TypeVar, Union, overload
+from typing import (
+    IO,
+    Any,
+    Dict,
+    Iterator,
+    List,
+    Mapping,
+    Optional,
+    Set,
+    TextIO,
+    Tuple,
+    TypeVar,
+    Union,
+    overload,
+)
 from zipfile import ZipFile
 import attr
 from entry_points_txt import EntryPointSet
 from entry_points_txt import load as load_entry_points
 from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from . import errors as exc
-from .consts import AnyPath, PathType
+from .consts import AnyPath, PathType, Tree
 from .metadata import parse_metadata
-from .record import Record, RecordPath
+from .path import Path
+from .record import FileData, Record, RecordPath
 from .util import (
     digest_file,
     filedata_is_optional,
@@ -31,7 +46,11 @@ else:
     from typing_extensions import Literal
 
 
+FiletreeID = Union[Tree, str]  # str = folder under .data
+
 T = TypeVar("T", bound="DistInfoProvider")
+
+P = TypeVar("P", bound="TreePath")
 
 
 @attr.define(slots=False)  # slots=False so that cached_property works
@@ -182,6 +201,12 @@ class DistInfoProvider(abc.ABC):
         else:
             return None
 
+    @cached_property
+    def filetrees(self) -> FiletreeMapping:
+        return FiletreeMapping(
+            record=self.record, root_is_purelib=self.wheel_info["root_is_purelib"]
+        )
+
 
 class FileProvider(abc.ABC):
     @abc.abstractmethod
@@ -253,7 +278,7 @@ class FileProvider(abc.ABC):
     @overload
     def open(
         self,
-        path: Union[str, RecordPath],
+        path: Union[str, RecordPath, TreePath],
         mode: Literal["r"] = "r",
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
@@ -264,7 +289,7 @@ class FileProvider(abc.ABC):
     @overload
     def open(
         self,
-        path: Union[str, RecordPath],
+        path: Union[str, RecordPath, TreePath],
         mode: Literal["rb"],
         encoding: None = None,
         errors: None = None,
@@ -275,7 +300,7 @@ class FileProvider(abc.ABC):
     @abc.abstractmethod
     def open(
         self,
-        path: Union[str, RecordPath],
+        path: Union[str, RecordPath, TreePath],
         mode: Literal["r", "rb"] = "r",
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
@@ -301,7 +326,9 @@ class FileProvider(abc.ABC):
             if not is_signature_file(path):
                 raise exc.UnrecordedPathError(path)
 
-    def verify_file(self, path: RecordPath, digest: bool = True) -> None:
+    def verify_file(
+        self, path: Union[RecordPath, TreePath], digest: bool = True
+    ) -> None:
         rpath = path  # For readability
         spath = str(rpath)
         filedata = rpath.filedata
@@ -367,11 +394,11 @@ class FileProvider(abc.ABC):
 
 @attr.define
 class DistInfoDir(DistInfoProvider):
-    path: Path
+    path: pathlib.Path
 
     @classmethod
     def from_path(cls, path: AnyPath, strict: bool = True) -> DistInfoDir:
-        d = cls(Path(os.fsdecode(path)))
+        d = cls(pathlib.Path(os.fsdecode(path)))
         if strict:
             d.validate()
         return d
@@ -437,6 +464,14 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
     def data_dirname(self) -> Optional[str]:
         return self.record.data_dirname
 
+    @cached_property
+    def filetrees(self) -> BackedFiletreeMapping:
+        return BackedFiletreeMapping(
+            record=self.record,
+            root_is_purelib=self.wheel_info["root_is_purelib"],
+            backing=self,
+        )
+
     def has_dist_info_file(self, path: str) -> bool:
         return self.has_file(self.dist_info_dirname + "/" + path)
 
@@ -451,8 +486,10 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
     def verify(self, digest: bool = True) -> None:
         self.verify_record(self.record, digest=digest)
 
-    def verify_file(self, path: Union[str, RecordPath], digest: bool = True) -> None:
-        if not isinstance(path, RecordPath):
+    def verify_file(
+        self, path: Union[str, RecordPath, TreePath], digest: bool = True
+    ) -> None:
+        if isinstance(path, str):
             path = self.record.filetree / path
         super().verify_file(path, digest=digest)
 
@@ -467,7 +504,7 @@ class WheelFile(BackedDistInfo):
 
     @classmethod
     def from_path(cls, path: AnyPath, strict: bool = True) -> WheelFile:
-        p = Path(os.fsdecode(path))
+        p = pathlib.Path(os.fsdecode(path))
         return cls.from_file(p.open("rb"), path=p, strict=strict)
 
     @classmethod
@@ -603,7 +640,7 @@ class WheelFile(BackedDistInfo):
     @overload
     def open(
         self,
-        path: Union[str, RecordPath],
+        path: Union[str, RecordPath, TreePath],
         mode: Literal["r"] = "r",
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
@@ -614,7 +651,7 @@ class WheelFile(BackedDistInfo):
     @overload
     def open(
         self,
-        path: Union[str, RecordPath],
+        path: Union[str, RecordPath, TreePath],
         mode: Literal["rb"],
         encoding: None = None,
         errors: None = None,
@@ -624,7 +661,7 @@ class WheelFile(BackedDistInfo):
 
     def open(
         self,
-        path: Union[str, RecordPath],
+        path: Union[str, RecordPath, TreePath],
         mode: Literal["r", "rb"] = "r",
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
@@ -647,8 +684,248 @@ class WheelFile(BackedDistInfo):
             raise exc.NotFileError(path)
         fp = self.zipfile.open(zi)
         if mode == "r":
-            return io.TextIOWrapper(
-                fp, encoding=encoding, errors=errors, newline=newline
-            )
+            return TextIOWrapper(fp, encoding=encoding, errors=errors, newline=newline)
         else:
             return fp
+
+
+@attr.define
+class TreePath(Path):
+    # .parts and str() contain the full path from the root of the wheel, not
+    # from the root of the filetree
+
+    tree_id: FiletreeID
+
+    # For ROOT/<root>lib, this is pruned of the .dist-info and .data trees
+    _record_path: RecordPath
+
+    # How many leading path components to strip from .path to get the parts
+    # relative to the root of the filetree
+    _root_depth: int
+
+    def __repr__(self) -> str:
+        if isinstance(self.tree_id, Tree):
+            tree = str(self.tree_id)
+        else:
+            tree = repr(self.tree_id)
+        return f"{type(self).__name__}({str(self)!r}, tree_id={tree})"
+
+    @property
+    def filedata(self) -> Optional[FileData]:
+        return self._record_path.filedata
+
+    @property
+    def relative_parts(self) -> Tuple[str, ...]:
+        # Relative to the root of the tree
+        return self.parts[self._root_depth :]
+
+    @property
+    def relative_path(self) -> str:
+        # Relative to the root of the tree
+        return "/".join(self.relative_parts)
+
+    def get_subpath(self: P, name: str) -> P:
+        if self.is_file():
+            raise exc.NotDirectoryError(str(self))
+        elif name == ".":
+            return self
+        elif name == "..":
+            return self.parent
+        else:
+            subnode = self._record_path / name
+            return attr.evolve(self, parts=subnode.parts, record_path=subnode)
+
+    @property
+    def parent(self: P) -> P:
+        if self.is_root():
+            return self
+        else:
+            supernode = self._record_path.parent
+            return attr.evolve(self, parts=supernode.parts, record_path=supernode)
+
+    def is_root(self) -> bool:
+        # Detects whether we're at the root of the filetree
+        return len(self.parts) == self._root_depth
+
+    @property
+    def path_type(self) -> PathType:
+        return self._record_path.path_type
+
+    def exists(self) -> bool:
+        return self._record_path.exists()
+
+    def is_file(self) -> bool:
+        return self._record_path.is_file()
+
+    def is_dir(self) -> bool:
+        return self._record_path.is_dir()
+
+    def iterdir(self: P) -> Iterator[P]:
+        for n in self._record_path.iterdir():
+            yield attr.evolve(self, parts=n.parts, record_path=n)
+
+
+# Need to be explicit because we're inheriting a __repr__:
+@attr.define(repr=False)
+class BackedTreePath(TreePath):
+    backing: BackedDistInfo
+
+    @overload
+    def open(
+        self,
+        mode: Literal["r"] = "r",
+        encoding: Optional[str] = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> TextIO:
+        ...
+
+    @overload
+    def open(
+        self,
+        mode: Literal["rb"],
+        encoding: None = None,
+        errors: None = None,
+        newline: None = None,
+    ) -> IO[bytes]:
+        ...
+
+    def open(
+        self,
+        mode: Literal["r", "rb"] = "r",
+        encoding: Optional[str] = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> IO:
+        if mode not in ("r", "rb"):
+            raise ValueError(f"Unsupported file mode: {mode!r}")
+        if mode == "r":
+            return self.backing.open(
+                self,
+                mode=mode,
+                encoding=encoding,
+                errors=errors,
+                newline=newline,
+            )
+        else:
+            return self.backing.open(self, mode=mode)
+
+    def read_bytes(self) -> bytes:
+        with self.open("rb") as fp:
+            return fp.read()
+
+    def read_text(
+        self, encoding: Optional[str] = None, errors: Optional[str] = None
+    ) -> str:
+        with self.open("r", encoding=encoding, errors=errors) as fp:
+            return fp.read()
+
+    def verify(self, digest: bool = True) -> None:
+        if not self.exists():
+            ### TODO: Replace this with a different exception:
+            raise exc.NoSuchPathError(str(self))
+        else:
+            self.backing.verify_file(self._record_path, digest=digest)
+
+
+@attr.define
+class FiletreeMapping(Mapping[FiletreeID, TreePath]):
+    record: Record
+    root_is_purelib: bool
+    _cache: Dict[FiletreeID, TreePath] = attr.field(factory=dict, init=False)
+
+    # When root-is-purelib, Tree.PLATLIB and "platlib" are the same (because
+    # the latter just accesses the *.data subdir of that name), but "purelib"
+    # does not exist (unless the wheel actually has a *.data/purelib directory)
+    def __getitem__(self, key: FiletreeID) -> TreePath:
+        rkey = self._resolve_key(key)
+        if rkey not in self._cache:
+            root = self._get_root(rkey)
+            if root is None:
+                raise KeyError(key)
+            self._cache[rkey] = TreePath(
+                parts=root.parts,
+                tree_id=rkey,
+                record_path=root,
+                root_depth=len(root.parts),
+            )
+        return self._cache[rkey]
+
+    def __iter__(self) -> Iterator[FiletreeID]:
+        keys: Set[FiletreeID] = set(map(self._resolve_key, Tree))
+        data_dirname = self.record.data_dirname
+        if data_dirname is not None:
+            data_dir = self.record.filetree / data_dirname
+            if self.root_is_purelib and not (data_dir / "platlib").exists():
+                keys.discard(Tree.PLATLIB)
+            elif not self.root_is_purelib and not (data_dir / "purelib").exists():
+                keys.discard(Tree.PURELIB)
+            for p in data_dir.iterdir():
+                if p.is_dir():
+                    keys.add(self._resolve_key(p.name))
+        return iter(keys)
+
+    def __len__(self) -> int:
+        return sum(1 for _ in self)
+
+    def _resolve_key(self, key: FiletreeID) -> FiletreeID:
+        if key is Tree.ROOT:
+            if self.root_is_purelib:
+                return Tree.PURELIB
+            else:
+                return Tree.PLATLIB
+        elif not key or (isinstance(key, str) and "/" in key) or key in (".", ".."):
+            raise KeyError(key)
+        else:
+            return key
+
+    def _get_root(self, tree_id: FiletreeID) -> Optional[RecordPath]:
+        data_dirname = self.record.data_dirname
+        if tree_id is Tree.ALL:
+            root = self.record.filetree
+        elif (tree_id is Tree.PURELIB and self.root_is_purelib) or (
+            tree_id is Tree.PLATLIB and not self.root_is_purelib
+        ):
+            pruned = [self.record.dist_info_dirname]
+            if data_dirname is not None:
+                pruned.append(data_dirname)
+            root = self.record.filetree._prune(pruned)
+        elif tree_id is Tree.DIST_INFO:
+            root = self.record.filetree / self.record.dist_info_dirname
+        elif tree_id is Tree.DATA:
+            if data_dirname is None:
+                return None
+            root = self.record.filetree / data_dirname
+        elif data_dirname is None:
+            return None
+        else:
+            root = (
+                self.record.filetree
+                / data_dirname
+                / (tree_id if isinstance(tree_id, str) else tree_id.value)
+            )
+            if not root.is_dir():
+                return None
+        return root
+
+
+@attr.define
+class BackedFiletreeMapping(FiletreeMapping, Mapping[FiletreeID, BackedTreePath]):
+    backing: BackedDistInfo
+
+    def __getitem__(self, key: FiletreeID) -> TreePath:
+        rkey = self._resolve_key(key)
+        if rkey not in self._cache:
+            root = self._get_root(rkey)
+            if root is None:
+                raise KeyError(key)
+            self._cache[rkey] = BackedTreePath(
+                parts=root.parts,
+                tree_id=rkey,
+                record_path=root,
+                root_depth=len(root.parts),
+                backing=self.backing,
+            )
+        tp = self._cache[rkey]
+        assert isinstance(tp, BackedTreePath)
+        return tp

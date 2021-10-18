@@ -24,3 +24,12 @@ class PathType(Enum):
     FILE = "file"
     DIRECTORY = "directory"
     OTHER = "other"  # for symlinks, devices, sockets, etc. in the backing
+
+
+class Tree(Enum):
+    ALL = "ALL"
+    ROOT = "ROOT"  # alias for purelib or platlib, depending
+    PURELIB = "purelib"
+    PLATLIB = "platlib"
+    DIST_INFO = "dist-info"
+    DATA = "data"  # The whole .data directory

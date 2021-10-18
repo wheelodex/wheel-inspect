@@ -82,12 +82,6 @@ class RecordPath(Path):
             self._children[name] = node
         return node
 
-    def _attach(self, node: RecordPath) -> None:
-        if self._children is None:
-            raise ValueError("Cannot attach a path to a non-directory")
-        node._parent = self
-        self._children[node.name] = node
-
     def _mkdir(self, name: str) -> RecordPath:
         if self._children is None:
             raise ValueError("Cannot create a directory in a non-directory")

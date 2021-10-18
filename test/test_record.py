@@ -267,3 +267,19 @@ def test_parse_bad_records(recfile: Path) -> None:
         with pytest.raises(RecordError) as excinfo:
             Record.load(fp)
         assert for_json(excinfo.value) == expected
+
+
+def test_file_data_digests() -> None:
+    fd = FileData(
+        algorithm="sha256",
+        digest="zgE5-Sk8hED4NRmtnPUuvp1FDC4Z6VWCzJOOZwZ2oh8",
+        size=532,
+    )
+    assert fd.b64_digest == "zgE5-Sk8hED4NRmtnPUuvp1FDC4Z6VWCzJOOZwZ2oh8"
+    assert (
+        fd.hex_digest
+        == "ce0139f9293c8440f83519ad9cf52ebe9d450c2e19e95582cc938e670676a21f"
+    )
+    assert fd.bytes_digest == bytes.fromhex(
+        "ce0139f9293c8440f83519ad9cf52ebe9d450c2e19e95582cc938e670676a21f"
+    )

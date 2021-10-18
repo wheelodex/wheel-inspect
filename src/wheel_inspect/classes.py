@@ -465,7 +465,7 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
         return self.record.data_dirname
 
     @cached_property
-    def filetrees(self) -> BackedFiletreeMapping:
+    def filetrees(self) -> BackedFiletreeMapping:  # type: ignore[override]
         return BackedFiletreeMapping(
             record=self.record,
             root_is_purelib=self.wheel_info["root_is_purelib"],

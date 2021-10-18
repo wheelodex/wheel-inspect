@@ -12,7 +12,7 @@ from wheel_inspect.util import for_json
 def test_parse_record() -> None:
     with (DATA_DIR / "records" / "qypi.csv").open() as fp:
         r = Record.load(fp)
-    assert dict(r) == {
+    data = {
         "qypi/__init__.py": FileData(
             algorithm="sha256",
             digest="zgE5-Sk8hED4NRmtnPUuvp1FDC4Z6VWCzJOOZwZ2oh8",
@@ -70,6 +70,22 @@ def test_parse_record() -> None:
             size=5,
         ),
     }
+    assert dict(r) == data
+    assert len(r) == len(data)
+    assert repr(r) == f"Record({data!r})"
+    assert "qypi/__init__.py" in r
+    assert r["qypi/__init__.py"] == FileData(
+        algorithm="sha256",
+        digest="zgE5-Sk8hED4NRmtnPUuvp1FDC4Z6VWCzJOOZwZ2oh8",
+        size=532,
+    )
+    assert "qypi-0.4.1.dist-info/RECORD" in r
+    assert r["qypi-0.4.1.dist-info/RECORD"] is None
+    for name in ["qypi", "qypi/", "foo"]:
+        assert name not in r
+        with pytest.raises(KeyError) as excinfo:
+            r[name]
+        assert str(excinfo.value) == repr(name)
     assert r.dist_info_dirname == "qypi-0.4.1.dist-info"
     assert r.data_dirname is None
 

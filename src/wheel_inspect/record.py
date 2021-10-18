@@ -21,9 +21,9 @@ else:
 
 @attr.define
 class FileData:
+    size: int
     algorithm: str
     digest: str  # In the pseudo-base64 format
-    size: int
 
     @property
     def b64_digest(self) -> str:
@@ -46,9 +46,9 @@ class RecordPath(Path):
     # return new Paths require the return values to be of the same class as the
     # invocant.
     filedata: Optional[FileData] = None
-    _parent: Optional[RecordPath] = attr.field(default=None)
-    _children: Optional[Dict[str, RecordPath]] = attr.field(default=None)
-    _exists: bool = attr.field(default=True)
+    _parent: Optional[RecordPath] = attr.field(default=None, eq=False)
+    _children: Optional[Dict[str, RecordPath]] = attr.field(default=None, eq=False)
+    _exists: bool = attr.field(default=True, eq=False)
 
     def __repr__(self) -> str:
         return f"{type(self).__name__}({str(self)!r}, filedata={self.filedata!r})"
@@ -106,22 +106,22 @@ class RecordPath(Path):
         return self._parent if self._parent is not None else self
 
     def get_subpath(self, name: str) -> RecordPath:
-        if not name or "/" in name:
-            raise ValueError("Invalid filename: {name!r}")
+        if self.is_file():
+            raise errors.NotDirectoryError(str(self))
+        elif not name or "/" in name:
+            raise ValueError(f"Invalid pathname: {name!r}")
         elif name == ".":
             return self
         elif name == "..":
             return self.parent
         elif not self._exists:
             return self._mkchild(name, exists=False)
-        elif self._children is not None:
+        else:
+            assert self._children is not None
             try:
                 return self._children[name]
             except KeyError:
-                return self._mkchild(name, exists=False)
-        else:
-            # self is a file
-            raise errors.NotDirectoryError(str(self))
+                return RecordPath(parts=self.parts + (name,), parent=self, exists=False)
 
     def exists(self) -> bool:
         return self._exists
@@ -153,7 +153,7 @@ class RecordPath(Path):
             raise errors.NotDirectoryError(str(self))
 
 
-@attr.define
+@attr.define(slots=False)  # slots=False so that cached_property works
 class Record(AttrMapping[str, Optional[FileData]]):
     filetree: RecordPath = attr.Factory(RecordPath._mkroot)
 
@@ -233,7 +233,7 @@ class Record(AttrMapping[str, Optional[FileData]]):
         else:
             assert algorithm is not None
             assert isize is not None
-            return (path, FileData(algorithm, digest, isize))
+            return (path, FileData(isize, algorithm, digest))
 
     def _insert(self, path: str, data: Optional[FileData]) -> None:
         children: Optional[Dict[str, RecordPath]]

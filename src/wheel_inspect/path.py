@@ -47,6 +47,13 @@ class Path(abc.ABC):
     def is_root(self) -> bool:
         return self.parts == ()
 
+    @property
+    def root_path(self: P) -> P:
+        p = self
+        while not p.is_root():
+            p = p.parent
+        return p
+
     @abc.abstractproperty
     def parent(self: P) -> P:
         # The parent of the root of a filetree is itself
@@ -54,9 +61,12 @@ class Path(abc.ABC):
 
     @property
     def parents(self: P) -> Tuple[P, ...]:
-        ps = [self.parent]
-        while not ps[-1].is_root():
-            ps.append(ps[-1].parent)
+        ps: List[P] = []
+        p = self
+        while not p.is_root():
+            q = p.parent
+            ps.append(q)
+            p = q
         return tuple(ps)
 
     def with_name(self: P, name: str) -> P:

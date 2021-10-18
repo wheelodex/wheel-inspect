@@ -14,6 +14,8 @@ wheel-inspect — Extract information from wheels
     :hidden:
 
     classes
+    metadata
+    paths
     inspecting
     errors
     command

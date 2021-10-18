@@ -16,13 +16,19 @@ Visit <https://github.com/wheelodex/wheel-inspect> for more information.
 
 from .classes import (
     BackedDistInfo,
+    BackedFiletreeMapping,
+    BackedTreePath,
     DistInfoDir,
     DistInfoProvider,
     FileProvider,
+    FiletreeMapping,
+    TreePath,
     WheelFile,
 )
 from .consts import PathType, Tree
 from .inspecting import inspect, inspect_dist_info_dir, inspect_wheel
+from .path import Path
+from .record import FileData, Record, RecordPath
 from .schema import WHEEL_SCHEMA
 
 __version__ = "2.0.0.dev1"
@@ -33,11 +39,19 @@ __url__ = "https://github.com/wheelodex/wheel-inspect"
 
 __all__ = [
     "BackedDistInfo",
+    "BackedFiletreeMapping",
+    "BackedTreePath",
     "DistInfoDir",
     "DistInfoProvider",
+    "FileData",
     "FileProvider",
+    "FiletreeMapping",
+    "Path",
     "PathType",
+    "Record",
+    "RecordPath",
     "Tree",
+    "TreePath",
     "WHEEL_SCHEMA",
     "WheelFile",
     "inspect",

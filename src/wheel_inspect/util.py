@@ -119,7 +119,10 @@ def is_data_dir(name: str) -> bool:
 
 
 def is_dist_info_path(path: str, name: str) -> bool:
-    pre, _, post = path.partition("/")
+    try:
+        pre, _, post = path.partition("/")
+    except ValueError:
+        return False
     return is_dist_info_dir(pre) and post == name
 
 

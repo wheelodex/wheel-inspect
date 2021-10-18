@@ -290,7 +290,8 @@ class FileProvider(abc.ABC):
         ...
 
     def verify_record(self, record: Record, digest: bool = True) -> None:
-        ### TODO: Verify that all directories are present in RECORD
+        # We deliberately do not check directories for inclusion in the RECORD.
+        # See <https://github.com/pypa/wheel/pull/289>.
         files = set(self.list_files())
         for path in record:
             self.verify_file(record.filetree / path, digest=digest)
@@ -305,12 +306,21 @@ class FileProvider(abc.ABC):
         spath = str(rpath)
         filedata = rpath.filedata
         if not rpath.exists():
+            # The path isn't in RECORD; now we check whether it should be.
             if is_signature_file(spath):
-                pass
-            elif self.has_file(spath):
+                return
+            try:
+                ptype = self.get_path_type(spath)
+            except exc.NoSuchPathError:
+                # The path doesn't exist, so the lack of an entry in RECORD is
+                # correct.
+                return
+            if ptype != PathType.DIRECTORY:
+                # Directories don't need RECORD entries.  PathType.OTHER nodes
+                # don't belong in dist-info backings, so we definitely should
+                # raise some sort of error for them; for now, we just complain
+                # that they're not in the RECORD (not that they can be).
                 raise exc.UnrecordedPathError(spath)
-            elif self.has_directory(spath):
-                raise exc.UnrecordedPathError(spath + "/")
         elif rpath.is_dir():
             try:
                 ptype = self.get_path_type(spath)

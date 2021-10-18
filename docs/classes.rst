@@ -3,6 +3,9 @@
 Core Classes
 ============
 
+ABCs
+----
+
 .. autoclass:: DistInfoProvider
 
 .. autoclass:: FileProvider
@@ -10,8 +13,11 @@ Core Classes
 .. autoclass:: BackedDistInfo
     :show-inheritance:
 
-.. autoclass:: DistInfoDir()
-    :show-inheritance:
+Concrete Classes
+----------------
 
 .. autoclass:: WheelFile()
+    :show-inheritance:
+
+.. autoclass:: DistInfoDir()
     :show-inheritance:

@@ -108,7 +108,7 @@ def inspect_wheel(path: AnyPath, digest_files: bool = True) -> Dict[str, Any]:
         their digests calculated in order to verify the digests listed in the
         wheel's :file:`RECORD`
     """
-    with WheelFile.from_path(path, strict=False) as wf:
+    with WheelFile.from_file(path, strict=False) as wf:
         return inspect(wf, digest_files=digest_files)
 
 

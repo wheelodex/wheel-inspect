@@ -501,33 +501,40 @@ class WheelFile(BackedDistInfo):
     fp: Optional[IO[bytes]]
     zipfile: ZipFile
     closed: bool = attr.field(default=False, init=False)
-
-    @classmethod
-    def from_path(cls, path: AnyPath, strict: bool = True) -> WheelFile:
-        p = pathlib.Path(os.fsdecode(path))
-        return cls.from_file(p.open("rb"), path=p, strict=strict)
+    _fp_from_user: bool = False
 
     @classmethod
     def from_file(
-        cls, fp: IO[bytes], path: Optional[AnyPath] = None, strict: bool = True
+        cls, file: Union[AnyPath, IO[bytes]], strict: bool = True
     ) -> WheelFile:
+        filename: Optional[str]
+        fp: IO[bytes]
+        if isinstance(file, (str, bytes, os.PathLike)):
+            filename = os.fsdecode(file)
+            fp = open(filename, "rb")
+            fp_from_user = False
+        else:
+            filename = getattr(file, "name", None)
+            fp = file
+            fp_from_user = True
         name: Optional[ParsedWheelFilename]
-        if path is not None:
-            name = parse_wheel_filename(path)
+        if filename is not None:
+            # TODO: Should this be allowed to fail when `file` is a file
+            # object?
+            name = parse_wheel_filename(filename)
         else:
             name = None
-        w = cls(wheel_name=name, fp=fp, zipfile=ZipFile(fp))
+        w = cls(wheel_name=name, fp=fp, zipfile=ZipFile(fp), fp_from_user=fp_from_user)
         if strict:
             w.validate()
         return w
 
     @classmethod
-    def from_zipfile(
-        cls, zipfile: ZipFile, path: Optional[AnyPath] = None, strict: bool = True
-    ) -> WheelFile:
+    def from_zipfile(cls, zipfile: ZipFile, strict: bool = True) -> WheelFile:
         name: Optional[ParsedWheelFilename]
-        if path is not None:
-            name = parse_wheel_filename(path)
+        if zipfile.filename is not None:
+            # TODO: Should this be allowed to fail?
+            name = parse_wheel_filename(zipfile.filename)
         else:
             name = None
         w = cls(wheel_name=name, fp=None, zipfile=zipfile)
@@ -544,7 +551,7 @@ class WheelFile(BackedDistInfo):
     def close(self) -> None:
         if not self.closed:
             self.zipfile.close()
-            if self.fp is not None:
+            if self.fp is not None and not self._fp_from_user:
                 self.fp.close()
             self.closed = True
 

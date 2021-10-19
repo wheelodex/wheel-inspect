@@ -9,7 +9,7 @@ from wheel_inspect.util import for_json
 
 @pytest.mark.parametrize("whlfile,expected", filecases("bad-wheels", "*.whl"))
 def test_verify_bad_wheels(whlfile: Path, expected: Any) -> None:
-    with WheelFile.from_path(whlfile, strict=False) as whl:
+    with WheelFile.from_file(whlfile, strict=False) as whl:
         with pytest.raises(WheelError) as excinfo:
             whl.verify()
         assert for_json(excinfo.value) == expected

@@ -7,7 +7,7 @@ from wheel_inspect.record import FileData
 
 
 def test_backedfiletree() -> None:
-    with WheelFile.from_path(
+    with WheelFile.from_file(
         DATA_DIR / "wheels" / "netkiller_devops-0.2.6-py3-none-any.whl"
     ) as whl:
         assert set(whl.filetrees) == {

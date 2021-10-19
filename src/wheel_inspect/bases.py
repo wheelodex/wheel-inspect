@@ -1,6 +1,6 @@
 import abc
 from fnmatch import fnmatchcase
-from typing import Dict, Iterator, List, Mapping, MutableMapping, Tuple, TypeVar
+from typing import Dict, Iterator, List, Mapping, Tuple, TypeVar
 import attr
 from .consts import PathType
 
@@ -25,6 +25,8 @@ class AttrMapping(Mapping[K, V_co]):
         return len(self.data)
 
 
+"""
+# In case it's needed later.
 @attr.define
 class AttrMutableMapping(AttrMapping, MutableMapping[K, V_co]):
     def __setitem__(self, key: K, value: V) -> None:
@@ -35,6 +37,7 @@ class AttrMutableMapping(AttrMapping, MutableMapping[K, V_co]):
 
     def clear(self) -> None:
         self.data.clear()
+"""
 
 
 @attr.define

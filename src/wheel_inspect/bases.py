@@ -1,10 +1,40 @@
 import abc
 from fnmatch import fnmatchcase
-from typing import Iterator, List, Tuple, TypeVar
+from typing import Dict, Iterator, List, Mapping, MutableMapping, Tuple, TypeVar
 import attr
 from .consts import PathType
 
+K = TypeVar("K")
+V = TypeVar("V")
+V_co = TypeVar("V_co", covariant=True)
+
 P = TypeVar("P", bound="Path")
+
+
+@attr.define
+class AttrMapping(Mapping[K, V_co]):
+    data: Dict[K, V_co] = attr.field(factory=dict, kw_only=True)
+
+    def __getitem__(self, key: K) -> V_co:
+        return self.data[key]
+
+    def __iter__(self) -> Iterator[K]:
+        return iter(self.data)
+
+    def __len__(self) -> int:
+        return len(self.data)
+
+
+@attr.define
+class AttrMutableMapping(AttrMapping, MutableMapping[K, V_co]):
+    def __setitem__(self, key: K, value: V) -> None:
+        self.data[key] = value
+
+    def __delitem__(self, key: K) -> None:
+        del self.data[key]
+
+    def clear(self) -> None:
+        self.data.clear()
 
 
 @attr.define

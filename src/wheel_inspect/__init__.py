@@ -14,6 +14,7 @@ or from the command line with the ``wheel2json`` command.
 Visit <https://github.com/wheelodex/wheel-inspect> for more information.
 """
 
+from .bases import Path
 from .classes import (
     BackedDistInfo,
     BackedFiletreeMapping,
@@ -27,7 +28,6 @@ from .classes import (
 )
 from .consts import PathType, Tree
 from .inspecting import inspect, inspect_dist_info_dir, inspect_wheel
-from .path import Path
 from .record import FileData, Record, RecordPath
 from .schema import WHEEL_SCHEMA
 

@@ -25,9 +25,9 @@ from entry_points_txt import EntryPointSet
 from entry_points_txt import load as load_entry_points
 from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from . import errors as exc
+from .bases import Path
 from .consts import AnyPath, PathType, Tree
 from .metadata import parse_metadata
-from .path import Path
 from .record import FileData, Record, RecordPath
 from .util import (
     digest_file,

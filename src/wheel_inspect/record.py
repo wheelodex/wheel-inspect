@@ -8,9 +8,8 @@ import sys
 from typing import Dict, Iterator, List, Optional, TextIO, Tuple
 import attr
 from . import errors
+from .bases import AttrMapping, Path
 from .consts import PathType
-from .mapping import AttrMapping
-from .path import Path
 from .util import filedata_is_optional, find_special_dir
 
 if sys.version_info[:2] >= (3, 8):

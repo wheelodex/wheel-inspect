@@ -24,6 +24,7 @@ from .classes import (
     FileProvider,
     FiletreeMapping,
     TreePath,
+    UnpackedWheelDir,
     WheelFile,
 )
 from .consts import PathType, Tree
@@ -53,6 +54,7 @@ __all__ = [
     "Tree",
     "TreePath",
     "WHEEL_SCHEMA",
+    "UnpackedWheelDir",
     "WheelFile",
     "inspect",
     "inspect_dist_info_dir",

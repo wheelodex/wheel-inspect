@@ -23,6 +23,7 @@ from zipfile import ZipFile
 import attr
 from entry_points_txt import EntryPointSet
 from entry_points_txt import load as load_entry_points
+from iterpath import iterpath
 from wheel_filename import ParsedWheelFilename, parse_wheel_filename
 from . import errors as exc
 from .bases import Path
@@ -690,6 +691,169 @@ class WheelFile(BackedDistInfo):
         if zi.is_dir():
             raise exc.NotFileError(path)
         fp = self.zipfile.open(zi)
+        if mode == "r":
+            return TextIOWrapper(fp, encoding=encoding, errors=errors, newline=newline)
+        else:
+            return fp
+
+
+@attr.define
+class UnpackedWheelDir(BackedDistInfo):
+    # This follows symlinks … for now
+    path: pathlib.Path
+
+    @classmethod
+    def from_path(
+        cls, path: AnyPath, wheel_name: Optional[str], strict: bool = True
+    ) -> UnpackedWheelDir:
+        name: Optional[ParsedWheelFilename]
+        if wheel_name is not None:
+            name = parse_wheel_filename(wheel_name)
+        else:
+            name = None
+        w = cls(wheel_name=name, path=pathlib.Path(os.fsdecode(path)))
+        if strict:
+            w.validate()
+        return w
+
+    @overload
+    def open_dist_info_file(
+        self,
+        path: str,
+        mode: Literal["r"] = "r",
+        encoding: Optional[str] = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> TextIO:
+        ...
+
+    @overload
+    def open_dist_info_file(
+        self,
+        path: str,
+        mode: Literal["rb"],
+        encoding: None = None,
+        errors: None = None,
+        newline: None = None,
+    ) -> IO[bytes]:
+        ...
+
+    def open_dist_info_file(
+        self,
+        path: str,
+        mode: Literal["r", "rb"] = "r",
+        encoding: Optional[str] = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> IO:
+        if mode not in ("r", "rb"):
+            raise ValueError(f"Unsupported file mode: {mode!r}")
+        if mode == "r":
+            return self.open(
+                self.dist_info_dirname + "/" + path,
+                mode=mode,
+                encoding=encoding,
+                errors=errors,
+                newline=newline,
+            )
+        else:
+            return self.open(self.dist_info_dirname + "/" + path, mode=mode)
+
+    def get_path_type(self, path: str) -> PathType:
+        ### TODO: Do something if path.startswith("/") or path == ""
+        p = self.path / path
+        if not p.exists():
+            raise exc.NoSuchPathError(path)
+        elif p.is_dir():
+            return PathType.DIRECTORY
+        elif p.is_file():
+            return PathType.FILE
+        else:
+            return PathType.OTHER
+
+    def list_files(self) -> List[str]:
+        # We need to use a function with an explicit `os.DirEntry[str]`
+        # annotation because just using `filter=os.DirEntry.is_file` gives a
+        # typing error.
+        def filterer(e: os.DirEntry[str]) -> bool:
+            return e.is_file()
+
+        return [
+            str(p.relative_to(self.path))
+            for p in iterpath(
+                self.path, dirs=False, followlinks=True, filter_files=filterer
+            )
+        ]
+
+    def list_top_level_dirs(self) -> List[str]:
+        # TODO: Should the results have trailing slashes or not?
+        return [p.name for p in self.path.iterdir() if p.is_dir()]
+
+    def has_directory(self, path: str) -> bool:
+        if path == "/":  # This is the only time `path` can be absolute.
+            return True
+        ### TODO: Do something if path.startswith("/") or path == ""
+        return (self.path / path).is_dir()
+
+    def has_file(self, path: str) -> bool:
+        ### TODO: Do something if path.startswith("/") or path == ""
+        return (self.path / path).is_file()
+
+    def get_file_size(self, path: str) -> int:
+        ### TODO: Do something if path.startswith("/") or path == ""
+        p = self.path / path
+        if not p.is_file():
+            raise exc.NotFileError(path)
+        try:
+            return p.stat().st_size
+        except FileNotFoundError:
+            raise exc.NoSuchPathError(path)
+
+    @overload
+    def open(
+        self,
+        path: Union[str, RecordPath, TreePath],
+        mode: Literal["r"] = "r",
+        encoding: Optional[str] = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> TextIO:
+        ...
+
+    @overload
+    def open(
+        self,
+        path: Union[str, RecordPath, TreePath],
+        mode: Literal["rb"],
+        encoding: None = None,
+        errors: None = None,
+        newline: None = None,
+    ) -> IO[bytes]:
+        ...
+
+    def open(
+        self,
+        path: Union[str, RecordPath, TreePath],
+        mode: Literal["r", "rb"] = "r",
+        encoding: Optional[str] = None,
+        errors: Optional[str] = None,
+        newline: Optional[str] = None,
+    ) -> IO:
+        if mode not in ("r", "rb"):
+            raise ValueError(f"Unsupported file mode: {mode!r}")
+        # If path.is_dir(), don't raise NotFileError yet; NoSuchPathError might
+        # be more accurate
+        path = str(path)
+        ### TODO: Do something if path.startswith("/") or path == ""
+        p = self.path / path
+        try:
+            # We can't do `p.open("r", ...)` for mode="r", as Path.open()
+            # doesn't support `newline`.
+            fp = p.open("rb")
+        except FileNotFoundError:
+            raise exc.NoSuchPathError(path)
+        except IsADirectoryError:
+            raise exc.NotFileError(path)
         if mode == "r":
             return TextIOWrapper(fp, encoding=encoding, errors=errors, newline=newline)
         else:

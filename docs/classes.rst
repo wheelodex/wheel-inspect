@@ -19,5 +19,8 @@ Concrete Classes
 .. autoclass:: WheelFile()
     :show-inheritance:
 
+.. autoclass:: UnpackedWheelDir()
+    :show-inheritance:
+
 .. autoclass:: DistInfoDir()
     :show-inheritance:

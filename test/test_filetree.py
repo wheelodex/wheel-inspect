@@ -105,7 +105,7 @@ def test_backedfiletree() -> None:
         assert initfile.path_type is PathType.FILE
         initfile.verify()
         with pytest.raises(NotDirectoryError):
-            list(initfile.iterdir())
+            next(initfile.iterdir())
         with pytest.raises(NotDirectoryError):
             initfile / "foo"
         with pytest.raises(NotDirectoryError):
@@ -123,7 +123,7 @@ def test_backedfiletree() -> None:
         with pytest.raises(NoSuchPathError):
             pure_dist.path_type
         with pytest.raises(NoSuchPathError):
-            list(pure_dist.iterdir())
+            next(pure_dist.iterdir())
         assert sorted(p.name for p in purelib.iterdir()) == ["netkiller"]
 
         assert whl.filetrees[Tree.ROOT] is purelib

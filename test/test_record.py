@@ -175,7 +175,7 @@ def test_recordpath() -> None:
     )
     assert initfile.path_type is PathType.FILE
     with pytest.raises(NotDirectoryError):
-        list(initfile.iterdir())
+        next(initfile.iterdir())
     with pytest.raises(NotDirectoryError):
         initfile / "foo"
     with pytest.raises(NotDirectoryError):
@@ -192,7 +192,7 @@ def test_recordpath() -> None:
     with pytest.raises(NoSuchPathError):
         nexist.path_type
     with pytest.raises(NoSuchPathError):
-        list(nexist.iterdir())
+        next(nexist.iterdir())
     # Assert the parent wasn't modified:
     assert sorted(p.name for p in netkiller.iterdir()) == [
         "__init__.py",

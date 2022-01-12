@@ -90,7 +90,8 @@ class Path(abc.ABC):
             p = p.parent
         return p
 
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def parent(self: P) -> P:
         # The parent of the root of a filetree is itself
         ...
@@ -156,7 +157,8 @@ class Path(abc.ABC):
                 return False
         return True
 
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def path_type(self) -> PathType:
         ...
 

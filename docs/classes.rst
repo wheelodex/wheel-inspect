@@ -6,6 +6,13 @@ Core Classes
 ABCs
 ----
 
+.. autosummary::
+    :nosignatures:
+
+    DistInfoProvider
+    FileProvider
+    BackedDistInfo
+
 .. autoclass:: DistInfoProvider
 
 .. autoclass:: FileProvider
@@ -15,6 +22,13 @@ ABCs
 
 Concrete Classes
 ----------------
+
+.. autosummary::
+    :nosignatures:
+
+    WheelFile
+    UnpackedWheelDir
+    DistInfoDir
 
 .. autoclass:: WheelFile()
     :show-inheritance:

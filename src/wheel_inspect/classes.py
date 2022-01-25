@@ -57,8 +57,8 @@ P = TypeVar("P", bound="TreePath")
 @attr.define(slots=False)  # slots=False so that cached_property works
 class DistInfoProvider(abc.ABC):
     """
-    An abstract class for resources that are or contain a :file:`*.dist-info`
-    directory
+    An abstract class for resources that contain or otherwise provide the
+    contents of a :file:`*.dist-info` directory
     """
 
     wheel_name: Optional[ParsedWheelFilename] = attr.field(default=None, kw_only=True)
@@ -210,6 +210,11 @@ class DistInfoProvider(abc.ABC):
 
 
 class FileProvider(abc.ABC):
+    """
+    An abstract class for resources containing or providing a collection of
+    files
+    """
+
     @abc.abstractmethod
     def list_files(self) -> List[str]:
         """
@@ -395,6 +400,8 @@ class FileProvider(abc.ABC):
 
 @attr.define
 class DistInfoDir(DistInfoProvider):
+    """A class for unpacked :file:`*.dist-info` directories on disk"""
+
     path: pathlib.Path
 
     @classmethod
@@ -450,6 +457,11 @@ class DistInfoDir(DistInfoProvider):
 
 
 class BackedDistInfo(DistInfoProvider, FileProvider):
+    """
+    A `DistInfoProvider` where the files listed in the :file:`RECORD` are
+    provided by the `FileProvider` functionality
+    """
+
     @cached_property
     def dist_info_dirname(self) -> str:
         # We can't get this one from the RECORD, as doing so would require us
@@ -497,8 +509,11 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
 
 @attr.define
 class WheelFile(BackedDistInfo):
+    """A wheel (:file:`*.whl`) file"""
+
     # __init__ is not for public use; users should use one of the classmethods
     # to construct instances
+
     fp: Optional[IO[bytes]]
     zipfile: ZipFile
     closed: bool = attr.field(default=False, init=False)
@@ -699,6 +714,8 @@ class WheelFile(BackedDistInfo):
 
 @attr.define
 class UnpackedWheelDir(BackedDistInfo):
+    """An unpacked/unzipped wheel file contained by itself within a directory"""
+
     # This follows symlinks … for now
     path: pathlib.Path
 

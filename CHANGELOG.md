@@ -1,5 +1,5 @@
-v1.7.1 (in development)
------------------------
+v1.7.1 (2022-04-08)
+-------------------
 - Support Python 3.10
 - Remove the upper bound on the `readme_renderer` dependency
 

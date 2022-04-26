@@ -64,8 +64,9 @@ def extract_modules(filelist: Iterable[str]) -> List[str]:
 
 
 def split_keywords(kwstr: str) -> Tuple[List[str], str]:
-    # cf. `format_tags()` in Warehouse <https://git.io/fA1AT>, which seems to
+    # cf. `format_tags()` in Warehouse [1], which seems to
     # be the part of PyPI responsible for splitting keywords up for display
+    # [1]: https://github.com/pypa/warehouse/blob/dc120b9/warehouse/filters.py#L108
 
     # cf. how wheel handles keywords:
     # keywords = re.split(r'[\0-,]+', kwstr)

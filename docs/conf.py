@@ -17,6 +17,7 @@ autodoc_default_options = {
     "members": True,
     "undoc-members": True,
 }
+autodoc_typehints_format = "fully-qualified"
 
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),

@@ -796,9 +796,13 @@ class UnpackedWheelDir(BackedDistInfo):
             return e.is_file()
 
         return [
-            str(p.relative_to(self.path))
+            str(p)
             for p in iterpath(
-                self.path, dirs=False, followlinks=True, filter_files=filterer
+                self.path,
+                dirs=False,
+                followlinks=True,
+                filter_files=filterer,
+                return_relative=True,
             )
         ]
 

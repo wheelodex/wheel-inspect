@@ -1,6 +1,6 @@
+from __future__ import annotations
 import json
 from pathlib import Path
-from typing import Sequence
 import click
 from .inspecting import inspect_dist_info_dir, inspect_wheel
 
@@ -15,7 +15,7 @@ from .inspecting import inspect_dist_info_dir, inspect_wheel
     ),
 )
 @click.argument("paths", type=click.Path(exists=True, path_type=Path), nargs=-1)
-def main(paths: Sequence[Path], digest_files: bool) -> None:
+def main(paths: tuple[Path], digest_files: bool) -> None:
     for p in paths:
         if p.is_dir():
             about = inspect_dist_info_dir(p)

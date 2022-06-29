@@ -1,9 +1,10 @@
-from typing import Any, Dict
+from __future__ import annotations
+from typing import Any
 
 #: A `JSON Schema <http://json-schema.org>`_ for the structure returned by
 #: `~wheel_inspect.inspect()`, `~wheel_inspect.inspect_wheel()`, and
 #: `~wheel_inspect.inspect_dist_info_dir()`.
-WHEEL_SCHEMA: Dict[str, Any] = {
+WHEEL_SCHEMA: dict[str, Any] = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "required": ["valid", "dist_info", "derived", "wheel_name"],

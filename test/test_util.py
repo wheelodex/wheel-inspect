@@ -1,4 +1,4 @@
-from typing import Dict, List, Tuple
+from __future__ import annotations
 import pytest
 from wheel_filename import parse_wheel_filename
 from wheel_inspect.errors import SpecialDirError
@@ -43,7 +43,7 @@ from wheel_inspect.util import (
         ("foo,", (["foo"], ",")),
     ],
 )
-def test_split_keywords(kwstr: str, expected: Tuple[List[str], str]) -> None:
+def test_split_keywords(kwstr: str, expected: tuple[list[str], str]) -> None:
     assert split_keywords(kwstr) == expected
 
 
@@ -243,7 +243,7 @@ def test_split_keywords(kwstr: str, expected: Tuple[List[str], str]) -> None:
         ),
     ],
 )
-def test_extract_modules(filelist: List[str], modules: List[str]) -> None:
+def test_extract_modules(filelist: list[str], modules: list[str]) -> None:
     assert extract_modules(filelist) == modules
 
 
@@ -258,7 +258,7 @@ def test_extract_modules(filelist: List[str], modules: List[str]) -> None:
         ),
     ],
 )
-def test_split_content_type(s: str, ct: Tuple[str, str, Dict[str, str]]) -> None:
+def test_split_content_type(s: str, ct: tuple[str, str, dict[str, str]]) -> None:
     assert split_content_type(s) == ct
 
 
@@ -326,7 +326,7 @@ def test_is_data_dir(name: str, expected: bool) -> None:
         ),
     ],
 )
-def test_find_special_dir(namelist: List[str], wheelname: str, expected: str) -> None:
+def test_find_special_dir(namelist: list[str], wheelname: str, expected: str) -> None:
     assert (
         find_special_dir(
             ".dist-info",
@@ -375,7 +375,7 @@ def test_find_special_dir(namelist: List[str], wheelname: str, expected: str) ->
         ),
     ],
 )
-def test_find_special_dir_error(namelist: List[str], wheelname: str, msg: str) -> None:
+def test_find_special_dir_error(namelist: list[str], wheelname: str, msg: str) -> None:
     with pytest.raises(SpecialDirError) as excinfo:
         find_special_dir(
             ".dist-info",

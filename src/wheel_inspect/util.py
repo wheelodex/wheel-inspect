@@ -1,24 +1,11 @@
 from __future__ import annotations
+from collections.abc import Callable, Iterable, Iterator, Mapping, Sequence
 from email.message import EmailMessage
 import hashlib
 from keyword import iskeyword
 import re
 import sys
-from typing import (
-    IO,
-    Any,
-    Callable,
-    Dict,
-    Iterable,
-    Iterator,
-    List,
-    Mapping,
-    Optional,
-    Sequence,
-    TextIO,
-    Tuple,
-    overload,
-)
+from typing import IO, Any, Optional, TextIO, overload
 import attr
 from entry_points_txt import EntryPoint
 from packaging.utils import canonicalize_name
@@ -39,7 +26,7 @@ else:
     from typing_extensions import Literal
 
 
-def extract_modules(filelist: Iterable[str]) -> List[str]:
+def extract_modules(filelist: Iterable[str]) -> list[str]:
     modules = set()
     for fname in filelist:
         parts = fname.split("/")
@@ -63,7 +50,7 @@ def extract_modules(filelist: Iterable[str]) -> List[str]:
     return sorted(modules)
 
 
-def split_keywords(kwstr: str) -> Tuple[List[str], str]:
+def split_keywords(kwstr: str) -> tuple[list[str], str]:
     # cf. `format_tags()` in Warehouse [1], which seems to
     # be the part of PyPI responsible for splitting keywords up for display
     # [1]: https://github.com/pypa/warehouse/blob/dc120b9/warehouse/filters.py#L108
@@ -96,7 +83,7 @@ def unique_projects(projects: Iterable[str]) -> Iterator[str]:
         seen.add(pn)
 
 
-def digest_file(fp: IO[bytes], algorithms: Iterable[str]) -> Dict[str, str]:
+def digest_file(fp: IO[bytes], algorithms: Iterable[str]) -> dict[str, str]:
     digests = {alg: hashlib.new(alg) for alg in algorithms}
     for chunk in iter(lambda: fp.read(DIGEST_CHUNK_SIZE), b""):
         for d in digests.values():
@@ -104,7 +91,7 @@ def digest_file(fp: IO[bytes], algorithms: Iterable[str]) -> Dict[str, str]:
     return {k: v.hexdigest() for k, v in digests.items()}
 
 
-def split_content_type(s: str) -> Tuple[str, str, Dict[str, str]]:
+def split_content_type(s: str) -> tuple[str, str, dict[str, str]]:
     msg = EmailMessage()
     msg["Content-Type"] = s
     ct = msg["Content-Type"]
@@ -178,7 +165,7 @@ def find_special_dir(
         - if the project & version in the found directory name do not match
           ``wheel_name``
     """
-    candidates: List[Tuple[str, str, str]] = []
+    candidates: list[tuple[str, str, str]] = []
     for n in dirnames:
         try:
             project, version = parse_special_dir(n, suffix)
@@ -210,7 +197,7 @@ def find_special_dir(
         return None
 
 
-def jsonify_entry_point(ep: EntryPoint) -> Dict[str, Any]:
+def jsonify_entry_point(ep: EntryPoint) -> dict[str, Any]:
     return {
         "module": ep.module,
         "attr": ep.attr,
@@ -218,11 +205,11 @@ def jsonify_entry_point(ep: EntryPoint) -> Dict[str, Any]:
     }
 
 
-def jsonify_parsed_wheel_filename(pwf: ParsedWheelFilename) -> Dict[str, Any]:
+def jsonify_parsed_wheel_filename(pwf: ParsedWheelFilename) -> dict[str, Any]:
     return {"name": str(pwf), **pwf._asdict()}
 
 
-CUSTOM_JSONIFIERS: Dict[type, Callable] = {
+CUSTOM_JSONIFIERS: dict[type, Callable] = {
     EntryPoint: jsonify_entry_point,
     ParsedWheelFilename: jsonify_parsed_wheel_filename,
 }
@@ -234,7 +221,7 @@ def for_json(value: Any) -> Any:
     elif hasattr(value, "for_json"):
         return for_json(value.for_json())
     elif isinstance(value, Error):
-        data: Dict[str, Any] = {"type": type(value).__name__, "message": str(value)}
+        data: dict[str, Any] = {"type": type(value).__name__, "message": str(value)}
         if attr.has(type(value)):
             data["args"] = for_json(attr.asdict(value, recurse=False))
         else:
@@ -255,7 +242,7 @@ def for_json(value: Any) -> Any:
         return value
 
 
-def parse_special_dir(dirname: str, suffix: str) -> Tuple[str, str]:
+def parse_special_dir(dirname: str, suffix: str) -> tuple[str, str]:
     n = dirname.rstrip("/")
     if not n.endswith(suffix):
         raise ValueError(f"{dirname!r} does not end in suffix {suffix!r}")

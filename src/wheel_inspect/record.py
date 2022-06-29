@@ -1,11 +1,12 @@
 # Format defined in PEP 376
 from __future__ import annotations
 import base64
+from collections.abc import Iterator
 import csv
 import hashlib
 import re
 import sys
-from typing import Dict, Iterator, List, Optional, TextIO, Tuple
+from typing import Optional, TextIO
 import attr
 from . import errors
 from .bases import AttrMapping, Path
@@ -46,7 +47,7 @@ class RecordPath(Path):
     # invocant.
     filedata: Optional[FileData] = None
     _parent: Optional[RecordPath] = attr.field(default=None, eq=False)
-    _children: Optional[Dict[str, RecordPath]] = attr.field(default=None, eq=False)
+    _children: Optional[dict[str, RecordPath]] = attr.field(default=None, eq=False)
     _exists: bool = attr.field(default=True, eq=False)
 
     def __repr__(self) -> str:
@@ -60,7 +61,7 @@ class RecordPath(Path):
         self,
         name: str,
         filedata: Optional[FileData] = None,
-        children: Optional[Dict[str, RecordPath]] = None,
+        children: Optional[dict[str, RecordPath]] = None,
         exists: bool = True,
     ) -> RecordPath:
         if self.is_file():
@@ -94,7 +95,7 @@ class RecordPath(Path):
             else:
                 raise errors.RecordConflictError(str(n))
 
-    def _prune(self, names: List[str]) -> RecordPath:
+    def _prune(self, names: list[str]) -> RecordPath:
         if not self.is_dir():
             raise TypeError("Cannot prune a non-directory")
         assert self._children is not None
@@ -203,7 +204,7 @@ class Record(AttrMapping[str, Optional[FileData]]):
         return r
 
     @staticmethod
-    def parse_row(fields: List[str]) -> Tuple[str, Optional[FileData]]:
+    def parse_row(fields: list[str]) -> tuple[str, Optional[FileData]]:
         try:
             path, alg_digest, size = fields
         except ValueError:
@@ -251,7 +252,7 @@ class Record(AttrMapping[str, Optional[FileData]]):
             return (path, FileData(isize, algorithm, digest))
 
     def _insert(self, path: str, data: Optional[FileData]) -> None:
-        children: Optional[Dict[str, RecordPath]]
+        children: Optional[dict[str, RecordPath]]
         if path.endswith("/"):
             spath = path[:-1]
             children = {}
@@ -285,11 +286,11 @@ class Record(AttrMapping[str, Optional[FileData]]):
             dirname = dirname.rstrip("/")
         return dirname
 
-    def for_json(self) -> Dict[str, Optional[FileData]]:
+    def for_json(self) -> dict[str, Optional[FileData]]:
         return dict(self)
 
 
-def parse_digest(s: str, path: str) -> Tuple[str, str]:
+def parse_digest(s: str, path: str) -> tuple[str, str]:
     algorithm, digest = s.split("=", 1)
     algorithm = algorithm.lower()
     if algorithm not in hashlib.algorithms_guaranteed:

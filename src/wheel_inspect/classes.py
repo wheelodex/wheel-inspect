@@ -1,24 +1,11 @@
 from __future__ import annotations
 import abc
+from collections.abc import Iterator
 from io import TextIOWrapper
 import os
 import pathlib
 import sys
-from typing import (
-    IO,
-    Any,
-    Dict,
-    Iterator,
-    List,
-    Mapping,
-    Optional,
-    Set,
-    TextIO,
-    Tuple,
-    TypeVar,
-    Union,
-    overload,
-)
+from typing import IO, Any, Mapping, Optional, TextIO, TypeVar, Union, overload
 from zipfile import ZipFile
 import attr
 from entry_points_txt import EntryPointSet
@@ -127,7 +114,7 @@ class DistInfoProvider(abc.ABC):
         ...
 
     @cached_property
-    def metadata(self) -> Dict[str, Any]:
+    def metadata(self) -> dict[str, Any]:
         try:
             with self.open_dist_info_file("METADATA", "r", encoding="utf-8") as fp:
                 return parse_metadata(fp)
@@ -147,7 +134,7 @@ class DistInfoProvider(abc.ABC):
             raise exc.MissingDistInfoFileError("RECORD")
 
     @cached_property
-    def wheel_info(self) -> Dict[str, Any]:
+    def wheel_info(self) -> dict[str, Any]:
         try:
             with self.open_dist_info_file("WHEEL", "r", encoding="utf-8") as fp:
                 return parse_wheel_info(fp)
@@ -165,7 +152,7 @@ class DistInfoProvider(abc.ABC):
             return None
 
     @property
-    def dependency_links(self) -> Optional[List[str]]:
+    def dependency_links(self) -> Optional[list[str]]:
         try:
             with self.open_dist_info_file(
                 "dependency_links.txt", "r", encoding="utf-8"
@@ -175,7 +162,7 @@ class DistInfoProvider(abc.ABC):
             return None
 
     @property
-    def namespace_packages(self) -> Optional[List[str]]:
+    def namespace_packages(self) -> Optional[list[str]]:
         try:
             with self.open_dist_info_file(
                 "namespace_packages.txt", "r", encoding="utf-8"
@@ -185,7 +172,7 @@ class DistInfoProvider(abc.ABC):
             return None
 
     @property
-    def top_level(self) -> Optional[List[str]]:
+    def top_level(self) -> Optional[list[str]]:
         try:
             with self.open_dist_info_file("top_level.txt", "r", encoding="utf-8") as fp:
                 return list(yield_lines(fp))
@@ -216,7 +203,7 @@ class FileProvider(abc.ABC):
     """
 
     @abc.abstractmethod
-    def list_files(self) -> List[str]:
+    def list_files(self) -> list[str]:
         """
         Returns a list of files in the resource.  Each file is represented as a
         relative ``/``-separated path as would appear in a :file:`RECORD` file.
@@ -227,7 +214,7 @@ class FileProvider(abc.ABC):
         ...
 
     @abc.abstractmethod
-    def list_top_level_dirs(self) -> List[str]:
+    def list_top_level_dirs(self) -> list[str]:
         # TODO: Should the results have trailing slashes or not?
         ...
 
@@ -284,7 +271,7 @@ class FileProvider(abc.ABC):
     @overload
     def open(
         self,
-        path: Union[str, RecordPath, TreePath],
+        path: str | RecordPath | TreePath,
         mode: Literal["r"] = "r",
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
@@ -295,7 +282,7 @@ class FileProvider(abc.ABC):
     @overload
     def open(
         self,
-        path: Union[str, RecordPath, TreePath],
+        path: str | RecordPath | TreePath,
         mode: Literal["rb"],
         encoding: None = None,
         errors: None = None,
@@ -306,7 +293,7 @@ class FileProvider(abc.ABC):
     @abc.abstractmethod
     def open(
         self,
-        path: Union[str, RecordPath, TreePath],
+        path: str | RecordPath | TreePath,
         mode: Literal["r", "rb"] = "r",
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
@@ -332,9 +319,7 @@ class FileProvider(abc.ABC):
             if not is_signature_file(path):
                 raise exc.UnrecordedPathError(path)
 
-    def verify_file(
-        self, path: Union[RecordPath, TreePath], digest: bool = True
-    ) -> None:
+    def verify_file(self, path: RecordPath | TreePath, digest: bool = True) -> None:
         rpath = path  # For readability
         spath = str(rpath)
         filedata = rpath.filedata
@@ -500,7 +485,7 @@ class BackedDistInfo(DistInfoProvider, FileProvider):
         self.verify_record(self.record, digest=digest)
 
     def verify_file(
-        self, path: Union[str, RecordPath, TreePath], digest: bool = True
+        self, path: str | RecordPath | TreePath, digest: bool = True
     ) -> None:
         if isinstance(path, str):
             path = self.record.filetree / path
@@ -520,9 +505,7 @@ class WheelFile(BackedDistInfo):
     _fp_from_user: bool = False
 
     @classmethod
-    def from_file(
-        cls, file: Union[AnyPath, IO[bytes]], strict: bool = True
-    ) -> WheelFile:
+    def from_file(cls, file: AnyPath | IO[bytes], strict: bool = True) -> WheelFile:
         filename: Optional[str]
         fp: IO[bytes]
         if isinstance(file, (str, bytes, os.PathLike)):
@@ -624,12 +607,12 @@ class WheelFile(BackedDistInfo):
         else:
             raise exc.NoSuchPathError(path)
 
-    def list_files(self) -> List[str]:
+    def list_files(self) -> list[str]:
         return [name for name in self.zipfile.namelist() if not name.endswith("/")]
 
-    def list_top_level_dirs(self) -> List[str]:
+    def list_top_level_dirs(self) -> list[str]:
         # TODO: Should the results have trailing slashes or not?
-        dirs: Set[str] = set()
+        dirs: set[str] = set()
         for name in self.zipfile.namelist():
             name = name.strip("/")
             if name:
@@ -663,7 +646,7 @@ class WheelFile(BackedDistInfo):
     @overload
     def open(
         self,
-        path: Union[str, RecordPath, TreePath],
+        path: str | RecordPath | TreePath,
         mode: Literal["r"] = "r",
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
@@ -674,7 +657,7 @@ class WheelFile(BackedDistInfo):
     @overload
     def open(
         self,
-        path: Union[str, RecordPath, TreePath],
+        path: str | RecordPath | TreePath,
         mode: Literal["rb"],
         encoding: None = None,
         errors: None = None,
@@ -684,7 +667,7 @@ class WheelFile(BackedDistInfo):
 
     def open(
         self,
-        path: Union[str, RecordPath, TreePath],
+        path: str | RecordPath | TreePath,
         mode: Literal["r", "rb"] = "r",
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
@@ -788,7 +771,7 @@ class UnpackedWheelDir(BackedDistInfo):
         else:
             return PathType.OTHER
 
-    def list_files(self) -> List[str]:
+    def list_files(self) -> list[str]:
         # We need to use a function with an explicit `os.DirEntry[str]`
         # annotation because just using `filter=os.DirEntry.is_file` gives a
         # typing error.
@@ -806,7 +789,7 @@ class UnpackedWheelDir(BackedDistInfo):
             )
         ]
 
-    def list_top_level_dirs(self) -> List[str]:
+    def list_top_level_dirs(self) -> list[str]:
         # TODO: Should the results have trailing slashes or not?
         return [p.name for p in self.path.iterdir() if p.is_dir()]
 
@@ -833,7 +816,7 @@ class UnpackedWheelDir(BackedDistInfo):
     @overload
     def open(
         self,
-        path: Union[str, RecordPath, TreePath],
+        path: str | RecordPath | TreePath,
         mode: Literal["r"] = "r",
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
@@ -844,7 +827,7 @@ class UnpackedWheelDir(BackedDistInfo):
     @overload
     def open(
         self,
-        path: Union[str, RecordPath, TreePath],
+        path: str | RecordPath | TreePath,
         mode: Literal["rb"],
         encoding: None = None,
         errors: None = None,
@@ -854,7 +837,7 @@ class UnpackedWheelDir(BackedDistInfo):
 
     def open(
         self,
-        path: Union[str, RecordPath, TreePath],
+        path: str | RecordPath | TreePath,
         mode: Literal["r", "rb"] = "r",
         encoding: Optional[str] = None,
         errors: Optional[str] = None,
@@ -907,7 +890,7 @@ class TreePath(Path):
         return self._record_path.filedata
 
     @property
-    def relative_parts(self) -> Tuple[str, ...]:
+    def relative_parts(self) -> tuple[str, ...]:
         # Relative to the root of the tree
         return self.parts[self._root_depth :]
 
@@ -1024,7 +1007,7 @@ class BackedTreePath(TreePath):
 class FiletreeMapping(Mapping[FiletreeID, TreePath]):
     record: Record
     root_is_purelib: bool
-    _cache: Dict[FiletreeID, TreePath] = attr.field(factory=dict, init=False)
+    _cache: dict[FiletreeID, TreePath] = attr.field(factory=dict, init=False)
 
     # When root-is-purelib, Tree.PLATLIB and "platlib" are the same (because
     # the latter just accesses the *.data subdir of that name), but "purelib"
@@ -1044,7 +1027,7 @@ class FiletreeMapping(Mapping[FiletreeID, TreePath]):
         return self._cache[rkey]
 
     def __iter__(self) -> Iterator[FiletreeID]:
-        keys: Set[FiletreeID] = set(map(self._resolve_key, Tree))
+        keys: set[FiletreeID] = set(map(self._resolve_key, Tree))
         data_dirname = self.record.data_dirname
         if data_dirname is not None:
             data_dir = self.record.filetree / data_dirname

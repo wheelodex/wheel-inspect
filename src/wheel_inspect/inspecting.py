@@ -1,4 +1,5 @@
-from typing import Any, Dict
+from __future__ import annotations
+from typing import Any
 from readme_renderer.rst import render
 from . import errors
 from .classes import BackedDistInfo, DistInfoDir, DistInfoProvider, WheelFile
@@ -12,8 +13,8 @@ from .util import (
 )
 
 
-def inspect(obj: DistInfoProvider, digest_files: bool = True) -> Dict[str, Any]:
-    about: Dict[str, Any] = {}
+def inspect(obj: DistInfoProvider, digest_files: bool = True) -> dict[str, Any]:
+    about: dict[str, Any] = {}
     about["dist_info"] = {}
     about["valid"] = True
     about["wheel_name"] = for_json(obj.wheel_name)
@@ -98,7 +99,7 @@ def inspect(obj: DistInfoProvider, digest_files: bool = True) -> Dict[str, Any]:
     return about
 
 
-def inspect_wheel(path: AnyPath, digest_files: bool = True) -> Dict[str, Any]:
+def inspect_wheel(path: AnyPath, digest_files: bool = True) -> dict[str, Any]:
     """
     Examine the Python wheel at the given path and return various information
     about the contents within as a JSON-serializable `dict`.  The structure of
@@ -112,7 +113,7 @@ def inspect_wheel(path: AnyPath, digest_files: bool = True) -> Dict[str, Any]:
         return inspect(wf, digest_files=digest_files)
 
 
-def inspect_dist_info_dir(path: AnyPath) -> Dict[str, Any]:
+def inspect_dist_info_dir(path: AnyPath) -> dict[str, Any]:
     """
     Examine the :file:`*.dist-info` directory at the given path and return
     various information about the contents within as a JSON-serializable

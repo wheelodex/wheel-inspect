@@ -1,6 +1,8 @@
+from __future__ import annotations
 import abc
+from collections.abc import Iterator
 from fnmatch import fnmatchcase
-from typing import Dict, Iterator, List, Mapping, Tuple, TypeVar
+from typing import Mapping, TypeVar
 import attr
 from .consts import PathType
 
@@ -13,7 +15,7 @@ P = TypeVar("P", bound="Path")
 
 @attr.define
 class AttrMapping(Mapping[K, V_co]):
-    data: Dict[K, V_co] = attr.field(factory=dict, kw_only=True)
+    data: dict[K, V_co] = attr.field(factory=dict, kw_only=True)
 
     def __getitem__(self, key: K) -> V_co:
         return self.data[key]
@@ -42,7 +44,7 @@ class AttrMutableMapping(AttrMapping, MutableMapping[K, V_co]):
 
 @attr.define
 class Path(abc.ABC):
-    parts: Tuple[str, ...]
+    parts: tuple[str, ...]
 
     def __str__(self) -> str:
         return "/".join(self.parts)
@@ -75,7 +77,7 @@ class Path(abc.ABC):
         return p
 
     @staticmethod
-    def split_path(path: str) -> Tuple[str, ...]:
+    def split_path(path: str) -> tuple[str, ...]:
         if path.startswith("/"):
             raise ValueError(f"Absolute paths not allowed: {path!r}")
         return tuple(q for q in path.split("/") if q)
@@ -97,8 +99,8 @@ class Path(abc.ABC):
         ...
 
     @property
-    def parents(self: P) -> Tuple[P, ...]:
-        ps: List[P] = []
+    def parents(self: P) -> tuple[P, ...]:
+        ps: list[P] = []
         p = self
         while not p.is_root():
             q = p.parent
@@ -118,7 +120,7 @@ class Path(abc.ABC):
             return ""
 
     @property
-    def suffixes(self) -> List[str]:
+    def suffixes(self) -> list[str]:
         if self.name.endswith("."):
             return []
         name = self.name.lstrip(".")

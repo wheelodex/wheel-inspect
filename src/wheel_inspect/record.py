@@ -296,7 +296,7 @@ def parse_digest(s: str, path: str) -> Tuple[str, str]:
         raise errors.UnknownAlgorithmError(path, algorithm)
     elif algorithm in ("md5", "sha1"):
         raise errors.WeakAlgorithmError(path, algorithm)
-    sz = (getattr(hashlib, algorithm)().digest_size * 8 + 5) // 6
+    sz = (hashlib.new(algorithm).digest_size * 8 + 5) // 6
     if not re.fullmatch(r"[-_0-9A-Za-z]{%d}" % (sz,), digest):
         raise errors.RecordDigestError(path, algorithm, digest)
     try:

@@ -97,7 +97,7 @@ def unique_projects(projects: Iterable[str]) -> Iterator[str]:
 
 
 def digest_file(fp: IO[bytes], algorithms: Iterable[str]) -> Dict[str, str]:
-    digests = {alg: getattr(hashlib, alg)() for alg in algorithms}
+    digests = {alg: hashlib.new(alg) for alg in algorithms}
     for chunk in iter(lambda: fp.read(DIGEST_CHUNK_SIZE), b""):
         for d in digests.values():
             d.update(chunk)

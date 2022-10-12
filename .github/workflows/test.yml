@@ -18,17 +18,17 @@ jobs:
           - '3.8'
           - '3.9'
           - '3.10'
-          - 'pypy3'
+          - 'pypy-3.7'
         toxenv: [py]
         include:
           - python-version: '3.6'
             toxenv: lint
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -47,7 +47,7 @@ jobs:
 
       - name: Upload coverage to Codecov
         if: matrix.toxenv == 'py'
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           fail_ci_if_error: false
 

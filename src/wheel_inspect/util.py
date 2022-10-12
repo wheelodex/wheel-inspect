@@ -223,7 +223,7 @@ def for_json(value: Any) -> Any:
     elif isinstance(value, Error):
         data: dict[str, Any] = {"type": type(value).__name__, "message": str(value)}
         if attr.has(type(value)):
-            data["args"] = for_json(attr.asdict(value, recurse=False))
+            data["args"] = for_json(attr.asdict(value, recurse=False))  # type: ignore[arg-type]
         else:
             data["args"] = {}
         return data

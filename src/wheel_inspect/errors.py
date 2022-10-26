@@ -170,9 +170,7 @@ class NullEntryError(RecordEntryError):
 
 @attr.define
 class RecordPathError(RecordEntryError):
-    """
-    Raised when an an entry in a :file:`RECORD` file has an invalid path
-    """
+    """Raised when an entry in a :file:`RECORD` file has an invalid path"""
 
     #: The path in question
     path: str
@@ -238,7 +236,7 @@ class EmptySizeError(RecordSizeError):
 class RecordAlgDigestError(RecordEntryError):
     """
     Raised when a record entry's algorithm+digest field is completely
-    unparseable
+    unparsable
     """
 
     #: The path the entry is for
@@ -248,7 +246,7 @@ class RecordAlgDigestError(RecordEntryError):
 
     def __str__(self) -> str:
         return (
-            f"RECORD entry for {self.path!r} has an unparseable"
+            f"RECORD entry for {self.path!r} has an unparsable"
             f" algorithm+digest field: {self.alg_digest!r}"
         )
 

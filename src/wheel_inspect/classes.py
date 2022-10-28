@@ -53,7 +53,7 @@ class DistInfoProvider(abc.ABC):
     def __enter__(self: T) -> T:
         return self
 
-    def __exit__(self, *_exc: Any) -> Optional[bool]:
+    def __exit__(self, *_exc: Any) -> Optional[bool]:  # noqa: B027
         pass
 
     def validate(self) -> None:

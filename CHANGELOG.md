@@ -1,7 +1,7 @@
 In Development
 --------------
 - Dropped support for Python 3.6
-- Support Python 3.11
+- Support Python 3.11 and 3.12
 
 
 v1.7.1 (2022-04-08)

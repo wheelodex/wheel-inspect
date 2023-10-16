@@ -3,24 +3,24 @@
     :alt: Project Status: Active — The project has reached a stable, usable
           state and is being actively developed.
 
-.. image:: https://github.com/jwodder/wheel-inspect/workflows/Test/badge.svg?branch=master
-    :target: https://github.com/jwodder/wheel-inspect/actions?workflow=Test
+.. image:: https://github.com/wheelodex/wheel-inspect/workflows/Test/badge.svg?branch=master
+    :target: https://github.com/wheelodex/wheel-inspect/actions?workflow=Test
     :alt: CI Status
 
-.. image:: https://codecov.io/gh/jwodder/wheel-inspect/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/jwodder/wheel-inspect
+.. image:: https://codecov.io/gh/wheelodex/wheel-inspect/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/wheelodex/wheel-inspect
 
 .. image:: https://img.shields.io/pypi/pyversions/wheel-inspect.svg
     :target: https://pypi.org/project/wheel-inspect/
 
-.. image:: https://img.shields.io/github/license/jwodder/wheel-inspect.svg
+.. image:: https://img.shields.io/github/license/wheelodex/wheel-inspect.svg
     :target: https://opensource.org/licenses/MIT
     :alt: MIT License
 
-`GitHub <https://github.com/jwodder/wheel-inspect>`_
+`GitHub <https://github.com/wheelodex/wheel-inspect>`_
 | `PyPI <https://pypi.org/project/wheel-inspect/>`_
-| `Issues <https://github.com/jwodder/wheel-inspect/issues>`_
-| `Changelog <https://github.com/jwodder/wheel-inspect/blob/master/CHANGELOG.md>`_
+| `Issues <https://github.com/wheelodex/wheel-inspect/issues>`_
+| `Changelog <https://github.com/wheelodex/wheel-inspect/blob/master/CHANGELOG.md>`_
 
 ``wheel-inspect`` examines Python wheel files & ``*.dist-info`` directories and
 outputs various information about their contents as JSON-serializable objects.

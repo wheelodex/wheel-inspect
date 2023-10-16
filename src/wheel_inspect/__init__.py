@@ -11,7 +11,7 @@ Python code as::
 
 or from the command line with the ``wheel2json`` command.
 
-Visit <https://github.com/jwodder/wheel-inspect> for more information.
+Visit <https://github.com/wheelodex/wheel-inspect> for more information.
 """
 
 from wheel_filename import ParsedWheelFilename, parse_wheel_filename
@@ -22,7 +22,7 @@ __version__ = "1.7.1"
 __author__ = "John Thorvald Wodder II"
 __author_email__ = "wheel-inspect@varonathe.org"
 __license__ = "MIT"
-__url__ = "https://github.com/jwodder/wheel-inspect"
+__url__ = "https://github.com/wheelodex/wheel-inspect"
 
 __all__ = [
     "DIST_INFO_SCHEMA",

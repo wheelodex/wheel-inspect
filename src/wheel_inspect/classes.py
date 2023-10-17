@@ -5,6 +5,7 @@ from io import TextIOWrapper
 import os
 import pathlib
 import sys
+from types import TracebackType
 from typing import IO, Any, Mapping, Optional, TextIO, TypeVar, Union, overload
 from zipfile import ZipFile
 import attr
@@ -53,7 +54,12 @@ class DistInfoProvider(abc.ABC):
     def __enter__(self: T) -> T:
         return self
 
-    def __exit__(self, *_exc: Any) -> Optional[bool]:  # noqa: B027
+    def __exit__(  # noqa: B027
+        self,
+        _exc_type: type[BaseException] | None,
+        _exc_val: BaseException | None,
+        _exc_tb: TracebackType | None,
+    ) -> Optional[bool]:
         pass
 
     def validate(self) -> None:
@@ -544,7 +550,12 @@ class WheelFile(BackedDistInfo):
     def __enter__(self) -> WheelFile:
         return self
 
-    def __exit__(self, *_exc: Any) -> None:
+    def __exit__(
+        self,
+        _exc_type: type[BaseException] | None,
+        _exc_val: BaseException | None,
+        _exc_tb: TracebackType | None,
+    ) -> None:
         self.close()
 
     def close(self) -> None:

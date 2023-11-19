@@ -1,3 +1,73 @@
 [build-system]
-requires = ["setuptools >= 46.4.0"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "wheel-inspect"
+dynamic = ["version"]
+description = "Extract information from wheels"
+readme = "README.rst"
+requires-python = "~=3.7"
+license = "MIT"
+license-files = { paths = ["LICENSE"] }
+authors = [
+    { name = "John Thorvald Wodder II", email = "wheel-inspect@varonathe.org" }
+]
+
+keywords = [
+    "*.dist-info",
+    "dist-info",
+    "package metadata",
+    "packages",
+    "pep427",
+    "wheel",
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Software Distribution",
+]
+
+dependencies = [
+    "attrs            >= 18.1",
+    "entry-points-txt ~= 0.1.0",
+    "headerparser     ~= 0.4.0",
+    "packaging        >= 17.1",
+    "readme_renderer  >= 24.0",
+    "wheel-filename   ~= 1.1",
+]
+
+[project.scripts]
+wheel2json = "wheel_inspect.__main__:main"
+
+[project.urls]
+"Source Code" = "https://github.com/wheelodex/wheel-inspect"
+"Bug Tracker" = "https://github.com/wheelodex/wheel-inspect/issues"
+
+[tool.hatch.version]
+path = "src/wheel_inspect/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/docs",
+    "/src",
+    "/test",
+    "CHANGELOG.*",
+    "CONTRIBUTORS.*",
+    "tox.ini",
+]
+
+[tool.hatch.envs.default]
+python = "3"

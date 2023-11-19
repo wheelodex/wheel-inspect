@@ -3,6 +3,7 @@ In Development
 - Dropped support for Python 3.6
 - Support Python 3.11 and 3.12
 - Moved to wheelodex organization
+- Migrated from setuptools to hatch
 
 
 v1.7.1 (2022-04-08)

@@ -42,7 +42,7 @@ classifiers = [
 
 dependencies = [
     "attrs            >= 18.1",
-    "entry-points-txt ~= 0.1.0",
+    "entry-points-txt ~= 0.2",
     "headerparser     ~= 0.4.0",
     "packaging        >= 17.1",
     "readme_renderer  >= 24.0",

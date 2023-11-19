@@ -54,7 +54,7 @@ def parse_entry_points(fp):
         gr: {
             k: {
                 "module": e.module,
-                "attr": e.object,
+                "attr": e.attr,
                 "extras": list(e.extras),
             }
             for k, e in eps.items()

@@ -78,9 +78,11 @@ class RecordEntry:
     def for_json(self):
         return {
             "path": self.path,
-            "digests": {self.digest_algorithm: hex2record_digest(self.digest)}
-            if self.digest is not None
-            else {},
+            "digests": (
+                {self.digest_algorithm: hex2record_digest(self.digest)}
+                if self.digest is not None
+                else {}
+            ),
             "size": self.size,
         }
 

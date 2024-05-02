@@ -5,6 +5,7 @@ In Development
 - Moved to wheelodex organization
 - Migrated from setuptools to hatch
 - Update `entry-points-txt` requirement to `~= 0.2`
+- Drop support for Python 3.7
 
 
 v1.7.1 (2022-04-08)

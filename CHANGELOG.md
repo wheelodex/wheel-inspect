@@ -1,11 +1,10 @@
-In Development
---------------
-- Dropped support for Python 3.6
+v1.7.2 (2024-12-01)
+-------------------
+- Drop support for Python 3.6 and 3.7
 - Support Python 3.11, 3.12, and 3.13
 - Moved to wheelodex organization
 - Migrated from setuptools to hatch
 - Update `entry-points-txt` requirement to `~= 0.2`
-- Drop support for Python 3.7
 
 
 v1.7.1 (2022-04-08)

@@ -25,8 +25,10 @@ jobs:
           - '3.11'
           - '3.12'
           - '3.13'
-          - 'pypy-3.9'
-          - 'pypy-3.10'
+          # Not supported by recent versions of rpds-py, a dependency of
+          # jsonschema:
+          #- 'pypy-3.9'
+          #- 'pypy-3.10'
           - 'pypy-3.11'
         toxenv: [py]
         include:

@@ -26,6 +26,7 @@ class RecordSizeMismatchError(RecordValidationError):
         self.record_size = record_size
         #: The file's actual size
         self.actual_size = actual_size
+        super().__init__(path, record_size, actual_size)
 
     def __str__(self):
         return (
@@ -49,6 +50,7 @@ class RecordDigestMismatchError(RecordValidationError):
         self.record_digest = record_digest
         #: The file's actual digest, in hex
         self.actual_digest = actual_digest
+        super().__init__(path, algorithm, record_digest, actual_digest)
 
     def __str__(self):
         return (
@@ -66,6 +68,7 @@ class FileMissingError(RecordValidationError):
     def __init__(self, path):
         #: The path of the missing file
         self.path = path
+        super().__init__(path)
 
     def __str__(self):
         return "File declared in RECORD not found in archive: " + repr(self.path)
@@ -80,6 +83,7 @@ class ExtraFileError(RecordValidationError):
     def __init__(self, path):
         #: The path of the extra file
         self.path = path
+        super().__init__(path)
 
     def __str__(self):
         return f"File not declared in RECORD: {self.path!r}"
@@ -105,6 +109,7 @@ class UnknownDigestError(MalformedRecordError):
         self.path = path
         #: The unknown digest algorithm
         self.algorithm = algorithm
+        super().__init__(path, algorithm)
 
     def __str__(self):
         return (
@@ -124,6 +129,7 @@ class WeakDigestError(MalformedRecordError):
         self.path = path
         #: The weak digest algorithm
         self.algorithm = algorithm
+        super().__init__(path, algorithm)
 
     def __str__(self):
         return (
@@ -145,6 +151,7 @@ class MalformedDigestError(MalformedRecordError):
         self.algorithm = algorithm
         #: The malformed digest
         self.digest = digest
+        super().__init__(path, algorithm, digest)
 
     def __str__(self):
         return (
@@ -164,6 +171,7 @@ class MalformedSizeError(MalformedRecordError):
         self.path = path
         #: The size (as a string)
         self.size = size
+        super().__init__(path, size)
 
     def __str__(self):
         return f"RECORD contains invalid size for {self.path!r}: {self.size!r}"
@@ -178,6 +186,7 @@ class RecordConflictError(MalformedRecordError):
     def __init__(self, path):
         #: The path with conflicting entries
         self.path = path
+        super().__init__(path)
 
     def __str__(self):
         return f"RECORD contains multiple conflicting entries for {self.path!r}"
@@ -192,6 +201,7 @@ class EmptyDigestError(MalformedRecordError):
     def __init__(self, path):
         #: The path the entry is for
         self.path = path
+        super().__init__(path)
 
     def __str__(self):
         return f"RECORD entry for {self.path!r} has a size but no digest"
@@ -206,6 +216,7 @@ class EmptySizeError(MalformedRecordError):
     def __init__(self, path):
         #: The path the entry is for
         self.path = path
+        super().__init__(path)
 
     def __str__(self):
         return f"RECORD entry for {self.path!r} has a digest but no size"
@@ -229,6 +240,7 @@ class RecordLengthError(MalformedRecordError):
         self.path = path
         #: The number of fields in the entry
         self.length = length
+        super().__init__(path, length)
 
     def __str__(self):
         if self.path is None:
@@ -249,6 +261,7 @@ class NullEntryError(MalformedRecordError):
     def __init__(self, path):
         #: The path the entry is for
         self.path = path
+        super().__init__(path)
 
     def __str__(self):
         return f"RECORD entry for {self.path!r} lacks both digest and size"
@@ -262,6 +275,7 @@ class NonNormalizedPathError(MalformedRecordError):
     def __init__(self, path):
         #: The non-normalized path
         self.path = path
+        super().__init__(path)
 
     def __str__(self):
         return f"RECORD entry has a non-normalized path: {self.path!r}"
@@ -275,6 +289,7 @@ class AbsolutePathError(MalformedRecordError):
     def __init__(self, path):
         #: The absolute path
         self.path = path
+        super().__init__(path)
 
     def __str__(self):
         return f"RECORD entry has an absolute path: {self.path!r}"
@@ -298,6 +313,7 @@ class MissingDistInfoFileError(WheelValidationError):
     def __init__(self, path):
         #: The path to the file, relative to the :file:`*.dist-info` directory
         self.path = path
+        super().__init__(path)
 
     def __str__(self):
         return f"File not found in *.dist-info directory: {self.path!r}"

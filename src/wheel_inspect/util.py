@@ -2,7 +2,6 @@ from email.message import EmailMessage
 import hashlib
 from keyword import iskeyword
 import re
-from typing import List, Optional, Tuple
 from packaging.utils import canonicalize_name, canonicalize_version
 from .errors import DistInfoError
 
@@ -114,8 +113,8 @@ def yield_lines(fp):
 
 
 def find_dist_info_dir(
-    namelist: List[str], project: str, version: str
-) -> Tuple[str, Optional[str]]:
+    namelist: list[str], project: str, version: str
+) -> tuple[str, str | None]:
     """
     Given a list ``namelist`` of files in a wheel for a project ``project`` and
     version ``version``, find & return the name of the wheel's ``.dist-info``

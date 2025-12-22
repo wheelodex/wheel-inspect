@@ -44,7 +44,7 @@ dependencies = [
     "headerparser     >= 0.4,< 0.6",
     "packaging        >= 17.1",
     "readme_renderer  >= 24.0",
-    "wheel-filename   ~= 1.1",
+    "wheel-filename   ~= 2.0",
 ]
 
 [project.scripts]

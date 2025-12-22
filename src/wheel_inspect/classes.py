@@ -2,7 +2,7 @@ import abc
 import io
 from pathlib import Path
 from zipfile import ZipFile
-from wheel_filename import parse_wheel_filename
+from wheel_filename import WheelFilename
 from . import errors
 from .metadata import parse_metadata
 from .record import parse_record
@@ -43,18 +43,20 @@ class DistInfoProvider(abc.ABC):
 
     def get_metadata(self):
         try:
-            with self.open_dist_info_file("METADATA") as binfp, io.TextIOWrapper(
-                binfp, "utf-8"
-            ) as txtfp:
+            with (
+                self.open_dist_info_file("METADATA") as binfp,
+                io.TextIOWrapper(binfp, "utf-8") as txtfp,
+            ):
                 return parse_metadata(txtfp)
         except errors.MissingDistInfoFileError:
             raise errors.MissingMetadataError()
 
     def get_record(self):
         try:
-            with self.open_dist_info_file("RECORD") as binfp, io.TextIOWrapper(
-                binfp, "utf-8", newline=""
-            ) as txtfp:
+            with (
+                self.open_dist_info_file("RECORD") as binfp,
+                io.TextIOWrapper(binfp, "utf-8", newline="") as txtfp,
+            ):
                 # The csv module requires this file to be opened with
                 # `newline=''`
                 return parse_record(txtfp)
@@ -63,9 +65,10 @@ class DistInfoProvider(abc.ABC):
 
     def get_wheel_info(self):
         try:
-            with self.open_dist_info_file("WHEEL") as binfp, io.TextIOWrapper(
-                binfp, "utf-8"
-            ) as txtfp:
+            with (
+                self.open_dist_info_file("WHEEL") as binfp,
+                io.TextIOWrapper(binfp, "utf-8") as txtfp,
+            ):
                 return parse_wheel_info(txtfp)
         except errors.MissingDistInfoFileError:
             raise errors.MissingWheelInfoError()
@@ -145,7 +148,7 @@ class DistInfoDir(DistInfoProvider):
 class WheelFile(DistInfoProvider, FileProvider):
     def __init__(self, path):
         self.path = Path(path)
-        self.parsed_filename = parse_wheel_filename(self.path)
+        self.parsed_filename = WheelFilename.parse(self.path)
         self.fp = None
         self.zipfile = None
         self._dist_info = None

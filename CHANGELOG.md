@@ -2,6 +2,9 @@ v1.8.0 (in development)
 -----------------------
 - Support Python 3.14
 - Drop support for Python 3.8 and 3.9
+- Update `wheel-filename` requirement to v2.0
+- **Breaking**: Stop re-exporting `ParsedWheelFilename` and
+  `parse_wheel_filename()` from `wheel-filename`
 
 
 v1.7.2 (2024-12-01)

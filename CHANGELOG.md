@@ -1,5 +1,5 @@
-v1.8.0 (in development)
------------------------
+v1.8.0 (2025-12-21)
+-------------------
 - Support Python 3.14
 - Drop support for Python 3.8 and 3.9
 - Update `wheel-filename` requirement to v2.0

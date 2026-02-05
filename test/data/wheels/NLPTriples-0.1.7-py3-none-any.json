@@ -149,7 +149,7 @@
             }
         ],
         "wheel": {
-            "generator": "poetry 1.0.10",
+            "generator": ["poetry 1.0.10"],
             "root_is_purelib": true,
             "tag": [
                 "py3-none-any"

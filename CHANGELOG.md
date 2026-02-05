@@ -1,3 +1,9 @@
+v2.0.0 (in development)
+-----------------------
+- **Breaking**: `.dist_info.wheel.generator` changed from a string to a list of
+  strings; see <https://discuss.python.org/t/106016> for further information
+
+
 v1.8.0 (2025-12-21)
 -------------------
 - Support Python 3.14

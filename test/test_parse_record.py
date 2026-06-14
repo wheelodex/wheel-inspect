@@ -91,7 +91,7 @@ qypi-0.4.1.dist-info/top_level.txt,sha256=J2Q5xVa8BtnOTGxjqY2lKQRB22Ydn9JF2PirqD
 
 @pytest.mark.parametrize(
     "recfile",
-    (Path(__file__).with_name("data") / "bad-records").glob("*.csv"),
+    list((Path(__file__).with_name("data") / "bad-records").glob("*.csv")),
     ids=attrgetter("name"),
 )
 def test_parse_bad_records(recfile):

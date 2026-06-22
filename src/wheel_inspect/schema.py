@@ -153,7 +153,7 @@ DIST_INFO_SCHEMA = {
                     },
                     "properties": {
                         "wheel_version": {"type": "string"},
-                        "generator": {"type": "string"},
+                        "generator": {"type": "array", "items": {"type": "string"}},
                         "root_is_purelib": {"type": "boolean"},
                         "tag": {"type": "array", "items": {"type": "string"}},
                         "build": {"type": "string"},

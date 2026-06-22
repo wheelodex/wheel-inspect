@@ -157,7 +157,7 @@
             "sqlalchemy_fixture_factory"
         ],
         "wheel": {
-            "generator": "bdist_wheel (0.24.0)",
+            "generator": ["bdist_wheel (0.24.0)"],
             "root_is_purelib": true,
             "tag": [
                 "py2-none-any",

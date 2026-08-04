@@ -61,7 +61,7 @@
             }
         ],
         "wheel": {
-            "generator": "manually",
+            "generator": ["manually"],
             "root_is_purelib": true,
             "tag": [
                 "py3-none-any"

@@ -2023,7 +2023,7 @@
             "appr"
         ],
         "wheel": {
-            "generator": "bdist_wheel (0.29.0)",
+            "generator": ["bdist_wheel (0.29.0)"],
             "root_is_purelib": true,
             "tag": [
                 "py2-none-any",

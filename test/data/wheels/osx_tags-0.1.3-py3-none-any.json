@@ -150,7 +150,7 @@
             "osx_tags"
         ],
         "wheel": {
-            "generator": "bdist_wheel (0.30.0)",
+            "generator": ["bdist_wheel (0.30.0)"],
             "root_is_purelib": true,
             "tag": [
                 "py3-none-any"

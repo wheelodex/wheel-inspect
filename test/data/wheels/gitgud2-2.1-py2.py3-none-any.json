@@ -162,7 +162,7 @@
             "gitgud"
         ],
         "wheel": {
-            "generator": "bdist_wheel (0.33.1)",
+            "generator": ["bdist_wheel (0.33.1)"],
             "root_is_purelib": true,
             "tag": [
                 "py2-none-any",

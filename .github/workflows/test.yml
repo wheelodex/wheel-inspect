@@ -31,6 +31,7 @@ jobs:
           # jsonschema:
           #- 'pypy-3.10'
           - 'pypy-3.11'
+          - 'pypy-3.12'
         toxenv: [py]
         include:
           - python-version: '3.10'
